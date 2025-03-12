@@ -1,10 +1,9 @@
-// src/app/courses/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
 import { Course } from '@/types';
 import CourseList from '@/components/courses/CourseList';
-import CourseForm from '@/components/courses/CourseForm';
+import ComprehensiveCourseForm from '@/components/courses/ComprehensiveCourseForm';
 
 export default function CoursesPage() {
   const [courses, setCourses] = useState<Course[]>([]);
@@ -37,12 +36,24 @@ export default function CoursesPage() {
     }
   };
 
-  const handleAddCourse = async (name: string) => {
+  const handleAddCourseWithHoles = async (
+    courseName: string, 
+    holes: Array<{ hole_number: number; par: number | null; distance: number | null }>
+  ) => {
     try {
+      const validHoles = holes.map(hole => ({
+        hole_number: hole.hole_number,
+        par: hole.par as number, 
+        distance: hole.distance as number
+      }));
+      
       const response = await fetch('/api/courses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name })
+        body: JSON.stringify({ 
+          name: courseName,
+          holes: validHoles
+        })
       });
       
       const result = await response.json();
@@ -54,7 +65,7 @@ export default function CoursesPage() {
       setCourses([...courses, result.data]);
       setIsAddingCourse(false);
     } catch (err) {
-      console.error('Error adding course:', err);
+      console.error('Error adding course with holes:', err);
       setError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
@@ -110,8 +121,8 @@ export default function CoursesPage() {
       {isAddingCourse ? (
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-lg font-medium mb-4">Add New Course</h2>
-          <CourseForm
-            onSubmit={handleAddCourse}
+          <ComprehensiveCourseForm
+            onSubmit={handleAddCourseWithHoles}
             onCancel={() => setIsAddingCourse(false)}
           />
         </div>

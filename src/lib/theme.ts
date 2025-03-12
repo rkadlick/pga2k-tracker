@@ -1,4 +1,3 @@
-// src/lib/theme.ts
 
 // Theme configuration for easy customization
 export const theme = {
@@ -11,7 +10,7 @@ export const theme = {
 	  warning: 'yellow',   // Warning color
 	  info: 'blue',        // Info color
 	  
-	  // You can use these in your Tailwind classes like:
+	  //  use these in Tailwind classes like:
 	  // bg-primary-500, text-secondary-700, etc.
 	},
 	

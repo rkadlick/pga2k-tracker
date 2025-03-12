@@ -1,10 +1,9 @@
-// src/app/courses/[id]/page.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Course, Hole } from '@/types';
-import CourseForm from '@/components/courses/CourseForm';
+import CourseForm from '@/components/courses/ComprehensiveCourseForm';
 import CourseDetail from '@/components/courses/CourseDetail';
 import HoleForm from '@/components/courses/HoleForm';
 

@@ -1,4 +1,3 @@
-// src/components/courses/HoleForm.tsx
 import { useState } from 'react';
 import { Hole } from '@/types';
 

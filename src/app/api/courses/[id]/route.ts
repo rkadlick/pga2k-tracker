@@ -1,4 +1,3 @@
-// src/app/api/courses/[id]/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import { getCourseWithHoles, updateCourse, deleteCourse } from '@/lib/courseService';
 

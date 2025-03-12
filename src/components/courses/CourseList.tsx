@@ -1,4 +1,3 @@
-// src/components/courses/CourseList.tsx
 import { useState } from 'react';
 import Link from 'next/link';
 import { Course } from '@/types';

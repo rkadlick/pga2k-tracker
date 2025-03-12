@@ -1,5 +1,3 @@
-// src/types/index.ts
-
 // Base types with common fields
 export interface BaseRecord {
 	id: string;
