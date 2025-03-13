@@ -16,7 +16,7 @@ export async function getCourseWithHoles(id: string): Promise<Course> {
   // Get course
   const supabase = await createClient();
   const { data: course, error: courseError } = await supabase
-    .from('courses')
+    .from('courses')  
     .select('*')
     .eq('id', id)
     .single();
@@ -110,14 +110,16 @@ export async function deleteHole(id: string): Promise<void> {
 
 export async function createCourseWithHoles(
   courseName: string, 
-  holes: Array<{ hole_number: number; par: number; distance: number }>
+  holes: Array<{ hole_number: number; par: number; distance: number }>,
+  totalPar: number,
+  totalDistance: number
 ): Promise<Course> {
   const supabase = await createClient();
   
   // First create the course
   const { data: course, error: courseError } = await supabase
     .from('courses')
-    .insert([{ name: courseName }])
+    .insert([{ name: courseName, total_par: totalPar, total_distance: totalDistance}])
     .select()
     .single();
   

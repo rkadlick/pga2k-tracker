@@ -16,11 +16,25 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { name, holes } = await request.json();
+    const { name, holes, totalPar, totalDistance } = await request.json();
     
     if (!name || !name.trim()) {
       return NextResponse.json(
         { error: 'Course name is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!totalPar) {
+      return NextResponse.json(
+        { error: 'Total par is required' },
+        { status: 400 }
+      );
+    }
+
+    if (!totalDistance) {
+      return NextResponse.json(
+        { error: 'Total par is required' },
         { status: 400 }
       );
     }
@@ -42,7 +56,7 @@ export async function POST(request: Request) {
       }
     }
     
-    const course = await createCourseWithHoles(name, holes);
+    const course = await createCourseWithHoles(name, holes, totalPar, totalDistance);
     
     return NextResponse.json({ data: course });
   } catch (error) {
