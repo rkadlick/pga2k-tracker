@@ -2,7 +2,7 @@ import React from 'react';
 import FormHeader from './FormHeader';
 import HoleSection from './HoleSection';
 import CourseTotals from './CourseTotals';
-import { useCourseForm, HoleData } from './useCourseForms';
+import { useCourseForm, HoleData } from '@/hooks/useCourseForm';
 
 interface CourseFormProps {
   onSubmit: (courseName: string, holes: HoleData[], totalPar: number, totalDistance: number) => void;
@@ -23,23 +23,14 @@ export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
     backNineDistance,
     totalDistance,
     errors,
-    setErrors,
     updateHolePar,
     updateHoleDistance,
-    validateForm
-  } = useCourseForm();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (validateForm()) {
-      onSubmit(courseName, holes, totalPar, totalDistance);
-    }
-  };
+    handleSubmit,
+    isSubmitting
+  } = useCourseForm(onSubmit);
 
   const clearCourseNameError = () => {
-    const newErrors = { ...errors, courseName: '' };
-    setErrors(newErrors);
+    // This is now handled internally by the hook when setCourseName is called
   };
 
   return (
@@ -92,9 +83,10 @@ export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
         </button>
         <button
           type="submit"
-          className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          disabled={isSubmitting}
+          className="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
         >
-          Create Course
+          {isSubmitting ? 'Creating...' : 'Create Course'}
         </button>
       </div>
     </form>

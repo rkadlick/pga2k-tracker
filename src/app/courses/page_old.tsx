@@ -1,26 +1,57 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Course } from "@/types";
 import CourseList from "@/components/courses/CourseList";
 import CourseForm from "@/components/courses/CourseForm";
-import { useCourses } from "@/hooks/useCourses";
+import { fetchCourses, createCourse, deleteCourse } from "@/lib/api/courseClient";
+import { useApiRequest } from "@/hooks/useApiRequest";
 
-/**
- * Alternative implementation of the Courses page using the domain-specific hook
- * This shows how much cleaner the component becomes when using a custom hook
- */
-export default function CoursesPageAlternative() { // Renamed to avoid conflicts
+export default function CoursesPage() {
+  const [courses, setCourses] = useState<Course[]>([]);
   const [isAddingCourse, setIsAddingCourse] = useState(false);
   
+  // Use the API request hook for fetching courses
   const { 
-    courses, 
+    execute: loadCourses, 
     isLoading, 
-    error, 
-    createCourseWithHoles, 
-    removeCourse 
-  } = useCourses();
+    error 
+  } = useApiRequest(fetchCourses, {
+    onSuccess: (data) => setCourses(data)
+  });
+  
+  // Use the API request hook for creating a course
+  const { 
+    execute: handleCreateCourse,
+    isLoading: isCreating
+  } = useApiRequest(createCourse, {
+    onSuccess: (newCourse) => {
+      setCourses([...courses, newCourse]);
+      setIsAddingCourse(false);
+    }
+  });
+  
+  // Use the API request hook for deleting a course
+  const {
+    execute: handleDeleteCourse
+  } = useApiRequest(
+    // We need to adapt the signature to match what useApiRequest expects
+    (id: string) => deleteCourse(id),
+    {
+      onSuccess: () => {
+        // We don't get the ID back from the API, so we use a closure
+        // to capture the ID that was passed to handleDeleteCourse
+        const deletedId = arguments[0];
+        setCourses(courses.filter((course) => course.id !== deletedId));
+      }
+    }
+  );
 
-  const handleAddCourse = async (
+  useEffect(() => {
+    loadCourses();
+  }, [loadCourses]);
+
+  const handleAddCourseWithHoles = async (
     courseName: string,
     holes: Array<{
       hole_number: number;
@@ -31,17 +62,29 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     totalDistance: number
   ) => {
     try {
-      await createCourseWithHoles(courseName, holes, totalPar, totalDistance);
-      setIsAddingCourse(false);
+      const validHoles = holes.map((hole) => ({
+        hole_number: hole.hole_number,
+        par: hole.par as number,
+        distance: hole.distance as number,
+      }));
+
+      await handleCreateCourse({
+        name: courseName,
+        holes: validHoles,
+        totalPar,
+        totalDistance
+      });
     } catch (err) {
-      console.error("Error adding course:", err);
+      // Error is already handled by the useApiRequest hook
+      console.error("Error adding course with holes:", err);
     }
   };
 
-  const handleDeleteCourse = async (id: string) => {
+  const handleDeleteCourseClick = async (id: string) => {
     try {
-      await removeCourse(id);
+      await handleDeleteCourse(id);
     } catch (err) {
+      // Error is already handled by the useApiRequest hook
       console.error("Error deleting course:", err);
     }
   };
@@ -49,7 +92,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
   return (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Course Management (Alternative)</h1>
+        <h1 className="text-2xl font-bold">Course Management</h1>
 
         {!isAddingCourse && (
           <button
@@ -89,7 +132,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="text-lg font-medium mb-4">Add New Course</h2>
           <CourseForm
-            onSubmit={handleAddCourse}
+            onSubmit={handleAddCourseWithHoles}
             onCancel={() => setIsAddingCourse(false)}
           />
         </div>
@@ -118,7 +161,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
           <p className="mt-2 text-gray-600">Loading courses...</p>
         </div>
       ) : (
-        <CourseList courses={courses} onDelete={handleDeleteCourse} />
+        <CourseList courses={courses} onDelete={handleDeleteCourseClick} />
       )}
     </div>
   );

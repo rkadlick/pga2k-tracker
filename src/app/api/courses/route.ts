@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createCourseWithHoles, getCourses } from '@/lib/courseService';
+import { validateCourseName, validateHoles, hasValidationErrors } from '@/lib/validation/courseValidation';
+import { HoleData } from '@/hooks/useCourseForm';
 
 export async function GET() {
   try {
@@ -18,13 +20,25 @@ export async function POST(request: Request) {
   try {
     const { name, holes, totalPar, totalDistance } = await request.json();
     
-    if (!name || !name.trim()) {
+    // Validate course name
+    const courseNameError = validateCourseName(name);
+    if (courseNameError) {
       return NextResponse.json(
-        { error: 'Course name is required' },
+        { error: courseNameError },
         { status: 400 }
       );
     }
 
+    // Validate holes
+    const holeErrors = validateHoles(holes as HoleData[]);
+    if (holeErrors.length > 0) {
+      return NextResponse.json(
+        { error: 'Invalid hole data', details: holeErrors },
+        { status: 400 }
+      );
+    }
+
+    // Validate totals
     if (!totalPar) {
       return NextResponse.json(
         { error: 'Total par is required' },
@@ -34,26 +48,9 @@ export async function POST(request: Request) {
 
     if (!totalDistance) {
       return NextResponse.json(
-        { error: 'Total par is required' },
+        { error: 'Total distance is required' },
         { status: 400 }
       );
-    }
-    
-    if (!holes || !Array.isArray(holes) || holes.length !== 18) {
-      return NextResponse.json(
-        { error: 'Valid data for all 18 holes is required' },
-        { status: 400 }
-      );
-    }
-    
-    // Validate hole data
-    for (const hole of holes) {
-      if (!hole.hole_number || hole.par < 2 || hole.par > 6 || hole.distance <= 0) {
-        return NextResponse.json(
-          { error: 'Invalid hole data: par must be 2-6 and distance must be positive' },
-          { status: 400 }
-        );
-      }
     }
     
     const course = await createCourseWithHoles(name, holes, totalPar, totalDistance);

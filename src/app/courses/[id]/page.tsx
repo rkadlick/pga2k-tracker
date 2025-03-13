@@ -3,10 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Course, Hole } from '@/types';
-import CourseForm from '@/components/courses/ComprehensiveCourseForm';
 import CourseDetail from '@/components/courses/CourseDetail';
 import HoleForm from '@/components/courses/HoleForm';
-
+import CourseForm from '@/components/courses/CourseForm';
 export default function CourseDetailPage({
   params
 }: {
