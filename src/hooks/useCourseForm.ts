@@ -22,7 +22,7 @@ const courseValidators: FieldValidators<CourseFormValues> = {
   courseName: (value) => validateCourseName(value)
 };
 
-export function useCourseForm(onSubmit?: (courseName: string, holes: HoleData[], totalPar: number, totalDistance: number) => void) {
+export function useCourseForm(onSubmit?: (courseName: string, holes: HoleData[], frontPar: number, backPar: number, totalPar: number, frontDistance: number, backDistance: number, totalDistance: number) => void) {
   // Initialize with empty course name and 18 holes
   const initialValues: CourseFormValues = {
     courseName: '',
@@ -173,14 +173,18 @@ export function useCourseForm(onSubmit?: (courseName: string, holes: HoleData[],
       onSubmit(
         form.values.courseName,
         form.values.holes,
+        frontNinePar,
+        backNinePar,
         totalPar,
+        frontNineDistance,
+        backNineDistance,
         totalDistance
       );
       return true;
     }
     
     return false;
-  }, [form, validateHoles, onSubmit, totalPar, totalDistance]);
+  }, [form, validateHoles, onSubmit, frontNinePar, backNinePar, totalPar, frontNineDistance, backNineDistance, totalDistance]);
 
   return {
     courseName: form.values.courseName,

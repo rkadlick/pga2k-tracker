@@ -103,6 +103,18 @@ export default function CourseDetailPage({
       return;
     }
 
+    // Calculate front/back/total values
+    const frontNine = holes.filter(h => h.hole_number <= 9);
+    const backNine = holes.filter(h => h.hole_number > 9);
+    
+    const frontPar = frontNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
+    const backPar = backNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
+    const totalPar = frontPar + backPar;
+    
+    const frontDistance = frontNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
+    const backDistance = backNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
+    const totalDistance = frontDistance + backDistance;
+
     try {
       // Update course and holes in a single API call
       const response = await fetch(`/api/courses/${id}`, {
@@ -110,7 +122,13 @@ export default function CourseDetailPage({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ 
           name: courseName, 
-          holes: holes 
+          holes: holes,
+          frontPar,
+          backPar,
+          totalPar,
+          frontDistance,
+          backDistance,
+          totalDistance
         })
       });
       

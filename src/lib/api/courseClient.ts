@@ -8,7 +8,11 @@ interface CourseCreateData {
     par: number;
     distance: number;
   }>;
+  frontPar: number;
+  backPar: number;
   totalPar: number;
+  frontDistance: number;
+  backDistance: number;
   totalDistance: number;
 }
 
@@ -52,6 +56,7 @@ export async function fetchCourse(id: string): Promise<Course> {
  * Create a new course with holes
  */
 export async function createCourse(courseData: CourseCreateData): Promise<Course> {
+  console.log('courseData', courseData);
   try {
     const response = await fetch('/api/courses', {
       method: 'POST',

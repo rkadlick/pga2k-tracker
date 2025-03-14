@@ -9,6 +9,12 @@ export interface BaseRecord {
   export interface Course extends BaseRecord {
 	name: string;
 	holes?: Hole[];
+	front_par: number;
+	back_par: number;
+	front_distance: number;
+	back_distance: number;
+	total_par: number;
+	total_distance: number;
   }
   
   export interface Hole extends BaseRecord {

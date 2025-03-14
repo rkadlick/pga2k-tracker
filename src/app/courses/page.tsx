@@ -27,11 +27,15 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
       par: number | null;
       distance: number | null;
     }>,
+    frontPar: number,
+    backPar: number,
     totalPar: number,
+    frontDistance: number,
+    backDistance: number,
     totalDistance: number
   ) => {
     try {
-      await createCourseWithHoles(courseName, holes, totalPar, totalDistance);
+      await createCourseWithHoles(courseName, holes, frontPar, backPar, totalPar, frontDistance, backDistance, totalDistance);
       setIsAddingCourse(false);
     } catch (err) {
       console.error("Error adding course:", err);

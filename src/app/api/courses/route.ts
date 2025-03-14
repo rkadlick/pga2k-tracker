@@ -18,7 +18,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { name, holes, totalPar, totalDistance } = await request.json();
+    const { name, holes, frontPar, backPar, totalPar, frontDistance, backDistance, totalDistance } = await request.json();
     
     // Validate course name
     const courseNameError = validateCourseName(name);
@@ -53,7 +53,7 @@ export async function POST(request: Request) {
       );
     }
     
-    const course = await createCourseWithHoles(name, holes, totalPar, totalDistance);
+    const course = await createCourseWithHoles(name, holes, frontPar, backPar, totalPar, frontDistance, backDistance, totalDistance);
     
     return NextResponse.json({ data: course });
   } catch (error) {

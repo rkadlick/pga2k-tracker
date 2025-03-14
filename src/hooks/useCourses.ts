@@ -54,8 +54,12 @@ export function useCourses() {
       par: number | null;
       distance: number | null;
     }>,
+    frontPar: number,
+    backPar: number,
     totalPar: number,
-    totalDistance: number
+    frontDistance: number,
+    backDistance: number,
+    totalDistance: number,
   ) => {
     setIsCreating(true);
     setError(null);
@@ -67,10 +71,16 @@ export function useCourses() {
         distance: hole.distance as number,
       }));
 
+      console.log('totalPar', totalPar);
+      console.log('totalDistance', totalDistance);
       const newCourse = await createCourse({
         name: courseName,
         holes: validHoles,
+        frontPar,
+        backPar,
         totalPar,
+        frontDistance,
+        backDistance,
         totalDistance
       });
       

@@ -27,7 +27,16 @@ export async function PATCH(
   try {
     // Access id directly but store it in a variable first
     const id = params.id;
-    const { name, holes } = await request.json();
+    const { 
+      name, 
+      holes, 
+      frontPar, 
+      backPar, 
+      totalPar, 
+      frontDistance, 
+      backDistance, 
+      totalDistance 
+    } = await request.json();
     
     // Validate course name
     const nameError = validateCourseName(name);
@@ -59,7 +68,17 @@ export async function PATCH(
     }
     
     // Update course and holes in one operation
-    const updatedCourse = await updateCourseWithHoles(id, name, holes);
+    const updatedCourse = await updateCourseWithHoles(
+      id, 
+      name, 
+      holes, 
+      frontPar, 
+      backPar, 
+      totalPar, 
+      frontDistance, 
+      backDistance, 
+      totalDistance
+    );
     
     return NextResponse.json({ data: updatedCourse });
   } catch (error) {

@@ -111,7 +111,11 @@ export async function deleteHole(id: string): Promise<void> {
 export async function createCourseWithHoles(
   courseName: string, 
   holes: Array<{ hole_number: number; par: number; distance: number }>,
+  frontPar: number,
+  backPar: number,
   totalPar: number,
+  frontDistance: number,
+  backDistance: number,
   totalDistance: number
 ): Promise<Course> {
   const supabase = await createClient();
@@ -119,7 +123,7 @@ export async function createCourseWithHoles(
   // First create the course
   const { data: course, error: courseError } = await supabase
     .from('courses')
-    .insert([{ name: courseName, total_par: totalPar, total_distance: totalDistance}])
+    .insert([{ name: courseName, total_par: totalPar, total_distance: totalDistance, front_par: frontPar, back_par: backPar, front_distance: frontDistance, back_distance: backDistance}])
     .select()
     .single();
   
@@ -159,6 +163,12 @@ export async function createCourseWithHoles(
  * @param courseId The ID of the course to update
  * @param courseName The new name for the course
  * @param holes The updated hole data
+ * @param frontPar The total par for the front nine
+ * @param backPar The total par for the back nine
+ * @param totalPar The total par for the course
+ * @param frontDistance The total distance for the front nine
+ * @param backDistance The total distance for the back nine
+ * @param totalDistance The total distance for the course
  * @returns The updated course with holes
  */
 export async function updateCourseWithHoles(
@@ -170,20 +180,26 @@ export async function updateCourseWithHoles(
     par: number | null; 
     distance: number | null;
     course_id: string;
-  }>
+  }>,
+  frontPar: number,
+  backPar: number,
+  totalPar: number,
+  frontDistance: number,
+  backDistance: number,
+  totalDistance: number
 ): Promise<Course> {
   const supabase = await createClient();
   
-  // Calculate totals
-  const totalPar = holes.reduce((sum, hole) => sum + (hole.par || 0), 0);
-  const totalDistance = holes.reduce((sum, hole) => sum + (hole.distance || 0), 0);
-  
-  // Update the course
+  // Update the course with all totals
   const { error: courseError } = await supabase
     .from('courses')
     .update({ 
       name: courseName,
+      front_par: frontPar,
+      back_par: backPar,
       total_par: totalPar,
+      front_distance: frontDistance,
+      back_distance: backDistance,
       total_distance: totalDistance,
       updated_at: new Date().toISOString()
     })
