@@ -4,8 +4,8 @@ import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 import { Course } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
-import { fetchCourse } from '@/lib/api/courseClient';
 import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib/validation/courseValidation';
+import { useCourses } from '@/hooks/useCourses';
 
 const inputStyles = `
   /* Remove arrows from number inputs */
@@ -43,7 +43,8 @@ export default function CourseDetailPage({
   const [holeErrors, setHoleErrors] = useState<string[]>([]);
   
   const router = useRouter();
-  const { id } = use(params);
+  const { id } = use(params as { id: string });
+  const { getCourseById, updateCourse } = useCourses();
 
   useEffect(() => {
     loadCourse();
@@ -69,7 +70,8 @@ export default function CourseDetailPage({
     setError(null);
     
     try {
-      const courseData = await fetchCourse(id);
+      // Use the getCourseById function from the hook
+      const courseData = await getCourseById(id);
       setCourse(courseData);
     } catch (err) {
       console.error('Error loading course:', err);
@@ -116,29 +118,20 @@ export default function CourseDetailPage({
     const totalDistance = frontDistance + backDistance;
 
     try {
-      // Update course and holes in a single API call
-      const response = await fetch(`/api/courses/${id}`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          name: courseName, 
-          holes: holes,
-          frontPar,
-          backPar,
-          totalPar,
-          frontDistance,
-          backDistance,
-          totalDistance
-        })
-      });
+      // Use the updateCourse function from the hook
+      const updatedCourse = await updateCourse(
+        id,
+        courseName,
+        holes,
+        frontPar,
+        backPar,
+        totalPar,
+        frontDistance,
+        backDistance,
+        totalDistance
+      );
       
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to update course');
-      }
-      
-      const result = await response.json();
-      setCourse(result.data);
+      setCourse(updatedCourse);
       setIsEditing(false);
     } catch (err) {
       console.error('Error updating course:', err);

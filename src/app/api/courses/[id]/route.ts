@@ -8,7 +8,7 @@ export async function GET(
 ) {
   try {
     // Access id directly but store it in a variable first
-    const id = params.id;
+    const { id } = await params;
     const course = await getCourseWithHoles(id);
     return NextResponse.json({ data: course });
   } catch (error) {
@@ -26,7 +26,7 @@ export async function PATCH(
 ) {
   try {
     // Access id directly but store it in a variable first
-    const id = params.id;
+    const { id } = await params;
     const { 
       name, 
       holes, 
@@ -96,7 +96,7 @@ export async function DELETE(
 ) {
   try {
     // Access id directly but store it in a variable first
-    const id = params.id;
+    const { id } = await params;
     await deleteCourse(id);
     return NextResponse.json({ success: true });
   } catch (error) {

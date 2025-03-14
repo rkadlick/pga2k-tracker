@@ -81,12 +81,37 @@ export async function createCourse(courseData: CourseCreateData): Promise<Course
 /**
  * Update an existing course
  */
-export async function updateCourse(id: string, name: string): Promise<Course> {
+export async function updateCourse(
+  id: string, 
+  name: string, 
+  holes: Array<{ 
+    id: string; 
+    hole_number: number; 
+    par: number | null; 
+    distance: number | null;
+    course_id: string;
+  }>,
+  frontPar: number,
+  backPar: number,
+  totalPar: number,
+  frontDistance: number,
+  backDistance: number,
+  totalDistance: number
+): Promise<Course> {
   try {
     const response = await fetch(`/api/courses/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name }),
+      body: JSON.stringify({ 
+        name, 
+        holes,
+        frontPar,
+        backPar,
+        totalPar,
+        frontDistance,
+        backDistance,
+        totalDistance
+      })
     });
     
     const result = await response.json() as ApiResponse<Course>;

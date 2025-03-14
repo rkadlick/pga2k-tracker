@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Course } from '@/types';
-import { fetchCourses, createCourse, deleteCourse } from '@/lib/api/courseClient';
+import * as courseClient from '@/lib/api/courseClient';
 
 /**
  * A hook for managing courses data and operations
@@ -34,7 +34,7 @@ export function useCourses() {
     setError(null);
     
     try {
-      const data = await fetchCourses();
+      const data = await courseClient.fetchCourses();
       setCourses(data);
       return data;
     } catch (err) {
@@ -73,7 +73,7 @@ export function useCourses() {
 
       console.log('totalPar', totalPar);
       console.log('totalDistance', totalDistance);
-      const newCourse = await createCourse({
+      const newCourse = await courseClient.createCourse({
         name: courseName,
         holes: validHoles,
         frontPar,
@@ -101,7 +101,7 @@ export function useCourses() {
     setError(null);
     
     try {
-      await deleteCourse(id);
+      await courseClient.deleteCourse(id);
       setCourses(prev => prev.filter(course => course.id !== id));
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
@@ -112,6 +112,95 @@ export function useCourses() {
     }
   }, []);
 
+  // Add or update the updateCourse function
+  const updateCourse = async (
+    id: string,
+    name: string,
+    holes: Array<{ 
+      id: string; 
+      hole_number: number; 
+      par: number | null; 
+      distance: number | null;
+      course_id: string;
+    }>,
+    frontPar: number,
+    backPar: number,
+    totalPar: number,
+    frontDistance: number,
+    backDistance: number,
+    totalDistance: number
+  ) => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      const updatedCourse = await courseClient.updateCourse(
+        id, 
+        name, 
+        holes, 
+        frontPar, 
+        backPar, 
+        totalPar, 
+        frontDistance, 
+        backDistance, 
+        totalDistance
+      );
+      
+      // Update the courses list with the updated course
+      setCourses(prevCourses => 
+        prevCourses.map(course => 
+          course.id === id ? updatedCourse : course
+        )
+      );
+      
+      return updatedCourse;
+    } catch (err) {
+      setError(err as Error);
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Add a function to get a single course by ID
+  const getCourseById = async (id: string): Promise<Course> => {
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      // First try to find the course in the existing state
+      const existingCourse = courses.find(course => course.id === id);
+      if (existingCourse && existingCourse.holes && existingCourse.holes.length > 0) {
+        return existingCourse;
+      }
+      
+      // If not found in state or doesn't have holes, fetch it directly
+      const courseData = await courseClient.fetchCourse(id);
+      
+      // Update the courses list with the fetched course
+      setCourses(prevCourses => {
+        const courseIndex = prevCourses.findIndex(c => c.id === id);
+        if (courseIndex >= 0) {
+          // Replace the existing course
+          const newCourses = [...prevCourses];
+          newCourses[courseIndex] = courseData;
+          return newCourses;
+        } else {
+          // Add the new course
+          return [...prevCourses, courseData];
+        }
+      });
+      
+      return courseData;
+    } catch (err) {
+      const error = err instanceof Error ? err : new Error(String(err));
+      setError(error);
+      throw error;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return {
     courses,
     isLoading,
@@ -120,6 +209,8 @@ export function useCourses() {
     error,
     loadCourses,
     createCourseWithHoles,
-    removeCourse
+    removeCourse,
+    updateCourse,
+    getCourseById
   };
 } 
