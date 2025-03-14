@@ -107,7 +107,12 @@ export default function Scorecard({
                           type="number"
                           value={value === null ? '' : value}
                           onChange={(e) => row.onChange && row.onChange(row.id, colIndex, e.target.value)}
-                          className={`w-full h-full py-2 text-center ${rowClass}`}
+                          className={`w-full h-full py-2 text-center ${rowClass} focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                          min={row.type === 'par' ? 2 : 1}
+                          max={row.type === 'par' ? 6 : 999}
+                          step="1"
+                          data-row-id={row.id}
+                          data-col-index={colIndex}
                         />
                       ) : row.renderCell ? (
                         row.renderCell(value, colIndex, row.id)

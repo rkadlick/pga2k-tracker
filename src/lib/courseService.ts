@@ -153,3 +153,58 @@ export async function createCourseWithHoles(
     holes: createdHoles || []
   };
 }
+
+/**
+ * Updates a course and its holes
+ * @param courseId The ID of the course to update
+ * @param courseName The new name for the course
+ * @param holes The updated hole data
+ * @returns The updated course with holes
+ */
+export async function updateCourseWithHoles(
+  courseId: string,
+  courseName: string,
+  holes: Array<{ 
+    id: string; 
+    hole_number: number; 
+    par: number | null; 
+    distance: number | null;
+    course_id: string;
+  }>
+): Promise<Course> {
+  const supabase = await createClient();
+  
+  // Calculate totals
+  const totalPar = holes.reduce((sum, hole) => sum + (hole.par || 0), 0);
+  const totalDistance = holes.reduce((sum, hole) => sum + (hole.distance || 0), 0);
+  
+  // Update the course
+  const { error: courseError } = await supabase
+    .from('courses')
+    .update({ 
+      name: courseName,
+      total_par: totalPar,
+      total_distance: totalDistance,
+      updated_at: new Date().toISOString()
+    })
+    .eq('id', courseId);
+  
+  if (courseError) throw courseError;
+  
+  // Update all holes - remove the updated_at field since it doesn't exist in the table
+  for (const hole of holes) {
+    const { error: holeError } = await supabase
+      .from('holes')
+      .update({ 
+        par: hole.par, 
+        distance: hole.distance
+      })
+      .eq('id', hole.id)
+      .eq('course_id', courseId); // Extra safety check
+    
+    if (holeError) throw holeError;
+  }
+  
+  // Fetch and return the updated course with holes
+  return await getCourseWithHoles(courseId);
+}

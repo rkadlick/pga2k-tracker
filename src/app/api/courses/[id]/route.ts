@@ -1,15 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getCourseWithHoles, updateCourse, deleteCourse } from '@/lib/courseService';
+import { getCourseWithHoles, updateCourseWithHoles, deleteCourse } from '@/lib/courseService';
+import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib/validation/courseValidation';
 
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
-    const course = await getCourseWithHoles(params.id);
+    // Access id directly but store it in a variable first
+    const id = params.id;
+    const course = await getCourseWithHoles(id);
     return NextResponse.json({ data: course });
   } catch (error) {
-    console.error(`Error fetching course ${params.id}:`, error);
+    console.error(`Error fetching course:`, error);
     return NextResponse.json(
       { error: 'Failed to fetch course' },
       { status: 500 }
@@ -22,21 +25,47 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
-    const { name } = await request.json();
+    // Access id directly but store it in a variable first
+    const id = params.id;
+    const { name, holes } = await request.json();
     
-    if (!name) {
+    // Validate course name
+    const nameError = validateCourseName(name);
+    if (nameError) {
       return NextResponse.json(
-        { error: 'Course name is required' },
+        { error: 'Invalid course name', details: nameError },
         { status: 400 }
       );
     }
     
-    const course = await updateCourse(params.id, name);
-    return NextResponse.json({ data: course });
+    // Validate holes if provided
+    if (holes && Array.isArray(holes)) {
+      const holeErrors = holes.map((hole) => {
+        const parError = validateHolePar(hole.par);
+        if (parError) return `Hole ${hole.hole_number}: ${parError}`;
+        
+        const distanceError = validateHoleDistance(hole.distance);
+        if (distanceError) return `Hole ${hole.hole_number}: ${distanceError}`;
+        
+        return '';
+      }).filter(error => error);
+      
+      if (holeErrors.length > 0) {
+        return NextResponse.json(
+          { error: 'Invalid hole data', details: holeErrors },
+          { status: 400 }
+        );
+      }
+    }
+    
+    // Update course and holes in one operation
+    const updatedCourse = await updateCourseWithHoles(id, name, holes);
+    
+    return NextResponse.json({ data: updatedCourse });
   } catch (error) {
-    console.error(`Error updating course ${params.id}:`, error);
+    console.error(`Error updating course:`, error);
     return NextResponse.json(
-      { error: 'Failed to update course' },
+      { error: 'Failed to update course', details: error instanceof Error ? error.message : 'Unknown error' },
       { status: 500 }
     );
   }
@@ -47,10 +76,12 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    await deleteCourse(params.id);
+    // Access id directly but store it in a variable first
+    const id = params.id;
+    await deleteCourse(id);
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error(`Error deleting course ${params.id}:`, error);
+    console.error(`Error deleting course:`, error);
     return NextResponse.json(
       { error: 'Failed to delete course' },
       { status: 500 }

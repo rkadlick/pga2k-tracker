@@ -9,7 +9,6 @@ export const theme = {
 	  error: 'red',        // Error color
 	  warning: 'yellow',   // Warning color
 	  info: 'blue',        // Info color
-	  
 	  //  use these in Tailwind classes like:
 	  // bg-primary-500, text-secondary-700, etc.
 	},
