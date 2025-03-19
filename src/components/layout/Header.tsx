@@ -2,41 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import { createClient } from '@/utils/supabase/client';
+import { useAuth } from '@/hooks/useAuth';
 
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  
-  useEffect(() => {
-    // Fetch user immediately on mount and after any route change
-    const fetchUser = async () => {
-      setLoading(true); // Show loading state while checking
-      const supabase = createClient();
-      const { data } = await supabase.auth.getUser();
-      setUser(data.user);
-      setLoading(false);
-    };
-    
-    fetchUser();
-    
-    // Set up auth state change listener
-    const supabase = createClient();
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (event, session) => {
-        console.log('Auth state changed:', event, session?.user?.email);
-        setUser(session?.user || null);
-      }
-    );
-    
-    // Cleanup subscription
-    return () => {
-      subscription.unsubscribe();
-    };
-  }, [pathname]); // Add pathname as a dependency to re-run on route changes
+  const { user, loading, isAuthenticated } = useAuth();
   
   const handleSignOut = async () => {
     const supabase = createClient();
@@ -60,9 +32,9 @@ export default function Header() {
         
         <div className="flex items-center space-x-4">
           {!loading && (
-            user ? (
+            isAuthenticated ? (
               <div className="flex items-center space-x-3">
-                <span className="text-sm hidden sm:inline">{user.email}</span>
+                <span className="text-sm hidden sm:inline">{user?.email}</span>
                 <button
                   onClick={handleSignOut}
                   className="text-sm bg-red-600 hover:bg-red-700 px-3 py-1 rounded"

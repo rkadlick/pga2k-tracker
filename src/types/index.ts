@@ -26,33 +26,34 @@ export interface BaseRecord {
   
   // Team types
   export interface Team extends BaseRecord {
+	name: string;
 	players: string[]; // Always 2 players
 	is_your_team: boolean;
   }
   
   // Match types
-  export type NinePlayed = 'front' | 'back';
-  export type MatchResult = 'win' | 'loss';
+  export type NinePlayed = 'front' | 'back' | 'full';
+  export type MatchResult = 'win' | 'loss' | 'tie';
   export type HoleResult = 'win' | 'loss' | 'tie';
   
   export interface Match extends BaseRecord {
-	date: string; // ISO date string
+	id: string;
+	date_played: string;
 	course_id: string;
-	course_name: string;
-	nine_played: NinePlayed;
+	course_name?: string;
 	your_team_id: string;
+	your_team_name?: string;
 	opponent_team_id: string;
-	result: MatchResult;
-	margin?: number; // 1-5 holes
-	playoff_happened: boolean;
+	opponent_team_name?: string;
+	nine_played: NinePlayed;
+	your_team_score: number;
+	opponent_team_score: number;
+	winner_id: string | null;
+	score_description?: string;
+	margin?: number;
+	playoffs: boolean;
 	notes?: string;
 	tags?: string[];
-	
-	// Optional related data that might be joined
-	your_team?: Team;
-	opponent_team?: Team;
-	hole_results?: HoleResult[];
-	course?: Course;
   }
   
   export interface HoleResultRecord extends BaseRecord {
