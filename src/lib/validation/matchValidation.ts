@@ -89,10 +89,10 @@ export function validateWinnerId(
  * Validates hole result enum value
  */
 export function validateHoleResult(result: HoleResult): string | null {
-  const validResults: HoleResult[] = ['win', 'loss', 'tie'];
+  const validResults: HoleResult[] = ['win', 'loss', 'tie', null];
   
-  if (!validResults.includes(result)) {
-    return `Result must be one of: ${validResults.join(', ')}`;
+  if (result !== null && !validResults.includes(result)) {
+    return `Result must be one of: win, loss, tie, or null`;
   }
   
   return null;

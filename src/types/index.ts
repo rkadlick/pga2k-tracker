@@ -35,7 +35,7 @@ export interface BaseRecord {
   // Match types
   export type NinePlayed = 'front' | 'back' | 'full';
   export type MatchResult = 'win' | 'loss' | 'tie';
-  export type HoleResult = 'win' | 'loss' | 'tie';
+  export type HoleResult = 'win' | 'loss' | 'tie' | null;
   
   export interface Match extends BaseRecord {
 	id: string;

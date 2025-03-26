@@ -7,11 +7,13 @@ import { MatchFormData } from '@/hooks/useMatchForm';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
 import { HoleResult } from '@/types';
+import { useCourses } from '@/hooks/useCourses';
 
 export default function NewMatchPage() {
   const router = useRouter();
-  const { createMatch, error } = useMatches();
-  const { isAuthenticated, loading } = useAuth();
+  const { createMatch, error: matchError } = useMatches();
+  const { isAuthenticated, loading: authLoading } = useAuth();
+  const { courses, isLoading: coursesLoading, error: coursesError } = useCourses();
   
   const handleSubmit = async (data: MatchFormData) => {
     try {
@@ -26,7 +28,8 @@ export default function NewMatchPage() {
         }));
       const matchData = {
         ...data,
-        hole_results: validHoleResults
+        hole_results: validHoleResults,
+        rating_change: data.rating_change ? Number(data.rating_change) : 0 // Convert to number
       };
       
       const newMatch = await createMatch(matchData);
@@ -40,12 +43,8 @@ export default function NewMatchPage() {
     }
   };
   
-  const handleCancel = () => {
-    router.push('/matches');
-  };
-  
-  // Show loading state while checking authentication
-  if (loading) {
+  // Show loading state while checking authentication or loading courses
+  if (authLoading || coursesLoading) {
     return (
       <div className="text-center py-12">
         <svg className="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -83,7 +82,7 @@ export default function NewMatchPage() {
       
       <h1 className="text-2xl font-bold mb-6">New Match</h1>
       
-      {error && (
+      {(matchError || coursesError) && (
         <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -92,15 +91,17 @@ export default function NewMatchPage() {
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700">{error.message}</p>
+              <p className="text-sm text-red-700">{matchError?.message || coursesError?.message}</p>
             </div>
           </div>
         </div>
       )}
       
       <MatchForm
+        courses={courses || []}
+        loading={coursesLoading}
+        error={coursesError?.message || null}
         onSubmit={handleSubmit}
-        onCancel={handleCancel}
       />
     </div>
   );

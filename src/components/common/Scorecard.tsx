@@ -31,7 +31,7 @@ export default function Scorecard({
   title,
   columns,
   rows,
-  className = '',
+  className = ''
 }: ScorecardProps) {
   return (
     <div className={`space-y-3 w-full ${className}`}>
@@ -39,16 +39,17 @@ export default function Scorecard({
         <h3 className="text-lg font-medium text-gray-900">{title}</h3>
       )}
       
-      <div className="w-full">
+      <div className="w-full overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
             <tr className="bg-green-700 text-white">
-              <th className="py-2 px-2 text-center border border-gray-300 w-24">Hole</th>
-              {columns.map((col, i) => (
+              <th className={`py-2 px-2 text-center border border-gray-300 ${columns[0].className || 'w-24'}`}>
+                {columns[0].label}
+              </th>
+              {columns.slice(1).map((col, i) => (
                 <th 
                   key={i} 
-                  className={`py-2 px-1 text-center border border-gray-300 ${col.className || ''}`}
-                  style={{ width: `${100/columns.length}%` }}
+                  className={`py-2 px-1 text-center border border-gray-300 ${col.className || 'w-16'}`}
                 >
                   {col.label}
                 </th>
@@ -84,15 +85,14 @@ export default function Scorecard({
 
               return (
                 <tr key={row.id} className={rowClass}>
-                  <td className="py-2 px-2 font-medium text-center border border-gray-300 w-24">
+                  <td className={`py-2 px-2 font-medium text-center border border-gray-300 ${columns[0].className || 'w-24'}`}>
                     {row.label}
                   </td>
                   
                   {row.values.map((value, colIndex) => (
                     <td 
                       key={colIndex} 
-                      className="p-0 border border-gray-300"
-                      style={{ width: `${100/columns.length}%` }}
+                      className={`p-0 border border-gray-300 ${columns[colIndex + 1]?.className || 'w-16'}`}
                     >
                       {row.editable ? (
                         <input

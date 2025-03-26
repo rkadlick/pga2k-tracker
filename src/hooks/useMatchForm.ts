@@ -15,7 +15,7 @@ export type MatchFormData = {
   your_team_score: number;
   opponent_team_score: number;
   winner_id: string | null;
-  rating_change: number ;
+  rating_change: string;
   margin: number;
   playoffs: boolean;
   notes: string;
@@ -34,12 +34,15 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
     your_team_score: 0,
     opponent_team_score: 0,
     winner_id: null,
-    rating_change: 0,
+    rating_change: '',
     margin: 0,
     playoffs: false,
     notes: '',
     tags: [],
-    hole_results: []
+    hole_results: Array(9).fill(null).map((_, i) => ({
+      hole_number: i + 1,
+      result: null
+    }))
   });
 
   // State for loading external data
@@ -61,6 +64,8 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
     fields: {}
   });
 
+  const [manualOpponentTeamName, setManualOpponentTeamName] = useState<string>('');
+
   // Load teams and courses on mount
   useEffect(() => {
     const fetchData = async () => {
@@ -71,25 +76,19 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
         const teamsData = await teamsResponse.json();
         setTeams(teamsData.data);
         
+        // Find and set your team automatically
+        const yourTeam = teamsData.data.find((team: { id: string; name: string; is_your_team: boolean }) => team.is_your_team);
+        if (yourTeam) {
+          setFormData(prev => ({
+            ...prev,
+            your_team_id: yourTeam.id
+          }));
+        }
+        
         // Fetch courses
         const coursesResponse = await fetch('/api/courses');
         const coursesData = await coursesResponse.json();
         setCourses(coursesData.data);
-        
-        // Set default values if data is available
-        if (teamsData.data.length > 0) {
-          setFormData(prev => ({
-            ...prev,
-            your_team_id: teamsData.data[0].id
-          }));
-        }
-        
-        if (coursesData.length > 0) {
-          setFormData(prev => ({
-            ...prev,
-            course_id: coursesData[0].id
-          }));
-        }
       } catch (err) {
         console.error('Error fetching data:', err);
         setErrors(prev => ({
@@ -155,7 +154,7 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
     
     const newHoleResults: HoleResultData[] = relevantHoles.map(hole => ({
       hole_number: hole.hole_number,
-      result: null
+      result: formData.hole_results.find(hr => hr.hole_number === hole.hole_number)?.result || null
     }));
     
     setFormData(prev => ({
@@ -166,9 +165,10 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
 
   // Helper function to calculate match results
   const calculateMatchResults = (holeResults: HoleResultData[], yourTeamId: string, opponentTeamId: string) => {
-    const yourWins = holeResults.filter(hr => hr.result === 'win').length;
-    const opponentWins = holeResults.filter(hr => hr.result === 'loss').length;
-    const ties = holeResults.filter(hr => hr.result === 'tie').length;
+    const validResults = holeResults.filter(hr => hr.result !== null);
+    const yourWins = validResults.filter(hr => hr.result === 'win').length;
+    const opponentWins = validResults.filter(hr => hr.result === 'loss').length;
+    const ties = validResults.filter(hr => hr.result === 'tie').length;
     
     // Convert to integers by multiplying by 2 (1 point becomes 2, 0.5 becomes 1)
     const yourScore = (yourWins * 2) + ties;
@@ -249,12 +249,6 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
       newErrors.opponent_team_id = 'Opponent team must be different from your team';
     }
     
-    // Check if all holes have results
-    const hasIncompleteHoles = formData.hole_results.some(hr => hr.result === null);
-    if (hasIncompleteHoles) {
-      newErrors.hole_results = 'Please enter a result for all holes';
-    }
-    
     setErrors(prev => ({
       ...prev,
       fields: newErrors
@@ -322,6 +316,7 @@ export function useMatchForm(onSubmit: (data: MatchFormData) => Promise<void>) {
     updateHoleResult,
     handleSubmit,
     yourTeamName: teams.find(t => t.id === formData.your_team_id)?.name || '',
-    opponentTeamName: teams.find(t => t.id === formData.opponent_team_id)?.name || ''
+    opponentTeamName: manualOpponentTeamName || teams.find(t => t.id === formData.opponent_team_id)?.name || '',
+    setOpponentTeamName: setManualOpponentTeamName
   };
 } 
