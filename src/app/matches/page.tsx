@@ -145,7 +145,7 @@ const { isAuthenticated } = useAuth();
                             </div>
                             <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
                               <p>
-                                {match.score_description || `${match.your_team_score} - ${match.opponent_team_score}`}
+                                {match.rating_change || `${match.your_team_score} - ${match.opponent_team_score}`}
                               </p>
                             </div>
                           </div>

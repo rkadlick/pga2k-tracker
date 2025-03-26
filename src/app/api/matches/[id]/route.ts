@@ -45,7 +45,7 @@ export async function PATCH(
       your_team_score: matchData.your_team_score,
       opponent_team_score: matchData.opponent_team_score,
       winner_id: matchData.winner_id,
-      score_description: matchData.score_description,
+      rating_change: matchData.rating_change,
       margin: matchData.margin,
       playoffs: matchData.playoffs,
       notes: matchData.notes,

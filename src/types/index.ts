@@ -28,6 +28,7 @@ export interface BaseRecord {
   export interface Team extends BaseRecord {
 	name: string;
 	players: string[]; // Always 2 players
+	ratings: number[];
 	is_your_team: boolean;
   }
   
@@ -49,15 +50,19 @@ export interface BaseRecord {
 	your_team_score: number;
 	opponent_team_score: number;
 	winner_id: string | null;
-	score_description?: string;
+	rating_change?: number;
 	margin?: number;
 	playoffs: boolean;
 	notes?: string;
 	tags?: string[];
+	hole_results?: Array<{ hole_number: number; result: HoleResult }>;
+	courses?: { name: string };
+	your_team?: { name: string };
+	opponent_team?: { name: string };
   }
   
   export interface HoleResultRecord extends BaseRecord {
-	match_id: string;
+	match_id?: string;
 	hole_number: number;
 	result: HoleResult;
   }

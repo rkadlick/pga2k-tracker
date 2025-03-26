@@ -33,39 +33,27 @@ export default function Scorecard({
   rows,
   className = '',
 }: ScorecardProps) {
-  // Define column widths
-  const headerWidth = 'w-20';
-  const dataWidth = 'w-10';
-  const totalWidth = 'w-20';
-
   return (
-    <div className={`space-y-3 ${className}`}>
+    <div className={`space-y-3 w-full ${className}`}>
       {title && (
         <h3 className="text-lg font-medium text-gray-900">{title}</h3>
       )}
       
-      <div className="overflow-x-auto">
-        <table className="w-full border-collapse table-fixed">
-          <colgroup>
-            <col className={headerWidth} />
-            {columns.map((_, i) => (
-              <col key={i} className={dataWidth} />
-            ))}
-            <col className={totalWidth} />
-          </colgroup>
-          
+      <div className="w-full">
+        <table className="w-full border-collapse">
           <thead>
             <tr className="bg-green-700 text-white">
-              <th className="py-2 px-2 text-center border border-gray-300">Hole</th>
+              <th className="py-2 px-2 text-center border border-gray-300 w-24">Hole</th>
               {columns.map((col, i) => (
                 <th 
                   key={i} 
                   className={`py-2 px-1 text-center border border-gray-300 ${col.className || ''}`}
+                  style={{ width: `${100/columns.length}%` }}
                 >
                   {col.label}
                 </th>
               ))}
-              <th className="py-2 px-2 text-center border border-gray-300 bg-green-800">Total</th>
+              <th className="py-2 px-2 text-center border border-gray-300 bg-green-800 w-24">Total</th>
             </tr>
           </thead>
           
@@ -96,12 +84,16 @@ export default function Scorecard({
 
               return (
                 <tr key={row.id} className={rowClass}>
-                  <td className="py-2 px-2 font-medium text-center border border-gray-300">
+                  <td className="py-2 px-2 font-medium text-center border border-gray-300 w-24">
                     {row.label}
                   </td>
                   
                   {row.values.map((value, colIndex) => (
-                    <td key={colIndex} className="p-0 border border-gray-300">
+                    <td 
+                      key={colIndex} 
+                      className="p-0 border border-gray-300"
+                      style={{ width: `${100/columns.length}%` }}
+                    >
                       {row.editable ? (
                         <input
                           type="number"
@@ -115,7 +107,9 @@ export default function Scorecard({
                           data-col-index={colIndex}
                         />
                       ) : row.renderCell ? (
-                        row.renderCell(value, colIndex, row.id)
+                        <div className="w-full h-full">
+                          {row.renderCell(value, colIndex, row.id)}
+                        </div>
                       ) : (
                         <div className="w-full h-full py-2 text-center">
                           {value === null ? '' : value}
@@ -124,7 +118,7 @@ export default function Scorecard({
                     </td>
                   ))}
                   
-                  <td className={`py-2 px-2 text-center font-medium border border-gray-300 ${
+                  <td className={`py-2 px-2 text-center font-medium border border-gray-300 w-24 ${
                     row.type === 'par' ? 'bg-green-100' : 
                     row.type === 'distance' ? 'bg-blue-100' : 
                     row.type === 'match' ? 'bg-yellow-100' : 'bg-gray-100'

@@ -11,7 +11,7 @@ interface MatchCreateData {
   your_team_score: number;
   opponent_team_score: number;
   winner_id: string | null;
-  score_description?: string;
+  rating_change?: number;
   margin?: number;
   playoffs: boolean;
   notes?: string;
@@ -32,7 +32,7 @@ interface MatchUpdateData {
   your_team_score?: number;
   opponent_team_score?: number;
   winner_id?: string | null;
-  score_description?: string;
+  rating_change?: number;
   margin?: number;
   playoffs?: boolean;
   notes?: string;
@@ -99,24 +99,14 @@ export function useMatches() {
   const createMatch = useCallback(async (matchData: MatchCreateData) => {
     setIsCreating(true);
     setError(null);
+
     
     try {
       // Extract hole results from match data if present
       const { hole_results, ...basicMatchData } = matchData;
       
       // Create the match
-      const newMatch = await matchClient.createMatch(basicMatchData);
-      
-      // Add hole results if provided
-      if (hole_results && hole_results.length > 0 && newMatch.id) {
-        // Add match_id to each hole result
-        const holeResultsWithMatchId = hole_results.map(result => ({
-          ...result,
-          match_id: newMatch.id
-        }));
-        
-        await matchClient.addHoleResults(newMatch.id, holeResultsWithMatchId);
-      }
+      const newMatch = await matchClient.createMatch(matchData);
       
       // Fetch the complete match with hole results
       const completeMatch = await matchClient.fetchMatch(newMatch.id);

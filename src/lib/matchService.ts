@@ -23,7 +23,7 @@ export async function getMatches(): Promise<Match[]> {
       your_team_score,
       opponent_team_score,
       winner_id,
-      score_description,
+      rating_change,
       margin,
       playoffs,
       notes,
@@ -65,7 +65,7 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
       your_team_score,
       opponent_team_score,
       winner_id,
-      score_description,
+      rating_change,
       margin,
       playoffs,
       notes,
@@ -98,7 +98,7 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
 }
 
 /**
- * Create a new match
+ * Create a new match with hole results
  */
 export async function createMatch(matchData: {
   date_played: string;
@@ -109,32 +109,53 @@ export async function createMatch(matchData: {
   your_team_score: number;
   opponent_team_score: number;
   winner_id: string | null;
-  score_description?: string;
+  rating_change?: number;
   margin?: number;
   playoffs: boolean;
   notes?: string;
   tags?: string[];
+  hole_results: Array<{ hole_number: number; result: HoleResult }>;
 }): Promise<Match> {
   const supabase = await createClient();
-  
-  // Insert the match
-  const { data, error } = await supabase
+
+  // Create the match
+  const { data: match, error: matchError } = await supabase
     .from('matches')
-    .insert([matchData])
+    .insert([{
+      date_played: matchData.date_played,
+      course_id: matchData.course_id,
+      your_team_id: matchData.your_team_id,
+      opponent_team_id: matchData.opponent_team_id,
+      nine_played: matchData.nine_played,
+      your_team_score: matchData.your_team_score,
+      opponent_team_score: matchData.opponent_team_score,
+      winner_id: matchData.winner_id,
+      rating_change: matchData.rating_change,
+      margin: matchData.margin,
+      playoffs: matchData.playoffs,
+      notes: matchData.notes,
+      tags: matchData.tags
+    }])
     .select(`
       id, 
       date_played,
       course_id,
-      courses(name),
+      courses!inner (
+        name
+      ),
       your_team_id,
-      your_team:teams!your_team_id(name),
+      your_team:teams!your_team_id!inner (
+        name
+      ),
       opponent_team_id,
-      opponent_team:teams!opponent_team_id(name),
+      opponent_team:teams!opponent_team_id!inner (
+        name
+      ),
       nine_played,
       your_team_score,
       opponent_team_score,
       winner_id,
-      score_description,
+      rating_change,
       margin,
       playoffs,
       notes,
@@ -143,15 +164,36 @@ export async function createMatch(matchData: {
       updated_at
     `)
     .single();
-  
-  if (error) throw error;
-  
-  // Transform data to match the expected format
+
+  if (matchError) throw matchError;
+  if (!match) throw new Error('Failed to create match');
+
+  // Insert hole results if provided
+  if (matchData.hole_results?.length > 0) {
+    const { error: holeResultsError } = await supabase
+      .from('hole_results')
+      .insert(
+        matchData.hole_results.map(hr => ({
+          match_id: match.id,
+          hole_number: hr.hole_number,
+          result: hr.result
+        }))
+      );
+
+    if (holeResultsError) {
+      // If hole results insertion fails, delete the match
+      await supabase.from('matches').delete().eq('id', match.id);
+      throw holeResultsError;
+    }
+  }
+
+  // Return the complete match data
   return {
-    ...data,
-    course_name: data.courses?.name || '',
-    your_team_name: data.your_team?.name || '',
-    opponent_team_name: data.opponent_team?.name || ''
+    ...match,
+    course_name: match.courses.name,
+    your_team_name: match.your_team.name,
+    opponent_team_name: match.opponent_team.name,
+    hole_results: matchData.hole_results
   };
 }
 
@@ -169,7 +211,7 @@ export async function updateMatch(
     your_team_score: number;
     opponent_team_score: number;
     winner_id: string | null;
-    score_description: string;
+    rating_change: number;
     margin: number;
     playoffs: boolean;
     notes: string;
@@ -202,7 +244,7 @@ export async function updateMatch(
       your_team_score,
       opponent_team_score,
       winner_id,
-      score_description,
+      rating_change,
       margin,
       playoffs,
       notes,
@@ -324,27 +366,28 @@ export async function createMatchWithHoleResults(
     course_id: string;
     your_team_id: string;
     opponent_team_id: string;
+    nine_played: NinePlayed;
     your_team_score: number;
     opponent_team_score: number;
     winner_id: string | null;
-    score_description?: string;
+    rating_change?: number;
+    margin?: number;
+    playoffs: boolean;
+    notes?: string;
+    tags?: string[];
   },
   holeResults: Array<{
     hole_number: number;
     result: HoleResult;
   }>
 ): Promise<Match> {
-  const supabase = await createClient();
-  
   // Start a transaction
   try {
-    // First create the match
-    const match = await createMatch(matchData);
-    
-    // Then add the hole results if any
-    if (holeResults && holeResults.length > 0) {
-      await addHoleResults(match.id, holeResults);
-    }
+    // First create the match with hole results
+    const match = await createMatch({
+      ...matchData,
+      hole_results: holeResults
+    });
     
     // Return the complete match with hole results
     return await getMatchWithDetails(match.id);

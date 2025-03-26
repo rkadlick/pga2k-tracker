@@ -259,14 +259,14 @@ export default function EditMatchPage() {
         </div>
         
         <div className="mb-4">
-          <label htmlFor="score_description" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="rating_change" className="block text-sm font-medium text-gray-700 mb-1">
             Score Description (optional)
           </label>
           <input
             type="text"
-            id="score_description"
-            name="score_description"
-            value={matchData.score_description || ''}
+            id="rating_change"
+            name="rating_change"
+            value={matchData.rating_change || ''}
             onChange={handleInputChange}
             placeholder="e.g. '3 & 2' or 'by 2 holes'"
             className="w-full p-2 border border-gray-300 rounded-md"

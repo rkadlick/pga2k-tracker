@@ -10,7 +10,7 @@ interface MatchCreateData {
   your_team_score: number;
   opponent_team_score: number;
   winner_id: string | null;
-  score_description?: string;
+  rating_change?: number;
   margin?: number;
   playoffs: boolean;
   notes?: string;
@@ -27,7 +27,7 @@ interface MatchUpdateData {
   your_team_score?: number;
   opponent_team_score?: number;
   winner_id?: string | null;
-  score_description?: string;
+  rating_change?: number;
   margin?: number;
   playoffs?: boolean;
   notes?: string;
@@ -63,8 +63,9 @@ export async function fetchMatch(id: string): Promise<Match> {
     if (!response.ok) {
       throw new Error(result.error || 'Failed to fetch match');
     }
+    console.log('result', result);
     
-    return result.data!;
+    return result;
   } catch (error) {
     throw formatError(error).error;
   }
@@ -89,7 +90,7 @@ export async function createMatch(matchData: MatchCreateData): Promise<Match> {
       throw new Error(`${errorMessage}${errorDetails}`);
     }
     
-    return result.data!;
+    return result;
   } catch (error) {
     throw formatError(error).error;
   }
