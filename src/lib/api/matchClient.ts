@@ -6,6 +6,14 @@ interface MatchCreateData {
   course_id: string;
   your_team_id: string;
   opponent_team_id: string;
+  player1_id: string;
+  player1_rating: number;
+  player2_id: string;
+  player2_rating: number;
+  opponent1_id: string;
+  opponent1_rating: number;
+  opponent2_id: string;
+  opponent2_rating: number;
   nine_played: NinePlayed;
   your_team_score: number;
   opponent_team_score: number;
@@ -23,6 +31,14 @@ interface MatchUpdateData {
   course_id?: string;
   your_team_id?: string;
   opponent_team_id?: string;
+  player1_id?: string;
+  player1_rating?: number;
+  player2_id?: string;
+  player2_rating?: number;
+  opponent1_id?: string;
+  opponent1_rating?: number;
+  opponent2_id?: string;
+  opponent2_rating?: number;
   nine_played?: NinePlayed;
   your_team_score?: number;
   opponent_team_score?: number;
@@ -41,11 +57,9 @@ export async function fetchMatches(): Promise<Match[]> {
   try {
     const response = await fetch('/api/matches');
     const result = await response.json() as ApiResponse<Match[]>;
-    console.log(result);
     if (!response.ok) {
       throw new Error(result.error || 'Failed to fetch matches');
     }
-    console.log(result.data + ' result.data');
     return result.data || [];
   } catch (error) {
     throw formatError(error).error;
@@ -63,7 +77,6 @@ export async function fetchMatch(id: string): Promise<Match> {
     if (!response.ok) {
       throw new Error(result.error || 'Failed to fetch match');
     }
-    console.log('result', result);
     
     return result;
   } catch (error) {

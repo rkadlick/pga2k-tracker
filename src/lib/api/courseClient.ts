@@ -20,36 +20,18 @@ interface CourseCreateData {
  * Fetch all courses
  */
 export async function fetchCourses(): Promise<Course[]> {
-  try {
-    const response = await fetch('/api/courses');
-    const result = await response.json() as ApiResponse<Course[]>;
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Failed to fetch courses');
-    }
-    
-    return result.data || [];
-  } catch (error) {
-    throw formatError(error).error;
-  }
+  const response = await fetch('/api/courses');
+  const data = await response.json();
+  return data.data;
 }
 
 /**
  * Fetch a single course with its holes
  */
 export async function fetchCourse(id: string): Promise<Course> {
-  try {
-    const response = await fetch(`/api/courses/${id}`);
-    const result = await response.json() as ApiResponse<Course>;
-    
-    if (!response.ok) {
-      throw new Error(result.error || 'Failed to fetch course');
-    }
-    
-    return result.data!;
-  } catch (error) {
-    throw formatError(error).error;
-  }
+  const response = await fetch(`/api/courses/${id}`);
+  const data = await response.json();
+  return data.data;
 }
 
 /**

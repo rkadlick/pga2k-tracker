@@ -19,6 +19,14 @@ export async function getMatches(): Promise<Match[]> {
       your_team:teams!your_team_id(name),
       opponent_team_id,
       opponent_team:teams!opponent_team_id(name),
+      player1_id,
+      player1_rating,
+      player2_id,
+      player2_rating,
+      opponent1_id,
+      opponent1_rating,
+      opponent2_id,
+      opponent2_rating,
       nine_played,
       your_team_score,
       opponent_team_score,
@@ -37,9 +45,9 @@ export async function getMatches(): Promise<Match[]> {
   // Transform data to match the expected format
   return data.map(match => ({
     ...match,
-    course_name: match.courses?.name || '',
-    your_team_name: match.your_team?.name || '',
-    opponent_team_name: match.opponent_team?.name || ''
+    course_name: match.courses?.[0]?.name || '',
+    your_team_name: match.your_team?.[0]?.name || '',
+    opponent_team_name: match.opponent_team?.[0]?.name || ''
   }));
 }
 
@@ -61,6 +69,14 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
       your_team:teams!your_team_id(id, name),
       opponent_team_id,
       opponent_team:teams!opponent_team_id(id, name),
+      player1_id,
+      player1_rating,
+      player2_id,
+      player2_rating,
+      opponent1_id,
+      opponent1_rating,
+      opponent2_id,
+      opponent2_rating,
       nine_played,
       your_team_score,
       opponent_team_score,
@@ -90,21 +106,29 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
   // Transform data to match the expected format
   return {
     ...match,
-    course_name: match.courses?.name || '',
-    your_team_name: match.your_team?.name || '',
-    opponent_team_name: match.opponent_team?.name || '',
+    course_name: match.courses?.[0]?.name || '',
+    your_team_name: match.your_team?.[0]?.name || '',
+    opponent_team_name: match.opponent_team?.[0]?.name || '',
     hole_results: holeResults || []
   };
 }
 
 /**
- * Create a new match with hole results
+ * Create a new match
  */
 export async function createMatch(matchData: {
   date_played: string;
   course_id: string;
   your_team_id: string;
   opponent_team_id: string;
+  player1_id: string;
+  player1_rating: number;
+  player2_id: string;
+  player2_rating: number;
+  opponent1_id: string;
+  opponent1_rating: number;
+  opponent2_id: string;
+  opponent2_rating: number;
   nine_played: NinePlayed;
   your_team_score: number;
   opponent_team_score: number;
@@ -114,43 +138,39 @@ export async function createMatch(matchData: {
   playoffs: boolean;
   notes?: string;
   tags?: string[];
-  hole_results: Array<{ hole_number: number; result: HoleResult }>;
+  hole_results?: HoleResultRecord[];
 }): Promise<Match> {
   const supabase = await createClient();
-
+  
+  // Add timestamps
+  const now = new Date().toISOString();
+  const dataWithTimestamps = {
+    ...matchData,
+    created_at: now,
+    updated_at: now
+  };
+  
   // Create the match
   const { data: match, error: matchError } = await supabase
     .from('matches')
-    .insert([{
-      date_played: matchData.date_played,
-      course_id: matchData.course_id,
-      your_team_id: matchData.your_team_id,
-      opponent_team_id: matchData.opponent_team_id,
-      nine_played: matchData.nine_played,
-      your_team_score: matchData.your_team_score,
-      opponent_team_score: matchData.opponent_team_score,
-      winner_id: matchData.winner_id,
-      rating_change: matchData.rating_change,
-      margin: matchData.margin,
-      playoffs: matchData.playoffs,
-      notes: matchData.notes,
-      tags: matchData.tags
-    }])
+    .insert([dataWithTimestamps])
     .select(`
       id, 
       date_played,
       course_id,
-      courses!inner (
-        name
-      ),
+      courses(name),
       your_team_id,
-      your_team:teams!your_team_id!inner (
-        name
-      ),
+      your_team:teams!your_team_id(name),
       opponent_team_id,
-      opponent_team:teams!opponent_team_id!inner (
-        name
-      ),
+      opponent_team:teams!opponent_team_id(name),
+      player1_id,
+      player1_rating,
+      player2_id,
+      player2_rating,
+      opponent1_id,
+      opponent1_rating,
+      opponent2_id,
+      opponent2_rating,
       nine_played,
       your_team_score,
       opponent_team_score,
@@ -164,36 +184,32 @@ export async function createMatch(matchData: {
       updated_at
     `)
     .single();
-
+  
   if (matchError) throw matchError;
-  if (!match) throw new Error('Failed to create match');
-
-  // Insert hole results if provided
-  if (matchData.hole_results?.length > 0) {
+  
+  // Create hole results if provided
+  if (matchData.hole_results && matchData.hole_results.length > 0) {
+    const holeResultsWithMatchId = matchData.hole_results.map(hr => ({
+      ...hr,
+      match_id: match.id,
+      created_at: now,
+      updated_at: now
+    }));
+    
     const { error: holeResultsError } = await supabase
       .from('hole_results')
-      .insert(
-        matchData.hole_results.map(hr => ({
-          match_id: match.id,
-          hole_number: hr.hole_number,
-          result: hr.result
-        }))
-      );
-
-    if (holeResultsError) {
-      // If hole results insertion fails, delete the match
-      await supabase.from('matches').delete().eq('id', match.id);
-      throw holeResultsError;
-    }
+      .insert(holeResultsWithMatchId);
+    
+    if (holeResultsError) throw holeResultsError;
   }
-
-  // Return the complete match data
+  
+  // Transform data to match the expected format
   return {
     ...match,
-    course_name: match.courses.name,
-    your_team_name: match.your_team.name,
-    opponent_team_name: match.opponent_team.name,
-    hole_results: matchData.hole_results
+    course_name: match.courses?.[0]?.name || '',
+    your_team_name: match.your_team?.[0]?.name || '',
+    opponent_team_name: match.opponent_team?.[0]?.name || '',
+    hole_results: matchData.hole_results || []
   };
 }
 
@@ -207,6 +223,14 @@ export async function updateMatch(
     course_id: string;
     your_team_id: string;
     opponent_team_id: string;
+    player1_id: string;
+    player1_rating: number;
+    player2_id: string;
+    player2_rating: number;
+    opponent1_id: string;
+    opponent1_rating: number;
+    opponent2_id: string;
+    opponent2_rating: number;
     nine_played: NinePlayed;
     your_team_score: number;
     opponent_team_score: number;
@@ -240,6 +264,14 @@ export async function updateMatch(
       your_team:teams!your_team_id(name),
       opponent_team_id,
       opponent_team:teams!opponent_team_id(name),
+      player1_id,
+      player1_rating,
+      player2_id,
+      player2_rating,
+      opponent1_id,
+      opponent1_rating,
+      opponent2_id,
+      opponent2_rating,
       nine_played,
       your_team_score,
       opponent_team_score,
@@ -259,9 +291,9 @@ export async function updateMatch(
   // Transform data to match the expected format
   return {
     ...data,
-    course_name: data.courses?.name || '',
-    your_team_name: data.your_team?.name || '',
-    opponent_team_name: data.opponent_team?.name || ''
+    course_name: data.courses?.[0]?.name || '',
+    your_team_name: data.your_team?.[0]?.name || '',
+    opponent_team_name: data.opponent_team?.[0]?.name || ''
   };
 }
 

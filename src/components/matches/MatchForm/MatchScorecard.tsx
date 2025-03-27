@@ -1,76 +1,118 @@
-import React, { ReactNode } from 'react';
-import Scorecard from '@/components/common/Scorecard';
-import { HoleResult } from '@/types';
+import React, { useEffect, useState } from 'react';
+import { HoleResult } from '../../../types';
+import { HoleResultData } from '../../../hooks/useMatchForm';
 
-interface Hole {
-  par: number;
-  distance: number;
-  hole_number: number;
+interface MatchFormData {
+  hole_results: HoleResultData[];
 }
 
 interface MatchScorecardProps {
-  courseData: { name: string } | null;
-  visibleHoles: Hole[];
-  formData: {
-    hole_results: Array<{ result: HoleResult }>;
-    your_team_score: number;
-    opponent_team_score: number;
-  };
-  yourTeamName: string;
-  opponentTeamName: string;
-  renderHoleResultCell: (value: string | number | null, index: number, rowType: 'your_team' | 'tie' | 'opponent_team') => ReactNode;
-  columns: Array<{ label: string }>;
+  courseId: string;
+  formData: MatchFormData;
+  onHoleResultChange: (holeNumber: number, result: HoleResult | null) => void;
+  yourTeamName?: string;
 }
 
-export default function MatchScorecard({
-  courseData,
-  visibleHoles,
-  formData,
-  yourTeamName,
-  opponentTeamName,
-  renderHoleResultCell,
-  columns
-}: MatchScorecardProps) {
-  const rows = [
-    {
-      id: 'par',
-      type: 'par' as const,
-      label: 'Par',
-      values: courseData ? visibleHoles.map(hole => hole.par) : Array(9).fill(''),
-      total: courseData ? visibleHoles.reduce((sum, hole) => sum + hole.par, 0) : ''
-    },
-    {
-      id: 'distance',
-      type: 'distance' as const,
-      label: 'Yards',
-      values: courseData ? visibleHoles.map(hole => hole.distance) : Array(9).fill(''),
-      total: courseData ? visibleHoles.reduce((sum, hole) => sum + hole.distance, 0) : ''
-    },
-    {
-      id: 'your_team',
-      type: 'match' as const,
-      label: yourTeamName || 'Your Team',
-      values: formData.hole_results.map(hr => hr.result as string | null),
-      renderCell: (value: string | number | null, index: number) => renderHoleResultCell(value, index, 'your_team'),
-      total: ''
-    },
-    {
-      id: 'tie',
-      type: 'match' as const,
-      label: 'Tie',
-      values: formData.hole_results.map(hr => hr.result as string | null),
-      renderCell: (value: string | number | null, index: number) => renderHoleResultCell(value, index, 'tie'),
-      total: `${formData.your_team_score / 2} - ${formData.opponent_team_score / 2}`
-    },
-    {
-      id: 'opponent_team',
-      type: 'match' as const,
-      label: opponentTeamName || 'Opponent Team',
-      values: formData.hole_results.map(hr => hr.result as string | null),
-      renderCell: (value: string | number | null, index: number) => renderHoleResultCell(value, index, 'opponent_team'),
-      total: ''
-    }
-  ];
+interface CourseData {
+  name: string;
+  holes: {
+    hole_number: number;
+    par: number;
+    distance: number;
+  }[];
+}
 
-  return <Scorecard columns={columns} rows={rows} />;
+export default function MatchScorecard({ courseId, formData, onHoleResultChange, yourTeamName }: MatchScorecardProps) {
+  const [courseData, setCourseData] = useState<CourseData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCourseData = async () => {
+      try {
+        const response = await fetch(`/api/courses/${courseId}`);
+        const data = await response.json();
+        setCourseData(data.data);
+      } catch (err) {
+        setError('Failed to load course data');
+        console.error('Error loading course data:', err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourseData();
+  }, [courseId]);
+
+  if (loading) return <div>Loading course data...</div>;
+  if (error) return <div className="text-red-600">{error}</div>;
+  if (!courseData) return null;
+
+  const visibleHoles = courseData.holes.slice(0, 9);
+
+  const renderHoleResultCell = (holeNumber: number, result: HoleResult | null) => {
+    const isSelected = formData.hole_results.find((hr: HoleResultData) => hr.hole_number === holeNumber)?.result === result;
+    return (
+      <button
+        type="button"
+        className={`px-4 py-2 rounded-md ${isSelected ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-700'}`}
+        onClick={() => onHoleResultChange(holeNumber, result)}
+      >
+        {result === 'win' ? 'W' : result === 'tie' ? 'T' : 'L'}
+      </button>
+    );
+  };
+
+  return (
+    <div className="space-y-4">
+      <h3 className="text-lg font-medium text-gray-900">Match Scorecard - {courseData.name}</h3>
+      
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead>
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hole</th>
+              {visibleHoles.map(hole => (
+                <th key={hole.hole_number} className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  {hole.hole_number}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Par</td>
+              {visibleHoles.map(hole => (
+                <td key={hole.hole_number} className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                  {hole.par}
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Distance</td>
+              {visibleHoles.map(hole => (
+                <td key={hole.hole_number} className="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                  {hole.distance}
+                </td>
+              ))}
+            </tr>
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                {yourTeamName || 'Your Team'}
+              </td>
+              {visibleHoles.map(hole => (
+                <td key={hole.hole_number} className="px-6 py-4 whitespace-nowrap text-center">
+                  <div className="flex justify-center space-x-2">
+                    {renderHoleResultCell(hole.hole_number, 'win')}
+                    {renderHoleResultCell(hole.hole_number, 'tie')}
+                    {renderHoleResultCell(hole.hole_number, 'loss')}
+                  </div>
+                </td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
 } 

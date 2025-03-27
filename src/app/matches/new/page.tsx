@@ -6,17 +6,31 @@ import MatchForm from '@/components/matches/MatchForm';
 import { MatchFormData } from '@/hooks/useMatchForm';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
+import { useTeams } from '@/hooks/useTeams';
 import { HoleResult } from '@/types';
-import { useCourses } from '@/hooks/useCourses';
 
 export default function NewMatchPage() {
   const router = useRouter();
   const { createMatch, error: matchError } = useMatches();
   const { isAuthenticated, loading: authLoading } = useAuth();
-  const { courses, isLoading: coursesLoading, error: coursesError } = useCourses();
+  const { teams, isLoading: teamsLoading, error: teamsError } = useTeams();
+
+  const yourTeam = teams.find(team => team.is_your_team);
   
   const handleSubmit = async (data: MatchFormData) => {
     try {
+      if (!yourTeam) {
+        throw new Error('Your team not found');
+      }
+
+      if (!data.course_id) {
+        throw new Error('Course not selected');
+      }
+
+      if (!data.opponent_team_id) {
+        throw new Error('Opponent team not selected');
+      }
+
       // Transform the data to match what createMatch expects
       // Filter out any hole results with null values
       const validHoleResults = data.hole_results
@@ -26,10 +40,42 @@ export default function NewMatchPage() {
           result: hr.result as HoleResult, // Safe to cast since we filtered nulls
           match_id: undefined // This will be set by the backend
         }));
+
+      // Calculate scores
+      const yourTeamScore = validHoleResults.reduce((score, hr) => {
+        if (hr.result === 'win') return score + 1;
+        if (hr.result === 'tie') return score + 0.5;
+        return score;
+      }, 0);
+
+      const opponentTeamScore = validHoleResults.reduce((score, hr) => {
+        if (hr.result === 'loss') return score + 1;
+        if (hr.result === 'tie') return score + 0.5;
+        return score;
+      }, 0);
+
+      // Determine winner
+      let winnerId = null;
+      if (yourTeamScore > opponentTeamScore) {
+        winnerId = yourTeam.id;
+      } else if (opponentTeamScore > yourTeamScore) {
+        winnerId = data.opponent_team_id;
+      }
+
       const matchData = {
-        ...data,
+        date_played: data.date_played,
+        course_id: data.course_id,
+        nine_played: data.nine_played,
+        your_team_id: yourTeam.id,
+        opponent_team_id: data.opponent_team_id,
         hole_results: validHoleResults,
-        rating_change: data.rating_change ? Number(data.rating_change) : 0 // Convert to number
+        rating_change: data.rating_change ? Number(data.rating_change) : 0,
+        your_team_score: yourTeamScore,
+        opponent_team_score: opponentTeamScore,
+        winner_id: winnerId,
+        playoffs: data.playoffs,
+        notes: data.notes,
+        tags: data.tags
       };
       
       const newMatch = await createMatch(matchData);
@@ -43,8 +89,8 @@ export default function NewMatchPage() {
     }
   };
   
-  // Show loading state while checking authentication or loading courses
-  if (authLoading || coursesLoading) {
+  // Show loading state while checking authentication or loading teams
+  if (authLoading || teamsLoading) {
     return (
       <div className="text-center py-12">
         <svg className="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -72,6 +118,22 @@ export default function NewMatchPage() {
     );
   }
 
+  // Show error if your team is not found
+  if (!yourTeam) {
+    return (
+      <div className="max-w-3xl mx-auto text-center py-12">
+        <h1 className="text-2xl font-bold mb-4">Team Not Found</h1>
+        <p className="mb-6">Please create your team first before creating a match.</p>
+        <Link 
+          href="/teams/new"
+          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+        >
+          Create Your Team
+        </Link>
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
@@ -82,7 +144,7 @@ export default function NewMatchPage() {
       
       <h1 className="text-2xl font-bold mb-6">New Match</h1>
       
-      {(matchError || coursesError) && (
+      {(matchError || teamsError) && (
         <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -91,16 +153,14 @@ export default function NewMatchPage() {
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700">{matchError?.message || coursesError?.message}</p>
+              <p className="text-sm text-red-700">{matchError?.message || teamsError?.message}</p>
             </div>
           </div>
         </div>
       )}
       
       <MatchForm
-        courses={courses || []}
-        loading={coursesLoading}
-        error={coursesError?.message || null}
+        yourTeam={yourTeam}
         onSubmit={handleSubmit}
       />
     </div>

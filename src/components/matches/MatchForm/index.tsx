@@ -1,182 +1,174 @@
 'use client';
 
-import React from 'react';
-import { Course, HoleResult } from '@/types';
-import { useMatchForm, MatchFormData } from '@/hooks/useMatchForm';
+import React, { useState, useEffect } from 'react';
+import { Team } from '@/lib/api/teamClient';
+import * as teamClient from '@/lib/api/teamClient';
+import { useMatchForm, MatchFormData } from '../../../hooks/useMatchForm';
+import CourseSelect from './CourseSelect';
 import TeamCreation from './TeamCreation';
+import MatchScorecard from './MatchScorecard';
 import MatchDetails from './MatchDetails';
-import MatchResultSummary from './MatchResultSummary';
-import Scorecard from '@/components/common/Scorecard';
 
 interface MatchFormProps {
-  courses: Course[];
-  loading: boolean;
-  error: string | null;
-  onSubmit: (data: MatchFormData) => Promise<void>;
+  yourTeam: Team;
+  onSubmit: (formData: MatchFormData) => void;
 }
 
-export default function MatchForm({ courses, loading, error, onSubmit }: MatchFormProps) {
+interface TeamPlayerDetails {
+  name: string;
+  recent_rating: number;
+}
+
+export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
+  const [teamPlayers, setTeamPlayers] = useState<TeamPlayerDetails[]>([]);
+  const [isLoadingPlayers, setIsLoadingPlayers] = useState(false);
+  const [playerError, setPlayerError] = useState<string | null>(null);
+
   const {
     formData,
-    courseData,
-    visibleHoles,
-    handleInputChange,
-    handleSubmit,
+    updateFormData,
+    setOpponentTeam,
+    setCourse,
     updateHoleResult,
-    yourTeamName,
-    opponentTeamName,
-    setOpponentTeamName
-  } = useMatchForm(onSubmit);
+    resetForm,
+  } = useMatchForm();
 
-  const renderHoleResultCell = (value: string | number | null, index: number, rowType: 'your_team' | 'tie' | 'opponent_team') => {
-    if (!formData.your_team_id || !formData.opponent_team_id) return null;
-
-    const result = formData.hole_results[index]?.result;
-    const isSelected = result === rowType;
-
-    return (
-      <button
-        type="button"
-        className={`px-4 py-2 rounded-md ${isSelected ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-        onClick={() => updateHoleResult(index + 1, rowType as HoleResult)}
-      >
-        {rowType === 'your_team' ? 'W' : rowType === 'tie' ? 'T' : 'L'}
-      </button>
-    );
-  };
-
-  const columns = [
-    { label: 'Hole', className: 'w-24' },
-    ...visibleHoles.map(hole => ({ 
-      label: hole.hole_number.toString(),
-      className: 'w-16'
-    }))
-  ];
-
-  const rows = [
-    {
-      id: 'par',
-      type: 'par' as const,
-      label: 'Par',
-      values: courseData ? visibleHoles.map(hole => hole.par) : Array(9).fill(''),
-      total: courseData ? visibleHoles.reduce((sum, hole) => sum + hole.par, 0) : ''
-    },
-    {
-      id: 'distance',
-      type: 'distance' as const,
-      label: 'Yards',
-      values: courseData ? visibleHoles.map(hole => hole.distance) : Array(9).fill(''),
-      total: courseData ? visibleHoles.reduce((sum, hole) => sum + hole.distance, 0) : ''
-    },
-    {
-      id: 'your_team',
-      type: 'match' as const,
-      label: yourTeamName || 'Your Team',
-      values: formData.hole_results.map(hr => hr.result as string | null),
-      renderCell: (value: string | number | null, index: number) => renderHoleResultCell(value, index, 'your_team'),
-      total: ''
-    },
-    {
-      id: 'tie',
-      type: 'match' as const,
-      label: 'Tie',
-      values: formData.hole_results.map(hr => hr.result as string | null),
-      renderCell: (value: string | number | null, index: number) => renderHoleResultCell(value, index, 'tie'),
-      total: `${formData.your_team_score / 2} - ${formData.opponent_team_score / 2}`
-    },
-    {
-      id: 'opponent_team',
-      type: 'match' as const,
-      label: opponentTeamName || 'Opponent Team',
-      values: formData.hole_results.map(hr => hr.result as string | null),
-      renderCell: (value: string | number | null, index: number) => renderHoleResultCell(value, index, 'opponent_team'),
-      total: ''
+  useEffect(() => {
+    async function fetchTeamPlayers() {
+      if (!yourTeam) return;
+      
+      setIsLoadingPlayers(true);
+      setPlayerError(null);
+      try {
+        const players = await teamClient.getTeamPlayers(yourTeam.id);
+        setTeamPlayers(players);
+    } catch (error) {
+        console.error('Error fetching team players:', error);
+        setPlayerError('Failed to load team players');
+      } finally {
+        setIsLoadingPlayers(false);
+      }
     }
-  ];
 
-  const handleTeamCreated = (teamId: string, teamName: string) => {
-    handleInputChange('opponent_team_id', teamId);
-    setOpponentTeamName(teamName);
+    fetchTeamPlayers();
+  }, [yourTeam]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    onSubmit(formData);
+    resetForm();
   };
-
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="space-y-4">
-        <div className="flex space-x-4">
+    <form onSubmit={handleSubmit} className="space-y-8">
+      {/* Match Setup Section */}
+      <div className="bg-white shadow sm:rounded-lg p-6">
+        <h2 className="text-xl font-semibold text-gray-900 mb-6">Match Setup</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label htmlFor="date_played" className="block text-sm font-medium text-gray-700">
-              Date Played
+            <label className="block text-sm font-medium text-gray-700">
+          Date Played
+        <input
+          type="date"
+          value={formData.date_played}
+                onChange={(e) => updateFormData('date_played', e.target.value)}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+          required
+        />
+          </label>
+        </div>
+        
+        <div>
+            <label className="block text-sm font-medium text-gray-700">
+            Nine Played
+          <select
+            value={formData.nine_played}
+                onChange={(e) => updateFormData('nine_played', e.target.value as 'front' | 'back' | 'all')}
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            required
+              >
+                <option value="front">Front Nine</option>
+                <option value="back">Back Nine</option>
+                <option value="all">All 18</option>
+              </select>
             </label>
-            <input
-              type="date"
-              id="date_played"
-              value={formData.date_played}
-              onChange={(e) => handleInputChange('date_played', e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            />
-          </div>
-          <div>
-            <label htmlFor="course_id" className="block text-sm font-medium text-gray-700">
-              Course
-            </label>
-            <select
-              id="course_id"
-              value={formData.course_id}
-              onChange={(e) => handleInputChange('course_id', e.target.value)}
-              className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-            >
-              <option value="">Select a course</option>
-              {courses.map(course => (
-                <option key={course.id} value={course.id}>
-                  {course.name}
-                </option>
-              ))}
-            </select>
           </div>
         </div>
 
-        <TeamCreation onTeamCreated={handleTeamCreated} />
+        <div className="mt-6">
+          <CourseSelect
+            selectedCourseId={formData.course_id}
+            onCourseSelect={setCourse}
+          />
+        </div>
+      </div>
 
-        {formData.your_team_id && formData.opponent_team_id && formData.course_id && (
-          <>
-            <Scorecard
-              columns={columns}
-              rows={rows}
+      {/* Teams Section - Only show if course is selected */}
+      {formData.course_id && (
+        <div className="bg-white shadow sm:rounded-lg p-6">
+          <h2 className="text-xl font-semibold text-gray-900 mb-6">Teams</h2>
+          <div className="space-y-6">
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <h3 className="text-lg font-medium text-gray-900">{yourTeam.name}</h3>
+              <div className="mt-2 space-y-1">
+                {isLoadingPlayers ? (
+                  <p>Loading team players...</p>
+                ) : playerError ? (
+                  <p className="text-red-500">{playerError}</p>
+                ) : (
+                  <ul className="list-disc pl-6">
+                    {teamPlayers.map((player, index) => (
+                      <li key={index}>
+                        {player.name} - Rating: {player.recent_rating}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+      </div>
+            </div>
+            
+            <div className="p-4 bg-gray-50 rounded-lg">
+              <TeamCreation
+                isYourTeam={false}
+                onTeamCreated={(teamId) => setOpponentTeam(teamId)}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Scorecard and Match Details - Only show if both course and opponent team are selected */}
+      {formData.course_id && formData.opponent_team_id && (
+        <>
+          <div className="bg-white shadow sm:rounded-lg p-6">
+            <MatchScorecard
+              courseId={formData.course_id}
+              formData={formData}
+              onHoleResultChange={updateHoleResult}
+              yourTeamName={yourTeam.name}
             />
+          </div>
 
+          <div className="bg-white shadow sm:rounded-lg p-6">
             <MatchDetails
-              ratingChange={formData.rating_change ? Number(formData.rating_change) : null}
+              ratingChange={formData.rating_change}
               playoffs={formData.playoffs}
               notes={formData.notes}
               tags={formData.tags}
-              onInputChange={(field: string, value: string | number | boolean | string[]) => {
-                handleInputChange(field as keyof MatchFormData, value);
-              }}
+              onInputChange={updateFormData}
             />
+          </div>
 
-            <MatchResultSummary
-              yourTeamId={formData.your_team_id}
-              opponentTeamId={formData.opponent_team_id}
-              yourTeamName={yourTeamName}
-              opponentTeamName={opponentTeamName}
-              yourTeamScore={formData.your_team_score}
-              opponentTeamScore={formData.opponent_team_score}
-              margin={formData.margin}
-              holeResults={formData.hole_results}
-            />
-
-            <button
-              type="submit"
-              className="w-full px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
-            >
+          <div className="flex justify-end">
+        <button
+          type="submit"
+              className="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
               Create Match
-            </button>
-          </>
-        )}
+        </button>
       </div>
+        </>
+      )}
     </form>
   );
 }

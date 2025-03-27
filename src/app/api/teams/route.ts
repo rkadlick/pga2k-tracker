@@ -5,6 +5,7 @@ import { validateTeamData } from '@/lib/validation/teamValidation';
 export async function GET() {
   try {
     const teams = await getTeams();
+    console.log('teams', teams);
     return NextResponse.json({ data: teams });
   } catch (error) {
     console.error('Error fetching teams:', error);

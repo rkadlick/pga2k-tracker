@@ -5,9 +5,23 @@ import * as teamClient from '@/lib/api/teamClient';
 /**
  * A hook for managing teams data and operations
  */
-export function useTeams() {
+interface UseTeamsReturn {
+  teams: Team[];
+  isLoading: boolean;
+  isCreating: boolean;
+  isDeleting: boolean;
+  error: Error | null;
+  loadTeams: () => Promise<void>;
+  createTeam: (data: TeamCreateData) => Promise<{ team: Team; wasExisting: boolean }>;
+  updateTeam: (id: string, teamData: TeamUpdateData) => Promise<Team>;
+  deleteTeam: (id: string) => Promise<void>;
+  getTeamById: (id: string) => Promise<Team>;
+  refreshTeams: () => Promise<void>;
+}
+
+export function useTeams(): UseTeamsReturn {
   const [teams, setTeams] = useState<Team[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<Error | null>(null);
@@ -26,7 +40,7 @@ export function useTeams() {
 
   // Function to load teams
   const loadTeams = useCallback(async () => {
-    if (isLoading) return;
+    if (!isLoading) return;
     
     setIsLoading(true);
     setError(null);
@@ -45,17 +59,40 @@ export function useTeams() {
   }, [isLoading]);
 
   // Create a team
-  const createTeam = useCallback(async (teamData: TeamCreateData) => {
+  const createTeam = useCallback(async (data: TeamCreateData) => {
     setIsCreating(true);
     setError(null);
     
     try {
-      const newTeam = await teamClient.createTeam(teamData);
+      // First check if a team with these players exists
+      const existingTeam = await teamClient.findExistingTeamWithPlayers(data.playerIds);
       
-      // Update the teams list
-      setTeams(prev => [newTeam, ...prev]);
+      if (existingTeam) {
+        // Update player ratings if provided
+        if (data.playerRatings) {
+          await Promise.all(
+            data.playerIds.map((id, index) => 
+              teamClient.updatePlayerRating(id, data.playerRatings![index])
+            )
+          );
+        }
+        return { team: existingTeam, wasExisting: true };
+      }
+
+      // Create new team if no existing team found
+      const newTeam = await teamClient.createTeam(data.name, data.is_your_team || false, data.playerIds);
       
-      return newTeam;
+      // Update player ratings if provided
+      if (data.playerRatings) {
+        await Promise.all(
+          data.playerIds.map((id, index) => 
+            teamClient.updatePlayerRating(id, data.playerRatings![index])
+          )
+        );
+      }
+
+      await loadTeams(); // Refresh the teams list
+      return { team: newTeam, wasExisting: false };
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       setError(error);
@@ -63,7 +100,7 @@ export function useTeams() {
     } finally {
       setIsCreating(false);
     }
-  }, []);
+  }, [loadTeams]);
 
   // Delete a team
   const deleteTeam = useCallback(async (id: string) => {
@@ -158,6 +195,7 @@ export function useTeams() {
     createTeam,
     updateTeam,
     deleteTeam,
-    getTeamById
+    getTeamById,
+    refreshTeams: loadTeams
   };
 } 

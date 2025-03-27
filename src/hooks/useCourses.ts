@@ -7,30 +7,36 @@ import * as courseClient from '@/lib/api/courseClient';
  */
 export function useCourses() {
   const [courses, setCourses] = useState<Course[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
   
   // Use a ref to prevent the effect from running more than once
   const initialized = useRef(false);
   
   // Load courses on mount only
   useEffect(() => {
-    // Only run once
-    if (!initialized.current) {
-      loadCourses();
-      initialized.current = true;
-    }
-    
-    // No cleanup needed for this effect
-  }, []); // Empty dependency array ensures this only runs once
+    const fetchCourses = async () => {
+      try {
+        const data = await courseClient.fetchCourses();
+        setCourses(data);
+      } catch (err) {
+        console.error('Failed to load courses:', err);
+        setError('Failed to load courses');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
 
   // Function to load courses
   const loadCourses = useCallback(async () => {
-    if (isLoading) return;
+    if (loading) return;
     
-    setIsLoading(true);
+    setLoading(true);
     setError(null);
     
     try {
@@ -38,13 +44,13 @@ export function useCourses() {
       setCourses(data);
       return data;
     } catch (err) {
-      const error = err instanceof Error ? err : new Error(String(err));
-      setError(error);
-      throw error;
+      console.error('Failed to load courses:', err);
+      setError('Failed to load courses');
+      throw err;
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
-  }, [isLoading]);
+  }, [loading]);
 
   // Create a course with holes
   const createCourseWithHoles = useCallback(async (
@@ -88,7 +94,7 @@ export function useCourses() {
       return newCourse;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
-      setError(error);
+      setError(error.message);
       throw error;
     } finally {
       setIsCreating(false);
@@ -105,7 +111,7 @@ export function useCourses() {
       setCourses(prev => prev.filter(course => course.id !== id));
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
-      setError(error);
+      setError(error.message);
       throw error;
     } finally {
       setIsDeleting(false);
@@ -130,7 +136,7 @@ export function useCourses() {
     backDistance: number,
     totalDistance: number
   ) => {
-    setIsLoading(true);
+    setLoading(true);
     setError(null);
     
     try {
@@ -155,16 +161,16 @@ export function useCourses() {
       
       return updatedCourse;
     } catch (err) {
-      setError(err as Error);
+      setError(err instanceof Error ? err.message : String(err));
       throw err;
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   // Add a function to get a single course by ID
   const getCourseById = async (id: string): Promise<Course> => {
-    setIsLoading(true);
+    setLoading(true);
     setError(null);
     
     try {
@@ -194,19 +200,19 @@ export function useCourses() {
       return courseData;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
-      setError(error);
+      setError(error.message);
       throw error;
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return {
     courses,
-    isLoading,
+    loading,
+    error,
     isCreating,
     isDeleting,
-    error,
     loadCourses,
     createCourseWithHoles,
     removeCourse,
