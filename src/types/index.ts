@@ -53,11 +53,8 @@ export interface Match extends BaseRecord {
 	id: string;
 	date_played: string;
 	course_id: string;
-	course_name?: string;
 	your_team_id: string;
-	your_team_name?: string;
 	opponent_team_id: string;
-	opponent_team_name?: string;
 	player1_id: string;
 	player1_rating: number;
 	player2_id: string;
@@ -76,9 +73,9 @@ export interface Match extends BaseRecord {
 	notes?: string;
 	tags?: string[];
 	hole_results?: HoleResultRecord[];
-	courses?: { name: string };
-	your_team?: { name: string };
-	opponent_team?: { name: string };
+	course: string;
+	your_team: string;
+	opponent_team: string;
 }
 
 export interface HoleResultRecord extends BaseRecord {

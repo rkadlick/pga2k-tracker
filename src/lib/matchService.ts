@@ -14,7 +14,7 @@ export async function getMatches(): Promise<Match[]> {
       id, 
       date_played,
       course_id,
-      courses(name),
+      course:courses(name),
       your_team_id,
       your_team:teams!your_team_id(name),
       opponent_team_id,
@@ -41,13 +41,12 @@ export async function getMatches(): Promise<Match[]> {
     `)
     .order('date_played', { ascending: false });
   if (error) throw error;
-  
   // Transform data to match the expected format
   return data.map(match => ({
     ...match,
-    course_name: match.courses?.[0]?.name || '',
-    your_team_name: match.your_team?.[0]?.name || '',
-    opponent_team_name: match.opponent_team?.[0]?.name || ''
+    course: match.course.name, 
+    your_team: match.your_team.name,
+    opponent_team: match.opponent_team.name
   }));
 }
 
@@ -64,11 +63,11 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
       id, 
       date_played,
       course_id,
-      courses(id, name),
+      course:courses(name),
       your_team_id,
-      your_team:teams!your_team_id(id, name),
+      your_team:teams!your_team_id(name),
       opponent_team_id,
-      opponent_team:teams!opponent_team_id(id, name),
+      opponent_team:teams!opponent_team_id(name),
       player1_id,
       player1_rating,
       player2_id,
@@ -106,7 +105,7 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
   // Transform data to match the expected format
   return {
     ...match,
-    course_name: match.courses?.[0]?.name || '',
+    course_name: match.course?.[0]?.name || '',
     your_team_name: match.your_team?.[0]?.name || '',
     opponent_team_name: match.opponent_team?.[0]?.name || '',
     hole_results: holeResults || []
@@ -206,7 +205,7 @@ export async function createMatch(matchData: {
   // Transform data to match the expected format
   return {
     ...match,
-    course_name: match.courses?.[0]?.name || '',
+    course_name: match.course?.[0]?.name || '',
     your_team_name: match.your_team?.[0]?.name || '',
     opponent_team_name: match.opponent_team?.[0]?.name || '',
     hole_results: matchData.hole_results || []
@@ -259,7 +258,7 @@ export async function updateMatch(
       id, 
       date_played,
       course_id,
-      courses(name),
+      course:courses(name),
       your_team_id,
       your_team:teams!your_team_id(name),
       opponent_team_id,
@@ -291,7 +290,7 @@ export async function updateMatch(
   // Transform data to match the expected format
   return {
     ...data,
-    course_name: data.courses?.[0]?.name || '',
+    course_name: data.course?.[0]?.name || '',
     your_team_name: data.your_team?.[0]?.name || '',
     opponent_team_name: data.opponent_team?.[0]?.name || ''
   };
