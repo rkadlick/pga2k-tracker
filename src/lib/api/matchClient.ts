@@ -200,3 +200,24 @@ export async function updateHoleResult(
     throw formatError(error).error;
   }
 } 
+
+/**
+ * Update player ratings    
+ */
+export async function updatePlayerRatings(matchId: string): Promise<void> {
+  try {
+    const response = await fetch(`/api/matches/${matchId}/update-ratings`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ matchId }),
+    });
+    
+    const result = await response.json() as ApiResponse<Match>;
+
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to update player ratings');
+    }
+  } catch (error) {
+    throw formatError(error).error;
+  }
+}

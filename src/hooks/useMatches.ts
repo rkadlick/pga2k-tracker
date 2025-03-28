@@ -1,25 +1,34 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { Match, HoleResult, NinePlayed } from '@/types';
 import * as matchClient from '@/lib/api/matchClient';
+import { usePlayers } from '@/hooks/usePlayers';
 
 interface MatchCreateData {
   date_played: string;
   course_id: string;
   your_team_id: string;
   opponent_team_id: string;
+  player1_id: string;
+  player2_id: string;
+  opponent1_id: string;
+  opponent2_id: string;
+  player1_rating: number;
+  player2_rating: number;
+  opponent1_rating: number;
+  opponent2_rating: number;
   nine_played: NinePlayed;
   holes_won: number;
   holes_tied: number;
   holes_lost: number;
   winner_id: string | null;
-  rating_change?: number;
+  rating_change: number;
   playoffs: boolean;
   notes?: string;
   tags?: string[];
   hole_results?: Array<{
     hole_number: number;
     result: HoleResult;
-    match_id?: string; // Optional because we'll add it later
+    match_id?: string;
   }>;
 }
 
@@ -64,6 +73,8 @@ export function useMatches() {
   // Use a ref to prevent the effect from running more than once
   const initialized = useRef(false);
   
+  const { updatePlayerRatings } = usePlayers();
+  
   // Load matches on mount only
   useEffect(() => {
     // Only run once
@@ -100,19 +111,26 @@ export function useMatches() {
     setIsCreating(true);
     setError(null);
 
-    console.log('matchData', matchData);
     try {
-      // Extract hole results from match data if present
+      // Extract hole results and player data from match data
       const { hole_results, ...basicMatchData } = matchData;
+      
       // Create the match
-      console.log('basicMatchData', basicMatchData);
       const newMatch = await matchClient.createMatch(basicMatchData);
       
-      await matchClient.addHoleResults(newMatch.id, hole_results);
+      // Add hole results if they exist
+      if (hole_results && hole_results.length > 0) {
+        await matchClient.addHoleResults(newMatch.id, hole_results);
+      }
+
+      // Update player ratings if there's a rating change
+      if (matchData.rating_change !== 0) {
+        await updatePlayerRatings(matchData.player1_id, matchData.player2_id, matchData.rating_change);
+      }
       
       // Fetch the complete match with hole results
       const completeMatch = await matchClient.fetchMatch(newMatch.id);
-      console.log('completeMatch', completeMatch);
+      
       // Update the matches list
       setMatches(prev => [completeMatch as MatchWithDetails, ...prev]);
       
@@ -124,7 +142,7 @@ export function useMatches() {
     } finally {
       setIsCreating(false);
     }
-  }, []);
+  }, [updatePlayerRatings]);
 
   // Delete a match
   const deleteMatch = useCallback(async (id: string) => {

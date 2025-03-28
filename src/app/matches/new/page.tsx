@@ -60,6 +60,13 @@ export default function NewMatchPage() {
       } else if (opponentTeamScore > yourTeamScore) {
         winnerId = data.opponent_team_id;
       }
+      
+      let rating_change = 0;
+      if (winnerId !== yourTeam.id) {
+        rating_change = 0 - data.rating_change;
+      } else {
+        rating_change = data.rating_change;
+      }
 
       const matchData = {
         date_played: data.date_played,
@@ -76,7 +83,7 @@ export default function NewMatchPage() {
         opponent2_id: data.opponent2_id,
         opponent2_rating: data.opponent2_rating,
         hole_results: validHoleResults,
-        rating_change: data.rating_change ? Number(data.rating_change) : 0,
+        rating_change: rating_change,
         holes_won: holesWon,
         holes_tied: holesTied,
         holes_lost: holesLost,
