@@ -43,10 +43,10 @@ export default function MatchOverview({ match }: MatchOverviewProps) {
             <h4 className="text-base font-medium text-gray-900 mb-3">{match.your_team}</h4>
             <ul className="space-y-2">
               <li className="text-sm text-gray-600">
-                Player 1: {match.player1_name} (Rating: {match.player1_rating})
+                Player 1: {match.player1_name} (Rating: {match.player1_rating} {match.rating_change && `${match.rating_change > 0 ? '+' : '-'} ${Math.abs(match.rating_change)}`} = {match.player1_rating + match.rating_change})
               </li>
               <li className="text-sm text-gray-600">
-                Player 2: {match.player2_name} (Rating: {match.player2_rating})
+                Player 2: {match.player2_name} (Rating: {match.player2_rating} {match.rating_change && `${match.rating_change > 0 ? '+' : '-'} ${Math.abs(match.rating_change)}`} = {match.player2_rating + match.rating_change})
               </li>
             </ul>
           </div>
