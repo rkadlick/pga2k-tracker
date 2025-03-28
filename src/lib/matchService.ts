@@ -7,7 +7,7 @@ import { Match, HoleResultRecord, HoleResult, NinePlayed } from '@/types';
 export async function getMatches(): Promise<Match[]> {
   const supabase = await createClient();
   
-  // Get matches with course and team information
+  // Get matches with course, team, and player information
   const { data, error } = await supabase
     .from('matches')
     .select(`
@@ -20,12 +20,16 @@ export async function getMatches(): Promise<Match[]> {
       opponent_team_id,
       opponent_team:teams!opponent_team_id(name),
       player1_id,
+      player1:players!player1_id(name),
       player1_rating,
       player2_id,
+      player2:players!player2_id(name),
       player2_rating,
       opponent1_id,
+      opponent1:players!opponent1_id(name),
       opponent1_rating,
       opponent2_id,
+      opponent2:players!opponent2_id(name),
       opponent2_rating,
       nine_played,
       holes_won,
@@ -37,7 +41,14 @@ export async function getMatches(): Promise<Match[]> {
       notes,
       tags,
       created_at,
-      updated_at
+      updated_at,
+      hole_results:hole_results(
+        id,
+        hole_number,
+        result,
+        created_at,
+        updated_at
+      )
     `)
     .order('date_played', { ascending: false });
   if (error) throw error;
@@ -46,7 +57,11 @@ export async function getMatches(): Promise<Match[]> {
     ...match,
     course: match.course.name, 
     your_team: match.your_team.name,
-    opponent_team: match.opponent_team.name
+    opponent_team: match.opponent_team.name,
+    player1_name: match.player1.name,
+    player2_name: match.player2.name,
+    opponent1_name: match.opponent1.name,
+    opponent2_name: match.opponent2.name
   }));
 }
 
@@ -56,7 +71,7 @@ export async function getMatches(): Promise<Match[]> {
 export async function getMatchWithDetails(id: string): Promise<Match> {
   const supabase = await createClient();
   
-  // Get the match with related course and team information
+  // Get the match with related course, team, and player information
   const { data: match, error: matchError } = await supabase
     .from('matches')
     .select(`
@@ -69,12 +84,16 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
       opponent_team_id,
       opponent_team:teams!opponent_team_id(name),
       player1_id,
+      player1:players!player1_id(name),
       player1_rating,
       player2_id,
+      player2:players!player2_id(name),
       player2_rating,
       opponent1_id,
+      opponent1:players!opponent1_id(name),
       opponent1_rating,
       opponent2_id,
+      opponent2:players!opponent2_id(name),
       opponent2_rating,
       nine_played,
       holes_won,
@@ -105,9 +124,13 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
   // Transform data to match the expected format
   return {
     ...match,
-    course_name: match.course?.[0]?.name || '',
-    your_team_name: match.your_team?.[0]?.name || '',
-    opponent_team_name: match.opponent_team?.[0]?.name || '',
+    course: match.course.name,
+    your_team: match.your_team.name,
+    opponent_team: match.opponent_team.name,
+    player1_name: match.player1.name,
+    player2_name: match.player2.name,
+    opponent1_name: match.opponent1.name,
+    opponent2_name: match.opponent2.name,
     hole_results: holeResults || []
   };
 }

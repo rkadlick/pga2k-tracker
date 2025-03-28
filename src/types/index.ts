@@ -56,12 +56,16 @@ export interface Match extends BaseRecord {
 	your_team_id: string;
 	opponent_team_id: string;
 	player1_id: string;
+	player1_name: string;
 	player1_rating: number;
 	player2_id: string;
+	player2_name: string;
 	player2_rating: number;
 	opponent1_id: string;
+	opponent1_name: string;
 	opponent1_rating: number;
 	opponent2_id: string;
+	opponent2_name: string;
 	opponent2_rating: number;
 	nine_played: NinePlayed;
 	holes_won: number;

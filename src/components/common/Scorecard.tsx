@@ -40,43 +40,42 @@ export default function Scorecard({
       )}
       
       <div className="w-full overflow-x-auto">
-        <table className="w-full border-collapse">
+        <table className="min-w-full divide-y divide-gray-200">
           <thead>
-            <tr className="bg-green-700 text-white">
-              <th className={`py-2 px-2 text-center border border-gray-300 ${columns[0].className || 'w-24'}`}>
+            <tr>
+              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 {columns[0].label}
               </th>
               {columns.slice(1).map((col, i) => (
                 <th 
                   key={i} 
-                  className={`py-2 px-1 text-center border border-gray-300 ${col.className || 'w-16'}`}
+                  className="px-2 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
                   {col.label}
                 </th>
               ))}
-              <th className="py-2 px-2 text-center border border-gray-300 bg-green-800 w-24">Total</th>
             </tr>
           </thead>
           
-          <tbody>
+          <tbody className="bg-white divide-y divide-gray-200">
             {rows.map((row) => {
               // Determine row styling based on type
-              let rowClass = '';
+              let rowClass = 'whitespace-nowrap text-sm';
               switch (row.type) {
                 case 'par':
-                  rowClass = 'bg-green-50';
+                  rowClass += ' font-medium text-gray-900';
                   break;
                 case 'distance':
-                  rowClass = 'bg-blue-50';
+                  rowClass += ' font-medium text-gray-900';
                   break;
                 case 'score':
-                  rowClass = 'bg-gray-50';
+                  rowClass += ' text-gray-500';
                   break;
                 case 'match':
-                  rowClass = 'bg-yellow-50';
+                  rowClass += ' font-medium text-gray-900';
                   break;
                 default:
-                  rowClass = '';
+                  rowClass += ' text-gray-500';
               }
 
               if (row.className) {
@@ -84,22 +83,22 @@ export default function Scorecard({
               }
 
               return (
-                <tr key={row.id} className={rowClass}>
-                  <td className={`py-2 px-2 font-medium text-center border border-gray-300 ${columns[0].className || 'w-24'}`}>
+                <tr key={row.id}>
+                  <td className={`px-4 py-2 ${rowClass}`}>
                     {row.label}
                   </td>
                   
                   {row.values.map((value, colIndex) => (
                     <td 
                       key={colIndex} 
-                      className={`p-0 border border-gray-300 ${columns[colIndex + 1]?.className || 'w-16'}`}
+                      className={`px-2 py-2 text-center ${rowClass}`}
                     >
                       {row.editable ? (
                         <input
                           type="number"
                           value={value === null ? '' : value}
                           onChange={(e) => row.onChange && row.onChange(row.id, colIndex, e.target.value)}
-                          className={`w-full h-full py-2 text-center ${rowClass} focus:outline-none focus:ring-1 focus:ring-blue-500`}
+                          className={`w-full h-full py-2 text-center focus:outline-none focus:ring-1 focus:ring-blue-500`}
                           min={row.type === 'par' ? 2 : 1}
                           max={row.type === 'par' ? 6 : 999}
                           step="1"
@@ -111,18 +110,14 @@ export default function Scorecard({
                           {row.renderCell(value, colIndex, row.id)}
                         </div>
                       ) : (
-                        <div className="w-full h-full py-2 text-center">
+                        <div className="w-full h-full">
                           {value === null ? '' : value}
                         </div>
                       )}
                     </td>
                   ))}
                   
-                  <td className={`py-2 px-2 text-center font-medium border border-gray-300 w-24 ${
-                    row.type === 'par' ? 'bg-green-100' : 
-                    row.type === 'distance' ? 'bg-blue-100' : 
-                    row.type === 'match' ? 'bg-yellow-100' : 'bg-gray-100'
-                  }`}>
+                  <td className={`px-2 py-2 text-center font-medium ${rowClass}`}>
                     {row.total === null ? '' : row.total}
                   </td>
                 </tr>

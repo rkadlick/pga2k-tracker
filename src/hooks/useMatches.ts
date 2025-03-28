@@ -199,7 +199,7 @@ export function useMatches() {
           return [...prevMatches, matchData as MatchWithDetails];
         }
       });
-      
+      console.log('matchData', matchData);
       return matchData as MatchWithDetails;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
