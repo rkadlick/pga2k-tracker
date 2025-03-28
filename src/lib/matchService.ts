@@ -28,11 +28,11 @@ export async function getMatches(): Promise<Match[]> {
       opponent2_id,
       opponent2_rating,
       nine_played,
-      your_team_score,
-      opponent_team_score,
+      holes_won,
+      holes_tied,
+      holes_lost,
       winner_id,
       rating_change,
-      margin,
       playoffs,
       notes,
       tags,
@@ -78,11 +78,11 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
       opponent2_id,
       opponent2_rating,
       nine_played,
-      your_team_score,
-      opponent_team_score,
+      holes_won,
+      holes_tied,
+      holes_lost,
       winner_id,
       rating_change,
-      margin,
       playoffs,
       notes,
       tags,
@@ -130,11 +130,11 @@ export async function createMatch(matchData: {
   opponent2_id: string;
   opponent2_rating: number;
   nine_played: NinePlayed;
-  your_team_score: number;
-  opponent_team_score: number;
+  holes_won: number;
+  holes_tied: number;
+  holes_lost: number;
   winner_id: string | null;
   rating_change?: number;
-  margin?: number;
   playoffs: boolean;
   notes?: string;
   tags?: string[];
@@ -172,11 +172,11 @@ export async function createMatch(matchData: {
       opponent2_id,
       opponent2_rating,
       nine_played,
-      your_team_score,
-      opponent_team_score,
+      holes_won,
+      holes_tied,
+      holes_lost,
       winner_id,
       rating_change,
-      margin,
       playoffs,
       notes,
       tags,
@@ -232,11 +232,11 @@ export async function updateMatch(
     opponent2_id: string;
     opponent2_rating: number;
     nine_played: NinePlayed;
-    your_team_score: number;
-    opponent_team_score: number;
+    holes_won: number;
+    holes_tied: number;
+    holes_lost: number;
     winner_id: string | null;
     rating_change: number;
-    margin: number;
     playoffs: boolean;
     notes: string;
     tags: string[];
@@ -273,11 +273,11 @@ export async function updateMatch(
       opponent2_id,
       opponent2_rating,
       nine_played,
-      your_team_score,
-      opponent_team_score,
+      holes_won,
+      holes_tied,
+      holes_lost,
       winner_id,
       rating_change,
-      margin,
       playoffs,
       notes,
       tags,
@@ -401,11 +401,11 @@ export async function createMatchWithHoleResults(
     your_team_id: string;
     opponent_team_id: string;
     nine_played: NinePlayed;
-    your_team_score: number;
-    opponent_team_score: number;
+    holes_won: number;
+    holes_tied: number;
+    holes_lost: number;
     winner_id: string | null;
     rating_change?: number;
-    margin?: number;
     playoffs: boolean;
     notes?: string;
     tags?: string[];

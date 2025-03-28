@@ -18,6 +18,7 @@ export async function POST(request: NextRequest) {
     const matchData = await request.json();
     
     // Validate match data
+    console.log('matchData', matchData);
     const validationErrors = validateMatchData(matchData);
     if (validationErrors.length > 0) {
       return NextResponse.json({ error: 'Validation failed', details: validationErrors }, { status: 400 });
@@ -37,11 +38,11 @@ export async function POST(request: NextRequest) {
       opponent2_id: matchData.opponent2_id,
       opponent2_rating: matchData.opponent2_rating,
       nine_played: matchData.nine_played,
-      your_team_score: matchData.your_team_score,
-      opponent_team_score: matchData.opponent_team_score,
+      holes_won: matchData.holes_won,
+      holes_tied: matchData.holes_tied,
+      holes_lost: matchData.holes_lost,
       winner_id: matchData.winner_id,
       rating_change: matchData.rating_change,
-      margin: matchData.margin,
       playoffs: matchData.playoffs || false,
       notes: matchData.notes,
       tags: matchData.tags

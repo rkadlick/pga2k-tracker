@@ -130,7 +130,6 @@ const { isAuthenticated } = useAuth();
                                   : match.winner_id === match.opponent_team_id 
                                     ? `${match.opponent_team_name} won`
                                     : 'Tied'}
-                                {match.margin ? ` by ${match.margin}` : ''}
                               </p>
                             </div>
                           </div>
@@ -145,7 +144,7 @@ const { isAuthenticated } = useAuth();
                             </div>
                             <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
                               <p>
-                                {match.rating_change || `${match.your_team_score} - ${match.opponent_team_score}`}
+                                {match.rating_change}
                               </p>
                             </div>
                           </div>

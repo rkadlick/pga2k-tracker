@@ -8,11 +8,11 @@ interface MatchCreateData {
   your_team_id: string;
   opponent_team_id: string;
   nine_played: NinePlayed;
-  your_team_score: number;
-  opponent_team_score: number;
+  holes_won: number;
+  holes_tied: number;
+  holes_lost: number;
   winner_id: string | null;
   rating_change?: number;
-  margin?: number;
   playoffs: boolean;
   notes?: string;
   tags?: string[];
@@ -29,11 +29,11 @@ interface MatchUpdateData {
   your_team_id?: string;
   opponent_team_id?: string;
   nine_played?: NinePlayed;
-  your_team_score?: number;
-  opponent_team_score?: number;
+  holes_won?: number;
+  holes_tied?: number;
+  holes_lost?: number;
   winner_id?: string | null;
   rating_change?: number;
-  margin?: number;
   playoffs?: boolean;
   notes?: string;
   tags?: string[];
@@ -46,8 +46,8 @@ interface MatchWithDetails extends Match {
     match_id: string;
     hole_number: number;
     result: HoleResult;
-    created_at?: string;
-    updated_at?: string;
+    created_at: string;
+    updated_at: string;
   }>;
 }
 
@@ -105,6 +105,7 @@ export function useMatches() {
       // Extract hole results from match data if present
       const { hole_results, ...basicMatchData } = matchData;
       // Create the match
+      console.log('basicMatchData', basicMatchData);
       const newMatch = await matchClient.createMatch(basicMatchData);
       
       await matchClient.addHoleResults(newMatch.id, hole_results);

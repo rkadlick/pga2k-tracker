@@ -15,11 +15,11 @@ interface MatchCreateData {
   opponent2_id: string;
   opponent2_rating: number;
   nine_played: NinePlayed;
-  your_team_score: number;
-  opponent_team_score: number;
+  holes_won: number;
+  holes_tied: number;
+  holes_lost: number;
   winner_id: string | null;
   rating_change?: number;
-  margin?: number;
   playoffs: boolean;
   notes?: string;
   tags?: string[];
@@ -40,11 +40,8 @@ interface MatchUpdateData {
   opponent2_id?: string;
   opponent2_rating?: number;
   nine_played?: NinePlayed;
-  your_team_score?: number;
-  opponent_team_score?: number;
   winner_id?: string | null;
   rating_change?: number;
-  margin?: number;
   playoffs?: boolean;
   notes?: string;
   tags?: string[];

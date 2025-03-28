@@ -23,10 +23,10 @@ export interface MatchFormData {
   opponent1_rating?: number;
   opponent2_id?: string;
   opponent2_rating?: number;
-  your_team_score?: number;
-  opponent_team_score?: number;
+  holes_won?: number;
+  holes_tied?: number;
+  holes_lost?: number;
   winner_id?: string | null;
-  margin?: number;
 }
 
 export function useMatchForm() {
@@ -43,6 +43,10 @@ export function useMatchForm() {
     opponent1_rating: undefined,
     opponent2_id: undefined,
     opponent2_rating: undefined,
+    holes_won: undefined,
+    holes_tied: undefined,
+    holes_lost: undefined,
+    winner_id: undefined,
     hole_results: Array.from({ length: 18 }, (_, i) => ({
       hole_number: i + 1,
       result: null

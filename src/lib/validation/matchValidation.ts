@@ -123,17 +123,6 @@ export function validateNinePlayed(ninePlayed: NinePlayed): string | null {
 }
 
 /**
- * Validates margin
- */
-export function validateMargin(margin?: number): string | null {
-  if (margin !== undefined && (!Number.isInteger(margin) || margin < 0)) {
-    return 'Margin must be a non-negative integer';
-  }
-  
-  return null;
-}
-
-/**
  * Validates playoffs flag
  */
 export function validatePlayoffs(playoffs: boolean): string | null {
@@ -192,33 +181,34 @@ export function validateMatchData(matchData: any): string[] {
   const ninePlayedError = validateNinePlayed(matchData.nine_played);
   if (ninePlayedError) errors.push(`Nine Played: ${ninePlayedError}`);
   
-  const yourTeamScoreError = validateScore(matchData.your_team_score);
-  if (yourTeamScoreError) errors.push(`Your Team Score: ${yourTeamScoreError}`);
+  // Validate hole counts
+  const holesWonError = validateScore(matchData.holes_won);
+  if (holesWonError) errors.push(`Holes Won: ${holesWonError}`);
   
-  const opponentTeamScoreError = validateScore(matchData.opponent_team_score);
-  if (opponentTeamScoreError) errors.push(`Opponent Team Score: ${opponentTeamScoreError}`);
+  const holesLostError = validateScore(matchData.holes_lost);
+  if (holesLostError) errors.push(`Holes Lost: ${holesLostError}`);
   
-  const marginError = validateMargin(matchData.margin);
-  if (marginError) errors.push(`Margin: ${marginError}`);
+  const holesTiedError = validateScore(matchData.holes_tied);
+  if (holesTiedError) errors.push(`Holes Tied: ${holesTiedError}`);
   
   const playoffsError = validatePlayoffs(matchData.playoffs);
   if (playoffsError) errors.push(`Playoffs: ${playoffsError}`);
   
-  // Only validate winner ID if there are no errors with the team IDs and scores
-  if (!yourTeamIdError && !opponentTeamIdError && !yourTeamScoreError && !opponentTeamScoreError) {
+  // Only validate winner ID if there are no errors with the team IDs and hole counts
+  if (!yourTeamIdError && !opponentTeamIdError && !holesWonError && !holesLostError && !holesTiedError) {
     const winnerIdError = validateWinnerId(
       matchData.winner_id,
       matchData.your_team_id,
       matchData.opponent_team_id,
-      matchData.your_team_score,
-      matchData.opponent_team_score
+      matchData.holes_won + (matchData.holes_tied * 0.5),
+      matchData.holes_lost + (matchData.holes_tied * 0.5)
     );
     if (winnerIdError) errors.push(`Winner: ${winnerIdError}`);
   }
   
   // Validate hole results if provided
   if (matchData.hole_results && Array.isArray(matchData.hole_results)) {
-    const holeResultsErrors = validateHoleResults(matchData.hole_results);
+    const holeResultsErrors = validateHoleResults({ holeResults: matchData.hole_results });
     if (holeResultsErrors.length > 0) {
       errors.push('Hole Results:');
       errors.push(...holeResultsErrors);
@@ -260,19 +250,19 @@ export function validateMatchUpdateData(matchData: any): string[] {
     if (ninePlayedError) errors.push(`Nine Played: ${ninePlayedError}`);
   }
   
-  if (matchData.your_team_score !== undefined) {
-    const yourTeamScoreError = validateScore(matchData.your_team_score);
-    if (yourTeamScoreError) errors.push(`Your Team Score: ${yourTeamScoreError}`);
+  if (matchData.holes_won !== undefined) {
+    const holesWonError = validateScore(matchData.holes_won);
+    if (holesWonError) errors.push(`Holes Won: ${holesWonError}`);
   }
   
-  if (matchData.opponent_team_score !== undefined) {
-    const opponentTeamScoreError = validateScore(matchData.opponent_team_score);
-    if (opponentTeamScoreError) errors.push(`Opponent Team Score: ${opponentTeamScoreError}`);
+  if (matchData.holes_lost !== undefined) {
+    const holesLostError = validateScore(matchData.holes_lost);
+    if (holesLostError) errors.push(`Holes Lost: ${holesLostError}`);
   }
   
-  if (matchData.margin !== undefined) {
-    const marginError = validateMargin(matchData.margin);
-    if (marginError) errors.push(`Margin: ${marginError}`);
+  if (matchData.holes_tied !== undefined) {
+    const holesTiedError = validateScore(matchData.holes_tied);
+    if (holesTiedError) errors.push(`Holes Tied: ${holesTiedError}`);
   }
   
   if (matchData.playoffs !== undefined) {
@@ -285,15 +275,16 @@ export function validateMatchUpdateData(matchData: any): string[] {
     matchData.winner_id !== undefined &&
     matchData.your_team_id !== undefined &&
     matchData.opponent_team_id !== undefined &&
-    matchData.your_team_score !== undefined &&
-    matchData.opponent_team_score !== undefined
+    matchData.holes_won !== undefined &&
+    matchData.holes_lost !== undefined &&
+    matchData.holes_tied !== undefined
   ) {
     const winnerIdError = validateWinnerId(
       matchData.winner_id,
       matchData.your_team_id,
       matchData.opponent_team_id,
-      matchData.your_team_score,
-      matchData.opponent_team_score
+      matchData.holes_won + (matchData.holes_tied * 0.5),
+      matchData.holes_lost + (matchData.holes_tied * 0.5)
     );
     if (winnerIdError) errors.push(`Winner: ${winnerIdError}`);
   }

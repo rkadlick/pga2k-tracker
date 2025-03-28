@@ -41,18 +41,17 @@ export default function NewMatchPage() {
           match_id: undefined // This will be set by the backend
         }));
 
-      // Calculate scores
-      const yourTeamScore = validHoleResults.reduce((score, hr) => {
-        if (hr.result === 'win') return score + 1;
-        if (hr.result === 'tie') return score + 0.5;
-        return score;
-      }, 0);
+      // Calculate holes won, lost, tied
+      const { holesWon, holesLost, holesTied } = validHoleResults.reduce((counts, hr) => {
+        if (hr.result === 'win') return { ...counts, holesWon: counts.holesWon + 1 };
+        if (hr.result === 'loss') return { ...counts, holesLost: counts.holesLost + 1 };
+        if (hr.result === 'tie') return { ...counts, holesTied: counts.holesTied + 1 };
+        return counts;
+      }, { holesWon: 0, holesLost: 0, holesTied: 0 });
 
-      const opponentTeamScore = validHoleResults.reduce((score, hr) => {
-        if (hr.result === 'loss') return score + 1;
-        if (hr.result === 'tie') return score + 0.5;
-        return score;
-      }, 0);
+      // Calculate scores based on holes
+      const yourTeamScore = holesWon + (holesTied * 0.5);
+      const opponentTeamScore = holesLost + (holesTied * 0.5);
 
       // Determine winner
       let winnerId = null;
@@ -61,7 +60,6 @@ export default function NewMatchPage() {
       } else if (opponentTeamScore > yourTeamScore) {
         winnerId = data.opponent_team_id;
       }
-
 
       const matchData = {
         date_played: data.date_played,
@@ -76,10 +74,12 @@ export default function NewMatchPage() {
         opponent1_id: data.opponent1_id,
         opponent1_rating: data.opponent1_rating,
         opponent2_id: data.opponent2_id,
+        opponent2_rating: data.opponent2_rating,
         hole_results: validHoleResults,
         rating_change: data.rating_change ? Number(data.rating_change) : 0,
-        your_team_score: yourTeamScore,
-        opponent_team_score: opponentTeamScore,
+        holes_won: holesWon,
+        holes_tied: holesTied,
+        holes_lost: holesLost,
         winner_id: winnerId,
         playoffs: data.playoffs,
         notes: data.notes,
