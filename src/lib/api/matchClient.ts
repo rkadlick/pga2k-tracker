@@ -110,6 +110,7 @@ export async function createMatch(matchData: MatchCreateData): Promise<Match> {
  * Update an existing match
  */
 export async function updateMatch(id: string, matchData: MatchUpdateData): Promise<Match> {
+  console.log('matchData', matchData);
   try {
     const response = await fetch(`/api/matches/${id}`, {
       method: 'PATCH',
@@ -154,7 +155,6 @@ export async function addHoleResults(
   matchId: string, 
   holeResults: Omit<HoleResultRecord, 'id' | 'created_at'>[]
 ): Promise<HoleResultRecord[]> {
-  console.log('holeResults', holeResults);
   try {
     const response = await fetch(`/api/matches/${matchId}/holes`, {
       method: 'POST',
@@ -173,26 +173,26 @@ export async function addHoleResults(
   } catch (error) {
     throw formatError(error).error;
   }
-}
+}   
 
 /**
  * Update hole result
  */
-export async function updateHoleResult(
-  id: string, 
-  result: HoleResult
-): Promise<HoleResultRecord> {
+export async function updateHoleResults(
+  matchId: string, 
+  holeResults: Omit<HoleResultRecord, 'id' | 'created_at'>[]
+): Promise<HoleResultRecord[]> {
   try {
-    const response = await fetch(`/api/hole-results/${id}`, {
+    const response = await fetch(`/api/matches/${matchId}/holes`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ result }),
+      body: JSON.stringify({ holeResults }),
     });
     
-    const resultData = await response.json() as ApiResponse<HoleResultRecord>;
+    const resultData = await response.json() as ApiResponse<HoleResultRecord[]>;
     
     if (!response.ok) {
-      throw new Error(resultData.error || 'Failed to update hole result');
+      throw new Error(resultData.error || 'Failed to update hole results ');
     }
     
     return resultData.data!;

@@ -145,7 +145,6 @@ export async function createCourseWithHoles(
     // If hole creation fails, try to delete the course to maintain data integrity
     await supabase.from('courses').delete().eq('id', course.id);
     throw holesError;
-    console.log('testE')
   // Add all holes
   }
   

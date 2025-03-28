@@ -114,7 +114,6 @@ export function validateHoleNumber(holeNumber: number): string | null {
  */
 export function validateNinePlayed(ninePlayed: NinePlayed): string | null {
   const validValues: NinePlayed[] = ['front', 'back', 'full'];
-  
   if (!validValues.includes(ninePlayed)) {
     return `Must be one of: ${validValues.join(', ')}`;
   }

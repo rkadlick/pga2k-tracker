@@ -18,7 +18,6 @@ export async function POST(request: NextRequest) {
     const matchData = await request.json();
     
     // Validate match data
-    console.log('matchData', matchData);
     const validationErrors = validateMatchData(matchData);
     if (validationErrors.length > 0) {
       return NextResponse.json({ error: 'Validation failed', details: validationErrors }, { status: 400 });

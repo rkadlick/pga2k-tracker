@@ -168,7 +168,14 @@ export function useMatches() {
     setError(null);
     
     try {
-      const updatedMatch = await matchClient.updateMatch(id, matchData);
+      const { hole_results, ...basicMatchData } = matchData;
+      console.log('basicMatchData', basicMatchData);
+      console.log('hole_results', hole_results);
+      const updatedMatch = await matchClient.updateMatch(id, basicMatchData);
+      
+      if (hole_results && hole_results.length > 0) {
+        await matchClient.updateHoleResults(id, hole_results);
+      }
       
       // Update the matches list
       setMatches(prevMatches => 
@@ -269,7 +276,7 @@ export function useMatches() {
   }, []);
 
   // Update a hole result
-  const updateHoleResult = useCallback(async (
+  /*const updateHoleResult = useCallback(async (
     holeResultId: string,
     result: HoleResult,
     matchId: string
@@ -278,7 +285,7 @@ export function useMatches() {
     setError(null);
     
     try {
-      await matchClient.updateHoleResult(holeResultId, result);
+      await matchClient.updateHoleResults(holeResultId, result);
       
       // Refresh the match to get updated data
       const updatedMatch = await matchClient.fetchMatch(matchId);
@@ -298,7 +305,7 @@ export function useMatches() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, []); */
 
   return {
     matches,
@@ -312,6 +319,6 @@ export function useMatches() {
     deleteMatch,
     getMatchById,
     addHoleResults,
-    updateHoleResult
+    /*updateHoleResult*/
   };
 } 

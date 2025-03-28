@@ -73,7 +73,6 @@ export function validateHoles(holes: HoleData[]): string[] {
   
   return holes.map((hole, index) => {
     const error = validateHole(hole);
-    console.log('error', error);
     return error ? `Hole ${index + 1}: ${error}` : '';
   }).filter(error => error !== '');
 }

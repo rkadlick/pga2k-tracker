@@ -57,7 +57,6 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
   }, [yourTeam]);
 
   const handleSubmit = (e: React.FormEvent) => {
-    console.log('formData', formData);
     e.preventDefault();
     onSubmit(formData);
     resetForm();

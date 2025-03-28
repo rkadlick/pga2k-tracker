@@ -77,8 +77,6 @@ export function useCourses() {
         distance: hole.distance as number,
       }));
 
-      console.log('totalPar', totalPar);
-      console.log('totalDistance', totalDistance);
       const newCourse = await courseClient.createCourse({
         name: courseName,
         holes: validHoles,

@@ -5,10 +5,10 @@ import { useParams, useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
 import { Course, Match } from '@/types';
 import { useCourses} from '@/hooks/useCourses';
-import MatchHeader from '@/components/matches/matchDetails/MatchHeader';
-import MatchOverview from '@/components/matches/matchDetails/MatchOverview';
-import MatchScorecardSection from '@/components/matches/matchDetails/MatchScorecardSection';
-import MatchDetails from '@/components/matches/matchDetails/MatchDetails';
+import MatchHeader from '@/components/matches/MatchDetails/MatchHeader';
+import MatchOverview from '@/components/matches/MatchDetails/MatchOverview';
+import MatchScorecardSection from '@/components/matches/MatchDetails/MatchScorecardSection';
+import MatchDetails from '@/components/matches/MatchDetails/MatchDetails';
 
 
 export default function MatchDetailPage() {
@@ -26,7 +26,6 @@ export default function MatchDetailPage() {
       if (matchId) {
         const fetchedMatch = matches.find(m => m.id === matchId);
         if (fetchedMatch) {
-          console.log('fetchedMatch', fetchedMatch);
           setMatch(fetchedMatch);
         }
       }

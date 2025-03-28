@@ -377,23 +377,33 @@ export async function addHoleResults(
 /**
  * Update a hole result
  */
-export async function updateHoleResult(
-  id: string,
-  result: HoleResult
-): Promise<HoleResultRecord> {
+export async function updateHoleResults(
+  matchId: string,
+  holeResults: Array<{
+    hole_number: number;
+    result: HoleResult;
+  }>
+): Promise<HoleResultRecord[]> {
   const supabase = await createClient();
   
-  // Update the hole result
+  // First delete existing hole results for this match
+  await supabase
+    .from('hole_results')
+    .delete()
+    .eq('match_id', matchId);
+
+  // Then insert the new hole results
   const { data, error } = await supabase
     .from('hole_results')
-    .update({ 
-      result,
-      updated_at: new Date().toISOString()
-    })
-    .eq('id', id)
-    .select()
-    .single();
-  
+    .insert(
+      holeResults.map(hr => ({
+        match_id: matchId,
+        hole_number: hr.hole_number,
+        result: hr.result
+      }))
+    )
+    .select();
+
   if (error) throw error;
   
   return data;
