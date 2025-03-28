@@ -7,12 +7,10 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    // Access id directly but store it in a variable first
-    const { id } = await params;
-    const course = await getCourseWithHoles(id);
+    const course = await getCourseWithHoles(params.id);
     return NextResponse.json({ data: course });
   } catch (error) {
-    console.error(`Error fetching course:`, error);
+    console.error('Error fetching course:', error);
     return NextResponse.json(
       { error: 'Failed to fetch course' },
       { status: 500 }

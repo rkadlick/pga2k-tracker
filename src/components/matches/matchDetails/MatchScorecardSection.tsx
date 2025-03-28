@@ -1,20 +1,9 @@
-import { Match, NinePlayed } from '@/types';
+import { Course, Hole, Match, NinePlayed } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
-
-interface CourseHole {
-  hole_number: number;
-  par: number;
-  distance: number;
-}
-
-interface CourseData {
-  name: string;
-  holes: CourseHole[];
-}
 
 interface MatchScorecardSectionProps {
   match: Match;
-  courseData: CourseData;
+  course: Course;
 }
 
 function formatNinePlayed(ninePlayed: NinePlayed): string {
@@ -30,16 +19,15 @@ function formatNinePlayed(ninePlayed: NinePlayed): string {
   }
 }
 
-export default function MatchScorecardSection({ match, courseData }: MatchScorecardSectionProps) {
+  export default function MatchScorecardSection({ match, course }: MatchScorecardSectionProps) {
   // Prepare scorecard data
-  const visibleHoles = courseData.holes.slice(
+  const visibleHoles = course.holes?.slice(
     match.nine_played === 'front' ? 0 : 9,
     match.nine_played === 'front' ? 9 : 18
   );
-
   const scorecardColumns = [
     { id: 'label', label: '', className: 'w-24' },
-    ...visibleHoles.map((hole: CourseHole) => ({
+    ...visibleHoles.map((hole: Hole) => ({
       id: `hole-${hole.hole_number}`,
       label: hole.hole_number.toString(),
       className: 'w-16'

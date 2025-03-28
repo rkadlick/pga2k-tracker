@@ -7,7 +7,7 @@ import * as courseClient from '@/lib/api/courseClient';
  */
 export function useCourses() {
   const [courses, setCourses] = useState<Course[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -25,7 +25,7 @@ export function useCourses() {
         console.error('Failed to load courses:', err);
         setError('Failed to load courses');
       } finally {
-        setLoading(false);
+        setIsLoading(false);
       }
     };
 
@@ -34,9 +34,9 @@ export function useCourses() {
 
   // Function to load courses
   const loadCourses = useCallback(async () => {
-    if (loading) return;
+    if (isLoading) return;
     
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
     
     try {
@@ -48,9 +48,9 @@ export function useCourses() {
       setError('Failed to load courses');
       throw err;
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  }, [loading]);
+  }, [isLoading]);
 
   // Create a course with holes
   const createCourseWithHoles = useCallback(async (
@@ -136,7 +136,7 @@ export function useCourses() {
     backDistance: number,
     totalDistance: number
   ) => {
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
     
     try {
@@ -164,13 +164,13 @@ export function useCourses() {
       setError(err instanceof Error ? err.message : String(err));
       throw err;
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
   // Add a function to get a single course by ID
   const getCourseById = async (id: string): Promise<Course> => {
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
     
     try {
@@ -203,13 +203,30 @@ export function useCourses() {
       setError(error.message);
       throw error;
     } finally {
-      setLoading(false);
+      setIsLoading(false);
+    }
+  };
+
+  const getCourseWithHoles = async (courseId: string): Promise<Course | null> => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await fetch(`/api/courses/${courseId}`);
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error);
+      return data.data;
+    } catch (err) {
+      const error = err instanceof Error ? err : new Error(String(err));
+      setError(error.message);
+      throw error;
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return {
     courses,
-    loading,
+    isLoading,
     error,
     isCreating,
     isDeleting,
@@ -217,6 +234,7 @@ export function useCourses() {
     createCourseWithHoles,
     removeCourse,
     updateCourse,
-    getCourseById
+    getCourseById,
+    getCourseWithHoles,
   };
 } 

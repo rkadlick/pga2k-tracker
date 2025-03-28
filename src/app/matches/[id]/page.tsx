@@ -3,28 +3,22 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
-import { Match } from '@/types';
+import { Course, Match } from '@/types';
+import { useCourses} from '@/hooks/useCourses';
 import MatchHeader from '@/components/matches/matchDetails/MatchHeader';
 import MatchOverview from '@/components/matches/matchDetails/MatchOverview';
 import MatchScorecardSection from '@/components/matches/matchDetails/MatchScorecardSection';
 import MatchDetails from '@/components/matches/matchDetails/MatchDetails';
 
-interface CourseData {
-  name: string;
-  holes: {
-    hole_number: number;
-    par: number;
-    distance: number;
-  }[];
-}
 
 export default function MatchDetailPage() {
   const params = useParams();
   const router = useRouter();
   const matchId = Array.isArray(params.id) ? params.id[0] : params.id;
-  const { matches, isLoading, error } = useMatches();
+  const { matches, isLoading: isLoadingMatches, error: errorMatches } = useMatches();
   const [match, setMatch] = useState<Match | null>(null);
-  const [courseData, setCourseData] = useState<CourseData | null>(null);
+  const { getCourseWithHoles, isLoading: isLoadingCourses, error: errorCourses } = useCourses();
+  const [course, setCourse] = useState<Course | null>(null);
   const [isLoadingCourse, setIsLoadingCourse] = useState(false);
 
   useEffect(() => {
@@ -45,22 +39,16 @@ export default function MatchDetailPage() {
     const fetchCourseData = async () => {
       if (match?.course_id) {
         setIsLoadingCourse(true);
-        try {
-          const response = await fetch(`/api/courses/${match.course_id}`);
-          const data = await response.json();
-          setCourseData(data.data);
-        } catch (err) {
-          console.error('Error loading course data:', err);
-        } finally {
-          setIsLoadingCourse(false);
+        const fetchedCourse = await getCourseWithHoles(match?.course_id);
+        setCourse(fetchedCourse);
+        setIsLoadingCourse(false);
         }
       }
-    };
 
     fetchCourseData();
   }, [match?.course_id]);
 
-  if (isLoading || !match || isLoadingCourse) {
+  if (isLoadingMatches || !match || isLoadingCourses) {
     return (
       <div className="text-center py-12">
         <svg className="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -72,7 +60,7 @@ export default function MatchDetailPage() {
     );
   }
 
-  if (error) {
+  if (errorMatches || errorCourses) {
     return (
       <div className="bg-red-50 border-l-4 border-red-400 p-4">
         <div className="flex">
@@ -82,7 +70,7 @@ export default function MatchDetailPage() {
             </svg>
           </div>
           <div className="ml-3">
-            <p className="text-sm text-red-700">{error.message}</p>
+            <p className="text-sm text-red-700">{errorMatches?.message || errorCourses?.message}</p>
           </div>
         </div>
       </div>
@@ -96,8 +84,8 @@ export default function MatchDetailPage() {
         onEdit={() => router.push(`/matches/${match.id}/edit`)} 
       />
       <MatchOverview match={match} />
-      {courseData && (
-        <MatchScorecardSection match={match} courseData={courseData} />
+      {course && (
+        <MatchScorecardSection match={match} course={course} />
       )}
       <MatchDetails match={match} />
     </div>
