@@ -8,13 +8,25 @@ export interface HoleResultData {
 export interface MatchFormData {
   date_played: string;
   course_id: string | null;
-  nine_played: 'front' | 'back' | 'all';
+  nine_played: 'front' | 'back';
   opponent_team_id: string | null;
   hole_results: HoleResultData[];
   rating_change: number;
   playoffs: boolean;
   notes: string;
   tags: string[];
+  player1_id?: string;
+  player1_rating?: number;
+  player2_id?: string;
+  player2_rating?: number;
+  opponent1_id?: string;
+  opponent1_rating?: number;
+  opponent2_id?: string;
+  opponent2_rating?: number;
+  your_team_score?: number;
+  opponent_team_score?: number;
+  winner_id?: string | null;
+  margin?: number;
 }
 
 export function useMatchForm() {
@@ -23,6 +35,14 @@ export function useMatchForm() {
     course_id: null,
     nine_played: 'front',
     opponent_team_id: null,
+    player1_id: undefined,
+    player1_rating: undefined,
+    player2_id: undefined,
+    player2_rating: undefined,
+    opponent1_id: undefined,
+    opponent1_rating: undefined,
+    opponent2_id: undefined,
+    opponent2_rating: undefined,
     hole_results: Array.from({ length: 18 }, (_, i) => ({
       hole_number: i + 1,
       result: null
@@ -48,6 +68,14 @@ export function useMatchForm() {
     setFormData(prev => ({ ...prev, opponent_team_id: teamId }));
   };
 
+  const setYourTeamPlayers = (players: { id: string; recent_rating: number }[]) => {
+    setFormData(prev => ({ ...prev, player1_id: players[0].id, player1_rating: players[0].recent_rating, player2_id: players[1].id, player2_rating: players[1].recent_rating }));
+  };
+
+  const setOpponentTeamPlayers = (players: { id: string; recent_rating: number }[]) => {
+    setFormData(prev => ({ ...prev, opponent1_id: players[0].id, opponent1_rating: players[0].recent_rating, opponent2_id: players[1].id, opponent2_rating: players[1].recent_rating }));
+  };
+  
   const updateHoleResult = (holeNumber: number, result: 'win' | 'loss' | 'tie' | null) => {
     setFormData(prev => ({
       ...prev,
@@ -79,6 +107,8 @@ export function useMatchForm() {
     updateFormData,
     setCourse,
     setOpponentTeam,
+    setOpponentTeamPlayers,
+    setYourTeamPlayers,
     updateHoleResult,
     resetForm
   };

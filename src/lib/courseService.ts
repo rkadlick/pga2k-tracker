@@ -135,13 +135,11 @@ export async function createCourseWithHoles(
     course_id: course.id
   }));
   
-  console.log('test')
   // Add all holes
   const { data: createdHoles, error: holesError } = await supabase
     .from('holes')
     .insert(holesWithCourseId)
     .select();
-    console.log('test1')
     // Add all holes
   if (holesError) {
     // If hole creation fails, try to delete the course to maintain data integrity

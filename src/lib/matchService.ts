@@ -331,13 +331,15 @@ export async function addHoleResults(
   }>
 ): Promise<HoleResultRecord[]> {
   const supabase = await createClient();
-  
+  console.log('holeReSults', holeResults)
   // Prepare hole results with match_id
   const holeResultsWithMatchId = holeResults.map(result => ({
     match_id: matchId,
     hole_number: result.hole_number,
     result: result.result
   }));
+
+  console.log('holeResults', holeResultsWithMatchId)
   
   // Insert the hole results
   const { data, error } = await supabase

@@ -22,13 +22,20 @@ export async function POST(request: NextRequest) {
     if (validationErrors.length > 0) {
       return NextResponse.json({ error: 'Validation failed', details: validationErrors }, { status: 400 });
     }
-    
     // Create match
     const match = await createMatch({
       date_played: matchData.date_played,
       course_id: matchData.course_id,
       your_team_id: matchData.your_team_id,
       opponent_team_id: matchData.opponent_team_id,
+      player1_id: matchData.player1_id,
+      player1_rating: matchData.player1_rating,
+      player2_id: matchData.player2_id,
+      player2_rating: matchData.player2_rating,
+      opponent1_id: matchData.opponent1_id,
+      opponent1_rating: matchData.opponent1_rating,
+      opponent2_id: matchData.opponent2_id,
+      opponent2_rating: matchData.opponent2_rating,
       nine_played: matchData.nine_played,
       your_team_score: matchData.your_team_score,
       opponent_team_score: matchData.opponent_team_score,
@@ -37,8 +44,7 @@ export async function POST(request: NextRequest) {
       margin: matchData.margin,
       playoffs: matchData.playoffs || false,
       notes: matchData.notes,
-      tags: matchData.tags,
-      hole_results: matchData.hole_results
+      tags: matchData.tags
     });
     
     return NextResponse.json(match);

@@ -100,17 +100,18 @@ export function useMatches() {
     setIsCreating(true);
     setError(null);
 
-    
+    console.log('matchData', matchData);
     try {
       // Extract hole results from match data if present
       const { hole_results, ...basicMatchData } = matchData;
-      
       // Create the match
-      const newMatch = await matchClient.createMatch(matchData);
+      const newMatch = await matchClient.createMatch(basicMatchData);
+      
+      await matchClient.addHoleResults(newMatch.id, hole_results);
       
       // Fetch the complete match with hole results
       const completeMatch = await matchClient.fetchMatch(newMatch.id);
-      
+      console.log('completeMatch', completeMatch);
       // Update the matches list
       setMatches(prev => [completeMatch as MatchWithDetails, ...prev]);
       

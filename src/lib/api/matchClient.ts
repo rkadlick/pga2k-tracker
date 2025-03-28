@@ -157,6 +157,7 @@ export async function addHoleResults(
   matchId: string, 
   holeResults: Omit<HoleResultRecord, 'id' | 'created_at'>[]
 ): Promise<HoleResultRecord[]> {
+  console.log('holeResults', holeResults);
   try {
     const response = await fetch(`/api/matches/${matchId}/holes`, {
       method: 'POST',
@@ -165,6 +166,7 @@ export async function addHoleResults(
     });
     
     const result = await response.json() as ApiResponse<HoleResultRecord[]>;
+    console.log('result', result);
     
     if (!response.ok) {
       throw new Error(result.error || 'Failed to add hole results');

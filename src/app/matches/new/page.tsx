@@ -62,12 +62,20 @@ export default function NewMatchPage() {
         winnerId = data.opponent_team_id;
       }
 
+
       const matchData = {
         date_played: data.date_played,
         course_id: data.course_id,
         nine_played: data.nine_played,
         your_team_id: yourTeam.id,
         opponent_team_id: data.opponent_team_id,
+        player1_id: data.player1_id,
+        player1_rating: data.player1_rating,
+        player2_id: data.player2_id,
+        player2_rating: data.player2_rating,
+        opponent1_id: data.opponent1_id,
+        opponent1_rating: data.opponent1_rating,
+        opponent2_id: data.opponent2_id,
         hole_results: validHoleResults,
         rating_change: data.rating_change ? Number(data.rating_change) : 0,
         your_team_score: yourTeamScore,
@@ -77,9 +85,9 @@ export default function NewMatchPage() {
         notes: data.notes,
         tags: data.tags
       };
+
       
       const newMatch = await createMatch(matchData);
-      console.log('newMatch', newMatch);
       if (newMatch) {
         router.push(`/matches`);
       }

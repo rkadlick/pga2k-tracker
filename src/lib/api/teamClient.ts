@@ -138,7 +138,7 @@ export async function createPlayer(name: string, rating: number): Promise<Player
   return data;
 }
 
-export async function getTeamPlayers(teamId: string): Promise<{ name: string; recent_rating: number; }[]> {
+export async function getTeamPlayers(teamId: string): Promise<{ id: string; name: string; recent_rating: number; }[]> {
   const response = await fetch(`/api/teams/${teamId}/players`);
   
   if (!response.ok) {

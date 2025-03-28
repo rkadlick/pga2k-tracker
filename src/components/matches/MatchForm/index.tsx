@@ -23,11 +23,13 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
   const [teamPlayers, setTeamPlayers] = useState<TeamPlayerDetails[]>([]);
   const [isLoadingPlayers, setIsLoadingPlayers] = useState(false);
   const [playerError, setPlayerError] = useState<string | null>(null);
-
+  const [opponentTeam, setOpponentTeam] = useState<Team | null>(null);
   const {
     formData,
     updateFormData,
-    setOpponentTeam,
+    setYourTeamPlayers,
+    setOpponentTeam: setOpponentTeamId,
+    setOpponentTeamPlayers: setOpponentTeamPlayersId,
     setCourse,
     updateHoleResult,
     resetForm,
@@ -42,7 +44,8 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
       try {
         const players = await teamClient.getTeamPlayers(yourTeam.id);
         setTeamPlayers(players);
-    } catch (error) {
+        setYourTeamPlayers(players);
+      } catch (error) {
         console.error('Error fetching team players:', error);
         setPlayerError('Failed to load team players');
       } finally {
@@ -54,9 +57,25 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
   }, [yourTeam]);
 
   const handleSubmit = (e: React.FormEvent) => {
+    console.log('formData', formData);
     e.preventDefault();
     onSubmit(formData);
     resetForm();
+    setOpponentTeam(null);
+  };
+
+  const handleOpponentTeamCreated = async (teamId: string) => {
+    try {
+      const team = await teamClient.fetchTeam(teamId);
+      setOpponentTeam(team);
+      setOpponentTeamId(teamId);
+
+      const players = await teamClient.getTeamPlayers(teamId);
+      setOpponentTeamPlayersId(players);
+      
+    } catch (error) {
+      console.error('Error fetching opponent team:', error);
+    }
   };
 
   return (
@@ -83,13 +102,12 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
             Nine Played
           <select
             value={formData.nine_played}
-                onChange={(e) => updateFormData('nine_played', e.target.value as 'front' | 'back' | 'all')}
+                onChange={(e) => updateFormData('nine_played', e.target.value as 'front' | 'back')}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             required
               >
                 <option value="front">Front Nine</option>
                 <option value="back">Back Nine</option>
-                <option value="all">All 18</option>
               </select>
             </label>
           </div>
@@ -130,7 +148,7 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
             <div className="p-4 bg-gray-50 rounded-lg">
               <TeamCreation
                 isYourTeam={false}
-                onTeamCreated={(teamId) => setOpponentTeam(teamId)}
+                onTeamCreated={handleOpponentTeamCreated}
               />
             </div>
           </div>
@@ -146,6 +164,7 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
               formData={formData}
               onHoleResultChange={updateHoleResult}
               yourTeamName={yourTeam.name}
+              opponentTeamName={opponentTeam?.name}
             />
           </div>
 

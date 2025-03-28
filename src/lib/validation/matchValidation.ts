@@ -145,6 +145,32 @@ export function validatePlayoffs(playoffs: boolean): string | null {
 }
 
 /**
+ * Validates an array of hole results
+ */
+export function validateHoleResults(data: { holeResults: Array<{ hole_number: number; result: HoleResult }> }): string[] {
+  const errors: string[] = [];
+
+  if (!Array.isArray(data.holeResults)) {
+    errors.push('Hole results must be an array');
+    return errors;
+  }
+
+  data.holeResults.forEach((holeResult, index) => {
+    const holeNumberError = validateHoleNumber(holeResult.hole_number);
+    if (holeNumberError) {
+      errors.push(`Hole ${index + 1}: ${holeNumberError}`);
+    }
+    
+    const resultError = validateHoleResult(holeResult.result);
+    if (resultError) {
+      errors.push(`Hole ${index + 1}: ${resultError}`);
+    }
+  });
+
+  return errors;
+}
+
+/**
  * Validates a complete match data object for creation
  */
 export function validateMatchData(matchData: any): string[] {
@@ -192,17 +218,11 @@ export function validateMatchData(matchData: any): string[] {
   
   // Validate hole results if provided
   if (matchData.hole_results && Array.isArray(matchData.hole_results)) {
-    matchData.hole_results.forEach((holeResult: any, index: number) => {
-      const holeNumberError = validateHoleNumber(holeResult.hole_number);
-      if (holeNumberError) {
-        errors.push(`Hole ${index + 1}: ${holeNumberError}`);
-      }
-      
-      const resultError = validateHoleResult(holeResult.result);
-      if (resultError) {
-        errors.push(`Hole ${index + 1}: ${resultError}`);
-      }
-    });
+    const holeResultsErrors = validateHoleResults(matchData.hole_results);
+    if (holeResultsErrors.length > 0) {
+      errors.push('Hole Results:');
+      errors.push(...holeResultsErrors);
+    }
   }
   
   return errors;

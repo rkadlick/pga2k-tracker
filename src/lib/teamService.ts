@@ -247,7 +247,7 @@ export async function getTeamPlayers(teamId: string) {
   // Then get the players
   const { data: players, error: playersError } = await supabase
     .from('players')
-    .select('name, recent_rating')
+    .select('id, name, recent_rating')
     .in('id', teamMembers.map(tm => tm.player_id));
 
   if (playersError) throw playersError;
