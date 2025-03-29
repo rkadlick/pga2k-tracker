@@ -33,18 +33,18 @@ export default function MatchDetails({ match }: MatchDetailsProps) {
             <div className="mt-2 text-center">
               <span
                 className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                  match.holes_won > match.holes_lost
-                    ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200'
-                    : match.holes_won === match.holes_lost
+                  match.winner_id === null
                     ? 'bg-[--input-bg] text-[--muted]'
+                    : match.winner_id === match.your_team_id
+                    ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200'
                     : 'bg-red-100 text-red-700 dark:bg-red-500/30 dark:text-red-200'
                 }`}
               >
-                {match.holes_won > match.holes_lost
-                  ? `${match.your_team} won`
-                  : match.holes_won === match.holes_lost
+                {match.winner_id === null
                   ? 'Match Tied'
-                  : `${match.opponent_team} won`}
+                  : match.winner_id === match.your_team_id
+                  ? `${match.your_team} won${match.playoffs ? ' (Playoff)' : ''}`
+                  : `${match.opponent_team} won${match.playoffs ? ' (Playoff)' : ''}`}
               </span>
             </div>
           </div>

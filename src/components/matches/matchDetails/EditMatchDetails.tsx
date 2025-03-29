@@ -1,15 +1,23 @@
 import { Match } from '@/types';
 import CourseSelect from '@/components/matches/MatchForm/CourseSelect';
+import { useEffect } from 'react';
 
 interface EditMatchDetailsProps {
   matchData: Partial<Match>;
   formData: {
     course_id: string | null;
     nine_played: 'front' | 'back';
+    hole_results: Array<{
+      hole_number: number;
+      result: 'win' | 'loss' | 'tie' | null;
+    }>;
   };
   onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   onCourseSelect: (courseId: string | null) => void;
   onNinePlayedChange: (value: 'front' | 'back') => void;
+  onPlayoffChange: (isPlayoff: boolean, winnerId: string | null) => void;
+  yourTeamId: string;
+  opponentTeamId: string;
 }
 
 export default function EditMatchDetails({
@@ -17,8 +25,64 @@ export default function EditMatchDetails({
   formData,
   onInputChange,
   onCourseSelect,
-  onNinePlayedChange
+  onNinePlayedChange,
+  onPlayoffChange,
+  yourTeamId,
+  opponentTeamId
 }: EditMatchDetailsProps) {
+  // Helper to determine if a playoff result is selected
+  const getPlayoffResult = (): 'win' | 'loss' | null => {
+    if (!matchData.playoffs) return null;
+    return matchData.winner_id === yourTeamId ? 'win' : 'loss';
+  };
+
+  // Calculate if playoffs buttons should be enabled
+  const calculatePlayoffsEnabled = () => {
+    // Get the relevant holes based on nine_played
+    const relevantHoles = formData.hole_results.filter(hr => {
+      const holeNumber = hr.hole_number;
+      if (formData.nine_played === 'front') {
+        return holeNumber >= 1 && holeNumber <= 9;
+      } else {
+        return holeNumber >= 10 && holeNumber <= 18;
+      }
+    });
+
+    // Check if all 9 holes have results
+    const allHolesHaveResults = relevantHoles.length === 9 && 
+      relevantHoles.every(hr => hr.result !== null);
+
+    if (!allHolesHaveResults) return false;
+
+    // Calculate wins and losses
+    const wins = relevantHoles.filter(hr => hr.result === 'win').length;
+    const losses = relevantHoles.filter(hr => hr.result === 'loss').length;
+
+    // Return true only if match is tied
+    return wins === losses;
+  };
+
+  // Handle playoff button clicks
+  const handlePlayoffClick = (result: 'win' | 'loss' | null) => {
+    if (result === 'win') {
+      onPlayoffChange(true, yourTeamId);
+    } else if (result === 'loss') {
+      onPlayoffChange(true, opponentTeamId);
+    } else {
+      onPlayoffChange(false, null);
+    }
+  };
+
+  const playoffResult = getPlayoffResult();
+  const playoffsEnabled = calculatePlayoffsEnabled();
+
+  // Effect to clear playoffs when conditions aren't met
+  useEffect(() => {
+    if (!playoffsEnabled && matchData.playoffs) {
+      onPlayoffChange(false, null);
+    }
+  }, [playoffsEnabled, matchData.playoffs, onPlayoffChange]);
+
   return (
     <div className="space-y-8 animate-fade-in">
       <div className="bg-[--card-bg] rounded-lg border border-[--border] p-6 space-y-6">
@@ -31,9 +95,6 @@ export default function EditMatchDetails({
 
         <div className="grid gap-6">
           <div className="space-y-2">
-            <label htmlFor="course" className="block text-sm font-medium text-[--foreground]">
-              Course
-            </label>
             <CourseSelect
               selectedCourseId={formData.course_id}
               onCourseSelect={onCourseSelect}
@@ -90,19 +151,33 @@ export default function EditMatchDetails({
             />
           </div>
 
-          <div className="flex items-center space-x-2">
-            <input
-              type="checkbox"
-              name="playoffs"
-              id="playoffs"
-              checked={matchData.playoffs || false}
-              onChange={onInputChange}
-              className="h-4 w-4 bg-[--input-bg] border border-[--input-border] text-[--primary] rounded
-                       focus:ring-[--primary] focus:ring-offset-[--background]
-                       transition-colors duration-200"
-            />
-            <label htmlFor="playoffs" className="text-sm font-medium text-[--foreground]">
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-[--foreground]">
               Playoffs
+              <div className="mt-1 flex gap-2">
+                <button
+                  type="button"
+                  disabled={!playoffsEnabled}
+                  aria-pressed={playoffResult === 'win'}
+                  onClick={() => handlePlayoffClick(playoffResult === 'win' ? null : 'win')}
+                  className={`win w-7 h-7 flex items-center justify-center text-xs font-medium rounded ${
+                    !playoffsEnabled ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  W
+                </button>
+                <button
+                  type="button"
+                  disabled={!playoffsEnabled}
+                  aria-pressed={playoffResult === 'loss'}
+                  onClick={() => handlePlayoffClick(playoffResult === 'loss' ? null : 'loss')}
+                  className={`loss w-7 h-7 flex items-center justify-center text-xs font-medium rounded ${
+                    !playoffsEnabled ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  L
+                </button>
+              </div>
             </label>
           </div>
 
@@ -113,13 +188,12 @@ export default function EditMatchDetails({
             <textarea
               name="notes"
               id="notes"
-              rows={3}
               value={matchData.notes || ''}
               onChange={onInputChange}
+              rows={3}
               className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
                        focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
                        transition-all duration-200"
-              placeholder="Add any notes about this match..."
             />
           </div>
 

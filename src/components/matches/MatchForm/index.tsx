@@ -178,6 +178,11 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
               notes={formData.notes}
               tags={formData.tags}
               onInputChange={updateFormData}
+              holeResults={formData.hole_results}
+              ninePlayed={formData.nine_played}
+              yourTeamId={yourTeam.id}
+              opponentTeamId={formData.opponent_team_id || ''}
+              formData={formData}
             />
           </div>
 

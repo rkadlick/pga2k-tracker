@@ -145,6 +145,17 @@ export default function EditMatchPage() {
       hole_results: newHoleResults
     }));
   };
+
+  const handlePlayoffChange = (isPlayoff: boolean, winnerId: string | null) => {
+    setMatchData(prev => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        playoffs: isPlayoff,
+        winner_id: winnerId
+      };
+    });
+  };
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -270,6 +281,9 @@ export default function EditMatchPage() {
             onInputChange={handleInputChange}
             onCourseSelect={handleCourseSelect}
             onNinePlayedChange={handleNinePlayedChange}
+            onPlayoffChange={handlePlayoffChange}
+            yourTeamId={yourTeam?.id || ''}
+            opponentTeamId={matchData.opponent_team_id || ''}
           />
 
           <EditMatchResults

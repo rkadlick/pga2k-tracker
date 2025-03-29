@@ -93,7 +93,9 @@ export default function TeamCreation({ isYourTeam, onTeamCreated }: TeamCreation
                 type="text"
                 value={formData.name}
                 onChange={(e) => updateTeamName(e.target.value)}
-                className="mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm"
+                className="mt-1 block w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                         focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                         transition-all duration-200"
                 required
               />
             </label>
@@ -102,7 +104,9 @@ export default function TeamCreation({ isYourTeam, onTeamCreated }: TeamCreation
             <button
               type="button"
               onClick={handleGenerateTeamName}
-              className="inline-flex items-center px-4 py-2 border border-[--border] text-sm font-medium rounded-lg text-[--foreground] bg-[--input-bg] hover:bg-[--hover-bg] focus:outline-none focus:ring-2 focus:ring-[--primary]"
+              className="inline-flex items-center px-4 py-2 border border-[--input-border] text-sm font-medium rounded-lg text-[--foreground] bg-[--input-bg] hover:bg-[--hover-bg] 
+                       focus:outline-none focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
             >
               Generate
             </button>
@@ -118,7 +122,9 @@ export default function TeamCreation({ isYourTeam, onTeamCreated }: TeamCreation
                   type="text"
                   value={member.name}
                   onChange={(e) => updateMemberField(index, 'name', e.target.value)}
-                  className="mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm"
+                  className="mt-1 block w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                           focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                           transition-all duration-200"
                   required
                 />
               </label>
@@ -130,7 +136,9 @@ export default function TeamCreation({ isYourTeam, onTeamCreated }: TeamCreation
                   type="number"
                   value={member.rank}
                   onChange={(e) => updateMemberField(index, 'rank', parseInt(e.target.value))}
-                  className="mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm"
+                  className="mt-1 block w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                           focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                           transition-all duration-200"
                   required
                 />
               </label>

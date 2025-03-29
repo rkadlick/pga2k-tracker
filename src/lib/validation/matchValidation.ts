@@ -1,5 +1,24 @@
 import { HoleResult, NinePlayed } from '@/types';
 
+interface MatchData {
+  date_played: string;
+  course_id: string;
+  your_team_id: string;
+  opponent_team_id: string;
+  nine_played: NinePlayed;
+  holes_won: number;
+  holes_lost: number;
+  holes_tied: number;
+  winner_id: string | null;
+  playoffs: boolean;
+  hole_results?: Array<{
+    hole_number: number;
+    result: HoleResult;
+  }>;
+}
+
+type MatchUpdateData = Partial<MatchData>;
+
 /**
  * Validates a date string in ISO format
  */
@@ -66,7 +85,8 @@ export function validateWinnerId(
   yourTeamId: string, 
   opponentTeamId: string, 
   yourTeamScore: number, 
-  opponentTeamScore: number
+  opponentTeamScore: number,
+  playoffs: boolean
 ): string | null {
   if (winnerId === null) {
     // Null winner ID is allowed for ties
@@ -75,7 +95,7 @@ export function validateWinnerId(
     }
   } else if (winnerId !== yourTeamId && winnerId !== opponentTeamId) {
     return 'Winner ID must be one of the team IDs';
-  } else if (
+  } else if (!playoffs && // Only check scores if not playoffs
     (winnerId === yourTeamId && yourTeamScore <= opponentTeamScore) ||
     (winnerId === opponentTeamId && opponentTeamScore <= yourTeamScore)
   ) {
@@ -113,7 +133,7 @@ export function validateHoleNumber(holeNumber: number): string | null {
  * Validates a nine played value
  */
 export function validateNinePlayed(ninePlayed: NinePlayed): string | null {
-  const validValues: NinePlayed[] = ['front', 'back', 'full'];
+  const validValues: NinePlayed[] = ['front', 'back'];
   if (!validValues.includes(ninePlayed)) {
     return `Must be one of: ${validValues.join(', ')}`;
   }
@@ -161,7 +181,7 @@ export function validateHoleResults(data: { holeResults: Array<{ hole_number: nu
 /**
  * Validates a complete match data object for creation
  */
-export function validateMatchData(matchData: any): string[] {
+export function validateMatchData(matchData: MatchData): string[] {
   const errors: string[] = [];
   
   // Required fields
@@ -200,7 +220,8 @@ export function validateMatchData(matchData: any): string[] {
       matchData.your_team_id,
       matchData.opponent_team_id,
       matchData.holes_won + (matchData.holes_tied * 0.5),
-      matchData.holes_lost + (matchData.holes_tied * 0.5)
+      matchData.holes_lost + (matchData.holes_tied * 0.5),
+      matchData.playoffs
     );
     if (winnerIdError) errors.push(`Winner: ${winnerIdError}`);
   }
@@ -220,7 +241,7 @@ export function validateMatchData(matchData: any): string[] {
 /**
  * Validates match data for updates (partial data is allowed)
  */
-export function validateMatchUpdateData(matchData: any): string[] {
+export function validateMatchUpdateData(matchData: MatchUpdateData): string[] {
   const errors: string[] = [];
   
   // Optional fields - only validate if provided
@@ -283,7 +304,8 @@ export function validateMatchUpdateData(matchData: any): string[] {
       matchData.your_team_id,
       matchData.opponent_team_id,
       matchData.holes_won + (matchData.holes_tied * 0.5),
-      matchData.holes_lost + (matchData.holes_tied * 0.5)
+      matchData.holes_lost + (matchData.holes_tied * 0.5),
+      matchData.playoffs || false
     );
     if (winnerIdError) errors.push(`Winner: ${winnerIdError}`);
   }

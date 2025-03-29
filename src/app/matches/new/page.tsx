@@ -59,8 +59,9 @@ export default function NewMatchPage() {
         winnerId = yourTeam.id;
       } else if (opponentTeamScore > yourTeamScore) {
         winnerId = data.opponent_team_id;
-      }
-      
+      } else if (data.winner_id) {
+        winnerId = data.winner_id;
+      }      
       let rating_change = 0;
       if (winnerId !== yourTeam.id) {
         rating_change = 0 - data.rating_change;
