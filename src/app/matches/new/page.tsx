@@ -108,11 +108,11 @@ export default function NewMatchPage() {
   if (authLoading || teamsLoading) {
     return (
       <div className="text-center py-12">
-        <svg className="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <svg className="animate-spin h-8 w-8 text-[--primary] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
           <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
-        <p className="mt-2 text-gray-600">Loading...</p>
+        <p className="mt-2 text-[--muted]">Loading...</p>
       </div>
     );
   }
@@ -121,11 +121,11 @@ export default function NewMatchPage() {
   if (!isAuthenticated) {
     return (
       <div className="max-w-3xl mx-auto text-center py-12">
-        <h1 className="text-2xl font-bold mb-4">Access Denied</h1>
-        <p className="mb-6">You need to be signed in to add new matches.</p>
+        <h1 className="text-2xl font-bold mb-4 text-[--foreground]">Access Denied</h1>
+        <p className="mb-6 text-[--muted]">You need to be signed in to add new matches.</p>
         <Link 
           href="/matches"
-          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="button"
         >
           Back to Matches
         </Link>
@@ -137,11 +137,11 @@ export default function NewMatchPage() {
   if (!yourTeam) {
     return (
       <div className="max-w-3xl mx-auto text-center py-12">
-        <h1 className="text-2xl font-bold mb-4">Team Not Found</h1>
-        <p className="mb-6">Please create your team first before creating a match.</p>
+        <h1 className="text-2xl font-bold mb-4 text-[--foreground]">Team Not Found</h1>
+        <p className="mb-6 text-[--muted]">Please create your team first before creating a match.</p>
         <Link 
           href="/teams/new"
-          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="button"
         >
           Create Your Team
         </Link>
@@ -152,23 +152,40 @@ export default function NewMatchPage() {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
-        <Link href="/matches" className="text-blue-600 hover:text-blue-800">
-          ← Back to Matches
+        <Link 
+          href="/matches" 
+          className="inline-flex items-center text-[--primary] hover:text-[--primary-hover] transition-colors"
+        >
+          <svg 
+            className="w-4 h-4 mr-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24" 
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path 
+              strokeLinecap="round" 
+              strokeLinejoin="round" 
+              strokeWidth={2} 
+              d="M10 19l-7-7m0 0l7-7m-7 7h18" 
+            />
+          </svg>
+          Back to Matches
         </Link>
       </div>
       
-      <h1 className="text-2xl font-bold mb-6">New Match</h1>
+      <h1 className="text-2xl font-bold mb-6 text-[--foreground]">New Match</h1>
       
       {(matchError || teamsError) && (
-        <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+        <div className="bg-red-100 dark:bg-red-900/30 border-l-4 border-red-400 dark:border-red-500 p-4 mb-6">
           <div className="flex">
             <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <svg className="h-5 w-5 text-red-400 dark:text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700">{matchError?.message || teamsError?.message}</p>
+              <p className="text-sm text-red-700 dark:text-red-300">{matchError?.message || teamsError?.message}</p>
             </div>
           </div>
         </div>

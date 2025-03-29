@@ -4,7 +4,7 @@ import HoleForm from './HoleForm';
 
 interface CourseDetailProps {
   course: Course;
-  onUpdateHole: (holeData: Omit<Hole, 'id' | 'created_at'>) => void;
+  onUpdateHole: (holeData: Pick<Hole, 'course_id' | 'hole_number' | 'par' | 'distance'>) => void;
   onEditHole: (hole: Hole) => void;
   onDeleteHole: (id: string) => void;
 }
@@ -26,7 +26,7 @@ export default function CourseDetail({
     setIsAddingHole(true);
   };
 
-  const handleHoleSubmit = (holeData: Omit<Hole, 'id' | 'created_at'>) => {
+  const handleHoleSubmit = (holeData: Pick<Hole, 'course_id' | 'hole_number' | 'par' | 'distance'>) => {
     onUpdateHole(holeData);
     setIsAddingHole(false);
   };
@@ -42,15 +42,15 @@ export default function CourseDetail({
 
   return (
     <div className="space-y-6">
-      <div className="bg-white p-6 rounded-lg shadow">
-        <h2 className="text-2xl font-bold mb-4">{course.name}</h2>
+      <div className="bg-[--card-bg] border border-[--border] rounded-lg p-6">
+        <h2 className="text-2xl font-bold text-[--foreground] mb-4">{course.name}</h2>
         
         <div className="mt-6 flex justify-between items-center">
-          <h3 className="text-lg font-medium">Holes</h3>
+          <h3 className="text-lg font-medium text-[--foreground]">Holes</h3>
           {!isAddingHole && (
             <button
               onClick={handleAddHole}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary]"
             >
               Add Hole
             </button>
@@ -58,8 +58,8 @@ export default function CourseDetail({
         </div>
         
         {isAddingHole && (
-          <div className="mt-4 p-4 border border-gray-200 rounded-lg">
-            <h4 className="text-lg font-medium mb-2">Add New Hole</h4>
+          <div className="mt-4 p-4 border border-[--border] rounded-lg bg-[--input-bg]">
+            <h4 className="text-lg font-medium mb-2 text-[--foreground]">Add New Hole</h4>
             <HoleForm
               courseId={course.id}
               onSubmit={handleHoleSubmit}
@@ -69,12 +69,12 @@ export default function CourseDetail({
         )}
 
         {holes.length === 0 ? (
-          <p className="mt-2 text-gray-500">No holes added yet. Add holes to complete the course setup.</p>
+          <p className="mt-2 text-[--muted]">No holes added yet. Add holes to complete the course setup.</p>
         ) : (
           <div className="mt-4 space-y-6">
             {frontNine.length > 0 && (
               <div>
-                <h4 className="text-md font-medium mb-2">Front Nine</h4>
+                <h4 className="text-md font-medium mb-2 text-[--foreground]">Front Nine</h4>
                 <HoleTable
                   holes={frontNine}
                   onEdit={onEditHole}
@@ -88,7 +88,7 @@ export default function CourseDetail({
             
             {backNine.length > 0 && (
               <div>
-                <h4 className="text-md font-medium mb-2">Back Nine</h4>
+                <h4 className="text-md font-medium mb-2 text-[--foreground]">Back Nine</h4>
                 <HoleTable
                   holes={backNine}
                   onEdit={onEditHole}
@@ -124,40 +124,40 @@ function HoleTable({
   onCancelDelete
 }: HoleTableProps) {
   return (
-    <table className="min-w-full divide-y divide-gray-200">
-      <thead className="bg-gray-50">
+    <table className="min-w-full divide-y divide-[--border]">
+      <thead className="bg-[--card-bg]">
         <tr>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-left text-xs font-medium text-[--muted] uppercase tracking-wider">
             Hole
           </th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-left text-xs font-medium text-[--muted] uppercase tracking-wider">
             Par
           </th>
-          <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-left text-xs font-medium text-[--muted] uppercase tracking-wider">
             Distance
           </th>
-          <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+          <th className="px-6 py-3 text-right text-xs font-medium text-[--muted] uppercase tracking-wider">
             Actions
           </th>
         </tr>
       </thead>
-      <tbody className="bg-white divide-y divide-gray-200">
+      <tbody className="bg-[--input-bg] divide-y divide-[--border]">
         {holes.map((hole) => (
-          <tr key={hole.id} className="hover:bg-gray-50">
-            <td className="px-6 py-4 whitespace-nowrap">
+          <tr key={hole.id} className="hover:bg-[--hover-bg]">
+            <td className="px-6 py-4 whitespace-nowrap text-[--foreground]">
               {hole.hole_number}
             </td>
-            <td className="px-6 py-4 whitespace-nowrap">
+            <td className="px-6 py-4 whitespace-nowrap text-[--foreground]">
               {hole.par}
             </td>
-            <td className="px-6 py-4 whitespace-nowrap">
+            <td className="px-6 py-4 whitespace-nowrap text-[--foreground]">
               {hole.distance ? `${hole.distance} yards` : '-'}
             </td>
             <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
               <div className="flex justify-end gap-2">
                 <button
                   onClick={() => onEdit(hole)}
-                  className="text-indigo-600 hover:text-indigo-900 px-2 py-1"
+                  className="text-[--primary] hover:text-[--primary-hover] px-2 py-1"
                 >
                   Edit
                 </button>
@@ -166,13 +166,13 @@ function HoleTable({
                   <>
                     <button
                       onClick={() => onConfirmDelete(hole.id)}
-                      className="text-red-600 hover:text-red-900 px-2 py-1"
+                      className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 px-2 py-1"
                     >
                       Confirm
                     </button>
                     <button
                       onClick={onCancelDelete}
-                      className="text-gray-600 hover:text-gray-900 px-2 py-1"
+                      className="text-[--muted] hover:text-[--foreground] px-2 py-1"
                     >
                       Cancel
                     </button>
@@ -180,7 +180,7 @@ function HoleTable({
                 ) : (
                   <button
                     onClick={() => onDelete(hole.id)}
-                    className="text-red-600 hover:text-red-900 px-2 py-1"
+                    className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 px-2 py-1"
                   >
                     Delete
                   </button>

@@ -52,8 +52,8 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
     }
   }, [courseId]);
 
-  if (loading) return <div>Loading course data...</div>;
-  if (error) return <div className="text-red-600">{error}</div>;
+  if (loading) return <div className="text-[--muted]">Loading course data...</div>;
+  if (error) return <div className="text-red-600 dark:text-red-400">{error}</div>;
   if (!courseData && formData.course_id) return null;
 
   const visibleHoles = courseData?.holes.slice(
@@ -65,29 +65,17 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
     const isSelected = formData.hole_results.find((hr: HoleResultData) => hr.hole_number === holeNumber)?.result === result;
     const isDisabled = !formData.course_id;
 
-    const bgColor = isSelected
-      ? result === 'win'
-        ? 'bg-green-600'
-        : result === 'tie'
-          ? 'bg-yellow-600'
-          : 'bg-red-600'
-      : 'bg-gray-200';
-
-    const hoverColor = !isDisabled
-      ? result === 'win'
-        ? 'hover:bg-green-500'
-        : result === 'tie'
-          ? 'hover:bg-yellow-500'
-          : 'hover:bg-red-500'
-      : '';
-
+    const baseClasses = "w-7 h-7 flex items-center justify-center text-xs font-medium rounded transition-colors duration-200";
+    const disabledClasses = isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer";
+    
     return (
       <button
         type="button"
         disabled={isDisabled}
-        className={`px-2 py-1 text-xs font-medium rounded-md ${bgColor} ${hoverColor} ${
-          isSelected ? 'text-white' : 'text-gray-700'
-        } ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+        aria-pressed={isSelected}
+        className={`${baseClasses} ${disabledClasses} ${
+          result === 'win' ? 'win' : result === 'tie' ? 'tie' : 'loss'
+        }`}
         onClick={() => onHoleResultChange(holeNumber, isSelected ? null : result)}
       >
         {result === 'win' ? 'W' : result === 'tie' ? 'T' : 'L'}
@@ -105,57 +93,62 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
 
     const wins = results.filter(hr => hr.result === 'win').length;
     const losses = results.filter(hr => hr.result === 'loss').length;
+    const ties = results.filter(hr => hr.result === 'tie').length;
 
     const score = wins - losses;
     
-    if (score === 0) return 'All Tied Up';
-    return score > 0 
-      ? `${yourTeamName || 'Dream Team'} is up ${Math.abs(score)}`
-      : `${opponentTeamName || 'Opponent'} is up ${Math.abs(score)}`;
+    return {
+      wins,
+      losses,
+      ties,
+      message: score === 0 
+        ? 'All Tied Up'
+        : score > 0 
+          ? `${yourTeamName || 'Dream Team'} is up ${Math.abs(score)}`
+          : `${opponentTeamName || 'Opponent'} is up ${Math.abs(score)}`
+    };
   };
 
+  const status = calculateMatchStatus();
+
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-medium text-gray-900">
-        Match Scorecard {courseData?.name ? `- ${courseData.name}` : ''}
-      </h3>
-      
+    <div className="space-y-6">
       <div className="overflow-x-auto">
-        <table className="min-w-full divide-y divide-gray-200">
+        <table className="min-w-full border border-[--border] rounded-lg overflow-hidden">
           <thead>
-            <tr>
-              <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Hole</th>
+            <tr className="bg-[--card-bg]">
+              <th className="px-3 py-1.5 text-left text-xs font-medium text-[--muted] uppercase tracking-wider w-28">Hole</th>
               {visibleHoles.map(hole => (
-                <th key={hole.hole_number} className="px-2 py-2 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th key={hole.hole_number} className="px-1 py-1.5 text-center text-xs font-medium text-[--muted] uppercase tracking-wider w-24">
                   {formData.course_id ? hole.hole_number : '-'}
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
-            <tr>
-              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Par</td>
+          <tbody className="divide-y divide-[--border]">
+            <tr className="bg-[--input-bg]/50">
+              <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Par</td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-2 py-2 whitespace-nowrap text-center text-sm text-gray-500">
+                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-[--muted]">
                   {formData.course_id ? hole.par : '-'}
                 </td>
               ))}
             </tr>
-            <tr>
-              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">Distance</td>
+            <tr className="bg-[--input-bg]/30">
+              <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Dist</td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-2 py-2 whitespace-nowrap text-center text-sm text-gray-500">
+                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-[--muted]">
                   {formData.course_id ? hole.distance : '-'}
                 </td>
               ))}
             </tr>
             <tr>
-              <td className="px-4 py-2 whitespace-nowrap text-sm font-medium text-gray-900">
+              <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-[--foreground]">
                 {yourTeamName || 'Your Team'}
               </td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-2 py-2 whitespace-nowrap text-center">
-                  <div className="flex justify-center space-x-1">
+                <td key={hole.hole_number} className="px-1 py-2.5 whitespace-nowrap">
+                  <div className="flex justify-center gap-0.5">
                     {renderHoleResultCell(hole.hole_number, 'win')}
                     {renderHoleResultCell(hole.hole_number, 'tie')}
                     {renderHoleResultCell(hole.hole_number, 'loss')}
@@ -168,11 +161,27 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
       </div>
 
       {/* Match Status */}
-      <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-        <p className="text-center text-lg font-medium text-gray-900">
-          {calculateMatchStatus() || '-'}
-        </p>
-      </div>
+      {status && (
+        <div className="bg-[--card-bg] border border-[--border] rounded-lg p-3">
+          <div className="grid grid-cols-3 gap-3 text-center mb-2">
+            <div>
+              <p className="text-xs text-[--muted] mb-0.5">Wins</p>
+              <p className="text-lg font-semibold text-green-600 dark:text-green-400">{status.wins}</p>
+            </div>
+            <div>
+              <p className="text-xs text-[--muted] mb-0.5">Ties</p>
+              <p className="text-lg font-semibold text-yellow-600 dark:text-yellow-400">{status.ties}</p>
+            </div>
+            <div>
+              <p className="text-xs text-[--muted] mb-0.5">Losses</p>
+              <p className="text-lg font-semibold text-red-600 dark:text-red-400">{status.losses}</p>
+            </div>
+          </div>
+          <p className="text-center text-[--foreground] text-sm font-medium">
+            {status.message}
+          </p>
+        </div>
+      )}
     </div>
   );
 } 

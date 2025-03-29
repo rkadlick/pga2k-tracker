@@ -4,7 +4,7 @@ import { Hole } from '@/types';
 interface HoleFormProps {
   courseId: string;
   initialData?: Partial<Hole>;
-  onSubmit: (holeData: Omit<Hole, 'id' | 'created_at'>) => void;
+  onSubmit: (holeData: Pick<Hole, 'course_id' | 'hole_number' | 'par' | 'distance'>) => void;
   onCancel: () => void;
 }
 
@@ -55,7 +55,7 @@ export default function HoleForm({
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div>
-          <label htmlFor="holeNumber" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="holeNumber" className="block text-sm font-medium text-[--foreground]">
             Hole Number
           </label>
           <input
@@ -65,25 +65,25 @@ export default function HoleForm({
             onChange={(e) => setHoleNumber(parseInt(e.target.value))}
             min={1}
             max={18}
-            className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-              errors.holeNumber ? 'border-red-300' : ''
+            className={`mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm ${
+              errors.holeNumber ? 'border-red-500 dark:border-red-400' : ''
             }`}
           />
           {errors.holeNumber && (
-            <p className="mt-1 text-sm text-red-600">{errors.holeNumber}</p>
+            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.holeNumber}</p>
           )}
         </div>
         
         <div>
-          <label htmlFor="par" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="par" className="block text-sm font-medium text-[--foreground]">
             Par
           </label>
           <select
             id="par"
             value={par}
             onChange={(e) => setPar(parseInt(e.target.value))}
-            className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-              errors.par ? 'border-red-300' : ''
+            className={`mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm ${
+              errors.par ? 'border-red-500 dark:border-red-400' : ''
             }`}
           >
             <option value={3}>3</option>
@@ -91,30 +91,27 @@ export default function HoleForm({
             <option value={5}>5</option>
           </select>
           {errors.par && (
-            <p className="mt-1 text-sm text-red-600">{errors.par}</p>
+            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.par}</p>
           )}
         </div>
         
         <div>
-          <label htmlFor="distance" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="distance" className="block text-sm font-medium text-[--foreground]">
             Distance (yards)
           </label>
           <input
             type="number"
             id="distance"
             value={distance || ''}
-            onChange={(e) => 
-              setDistance(e.target.value ? parseInt(e.target.value) : undefined)
-            }
+            onChange={(e) => setDistance(e.target.value ? parseInt(e.target.value) : undefined)}
             min={100}
             max={700}
-            className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm ${
-              errors.distance ? 'border-red-300' : ''
+            className={`mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm ${
+              errors.distance ? 'border-red-500 dark:border-red-400' : ''
             }`}
-            placeholder="Optional"
           />
           {errors.distance && (
-            <p className="mt-1 text-sm text-red-600">{errors.distance}</p>
+            <p className="mt-1 text-sm text-red-600 dark:text-red-400">{errors.distance}</p>
           )}
         </div>
       </div>
@@ -123,13 +120,13 @@ export default function HoleForm({
         <button
           type="button"
           onClick={onCancel}
-          className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="px-4 py-2 border border-[--border] rounded-lg text-sm font-medium text-[--foreground] bg-[--input-bg] hover:bg-[--hover-bg] focus:outline-none focus:ring-2 focus:ring-[--primary]"
         >
           Cancel
         </button>
         <button
           type="submit"
-          className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="px-4 py-2 border border-transparent rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary]"
         >
           Save
         </button>

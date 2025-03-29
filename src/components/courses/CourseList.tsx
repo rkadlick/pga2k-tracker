@@ -20,32 +20,32 @@ export default function CourseList({ courses, onDelete }: CourseListProps) {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow overflow-hidden">
-      <table className="min-w-full divide-y divide-gray-200">
-        <thead className="bg-gray-50">
+    <div className="bg-[--card-bg] border border-[--border] rounded-lg overflow-hidden">
+      <table className="min-w-full divide-y divide-[--border]">
+        <thead className="bg-[--input-bg]">
           <tr>
-            <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-left text-xs font-medium text-[--muted] uppercase tracking-wider">
               Course Name
             </th>
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-6 py-3 text-right text-xs font-medium text-[--muted] uppercase tracking-wider">
               Actions
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white divide-y divide-gray-200">
+        <tbody className="bg-[--card-bg] divide-y divide-[--border]">
           {courses.length === 0 ? (
             <tr>
-              <td colSpan={2} className="px-6 py-4 text-center text-gray-500">
+              <td colSpan={2} className="px-6 py-4 text-center text-[--muted]">
                 No courses added yet. Create your first course to get started.
               </td>
             </tr>
           ) : (
             courses.map((course) => (
-              <tr key={course.id} className="hover:bg-gray-50">
+              <tr key={course.id} className="hover:bg-[--hover-bg]">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <Link
                     href={`/courses/${course.id}`}
-                    className="text-blue-600 hover:text-blue-900 font-medium"
+                    className="text-[--primary] hover:text-[--primary-hover] font-medium"
                   >
                     {course.name}
                   </Link>
@@ -54,7 +54,7 @@ export default function CourseList({ courses, onDelete }: CourseListProps) {
                   <div className="flex justify-end gap-2">
                     <Link
                       href={`/courses/${course.id}`}
-                      className="text-indigo-600 hover:text-indigo-900 px-2 py-1"
+                      className="text-[--primary] hover:text-[--primary-hover] px-2 py-1"
                     >
                       Edit
                     </Link>
@@ -62,13 +62,13 @@ export default function CourseList({ courses, onDelete }: CourseListProps) {
                       <>
                         <button
                           onClick={() => handleConfirmDelete(course.id)}
-                          className="text-red-600 hover:text-red-900 px-2 py-1"
+                          className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 px-2 py-1"
                         >
                           Confirm
                         </button>
                         <button
                           onClick={() => setConfirmDelete(null)}
-                          className="text-gray-600 hover:text-gray-900 px-2 py-1"
+                          className="text-[--muted] hover:text-[--foreground] px-2 py-1"
                         >
                           Cancel
                         </button>
@@ -76,7 +76,7 @@ export default function CourseList({ courses, onDelete }: CourseListProps) {
                     ) : (
                       <button
                         onClick={() => handleDeleteClick(course.id)}
-                        className="text-red-600 hover:text-red-900 px-2 py-1"
+                        className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 px-2 py-1"
                       >
                         Delete
                       </button>

@@ -6,67 +6,74 @@ interface MatchDetailsProps {
 
 export default function MatchDetails({ match }: MatchDetailsProps) {
   return (
-    <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+    <div className="bg-[--card-bg] border border-[--border] overflow-hidden rounded-lg">
       <div className="px-4 py-5 sm:px-6">
-        <h3 className="text-lg leading-6 font-medium text-gray-900">
+        <h3 className="text-lg leading-6 font-semibold text-[--foreground]">
           Match Details
         </h3>
       </div>
-      <div className="border-t border-gray-200">
+      <div className="border-t border-[--border]">
         {/* Match Result */}
         <div className="px-4 py-5 sm:px-6">
-          <div className="bg-blue-50 rounded-lg p-4">
+          <div className="bg-[--input-bg] rounded-lg p-4 border border-[--border]">
             <div className="grid grid-cols-3 gap-4 text-center">
               <div>
-                <p className="text-sm text-blue-700">{match.your_team}</p>
-                <p className="font-medium text-lg">{match.holes_won}</p>
+                <p className="text-sm text-[--muted] mb-1">{match.your_team}</p>
+                <p className="font-medium text-lg text-green-600 dark:text-green-400">{match.holes_won}</p>
               </div>
               <div>
-                <p className="text-sm text-blue-700">Tied</p>
-                <p className="font-medium text-lg">{match.holes_tied}</p>
+                <p className="text-sm text-[--muted] mb-1">Tied</p>
+                <p className="font-medium text-lg text-yellow-600 dark:text-yellow-400">{match.holes_tied}</p>
               </div>
               <div>
-                <p className="text-sm text-blue-700">{match.opponent_team}</p>
-                <p className="font-medium text-lg">{match.holes_lost}</p>
+                <p className="text-sm text-[--muted] mb-1">{match.opponent_team}</p>
+                <p className="font-medium text-lg text-red-600 dark:text-red-400">{match.holes_lost}</p>
               </div>
             </div>
             <div className="mt-2 text-center">
-              <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                ${match.winner_id === match.your_team_id ? 'bg-green-100 text-green-800' : 
-                  match.winner_id === match.opponent_team_id ? 'bg-red-100 text-red-800' : 
-                  'bg-gray-100 text-gray-800'}`}
+              <span
+                className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  match.holes_won > match.holes_lost
+                    ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200'
+                    : match.holes_won === match.holes_lost
+                    ? 'bg-[--input-bg] text-[--muted]'
+                    : 'bg-red-100 text-red-700 dark:bg-red-500/30 dark:text-red-200'
+                }`}
               >
-                {match.winner_id === match.your_team_id 
-                  ? `${match.your_team} won` 
-                  : match.winner_id === match.opponent_team_id 
-                    ? `${match.opponent_team} won`
-                    : 'Match Tied'}
+                {match.holes_won > match.holes_lost
+                  ? `${match.your_team} won`
+                  : match.holes_won === match.holes_lost
+                  ? 'Match Tied'
+                  : `${match.opponent_team} won`}
               </span>
             </div>
           </div>
         </div>
 
         {/* Notes */}
-        <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-          <h4 className="text-sm font-medium text-gray-900 mb-2">Notes</h4>
-          <p className="text-sm text-gray-600">
+        <div className="border-t border-[--border] px-4 py-5 sm:px-6">
+          <h4 className="text-sm font-medium text-[--foreground] mb-2">Notes</h4>
+          <p className="text-sm text-[--muted]">
             {match.notes || 'None'}
           </p>
         </div>
 
         {/* Tags */}
-        <div className="border-t border-gray-200 px-4 py-5 sm:px-6">
-          <h4 className="text-sm font-medium text-gray-900 mb-2">Tags</h4>
+        <div className="border-t border-[--border] px-4 py-5 sm:px-6">
+          <h4 className="text-sm font-medium text-[--foreground] mb-2">Tags</h4>
           {match.tags && match.tags.length > 0 ? (
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap gap-1.5">
               {match.tags.map((tag: string, idx: number) => (
-                <span key={idx} className="mr-1 mb-1 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                <span 
+                  key={idx} 
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[--input-bg] text-[--foreground] border border-[--border]"
+                >
                   {tag}
                 </span>
               ))}
             </div>
           ) : (
-            <p className="text-sm text-gray-600">None</p>
+            <p className="text-sm text-[--muted]">None</p>
           )}
         </div>
       </div>

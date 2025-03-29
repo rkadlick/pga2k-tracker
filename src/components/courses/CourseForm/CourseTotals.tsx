@@ -7,16 +7,16 @@ interface CourseTotalsProps {
 
 export default function CourseTotals({ totalPar, totalDistance }: CourseTotalsProps) {
   return (
-    <div className="bg-gray-100 p-4 rounded-lg">
-      <h3 className="font-medium text-gray-900 mb-2">Course Totals</h3>
+    <div className="bg-[--card-bg] border border-[--border] rounded-lg p-6">
+      <h3 className="text-lg font-medium text-[--foreground] mb-4">Course Totals</h3>
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <p className="text-sm text-gray-600">Par</p>
-          <p className="font-medium">{totalPar}</p>
+          <p className="text-sm font-medium text-[--muted]">Total Par</p>
+          <p className="mt-1 text-2xl font-semibold text-[--foreground]">{totalPar}</p>
         </div>
         <div>
-          <p className="text-sm text-gray-600">Yards</p>
-          <p className="font-medium">{totalDistance}</p>
+          <p className="text-sm font-medium text-[--muted]">Total Distance</p>
+          <p className="mt-1 text-2xl font-semibold text-[--foreground]">{totalDistance} yards</p>
         </div>
       </div>
     </div>

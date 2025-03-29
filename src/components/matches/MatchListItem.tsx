@@ -23,58 +23,71 @@ export default function MatchListItem({ match }: MatchListItemProps) {
     <li>
       <Link 
         href={`/matches/${match.id}`} 
-        className="block hover:bg-gray-50"
+        className="block hover:bg-[--input-hover] transition-colors"
       >
         <div className="px-4 py-4 sm:px-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <div className="text-sm font-medium text-blue-600 truncate">
+              <div className="text-sm font-medium text-[--primary] truncate">
                 {match.your_team} vs {match.opponent_team}
               </div>
               {match.playoffs && (
-                <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-500/30 dark:text-purple-200">
                   Playoff
                 </span>
               )}
             </div>
             <div className="ml-2 flex-shrink-0 flex">
-              <p className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full 
-                ${match.winner_id === match.your_team_id ? 'bg-green-100 text-green-800' : 
-                  match.winner_id === match.opponent_team_id ? 'bg-red-100 text-red-800' : 
-                  'bg-gray-100 text-gray-800'}`}
+              <span className={`px-2.5 py-0.5 inline-flex items-center text-xs font-medium rounded-full ${
+                match.winner_id === match.your_team_id 
+                  ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200' 
+                  : match.winner_id === match.opponent_team_id 
+                    ? 'bg-red-100 text-red-700 dark:bg-red-500/30 dark:text-red-200' 
+                    : 'bg-[--input-bg] text-[--muted]'}`}
               >
                 {match.winner_id === match.your_team_id 
                   ? `${match.your_team} won` 
                   : match.winner_id === match.opponent_team_id 
                     ? `${match.opponent_team} won`
                     : 'Tied'}
-              </p>
+              </span>
             </div>
           </div>
           <div className="mt-2 sm:flex sm:justify-between">
             <div className="sm:flex sm:space-x-4">
-              <p className="flex items-center text-sm text-gray-500">
-                {match.course.name}
+              <p className="flex items-center text-sm text-[--muted]">
+                {match.course}
               </p>
-              <p className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+              <p className="mt-2 flex items-center text-sm text-[--muted] sm:mt-0">
                 {formatNinePlayed(match.nine_played)}
               </p>
             </div>
-            <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
-              <p>
-                {match.rating_change}
-              </p>
+            <div className="mt-2 flex items-center text-sm text-[--muted] sm:mt-0">
+              {match.rating_change !== undefined && (
+                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                  match.rating_change > 0
+                    ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200'
+                    : match.rating_change < 0
+                      ? 'bg-red-100 text-red-700 dark:bg-red-500/30 dark:text-red-200'
+                      : 'bg-[--input-bg] text-[--muted]'
+                }`}>
+                  {match.rating_change > 0 ? '+' : ''}{match.rating_change}
+                </span>
+              )}
             </div>
           </div>
           {match.notes && (
-            <div className="mt-2 text-sm text-gray-500 truncate">
+            <div className="mt-2 text-sm text-[--muted] truncate">
               {match.notes}
             </div>
           )}
           {match.tags && match.tags.length > 0 && (
-            <div className="mt-2 flex flex-wrap">
+            <div className="mt-2 flex flex-wrap gap-1.5">
               {match.tags.map((tag, idx) => (
-                <span key={idx} className="mr-1 mb-1 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                <span 
+                  key={idx} 
+                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[--input-bg] text-[--foreground] border border-[--border]"
+                >
                   {tag}
                 </span>
               ))}

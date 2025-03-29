@@ -14,7 +14,7 @@ export default function FormHeader({
 }: FormHeaderProps) {
   return (
     <div>
-      <label htmlFor="courseName" className="block text-lg font-medium text-gray-700">
+      <label htmlFor="courseName" className="block text-lg font-medium text-[--foreground]">
         Course Name
       </label>
       <input
@@ -22,13 +22,13 @@ export default function FormHeader({
         id="courseName"
         value={courseName}
         onChange={(e) => setCourseName(e.target.value)}
-        className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-lg ${
-          error ? 'border-red-300' : ''
+        className={`mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm ${
+          error ? 'border-red-500 dark:border-red-400' : ''
         }`}
         placeholder="Augusta National"
       />
       {error && (
-        <p className="mt-1 text-sm text-red-600">{error}</p>
+        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{error}</p>
       )}
     </div>
   );

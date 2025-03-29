@@ -1,4 +1,4 @@
-import { Match, NinePlayed } from '@/types';
+import { Match } from '@/types';
 import CourseSelect from '@/components/matches/MatchForm/CourseSelect';
 
 interface EditMatchDetailsProps {
@@ -19,127 +19,125 @@ export default function EditMatchDetails({
   onCourseSelect,
   onNinePlayedChange
 }: EditMatchDetailsProps) {
-
   return (
-    <div className="space-y-8 divide-y divide-gray-200">
-      <div className="space-y-6 sm:space-y-5">
+    <div className="space-y-8 animate-fade-in">
+      <div className="bg-[--card-bg] rounded-lg border border-[--border] p-6 space-y-6">
         <div>
-          <h3 className="text-lg font-medium leading-6 text-gray-900">Match Details</h3>
-          <p className="mt-1 max-w-2xl text-sm text-gray-500">
+          <h3 className="text-lg font-semibold text-[--foreground]">Match Details</h3>
+          <p className="mt-1 text-sm text-[--muted]">
             Update the details for this match.
           </p>
         </div>
 
-        <div className="space-y-6 sm:space-y-5">
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="course" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+        <div className="grid gap-6">
+          <div className="space-y-2">
+            <label htmlFor="course" className="block text-sm font-medium text-[--foreground]">
               Course
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <CourseSelect
-                selectedCourseId={formData.course_id}
-                onCourseSelect={onCourseSelect}
-              />
-            </div>
+            <CourseSelect
+              selectedCourseId={formData.course_id}
+              onCourseSelect={onCourseSelect}
+            />
           </div>
 
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="nine_played" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <div className="space-y-2">
+            <label htmlFor="nine_played" className="block text-sm font-medium text-[--foreground]">
               Nine Played
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <select
-                id="nine_played"
-                name="nine_played"
-                value={formData.nine_played}
-                onChange={(e) => onNinePlayedChange(e.target.value as 'front' | 'back')}
-                className="max-w-lg block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-              >
-                <option value="front">Front 9</option>
-                <option value="back">Back 9</option>
-              </select>
-            </div>
+            <select
+              id="nine_played"
+              name="nine_played"
+              value={formData.nine_played}
+              onChange={(e) => onNinePlayedChange(e.target.value as 'front' | 'back')}
+              className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                       focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
+            >
+              <option value="front">Front 9</option>
+              <option value="back">Back 9</option>
+            </select>
           </div>
 
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="date_played" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <div className="space-y-2">
+            <label htmlFor="date_played" className="block text-sm font-medium text-[--foreground]">
               Date Played
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <input
-                type="date"
-                name="date_played"
-                id="date_played"
-                value={matchData.date_played ? matchData.date_played.split('T')[0] : ''}
-                onChange={onInputChange}
-                className="max-w-lg block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
+            <input
+              type="date"
+              name="date_played"
+              id="date_played"
+              value={matchData.date_played ? matchData.date_played.split('T')[0] : ''}
+              onChange={onInputChange}
+              className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                       focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
+            />
           </div>
 
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="rating_change" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <div className="space-y-2">
+            <label htmlFor="rating_change" className="block text-sm font-medium text-[--foreground]">
               Rating Change
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <input
-                type="number"
-                name="rating_change"
-                id="rating_change"
-                value={Math.abs(matchData.rating_change || 0)}
-                onChange={onInputChange}
-                className="max-w-lg block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
+            <input
+              type="number"
+              name="rating_change"
+              id="rating_change"
+              value={Math.abs(matchData.rating_change || 0)}
+              onChange={onInputChange}
+              className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                       focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
+            />
           </div>
 
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="playoffs" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <div className="flex items-center space-x-2">
+            <input
+              type="checkbox"
+              name="playoffs"
+              id="playoffs"
+              checked={matchData.playoffs || false}
+              onChange={onInputChange}
+              className="h-4 w-4 bg-[--input-bg] border border-[--input-border] text-[--primary] rounded
+                       focus:ring-[--primary] focus:ring-offset-[--background]
+                       transition-colors duration-200"
+            />
+            <label htmlFor="playoffs" className="text-sm font-medium text-[--foreground]">
               Playoffs
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <input
-                type="checkbox"
-                name="playoffs"
-                id="playoffs"
-                checked={matchData.playoffs || false}
-                onChange={onInputChange}
-                className="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded"
-              />
-            </div>
           </div>
 
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="notes" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <div className="space-y-2">
+            <label htmlFor="notes" className="block text-sm font-medium text-[--foreground]">
               Notes
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <textarea
-                name="notes"
-                id="notes"
-                rows={3}
-                value={matchData.notes || ''}
-                onChange={onInputChange}
-                className="max-w-lg shadow-sm block w-full focus:ring-blue-500 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md"
-              />
-            </div>
+            <textarea
+              name="notes"
+              id="notes"
+              rows={3}
+              value={matchData.notes || ''}
+              onChange={onInputChange}
+              className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                       focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
+              placeholder="Add any notes about this match..."
+            />
           </div>
 
-          <div className="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start">
-            <label htmlFor="tags" className="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">
+          <div className="space-y-2">
+            <label htmlFor="tags" className="block text-sm font-medium text-[--foreground]">
               Tags
             </label>
-            <div className="mt-1 sm:mt-0 sm:col-span-2">
-              <input
-                type="text"
-                name="tags"
-                id="tags"
-                value={matchData.tags?.join(', ') || ''}
-                onChange={onInputChange}
-                placeholder="Enter tags separated by commas"
-                className="max-w-lg block w-full shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
+            <input
+              type="text"
+              name="tags"
+              id="tags"
+              value={matchData.tags?.join(', ') || ''}
+              onChange={onInputChange}
+              placeholder="Enter tags separated by commas"
+              className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                       focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
+            />
           </div>
         </div>
       </div>
