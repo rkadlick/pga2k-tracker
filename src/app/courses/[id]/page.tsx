@@ -1,11 +1,21 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Course } from '@/types';
+import { Course, Hole } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
 import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib/validation/courseValidation';
 import { useCourses } from '@/hooks/useCourses';
+import EditCourseHoles from '@/components/courses/EditCourseHoles';
+import { use } from 'react';
+
+interface HoleData {
+  id: string;
+  hole_number: number;
+  par: number | null;
+  distance: number | null;
+  course_id: string;
+}
 
 const inputStyles = `
   /* Remove arrows from number inputs */
@@ -19,67 +29,66 @@ const inputStyles = `
   }
 `;
 
-// Update the type definition to match what's coming from the API
-type HoleData = {
-  id: string;
-  hole_number: number;
-  par: number | null;
-  distance: number | null;
-  course_id: string;
-};
-
 export default function CourseDetailPage({
   params
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
+  const { id } = use(params);
   const [course, setCourse] = useState<Course | null>(null);
+  const [holes, setHoles] = useState<HoleData[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [courseName, setCourseName] = useState('');
-  const [holes, setHoles] = useState<HoleData[]>([]);
   const [nameError, setNameError] = useState('');
   const [holeErrors, setHoleErrors] = useState<string[]>([]);
   
   const router = useRouter();
-  const { id } = use(params as { id: string });
-  const { getCourseById, updateCourse } = useCourses();
+  const { updateCourse } = useCourses();
 
   useEffect(() => {
-    loadCourse();
+    const fetchCourse = async () => {
+      try {
+        const response = await fetch(`/api/courses/${id}`);
+        const data = await response.json();
+        setCourse(data.data);
+        // Convert holes to match the HoleData interface
+        const convertedHoles = (data.data.holes || []).map((hole: Hole): HoleData => ({
+          id: hole.id,
+          hole_number: hole.hole_number,
+          par: hole.par,
+          distance: hole.distance ?? null,
+          course_id: hole.course_id
+        }));
+        setHoles(convertedHoles);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching course:', error);
+        setError('Failed to fetch course');
+        setIsLoading(false);
+      }
+    };
+
+    fetchCourse();
   }, [id]);
 
   useEffect(() => {
     if (course) {
       setCourseName(course.name);
-      // Convert Hole[] to HoleData[] by ensuring null instead of undefined
-      const holeData: HoleData[] = course.holes?.map(hole => ({
+      // Convert holes to match the HoleData interface
+      const convertedHoles = (course.holes || []).map((hole: Hole): HoleData => ({
         id: hole.id,
         hole_number: hole.hole_number,
         par: hole.par,
-        distance: hole.distance ?? null, // Convert undefined to null
+        distance: hole.distance ?? null,
         course_id: hole.course_id
-      })) || [];
-      setHoles(holeData);
+      }));
+      setHoles(convertedHoles);
+      setNameError('');
+      setHoleErrors([]);
     }
   }, [course]);
-
-  const loadCourse = async () => {
-    setIsLoading(true);
-    setError(null);
-    
-    try {
-      // Use the getCourseById function from the hook
-      const courseData = await getCourseById(id);
-      setCourse(courseData);
-    } catch (err) {
-      console.error('Error loading course:', err);
-      setError(err instanceof Error ? err.message : 'An unknown error occurred');
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   const handleUpdateCourse = async () => {
     // Validate course name
@@ -143,65 +152,35 @@ export default function CourseDetailPage({
     // Reset to original values
     if (course) {
       setCourseName(course.name);
-      // Convert Hole[] to HoleData[] by ensuring null instead of undefined
-      const holeData: HoleData[] = course.holes?.map(hole => ({
+      // Convert holes to match the HoleData interface
+      const convertedHoles = (course.holes || []).map((hole: Hole): HoleData => ({
         id: hole.id,
         hole_number: hole.hole_number,
         par: hole.par,
-        distance: hole.distance ?? null, // Convert undefined to null
+        distance: hole.distance ?? null,
         course_id: hole.course_id
-      })) || [];
-      setHoles(holeData);
+      }));
+      setHoles(convertedHoles);
       setNameError('');
       setHoleErrors([]);
     }
     setIsEditing(false);
   };
 
-  const updateHolePar = (rowId: string, colIndex: number, value: string) => {
-    // For back nine, we need to adjust the hole number
-    const holeNumber = rowId.startsWith('front') ? colIndex + 1 : colIndex + 10;
-    const holeIndex = holes.findIndex(h => h.hole_number === holeNumber);
-    
-    if (holeIndex === -1) return;
-    
-    const newHoles = [...holes];
-    newHoles[holeIndex] = {
-      ...newHoles[holeIndex],
-      par: value === '' ? null : Number(value)
-    };
-    
-    setHoles(newHoles);
-    
-    // Clear error if exists
-    if (holeErrors[holeIndex]) {
-      const newErrors = [...holeErrors];
-      newErrors[holeIndex] = '';
-      setHoleErrors(newErrors);
-    }
-  };
-  
-  const updateHoleDistance = (rowId: string, colIndex: number, value: string) => {
-    // For back nine, we need to adjust the hole number
-    const holeNumber = rowId.startsWith('front') ? colIndex + 1 : colIndex + 10;
-    const holeIndex = holes.findIndex(h => h.hole_number === holeNumber);
-    
-    if (holeIndex === -1) return;
-    
-    const newHoles = [...holes];
-    newHoles[holeIndex] = {
-      ...newHoles[holeIndex],
-      distance: value === '' ? null : Number(value)
-    };
-    
-    setHoles(newHoles);
-    
-    // Clear error if exists
-    if (holeErrors[holeIndex]) {
-      const newErrors = [...holeErrors];
-      newErrors[holeIndex] = '';
-      setHoleErrors(newErrors);
-    }
+  const updateHole = (holeNumber: number, field: 'par' | 'distance', value: number | null) => {
+    setHoles(prevHoles => 
+      prevHoles.map(hole => 
+        hole.hole_number === holeNumber 
+          ? { ...hole, [field]: value }
+          : hole
+      )
+    );
+    // Clear any existing error for this hole
+    setHoleErrors(prevErrors => {
+      const newErrors = [...prevErrors];
+      newErrors[holeNumber - 1] = '';
+      return newErrors;
+    });
   };
 
   if (isLoading) {
@@ -335,57 +314,72 @@ export default function CourseDetailPage({
         )}
       </div>
       
-      {/* Front Nine */}
-      <Scorecard 
-        title="Front Nine"
-        columns={frontNine.map(hole => ({ label: hole.hole_number.toString() }))}
-        rows={[
-          {
-            id: 'frontPar',
-            type: 'par',
-            label: 'Par',
-            values: frontNine.map(hole => hole.par),
-            total: frontNinePar,
-            editable: isEditing,
-            onChange: updateHolePar
-          },
-          {
-            id: 'frontDistance',
-            type: 'distance',
-            label: 'Yards',
-            values: frontNine.map(hole => hole.distance),
-            total: frontNineDistance,
-            editable: isEditing,
-            onChange: updateHoleDistance
-          }
-        ]}
-      />
-      
-      {/* Back Nine */}
-      <Scorecard 
-        title="Back Nine"
-        columns={backNine.map(hole => ({ label: hole.hole_number.toString() }))}
-        rows={[
-          {
-            id: 'backPar',
-            type: 'par',
-            label: 'Par',
-            values: backNine.map(hole => hole.par),
-            total: backNinePar,
-            editable: isEditing,
-            onChange: updateHolePar
-          },
-          {
-            id: 'backDistance',
-            type: 'distance',
-            label: 'Yards',
-            values: backNine.map(hole => hole.distance),
-            total: backNineDistance,
-            editable: isEditing,
-            onChange: updateHoleDistance
-          }
-        ]}
-      />
+      {/* Course Holes */}
+      {isEditing ? (
+        <EditCourseHoles
+          holes={holes}
+          onHoleUpdate={updateHole}
+          holeErrors={holeErrors}
+        />
+      ) : (
+        <>
+          {/* Front Nine */}
+          <Scorecard 
+            title="Front Nine"
+            columns={[
+              { id: 'label', label: '' },
+              ...frontNine.map(hole => ({ 
+                id: `hole-${hole.hole_number}`,
+                label: hole.hole_number.toString()
+              }))
+            ]}
+            rows={[
+              {
+                id: 'frontPar',
+                type: 'par',
+                label: 'Par',
+                values: frontNine.map(hole => hole.par?.toString() || ''),
+                total: frontNinePar
+              },
+              {
+                id: 'frontDistance',
+                type: 'distance',
+                label: 'Yards',
+                values: frontNine.map(hole => hole.distance?.toString() || ''),
+                total: frontNineDistance
+              }
+            ]}
+          />
+          
+          {/* Back Nine */}
+          <Scorecard 
+            title="Back Nine"
+            columns={[
+              { id: 'label', label: '' },
+              ...backNine.map(hole => ({ 
+                id: `hole-${hole.hole_number}`,
+                label: hole.hole_number.toString()
+              }))
+            ]}
+            rows={[
+              {
+                id: 'backPar',
+                type: 'par',
+                label: 'Par',
+                values: backNine.map(hole => hole.par?.toString() || ''),
+                total: backNinePar
+              },
+              {
+                id: 'backDistance',
+                type: 'distance',
+                label: 'Yards',
+                values: backNine.map(hole => hole.distance?.toString() || ''),
+                total: backNineDistance
+              }
+            ]}
+          />
+        </>
+      )}
       
       {/* Course Totals */}
       <div className="bg-gray-100 p-4 rounded-lg">

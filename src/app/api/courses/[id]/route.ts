@@ -4,10 +4,11 @@ import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const course = await getCourseWithHoles(params.id);
+    const { id } = await params;
+    const course = await getCourseWithHoles(id);
     return NextResponse.json({ data: course });
   } catch (error) {
     console.error('Error fetching course:', error);
@@ -20,10 +21,9 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Access id directly but store it in a variable first
     const { id } = await params;
     const { 
       name, 
@@ -90,10 +90,9 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Access id directly but store it in a variable first
     const { id } = await params;
     await deleteCourse(id);
     return NextResponse.json({ success: true });

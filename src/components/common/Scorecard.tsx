@@ -13,9 +13,10 @@ interface Row {
   id: string;
   type: RowType;
   label: string;
-  values: (string | number)[];
+  values: (string | number | null)[];
   total?: string | number;
   className?: string;
+  onChange?: (rowId: string, colIndex: number, value: string) => void;
 }
 
 interface ScorecardProps {
@@ -81,7 +82,7 @@ export default function Scorecard({
                 </td>
                 {row.values.map((value, index) => (
                   <td
-                    key={`${row.id}-${index}`}
+                    key={`${row.id}-${index}-${value}`}
                     className={`px-3 py-2 text-center ${
                       row.type === 'match'
                         ? value === 'W'
@@ -98,7 +99,18 @@ export default function Scorecard({
                         : 'text-[--muted]'
                     }`}
                   >
-                    {value}
+                    {row.onChange ? (
+                      <input
+                        type="text"
+                        value={value?.toString() || ''}
+                        onChange={(e) => row.onChange!(row.id, index, e.target.value)}
+                        className="w-16 text-center bg-transparent border-b border-current focus:outline-none focus:border-blue-500"
+                        inputMode="numeric"
+                        pattern="[0-9]*"
+                      />
+                    ) : (
+                      value?.toString() || ''
+                    )}
                   </td>
                 ))}
                 {row.total !== undefined && (

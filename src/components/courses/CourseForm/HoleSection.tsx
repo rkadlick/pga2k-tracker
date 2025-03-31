@@ -20,9 +20,13 @@ export default function HoleSection({
   updateHoleDistance
 }: HoleSectionProps) {
   // Create column configurations
-  const columns = holes.map(hole => ({
-    label: hole.hole_number.toString()
-  }));
+  const columns = [
+    { id: 'label', label: '' },
+    ...holes.map(hole => ({
+      id: `hole-${hole.hole_number}`,
+      label: hole.hole_number.toString()
+    }))
+  ];
 
   // Determine row IDs based on title
   const isBackNine = title.includes('Back');
@@ -40,7 +44,6 @@ export default function HoleSection({
           label: 'Par',
           values: holes.map(hole => hole.par),
           total: totalPar,
-          editable: true,
           onChange: updateHolePar
         },
         {
@@ -49,7 +52,6 @@ export default function HoleSection({
           label: 'Yards',
           values: holes.map(hole => hole.distance),
           total: totalDistance,
-          editable: true,
           onChange: updateHoleDistance
         }
       ]}
