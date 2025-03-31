@@ -129,7 +129,7 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
             <tr className="bg-[--input-bg]/50">
               <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Par</td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-[--muted]">
+                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-purple-600 dark:text-purple-400 font-medium">
                   {formData.course_id ? hole.par : '-'}
                 </td>
               ))}
@@ -137,7 +137,7 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
             <tr className="bg-[--input-bg]/30">
               <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Dist</td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-[--muted]">
+                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-blue-600 dark:text-blue-400 font-medium">
                   {formData.course_id ? hole.distance : '-'}
                 </td>
               ))}
@@ -162,7 +162,7 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
 
       {/* Match Status */}
       {status && (
-        <div className="bg-[--card-bg] border border-[--border] rounded-lg p-3">
+        <div className="bg-[--card-bg] rounded-lg p-3">
           <div className="grid grid-cols-3 gap-3 text-center mb-2">
             <div>
               <p className="text-xs text-[--muted] mb-0.5">Wins</p>

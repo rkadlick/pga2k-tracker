@@ -185,30 +185,32 @@ export default function CourseDetailPage({
 
   if (isLoading) {
     return (
-      <div className="text-center py-12">
-        <svg className="animate-spin h-8 w-8 text-blue-500 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        <p className="mt-2 text-gray-600">Loading course details...</p>
+      <div className="flex items-center justify-center min-h-[50vh]">
+        <div className="text-center">
+          <svg className="animate-spin h-10 w-10 text-[--primary] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          <p className="mt-4 text-[--muted]">Loading course details...</p>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="bg-red-50 border-l-4 border-red-400 p-4 mb-4">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <svg className="h-5 w-5 text-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <div className="card p-6 bg-rose-500/10">
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 text-rose-600 dark:text-rose-400">
+            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
             </svg>
           </div>
-          <div className="ml-3">
-            <p className="text-sm text-red-700">{error}</p>
+          <div>
+            <p className="text-rose-700 dark:text-rose-300">{error}</p>
             <button
               onClick={() => router.push('/courses')}
-              className="mt-2 text-sm text-red-700 underline"
+              className="mt-4 inline-flex items-center px-3 py-1.5 text-sm rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20"
             >
               Back to Courses
             </button>
@@ -220,11 +222,11 @@ export default function CourseDetailPage({
 
   if (!course) {
     return (
-      <div className="text-center py-12">
-        <p className="text-gray-600">Course not found</p>
+      <div className="card p-6 text-center">
+        <p className="text-[--muted] mb-4">Course not found</p>
         <button
           onClick={() => router.push('/courses')}
-          className="mt-4 inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          className="inline-flex items-center px-4 py-2 text-sm rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
         >
           Back to Courses
         </button>
@@ -248,79 +250,84 @@ export default function CourseDetailPage({
     <div className="space-y-6">
       <style jsx global>{inputStyles}</style>
       
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <button
-            onClick={() => router.push('/courses')}
-            className="text-gray-600 hover:text-gray-800"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-            </svg>
-          </button>
-          <h1 className="text-2xl font-bold">Course Details</h1>
-        </div>
-        
-        {!isEditing ? (
-          <button
-            onClick={() => setIsEditing(true)}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          >
-            Edit Course
-          </button>
-        ) : (
-          <div className="flex gap-2">
-            <button
-              onClick={handleCancel}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleUpdateCourse}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-            >
-              Save Changes
-            </button>
-          </div>
-        )}
-      </div>
-      
-      {/* Course Name */}
-      <div className="bg-white p-6 rounded-lg shadow mb-6">
-        {isEditing ? (
-          <div>
-            <label htmlFor="courseName" className="block text-lg font-medium text-gray-700">
-              Course Name
-            </label>
-            <input
-              type="text"
-              id="courseName"
-              value={courseName}
-              onChange={(e) => {
-                setCourseName(e.target.value);
-                setNameError('');
-              }}
-              className={`mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-lg ${
-                nameError ? 'border-red-300' : ''
-              }`}
-            />
-            {nameError && (
-              <p className="mt-1 text-sm text-red-600">{nameError}</p>
+      <div className="card">
+        <div className="p-6">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => router.push('/courses')}
+                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[--primary]/5 text-[--primary] hover:bg-[--primary]/10"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+                </svg>
+              </button>
+              {!isEditing && (
+                <h2 className="text-3xl font-bold text-[--foreground]">{course.name}</h2>
+              )}
+            </div>
+            
+            {!isEditing ? (
+              <button
+                onClick={() => setIsEditing(true)}
+                className="inline-flex items-center px-4 py-2 rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
+              >
+                Edit Course
+              </button>
+            ) : (
+              <div className="flex gap-2">
+                <button
+                  onClick={handleCancel}
+                  className="inline-flex items-center px-4 py-2 rounded-xl bg-[--background]/50 text-[--muted] hover:text-[--foreground] hover:bg-[--background]/75"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleUpdateCourse}
+                  className="inline-flex items-center px-4 py-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20"
+                >
+                  Save Changes
+                </button>
+              </div>
             )}
           </div>
-        ) : (
-          <h2 className="text-xl font-bold">{course.name}</h2>
-        )}
+          
+          {isEditing && (
+            <div className="mt-6">
+              <label htmlFor="courseName" className="block text-sm font-medium text-[--muted] mb-2">
+                Course Name
+              </label>
+              <input
+                type="text"
+                id="courseName"
+                value={courseName}
+                onChange={(e) => {
+                  setCourseName(e.target.value);
+                  setNameError('');
+                }}
+                className={`block w-full px-4 py-2.5 rounded-xl bg-[--background]/50 border border-[--border] focus:border-[--primary] focus:ring-[--primary] text-[--foreground] ${
+                  nameError ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500' : ''
+                }`}
+              />
+              {nameError && (
+                <p className="mt-2 text-sm text-rose-600 dark:text-rose-400">{nameError}</p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
       
       {/* Course Holes */}
       {isEditing ? (
-        <EditCourseHoles
-          holes={holes}
-          onHoleUpdate={updateHole}
-          holeErrors={holeErrors}
-        />
+        <div className="card">
+          <div className="p-6">
+            <EditCourseHoles
+              holes={holes}
+              onHoleUpdate={updateHole}
+              holeErrors={holeErrors}
+            />
+          </div>
+        </div>
       ) : (
         <>
           {/* Front Nine */}
@@ -382,29 +389,45 @@ export default function CourseDetailPage({
       )}
       
       {/* Course Totals */}
-      <div className="bg-gray-100 p-4 rounded-lg">
-        <h3 className="font-medium text-gray-900 mb-2">Course Totals</h3>
-        <div className="grid grid-cols-2 gap-4">
-          <div>
-            <p className="text-sm text-gray-600">Par</p>
-            <p className="font-medium">{totalPar}</p>
-          </div>
-          <div>
-            <p className="text-sm text-gray-600">Yards</p>
-            <p className="font-medium">{totalDistance}</p>
+      <div className="card">
+        <div className="p-6">
+          <h3 className="text-lg font-medium text-[--foreground] mb-4">Course Totals</h3>
+          <div className="grid grid-cols-2 gap-6">
+            <div className="p-4 rounded-xl bg-[--background]/50">
+              <p className="text-sm text-[--muted] mb-1">Total Par</p>
+              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{totalPar}</p>
+            </div>
+            <div className="p-4 rounded-xl bg-[--background]/50">
+              <p className="text-sm text-[--muted] mb-1">Total Distance</p>
+              <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">{totalDistance} yards</p>
+            </div>
           </div>
         </div>
       </div>
       
       {/* Validation Errors */}
       {holeErrors.some(error => error) && (
-        <div className="bg-red-50 border border-red-200 rounded-md p-4">
-          <p className="text-sm text-red-600">Please fix the errors in the scorecard. All holes must have valid par (2-6) and distance values.</p>
-          <ul className="mt-2 list-disc pl-5 text-sm text-red-600">
-            {holeErrors.map((error, index) => 
-              error ? <li key={index}>{error}</li> : null
-            )}
-          </ul>
+        <div className="card bg-rose-500/10">
+          <div className="p-6">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 text-rose-600 dark:text-rose-400">
+                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-lg font-medium text-rose-800 dark:text-rose-200">Validation Errors</h3>
+                <p className="mt-1 text-rose-700 dark:text-rose-300">Please fix the errors in the scorecard. All holes must have valid par (2-6) and distance values.</p>
+                <ul className="mt-4 space-y-2">
+                  {holeErrors.map((error, index) => 
+                    error ? (
+                      <li key={index} className="text-sm text-rose-700 dark:text-rose-300">{error}</li>
+                    ) : null
+                  )}
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

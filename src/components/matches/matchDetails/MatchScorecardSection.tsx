@@ -55,21 +55,19 @@ export default function MatchScorecardSection({ match, course }: MatchScorecardS
   ];
 
   return (
-    <div className="bg-[--card-bg] border border-[--border] overflow-hidden rounded-lg">
-      <div className="px-4 py-5 sm:px-6">
-        <h3 className="text-lg leading-6 font-semibold text-[--foreground]">
+    <div className="p-6 space-y-6">
+      <div>
+        <h3 className="text-xl font-semibold text-[--foreground]">
           Hole Results
         </h3>
-        <p className="mt-1 text-sm text-[--muted]">
+        <p className="mt-2 text-sm text-[--muted]">
           {match.course} - {formatNinePlayed(match.nine_played)}
         </p>
       </div>
-      <div className="border-t border-[--border]">
-        <Scorecard
-          columns={scorecardColumns}
-          rows={scorecardRows}
-        />
-      </div>
+      <Scorecard
+        columns={scorecardColumns}
+        rows={scorecardRows}
+      />
     </div>
   );
 } 

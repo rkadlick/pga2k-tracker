@@ -165,55 +165,63 @@ export default function NewMatchPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto">
-      <div className="mb-6">
-        <Link 
-          href="/matches" 
-          className="inline-flex items-center text-[--primary] hover:text-[--primary-hover] transition-colors"
-        >
-          <svg 
-            className="w-4 h-4 mr-1" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24" 
-            xmlns="http://www.w3.org/2000/svg"
+    <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
+      <div className="flex flex-col gap-4">
+        <div className="flex justify-between items-center">
+          <Link 
+            href="/matches" 
+            className="inline-flex items-center text-[--muted] hover:text-[--foreground] transition-colors duration-200"
           >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M10 19l-7-7m0 0l7-7m-7 7h18" 
-            />
-          </svg>
-          Back to Matches
-        </Link>
+            <svg 
+              className="w-5 h-5 mr-2" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth={2} 
+                d="M10 19l-7-7m0 0l7-7m-7 7h18" 
+              />
+            </svg>
+            Back to Matches
+          </Link>
+        </div>
+        <h1 className="text-3xl font-semibold text-[--foreground]">New Match</h1>
+        <p className="text-[--muted]">Record a new match result.</p>
       </div>
       
-      <h1 className="text-2xl font-bold mb-6 text-[--foreground]">New Match</h1>
-      
       {(matchError || teamsError || validationErrors.length > 0) && (
-        <div className="bg-red-100 dark:bg-red-900/30 border-l-4 border-red-400 dark:border-red-500 p-4 mb-6">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-red-400 dark:text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              {validationErrors.length > 0 ? (
-                <ValidationErrors errors={validationErrors} />
-              ) : (
-                <p className="text-sm text-red-700 dark:text-red-300">{matchError?.message || teamsError?.message}</p>
-              )}
+        <div className="card border-l-4 border-red-400 dark:border-red-500">
+          <div className="p-6">
+            <div className="flex gap-3">
+              <div className="flex-shrink-0">
+                <svg className="h-5 w-5 text-red-400 dark:text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+              <div>
+                {validationErrors.length > 0 && (
+                  <ValidationErrors errors={validationErrors} />
+                )}
+                {matchError && (
+                  <p className="text-sm text-red-700 dark:text-red-300">{matchError.message}</p>
+                )}
+                {teamsError && (
+                  <p className="text-sm text-red-700 dark:text-red-300">{teamsError.message}</p>
+                )}
+              </div>
             </div>
           </div>
         </div>
       )}
-      
-      <MatchForm
-        ref={formRef}
+
+      <MatchForm 
+        ref={formRef} 
+        onSubmit={handleSubmit} 
         yourTeam={yourTeam}
-        onSubmit={handleSubmit}
         validationErrors={validationErrors}
       />
     </div>

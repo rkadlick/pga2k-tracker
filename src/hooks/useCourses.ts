@@ -69,7 +69,6 @@ export function useCourses() {
   ) => {
     setIsCreating(true);
     setError(null);
-    
     try {
       const validHoles = holes.map((hole) => ({
         hole_number: hole.hole_number,

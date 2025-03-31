@@ -35,6 +35,12 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     totalDistance: number
   ) => {
     try {
+      console.log('totalPar', totalPar);
+      console.log('frontPar', frontPar);
+      console.log('backPar', backPar);
+      console.log('totalDistance', totalDistance);
+      console.log('frontDistance', frontDistance);
+      console.log('backDistance', backDistance);
       await createCourseWithHoles(courseName, holes, frontPar, backPar, totalPar, frontDistance, backDistance, totalDistance);
       setIsAddingCourse(false);
     } catch (err) {
@@ -51,14 +57,14 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-12">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Course Management (Alternative)</h1>
+        <h1 className="text-3xl font-bold text-[--foreground]">Course Management</h1>
 
         {!isAddingCourse && (
           <button
             onClick={() => setIsAddingCourse(true)}
-            className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors"
           >
             Add New Course
           </button>
@@ -66,11 +72,11 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
       </div>
 
       {error && (
-        <div className="bg-red-50 border-l-4 border-red-400 p-4">
+        <div className="card border-l-4 border-l-red-500">
           <div className="flex">
             <div className="flex-shrink-0">
               <svg
-                className="h-5 w-5 text-red-400"
+                className="h-5 w-5 text-red-500"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -83,24 +89,21 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700">{error.message}</p>
+              <p className="text-sm text-red-500">{error}</p>
             </div>
           </div>
         </div>
       )}
 
       {isAddingCourse ? (
-        <div className="bg-white p-6 rounded-lg shadow">
-          <h2 className="text-lg font-medium mb-4">Add New Course</h2>
           <CourseForm
             onSubmit={handleAddCourse}
             onCancel={() => setIsAddingCourse(false)}
           />
-        </div>
       ) : isLoading ? (
-        <div className="text-center py-12">
+        <div className="card flex flex-col items-center justify-center py-12">
           <svg
-            className="animate-spin h-8 w-8 text-blue-500 mx-auto"
+            className="animate-spin h-8 w-8 text-[--primary] mx-auto"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -119,7 +122,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
               d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
             ></path>
           </svg>
-          <p className="mt-2 text-gray-600">Loading courses...</p>
+          <p className="mt-2 text-[--muted]">Loading courses...</p>
         </div>
       ) : (
         <CourseList courses={courses} onDelete={handleDeleteCourse} />

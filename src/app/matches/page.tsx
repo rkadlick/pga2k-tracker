@@ -14,7 +14,7 @@ export default function MatchesPage() {
   const { matches, isLoading, error } = useMatches();
 
   return (
-    <div className="space-y-6">
+    <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
       <MatchesHeader isAuthenticated={isAuthenticated} />
       
       {error && <ErrorState message={error.message} />}

@@ -77,16 +77,28 @@ export default function MatchDetailPage() {
   }
 
   return (
-    <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
-      <MatchHeader 
-        matchId={match.id} 
-        onEdit={() => router.push(`/matches/${match.id}/edit`)} 
-      />
-      <MatchOverview match={match} />
+    <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
+      <div className="flex flex-col gap-4">
+        <MatchHeader 
+          matchId={match.id} 
+          onEdit={() => router.push(`/matches/${match.id}/edit`)} 
+        />
+        <h1 className="text-3xl font-semibold text-[--foreground]">Match Details</h1>
+      </div>
+
+      <div className="card">
+        <MatchOverview match={match} />
+      </div>
+
       {course && (
-        <MatchScorecardSection match={match} course={course} />
+        <div className="card">
+          <MatchScorecardSection match={match} course={course} />
+        </div>
       )}
-      <MatchDetails match={match} />
+
+      <div className="card">
+        <MatchDetails match={match} />
+      </div>
     </div>
   );
 }

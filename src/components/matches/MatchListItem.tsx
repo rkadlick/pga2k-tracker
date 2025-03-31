@@ -20,30 +20,32 @@ function formatNinePlayed(ninePlayed: NinePlayed): string {
 
 export default function MatchListItem({ match }: MatchListItemProps) {
   return (
-    <li>
+    <li className="animate-fade-in">
       <Link 
         href={`/matches/${match.id}`} 
-        className="block hover:bg-[--input-hover] transition-colors"
+        className="block card hover:bg-[--primary]/5"
       >
-        <div className="px-4 py-4 sm:px-6">
+        <div className="p-4 sm:p-6">
+          {/* Header: Teams and Match Result */}
           <div className="flex items-center justify-between">
-            <div className="flex items-center">
-              <div className="text-sm font-medium text-[--primary] truncate">
-                {match.your_team} vs {match.opponent_team}
-              </div>
+            <div className="flex items-center space-x-3">
+              <h3 className="text-base font-medium text-[--foreground]">
+                {match.your_team} <span className="text-[--muted]">vs</span> {match.opponent_team}
+              </h3>
               {match.playoffs && (
-                <span className="ml-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-500/30 dark:text-purple-200">
-                  Playoff
+                <span className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium
+                               bg-purple-500/10 text-purple-600 dark:text-purple-400">
+                  Playoff Match
                 </span>
               )}
             </div>
-            <div className="ml-2 flex-shrink-0 flex">
-              <span className={`px-2.5 py-0.5 inline-flex items-center text-xs font-medium rounded-full ${
+            <div className="flex-shrink-0">
+              <span className={`inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${
                 match.winner_id === match.your_team_id 
-                  ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200' 
+                  ? 'bg-green-500/10 text-green-600 dark:text-green-400' 
                   : match.winner_id === match.opponent_team_id 
-                    ? 'bg-red-100 text-red-700 dark:bg-red-500/30 dark:text-red-200' 
-                    : 'bg-[--input-bg] text-[--muted]'}`}
+                    ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400' 
+                    : 'bg-[--primary]/10 text-[--primary]'}`}
               >
                 {match.winner_id === match.your_team_id 
                   ? `${match.your_team} won` 
@@ -53,42 +55,72 @@ export default function MatchListItem({ match }: MatchListItemProps) {
               </span>
             </div>
           </div>
-          <div className="mt-2 sm:flex sm:justify-between">
-            <div className="sm:flex sm:space-x-4">
-              <p className="flex items-center text-sm text-[--muted]">
+
+          {/* Match Details */}
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="flex items-center space-x-4">
+              {/* Course Info */}
+              <div className="flex items-center text-sm text-[--muted]">
+                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                        d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                        d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
                 {match.course}
-              </p>
-              <p className="mt-2 flex items-center text-sm text-[--muted] sm:mt-0">
+              </div>
+              {/* Nine Played */}
+              <div className="flex items-center text-sm text-[--muted]">
+                <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
                 {formatNinePlayed(match.nine_played)}
-              </p>
+              </div>
             </div>
-            <div className="mt-2 flex items-center text-sm text-[--muted] sm:mt-0">
+
+            {/* Rating Change */}
+            <div className="flex items-center justify-start sm:justify-end">
               {match.rating_change !== undefined && (
-                <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                <span className={`inline-flex items-center space-x-1 px-2 py-1 rounded-md text-xs font-medium ${
                   match.rating_change > 0
-                    ? 'bg-green-100 text-green-700 dark:bg-green-500/30 dark:text-green-200'
+                    ? 'bg-green-500/10 text-green-600 dark:text-green-400'
                     : match.rating_change < 0
-                      ? 'bg-red-100 text-red-700 dark:bg-red-500/30 dark:text-red-200'
-                      : 'bg-[--input-bg] text-[--muted]'
+                      ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400'
+                      : 'bg-[--primary]/10 text-[--primary]'
                 }`}>
-                  {match.rating_change > 0 ? '+' : ''}{match.rating_change}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {match.rating_change > 0 ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                    ) : match.rating_change < 0 ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
+                    )}
+                  </svg>
+                  <span>{match.rating_change > 0 ? '+' : ''}{match.rating_change}</span>
                 </span>
               )}
             </div>
           </div>
+
+          {/* Notes */}
           {match.notes && (
-            <div className="mt-2 text-sm text-[--muted] truncate">
+            <div className="mt-4 text-sm text-[--muted] line-clamp-2">
               {match.notes}
             </div>
           )}
+
+          {/* Tags */}
           {match.tags && match.tags.length > 0 && (
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className="mt-4 flex flex-wrap gap-2">
               {match.tags.map((tag, idx) => (
                 <span 
                   key={idx} 
-                  className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[--input-bg] text-[--foreground] border border-[--border]"
+                  className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium
+                           bg-[--primary]/5 text-[--primary] border border-[--primary]/10"
                 >
-                  {tag}
+                  #{tag}
                 </span>
               ))}
             </div>
