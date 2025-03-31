@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { Team } from '@/lib/api/teamClient';
 import * as teamClient from '@/lib/api/teamClient';
 import { useMatchForm, MatchFormData } from '../../../hooks/useMatchForm';
@@ -8,10 +8,12 @@ import CourseSelect from './CourseSelect';
 import TeamCreation from './TeamCreation';
 import MatchScorecard from './MatchScorecard';
 import MatchDetails from './MatchDetails';
+import ValidationErrors from '@/components/common/ValidationErrors';
 
 interface MatchFormProps {
   yourTeam: Team;
   onSubmit: (formData: MatchFormData) => void;
+  validationErrors?: string[];
 }
 
 interface TeamPlayerDetails {
@@ -19,7 +21,11 @@ interface TeamPlayerDetails {
   recent_rating: number;
 }
 
-export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
+export interface MatchFormRef {
+  resetForm: () => void;
+}
+
+const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(({ yourTeam, onSubmit, validationErrors = [] }, ref) => {
   const [teamPlayers, setTeamPlayers] = useState<TeamPlayerDetails[]>([]);
   const [isLoadingPlayers, setIsLoadingPlayers] = useState(false);
   const [playerError, setPlayerError] = useState<string | null>(null);
@@ -59,8 +65,9 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
-    resetForm();
-    setOpponentTeam(null);
+    // Only reset form after successful submission
+    // resetForm();
+    // setOpponentTeam(null);
   };
 
   const handleOpponentTeamCreated = async (teamId: string) => {
@@ -76,6 +83,13 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
       console.error('Error fetching opponent team:', error);
     }
   };
+
+  useImperativeHandle(ref, () => ({
+    resetForm: () => {
+      resetForm();
+      setOpponentTeam(null);
+    }
+  }));
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
@@ -186,7 +200,21 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
             />
           </div>
 
-          <div className="flex justify-end">
+          <div className="flex flex-col items-end gap-4">
+            {validationErrors.length > 0 && (
+              <div className="w-full bg-red-100 dark:bg-red-900/30 border-l-4 border-red-400 dark:border-red-500 p-4">
+                <div className="flex">
+                  <div className="flex-shrink-0">
+                    <svg className="h-5 w-5 text-red-400 dark:text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div className="ml-3">
+                    <ValidationErrors errors={validationErrors} />
+                  </div>
+                </div>
+              </div>
+            )}
             <button
               type="submit"
               className="button"
@@ -198,4 +226,8 @@ export default function MatchForm({ yourTeam, onSubmit }: MatchFormProps) {
       )}
     </form>
   );
-}
+});
+
+MatchForm.displayName = 'MatchForm';
+
+export default MatchForm;

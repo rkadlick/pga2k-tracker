@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
 import MatchForm from '@/components/matches/MatchForm';
@@ -8,12 +9,17 @@ import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
 import { useTeams } from '@/hooks/useTeams';
 import { HoleResult } from '@/types';
+import { validateMatchData } from '@/lib/validation/matchValidation';
+import ValidationErrors from '@/components/common/ValidationErrors';
+import { MatchFormRef } from '@/components/matches/MatchForm';
 
 export default function NewMatchPage() {
   const router = useRouter();
   const { createMatch, error: matchError } = useMatches();
   const { isAuthenticated, loading: authLoading } = useAuth();
   const { teams, isLoading: teamsLoading, error: teamsError } = useTeams();
+  const [validationErrors, setValidationErrors] = useState<string[]>([]);
+  const formRef = useRef<MatchFormRef>(null);
 
   const yourTeam = teams.find(team => team.is_your_team);
   
@@ -75,14 +81,14 @@ export default function NewMatchPage() {
         nine_played: data.nine_played,
         your_team_id: yourTeam.id,
         opponent_team_id: data.opponent_team_id,
-        player1_id: data.player1_id,
-        player1_rating: data.player1_rating,
-        player2_id: data.player2_id,
-        player2_rating: data.player2_rating,
-        opponent1_id: data.opponent1_id,
-        opponent1_rating: data.opponent1_rating,
-        opponent2_id: data.opponent2_id,
-        opponent2_rating: data.opponent2_rating,
+        player1_id: data.player1_id!,
+        player1_rating: data.player1_rating!,
+        player2_id: data.player2_id!,
+        player2_rating: data.player2_rating!,
+        opponent1_id: data.opponent1_id!,
+        opponent1_rating: data.opponent1_rating!,
+        opponent2_id: data.opponent2_id!,
+        opponent2_rating: data.opponent2_rating!,
         hole_results: validHoleResults,
         rating_change: rating_change,
         holes_won: holesWon,
@@ -94,9 +100,17 @@ export default function NewMatchPage() {
         tags: data.tags
       };
 
+      // Validate match data before submitting
+      const errors = validateMatchData(matchData);
+      if (errors.length > 0) {
+        setValidationErrors(errors);
+        return;
+      }
       
       const newMatch = await createMatch(matchData);
       if (newMatch) {
+        // Reset form and redirect only after successful submission
+        formRef.current?.resetForm();
         router.push(`/matches`);
       }
     } catch (err) {
@@ -177,7 +191,7 @@ export default function NewMatchPage() {
       
       <h1 className="text-2xl font-bold mb-6 text-[--foreground]">New Match</h1>
       
-      {(matchError || teamsError) && (
+      {(matchError || teamsError || validationErrors.length > 0) && (
         <div className="bg-red-100 dark:bg-red-900/30 border-l-4 border-red-400 dark:border-red-500 p-4 mb-6">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -186,15 +200,21 @@ export default function NewMatchPage() {
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-700 dark:text-red-300">{matchError?.message || teamsError?.message}</p>
+              {validationErrors.length > 0 ? (
+                <ValidationErrors errors={validationErrors} />
+              ) : (
+                <p className="text-sm text-red-700 dark:text-red-300">{matchError?.message || teamsError?.message}</p>
+              )}
             </div>
           </div>
         </div>
       )}
       
       <MatchForm
+        ref={formRef}
         yourTeam={yourTeam}
         onSubmit={handleSubmit}
+        validationErrors={validationErrors}
       />
     </div>
   );

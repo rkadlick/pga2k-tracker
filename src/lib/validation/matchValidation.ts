@@ -179,6 +179,47 @@ export function validateHoleResults(data: { holeResults: Array<{ hole_number: nu
 }
 
 /**
+ * Validates that a tied match must have playoffs
+ */
+export function validateTiedMatch(
+  holeResults: Array<{ hole_number: number; result: HoleResult }> | undefined,
+  playoffs: boolean | undefined
+): string | null {
+  console.log('holeResults', holeResults);
+  console.log('playoffs', playoffs);
+  console.log('TEST');
+  if (!holeResults || holeResults.length === 0) {
+    return null;
+    }
+  // Must have exactly 9 holes played
+  if (holeResults.length !== 9) {
+    return null; // Don't validate playoffs for incomplete matches
+  }
+
+  // Calculate total score for each team
+  const counts = holeResults.reduce((acc, hr) => {
+    if (hr.result === 'win') return { ...acc, wins: acc.wins + 1 };
+    if (hr.result === 'loss') return { ...acc, losses: acc.losses + 1 };
+    if (hr.result === 'tie') return { ...acc, ties: acc.ties + 1 };
+    return acc;
+  }, { wins: 0, losses: 0, ties: 0 });
+
+  // Calculate final scores (0.5 points for ties)
+  const yourTeamScore = counts.wins + (counts.ties * 0.5);
+  const opponentTeamScore = counts.losses + (counts.ties * 0.5);
+  
+  // Match is tied if scores are equal
+  const isMatchTied = yourTeamScore === opponentTeamScore;
+  
+  if (isMatchTied && playoffs === false) {
+    return 'A tied match must go to playoffs';
+  }
+  
+  return null;
+}
+
+
+/**
  * Validates a complete match data object for creation
  */
 export function validateMatchData(matchData: MatchData): string[] {
@@ -212,6 +253,10 @@ export function validateMatchData(matchData: MatchData): string[] {
   
   const playoffsError = validatePlayoffs(matchData.playoffs);
   if (playoffsError) errors.push(`Playoffs: ${playoffsError}`);
+
+  // Validate tied match condition
+  const tiedMatchError = validateTiedMatch(matchData.hole_results, matchData.playoffs);
+  if (tiedMatchError) errors.push(tiedMatchError);
   
   // Only validate winner ID if there are no errors with the team IDs and hole counts
   if (!yourTeamIdError && !opponentTeamIdError && !holesWonError && !holesLostError && !holesTiedError) {
@@ -225,7 +270,6 @@ export function validateMatchData(matchData: MatchData): string[] {
     );
     if (winnerIdError) errors.push(`Winner: ${winnerIdError}`);
   }
-  
   // Validate hole results if provided
   if (matchData.hole_results && Array.isArray(matchData.hole_results)) {
     const holeResultsErrors = validateHoleResults({ holeResults: matchData.hole_results });
@@ -289,6 +333,10 @@ export function validateMatchUpdateData(matchData: MatchUpdateData): string[] {
     const playoffsError = validatePlayoffs(matchData.playoffs);
     if (playoffsError) errors.push(`Playoffs: ${playoffsError}`);
   }
+
+  // Validate tied match condition
+  const tiedMatchError = validateTiedMatch(matchData.hole_results, matchData.playoffs);
+  if (tiedMatchError) errors.push(tiedMatchError);
   
   // Only validate winner ID if all the necessary fields are present
   if (
@@ -311,4 +359,4 @@ export function validateMatchUpdateData(matchData: MatchUpdateData): string[] {
   }
   
   return errors;
-} 
+}

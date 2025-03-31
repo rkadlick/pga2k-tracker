@@ -170,7 +170,6 @@ export function useMatches() {
     try {
       const { hole_results, ...basicMatchData } = matchData;
       console.log('basicMatchData', basicMatchData);
-      console.log('hole_results', hole_results);
       const updatedMatch = await matchClient.updateMatch(id, basicMatchData);
       
       if (hole_results && hole_results.length > 0) {

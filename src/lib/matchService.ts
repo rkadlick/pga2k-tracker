@@ -53,6 +53,7 @@ export async function getMatches(): Promise<Match[]> {
     .order('date_played', { ascending: false });
   if (error) throw error;
   // Transform data to match the expected format
+  console.log('data', data);
   return data.map(match => ({
     ...match,
     course: match.course.name, 
@@ -353,7 +354,6 @@ export async function addHoleResults(
   }>
 ): Promise<HoleResultRecord[]> {
   const supabase = await createClient();
-  console.log('holeReSults', holeResults)
   // Prepare hole results with match_id
   const holeResultsWithMatchId = holeResults.map(result => ({
     match_id: matchId,
@@ -361,7 +361,6 @@ export async function addHoleResults(
     result: result.result
   }));
 
-  console.log('holeResults', holeResultsWithMatchId)
   
   // Insert the hole results
   const { data, error } = await supabase

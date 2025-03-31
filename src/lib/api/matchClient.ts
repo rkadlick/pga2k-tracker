@@ -85,6 +85,7 @@ export async function fetchMatch(id: string): Promise<Match> {
  * Create a new match
  */
 export async function createMatch(matchData: MatchCreateData): Promise<Match> {
+  console.log('matchData', matchData);
   try {
     const response = await fetch('/api/matches', {
       method: 'POST',

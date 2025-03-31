@@ -232,9 +232,7 @@ export default function EditMatchPage() {
           hole_results: formData.hole_results
         } : {})
       };
-
-      console.log('updatedMatchData', updatedMatchData);
-      
+  
       await updateMatch(matchId, updatedMatchData);
       router.push(`/matches/${matchId}`);
     } catch (err) {
