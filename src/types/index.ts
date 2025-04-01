@@ -29,6 +29,11 @@ export interface Team extends BaseRecord {
 	id: string;
 	name: string;
 	is_your_team: boolean;
+	players?: {
+		id: string;
+		name: string;
+		recent_rating: number;
+	}[];
 }
 
 export interface Player {
