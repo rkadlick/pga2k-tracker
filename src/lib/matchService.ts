@@ -53,7 +53,6 @@ export async function getMatches(): Promise<Match[]> {
     .order('date_played', { ascending: false });
   if (error) throw error;
   // Transform data to match the expected format
-  console.log('data', data);
   return data.map(match => ({
     ...match,
     course: match.course.name, 

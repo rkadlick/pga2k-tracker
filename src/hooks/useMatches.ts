@@ -169,7 +169,6 @@ export function useMatches() {
     
     try {
       const { hole_results, ...basicMatchData } = matchData;
-      console.log('basicMatchData', basicMatchData);
       const updatedMatch = await matchClient.updateMatch(id, basicMatchData);
       
       if (hole_results && hole_results.length > 0) {
@@ -223,7 +222,6 @@ export function useMatches() {
           return [...prevMatches, matchData as MatchWithDetails];
         }
       });
-      console.log('matchData', matchData);
       return matchData as MatchWithDetails;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));

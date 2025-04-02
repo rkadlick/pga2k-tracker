@@ -10,7 +10,7 @@ import ThemeToggle from '@/components/common/ThemeToggle';
 export default function Header() {
   const pathname = usePathname();
   const router = useRouter();
-  const { user, loading, isAuthenticated } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   const handleSignOut = async () => {
@@ -46,8 +46,8 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <ThemeToggle />
             
-            {!loading && (
-              isAuthenticated ? (
+            <div className="min-w-[100px] flex justify-end">
+              {isAuthenticated ? (
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-[--muted] hidden sm:inline">
                     {user?.email}
@@ -69,8 +69,8 @@ export default function Header() {
                 >
                   Sign In
                 </Link>
-              )
-            )}
+              )}
+            </div>
             
             {/* Mobile menu button */}
             <button 

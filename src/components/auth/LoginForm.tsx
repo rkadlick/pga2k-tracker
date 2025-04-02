@@ -154,22 +154,6 @@ export default function LoginForm() {
             </button>
           </div>
         </form>
-
-        <div className="mt-8 text-center">
-          <p className="text-sm text-[--muted]">
-            Don&apos;t have an account?{' '}
-            <a 
-              href="#" 
-              className="font-medium hover:text-[--primary-hover]"
-              onClick={(e) => {
-                e.preventDefault();
-                // Handle sign up
-              }}
-            >
-              Sign up now
-            </a>
-          </p>
-        </div>
       </div>
     </div>
   );

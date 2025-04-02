@@ -3,19 +3,22 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
+import { useAuth } from '@/hooks/useAuth';
 import { Course, Match } from '@/types';
 import { useCourses} from '@/hooks/useCourses';
 import MatchHeader from '@/components/matches/MatchDetails/MatchHeader';
 import MatchOverview from '@/components/matches/MatchDetails/MatchOverview';
 import MatchScorecardSection from '@/components/matches/MatchDetails/MatchScorecardSection';
 import MatchDetails from '@/components/matches/MatchDetails/MatchDetails';
-
+import LoadingState from '@/components/common/LoadingState';
+import ErrorState from '@/components/common/ErrorState';
 
 export default function MatchDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const { isAuthenticated } = useAuth();
   const matchId = Array.isArray(params.id) ? params.id[0] : params.id;
-  const { matches, isLoading: isLoadingMatches, error: errorMatches } = useMatches();
+  const { getMatchById, isLoading, error } = useMatches();
   const [match, setMatch] = useState<Match | null>(null);
   const { getCourseWithHoles, isLoading: isLoadingCourses, error: errorCourses } = useCourses();
   const [course, setCourse] = useState<Course | null>(null);
@@ -24,15 +27,21 @@ export default function MatchDetailPage() {
   useEffect(() => {
     const fetchMatch = async () => {
       if (matchId) {
-        const fetchedMatch = matches.find(m => m.id === matchId);
+        const fetchedMatch = await getMatchById(matchId);
         if (fetchedMatch) {
           setMatch(fetchedMatch);
+          // Fetch course details if needed
+          if (fetchedMatch.course_id) {
+            const response = await fetch(`/api/courses/${fetchedMatch.course_id}`);
+            const data = await response.json();
+            setCourse(data.data);
+          }
         }
       }
     };
 
     fetchMatch();
-  }, [matchId, matches]);
+  }, [matchId, getMatchById]);
 
   useEffect(() => {
     const fetchCourseData = async () => {
@@ -47,33 +56,12 @@ export default function MatchDetailPage() {
     fetchCourseData();
   }, [match?.course_id]);
 
-  if (isLoadingMatches || !match || isLoadingCourses) {
-    return (
-      <div className="text-center py-12">
-        <svg className="animate-spin h-8 w-8 text-[--primary] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-        </svg>
-        <p className="mt-2 text-[--muted]">Loading match details...</p>
-      </div>
-    );
+  if (isLoading || !match) {
+    return <LoadingState message="Loading match details..." />;
   }
 
-  if (errorMatches || errorCourses) {
-    return (
-      <div className="bg-red-100 dark:bg-red-900/30 border-l-4 border-red-400 dark:border-red-500 p-4 rounded-r-lg">
-        <div className="flex">
-          <div className="flex-shrink-0">
-            <svg className="h-5 w-5 text-red-400 dark:text-red-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
-          </div>
-          <div className="ml-3">
-            <p className="text-sm text-red-700 dark:text-red-300">{errorMatches?.message || errorCourses?.message}</p>
-          </div>
-        </div>
-      </div>
-    );
+  if (error) {
+    return <ErrorState message={error.message} />;
   }
 
   return (
@@ -81,7 +69,8 @@ export default function MatchDetailPage() {
       <div className="flex flex-col gap-4">
         <MatchHeader 
           matchId={match.id} 
-          onEdit={() => router.push(`/matches/${match.id}/edit`)} 
+          onEdit={() => router.push(`/matches/${match.id}/edit`)}
+          isAuthenticated={isAuthenticated}
         />
         <h1 className="text-3xl font-semibold text-[--foreground]">Match Details</h1>
       </div>

@@ -185,9 +185,6 @@ export function validateTiedMatch(
   holeResults: Array<{ hole_number: number; result: HoleResult }> | undefined,
   playoffs: boolean | undefined
 ): string | null {
-  console.log('holeResults', holeResults);
-  console.log('playoffs', playoffs);
-  console.log('TEST');
   if (!holeResults || holeResults.length === 0) {
     return null;
     }

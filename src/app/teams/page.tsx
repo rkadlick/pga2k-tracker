@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import { useTeams } from "@/hooks/useTeams";
+import { useAuth } from "@/hooks/useAuth";
 import TeamList from "@/components/teams/TeamList";
 import TeamForm from "@/components/teams/TeamForm";
 
 export default function TeamsPage() {
   const [isAddingTeam, setIsAddingTeam] = useState(false);
+  const { isAuthenticated } = useAuth();
   
   const { 
     teams, 
@@ -38,7 +40,7 @@ export default function TeamsPage() {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-[--foreground]">Team Management</h1>
 
-        {!isAddingTeam && (
+        {!isAddingTeam && isAuthenticated && (
           <button
             onClick={() => setIsAddingTeam(true)}
             className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors"
@@ -66,7 +68,7 @@ export default function TeamsPage() {
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-500">{error}</p>
+              <p className="text-sm text-red-500">{error instanceof Error ? error.message : 'An error occurred'}</p>
             </div>
           </div>
         </div>
@@ -102,7 +104,7 @@ export default function TeamsPage() {
           <p className="mt-2 text-[--muted]">Loading teams...</p>
         </div>
       ) : (
-        <TeamList teams={teams} onDelete={handleDeleteTeam} />
+        <TeamList teams={teams} onDelete={handleDeleteTeam} isAuthenticated={isAuthenticated} />
       )}
     </div>
   );

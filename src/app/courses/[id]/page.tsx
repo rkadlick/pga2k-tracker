@@ -8,6 +8,7 @@ import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib
 import { useCourses } from '@/hooks/useCourses';
 import EditCourseHoles from '@/components/courses/EditCourseHoles';
 import { use } from 'react';
+import { useAuth } from '@/hooks/useAuth';
 
 interface HoleData {
   id: string;
@@ -39,13 +40,13 @@ export default function CourseDetailPage({
   const [holes, setHoles] = useState<HoleData[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
   const [courseName, setCourseName] = useState('');
   const [nameError, setNameError] = useState('');
   const [holeErrors, setHoleErrors] = useState<string[]>([]);
   
   const router = useRouter();
   const { updateCourse } = useCourses();
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const fetchCourse = async () => {
@@ -53,6 +54,7 @@ export default function CourseDetailPage({
         const response = await fetch(`/api/courses/${id}`);
         const data = await response.json();
         setCourse(data.data);
+        setCourseName(data.data.name);
         // Convert holes to match the HoleData interface
         const convertedHoles = (data.data.holes || []).map((hole: Hole): HoleData => ({
           id: hole.id,
@@ -63,9 +65,8 @@ export default function CourseDetailPage({
         }));
         setHoles(convertedHoles);
         setIsLoading(false);
-      } catch (error) {
-        console.error('Error fetching course:', error);
-        setError('Failed to fetch course');
+      } catch (err) {
+        console.error('Error fetching course:', err);
         setIsLoading(false);
       }
     };
@@ -73,55 +74,46 @@ export default function CourseDetailPage({
     fetchCourse();
   }, [id]);
 
-  useEffect(() => {
-    if (course) {
-      setCourseName(course.name);
-      // Convert holes to match the HoleData interface
-      const convertedHoles = (course.holes || []).map((hole: Hole): HoleData => ({
-        id: hole.id,
-        hole_number: hole.hole_number,
-        par: hole.par,
-        distance: hole.distance ?? null,
-        course_id: hole.course_id
-      }));
-      setHoles(convertedHoles);
-      setNameError('');
-      setHoleErrors([]);
-    }
-  }, [course]);
-
   const handleUpdateCourse = async () => {
+    // Reset errors
+    setNameError('');
+    setHoleErrors([]);
+    let hasErrors = false;
+
     // Validate course name
-    const nameValidationError = validateCourseName(courseName);
-    if (nameValidationError) {
-      setNameError(nameValidationError);
-      return;
+    const nameError = validateCourseName(courseName);
+    if (nameError) {
+      setNameError(nameError);
+      hasErrors = true;
     }
 
     // Validate holes
-    const newHoleErrors = holes.map(hole => {
+    const newHoleErrors: string[] = [];
+    holes.forEach((hole, index) => {
       const parError = validateHolePar(hole.par);
-      if (parError) return `Hole ${hole.hole_number}: ${parError}`;
-      
       const distanceError = validateHoleDistance(hole.distance);
-      if (distanceError) return `Hole ${hole.hole_number}: ${distanceError}`;
       
-      return '';
-    }).filter(error => error);
+      if (parError || distanceError) {
+        newHoleErrors[index] = parError || distanceError || 'Invalid hole data';
+        hasErrors = true;
+      } else {
+        newHoleErrors[index] = '';
+      }
+    });
 
-    if (newHoleErrors.length > 0) {
+    if (hasErrors) {
       setHoleErrors(newHoleErrors);
       return;
     }
 
-    // Calculate front/back/total values
-    const frontNine = holes.filter(h => h.hole_number <= 9);
-    const backNine = holes.filter(h => h.hole_number > 9);
-    
+    // Calculate totals
+    const frontNine = holes.filter(hole => hole.hole_number <= 9);
+    const backNine = holes.filter(hole => hole.hole_number > 9);
+
     const frontPar = frontNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
     const backPar = backNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
     const totalPar = frontPar + backPar;
-    
+
     const frontDistance = frontNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
     const backDistance = backNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
     const totalDistance = frontDistance + backDistance;
@@ -144,7 +136,7 @@ export default function CourseDetailPage({
       setIsEditing(false);
     } catch (err) {
       console.error('Error updating course:', err);
-      setError(err instanceof Error ? err.message : 'An unknown error occurred');
+      setNameError(err instanceof Error ? err.message : 'An unknown error occurred');
     }
   };
 
@@ -183,65 +175,28 @@ export default function CourseDetailPage({
     });
   };
 
-  if (isLoading) {
+  if (isLoading || !course) {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
-        <div className="text-center">
-          <svg className="animate-spin h-10 w-10 text-[--primary] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <div className="text-center space-y-3">
+          <svg className="animate-spin h-8 w-8 text-[--primary] mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          <p className="mt-4 text-[--muted]">Loading course details...</p>
+          <p className="text-[--muted]">Loading course details...</p>
         </div>
       </div>
     );
   }
 
-  if (error) {
-    return (
-      <div className="card p-6 bg-rose-500/10">
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 text-rose-600 dark:text-rose-400">
-            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
-          </div>
-          <div>
-            <p className="text-rose-700 dark:text-rose-300">{error}</p>
-            <button
-              onClick={() => router.push('/courses')}
-              className="mt-4 inline-flex items-center px-3 py-1.5 text-sm rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20"
-            >
-              Back to Courses
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  // Calculate totals for display
+  const frontNine = holes.filter(hole => hole.hole_number <= 9);
+  const backNine = holes.filter(hole => hole.hole_number > 9);
 
-  if (!course) {
-    return (
-      <div className="card p-6 text-center">
-        <p className="text-[--muted] mb-4">Course not found</p>
-        <button
-          onClick={() => router.push('/courses')}
-          className="inline-flex items-center px-4 py-2 text-sm rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
-        >
-          Back to Courses
-        </button>
-      </div>
-    );
-  }
-
-  // Prepare data for scorecard
-  const frontNine = holes.filter(h => h.hole_number <= 9).sort((a, b) => a.hole_number - b.hole_number);
-  const backNine = holes.filter(h => h.hole_number > 9).sort((a, b) => a.hole_number - b.hole_number);
-  
   const frontNinePar = frontNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
   const backNinePar = backNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
   const totalPar = frontNinePar + backNinePar;
-  
+
   const frontNineDistance = frontNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
   const backNineDistance = backNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
   const totalDistance = frontNineDistance + backNineDistance;
@@ -268,12 +223,14 @@ export default function CourseDetailPage({
             </div>
             
             {!isEditing ? (
-              <button
-                onClick={() => setIsEditing(true)}
-                className="inline-flex items-center px-4 py-2 rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
-              >
-                Edit Course
-              </button>
+              isAuthenticated && (
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className="inline-flex items-center px-4 py-2 rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
+                >
+                  Edit Course
+                </button>
+              )
             ) : (
               <div className="flex gap-2">
                 <button
@@ -385,50 +342,28 @@ export default function CourseDetailPage({
               }
             ]}
           />
+          
+          {/* Course Totals */}
+          <div className="card">
+            <div className="p-6">
+              <h3 className="text-lg font-semibold mb-4">Course Totals</h3>
+              <div className="grid grid-cols-3 gap-6">
+                <div>
+                  <p className="text-sm text-[--muted]">Total Par</p>
+                  <p className="text-2xl font-bold text-[--foreground]">{totalPar}</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[--muted]">Total Distance</p>
+                  <p className="text-2xl font-bold text-[--foreground]">{totalDistance} yards</p>
+                </div>
+                <div>
+                  <p className="text-sm text-[--muted]">Total Holes</p>
+                  <p className="text-2xl font-bold text-[--foreground]">{holes.length}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
-      )}
-      
-      {/* Course Totals */}
-      <div className="card">
-        <div className="p-6">
-          <h3 className="text-lg font-medium text-[--foreground] mb-4">Course Totals</h3>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="p-4 rounded-xl bg-[--background]/50">
-              <p className="text-sm text-[--muted] mb-1">Total Par</p>
-              <p className="text-2xl font-bold text-blue-600 dark:text-blue-400">{totalPar}</p>
-            </div>
-            <div className="p-4 rounded-xl bg-[--background]/50">
-              <p className="text-sm text-[--muted] mb-1">Total Distance</p>
-              <p className="text-2xl font-bold text-purple-600 dark:text-purple-400">{totalDistance} yards</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Validation Errors */}
-      {holeErrors.some(error => error) && (
-        <div className="card bg-rose-500/10">
-          <div className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 text-rose-600 dark:text-rose-400">
-                <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="text-lg font-medium text-rose-800 dark:text-rose-200">Validation Errors</h3>
-                <p className="mt-1 text-rose-700 dark:text-rose-300">Please fix the errors in the scorecard. All holes must have valid par (2-6) and distance values.</p>
-                <ul className="mt-4 space-y-2">
-                  {holeErrors.map((error, index) => 
-                    error ? (
-                      <li key={index} className="text-sm text-rose-700 dark:text-rose-300">{error}</li>
-                    ) : null
-                  )}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
       )}
     </div>
   );

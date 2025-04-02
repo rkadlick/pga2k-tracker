@@ -1,8 +1,9 @@
 import { useTheme } from 'next-themes';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     // Check for system preference on mount
@@ -17,6 +18,8 @@ export default function ThemeToggle() {
       setTheme(savedTheme);
       document.documentElement.setAttribute('data-theme', savedTheme);
     }
+
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
@@ -26,14 +29,19 @@ export default function ThemeToggle() {
     localStorage.setItem('theme', newTheme);
   };
 
+  if (!mounted) {
+    return (
+      <div className="w-10 h-10 rounded-xl bg-[--background] dark:bg-slate-800" />
+    );
+  }
+
   return (
     <button
       onClick={toggleTheme}
-      className="relative flex items-center justify-center w-10 h-10 rounded-xl 
-                bg-[--background] dark:bg-slate-800 
-                hover:bg-[--primary]/5 dark:hover:bg-slate-700
-                focus:outline-none focus:ring-2 focus:ring-[--primary] focus:ring-offset-2
-                transition-all duration-200"
+      className="theme-toggle-btn relative flex items-center justify-center w-10 h-10 rounded-xl 
+                bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700
+                hover:bg-slate-100 dark:hover:bg-slate-700
+                transition-all duration-200 shadow-sm"
       aria-label="Toggle theme"
     >
       <div className="relative flex items-center justify-center w-5 h-5">
@@ -44,7 +52,7 @@ export default function ThemeToggle() {
           fill="none"
           strokeWidth="2"
           stroke="currentColor"
-          className={`absolute w-5 h-5 text-amber-500 dark:text-slate-400
+          className={`absolute w-5 h-5 text-amber-500 dark:text-amber-400
                      transition-all duration-300 ease-in-out
                      ${theme === 'light' 
                        ? 'scale-100 rotate-0 opacity-100' 
@@ -61,7 +69,7 @@ export default function ThemeToggle() {
           fill="none"
           strokeWidth="2"
           stroke="currentColor"
-          className={`absolute w-5 h-5 text-slate-700 dark:text-blue-300
+          className={`absolute w-5 h-5 text-slate-800 dark:text-blue-300
                      transition-all duration-300 ease-in-out
                      ${theme === 'dark' 
                        ? 'scale-100 rotate-0 opacity-100' 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import CourseList from "@/components/courses/CourseList";
 import CourseForm from "@/components/courses/CourseForm";
 import { useCourses } from "@/hooks/useCourses";
+import { useAuth } from "@/hooks/useAuth";
 
 /**
  * Alternative implementation of the Courses page using the domain-specific hook
@@ -11,6 +12,7 @@ import { useCourses } from "@/hooks/useCourses";
  */
 export default function CoursesPageAlternative() { // Renamed to avoid conflicts
   const [isAddingCourse, setIsAddingCourse] = useState(false);
+  const { isAuthenticated } = useAuth();
   
   const { 
     courses, 
@@ -35,12 +37,6 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     totalDistance: number
   ) => {
     try {
-      console.log('totalPar', totalPar);
-      console.log('frontPar', frontPar);
-      console.log('backPar', backPar);
-      console.log('totalDistance', totalDistance);
-      console.log('frontDistance', frontDistance);
-      console.log('backDistance', backDistance);
       await createCourseWithHoles(courseName, holes, frontPar, backPar, totalPar, frontDistance, backDistance, totalDistance);
       setIsAddingCourse(false);
     } catch (err) {
@@ -56,12 +52,14 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     }
   };
 
+  const errorMessage = error ? (typeof error === 'string' ? error : 'An error occurred') : null;
+
   return (
     <div className="space-y-12">
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold text-[--foreground]">Course Management</h1>
 
-        {!isAddingCourse && (
+        {!isAddingCourse && isAuthenticated && (
           <button
             onClick={() => setIsAddingCourse(true)}
             className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors"
@@ -71,7 +69,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
         )}
       </div>
 
-      {error && (
+      {errorMessage && (
         <div className="card border-l-4 border-l-red-500">
           <div className="flex">
             <div className="flex-shrink-0">
@@ -89,7 +87,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
               </svg>
             </div>
             <div className="ml-3">
-              <p className="text-sm text-red-500">{error}</p>
+              <p className="text-sm text-red-500">{errorMessage}</p>
             </div>
           </div>
         </div>
@@ -125,7 +123,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
           <p className="mt-2 text-[--muted]">Loading courses...</p>
         </div>
       ) : (
-        <CourseList courses={courses} onDelete={handleDeleteCourse} />
+        <CourseList courses={courses} onDelete={handleDeleteCourse} isAuthenticated={isAuthenticated} />
       )}
     </div>
   );

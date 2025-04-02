@@ -85,7 +85,6 @@ export async function fetchMatch(id: string): Promise<Match> {
  * Create a new match
  */
 export async function createMatch(matchData: MatchCreateData): Promise<Match> {
-  console.log('matchData', matchData);
   try {
     const response = await fetch('/api/matches', {
       method: 'POST',
@@ -111,7 +110,6 @@ export async function createMatch(matchData: MatchCreateData): Promise<Match> {
  * Update an existing match
  */
 export async function updateMatch(id: string, matchData: MatchUpdateData): Promise<Match> {
-  console.log('matchData', matchData);
   try {
     const response = await fetch(`/api/matches/${id}`, {
       method: 'PATCH',
@@ -164,7 +162,6 @@ export async function addHoleResults(
     });
     
     const result = await response.json() as ApiResponse<HoleResultRecord[]>;
-    console.log('result', result);
     
     if (!response.ok) {
       throw new Error(result.error || 'Failed to add hole results');
