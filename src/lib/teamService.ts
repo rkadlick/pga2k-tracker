@@ -1,5 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
 import { Team } from '@/types';
+import { teamNames } from './data/teamNames';
 
 export interface TeamCreateData {
   name: string;
@@ -199,35 +200,32 @@ export async function updateTeam(id: string, teamData: TeamUpdateData): Promise<
 }
 
 /**
- * Delete a team
+ * Delete a team and its members
  */
 export async function deleteTeam(id: string): Promise<void> {
   const supabase = await createClient();
-  const { error } = await supabase
+
+  // First delete all team members
+  const { error: membersError } = await supabase
+    .from('team_members')
+    .delete()
+    .eq('team_id', id);
+
+  if (membersError) throw membersError;
+
+  // Then delete the team
+  const { error: teamError } = await supabase
     .from('teams')
     .delete()
     .eq('id', id);
 
-  if (error) throw error;
+  if (teamError) throw teamError;
 }
 
 /**
  * Generate a random team name from a predefined list
  */
 export function generateTeamName(): string {
-  const teamNames = [
-    'Eagle Warriors',
-    'Birdie Brigade',
-    'Par Excellence',
-    'Fairway Fighters',
-    'Green Machines',
-    'Bunker Busters',
-    'Putting Pirates',
-    'Drive Dynasty',
-    'Chip Champions',
-    'Wedge Warriors'
-  ];
-  
   const randomIndex = Math.floor(Math.random() * teamNames.length);
   return teamNames[randomIndex];
 }
@@ -253,5 +251,25 @@ export async function getTeamPlayers(teamId: string) {
   if (playersError) throw playersError;
   
   return players || [];
+}
+
+/**
+ * Check if a team name already exists
+ */
+export async function checkTeamNameExists(name: string): Promise<boolean> {
+  const supabase = await createClient();
+  const { error } = await supabase
+    .from('teams')
+    .select('id')
+    .eq('name', name)
+    .single();
+    
+  if (error && error.code === 'PGRST116') {
+    // PGRST116 means no rows returned, so name doesn't exist
+    return false;
+  }
+  
+  if (error) throw error;
+  return true;
 }
 

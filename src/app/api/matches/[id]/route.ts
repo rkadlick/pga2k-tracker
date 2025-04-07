@@ -49,8 +49,7 @@ export async function PATCH(
       rating_change: matchData.rating_change,
       playoffs: matchData.playoffs,
       notes: matchData.notes,
-      tags: matchData.tags,
-      hole_results: matchData.hole_results
+      tags: matchData.tags
     });
     
     if (!updatedMatch) {

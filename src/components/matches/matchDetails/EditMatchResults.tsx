@@ -3,7 +3,7 @@ import MatchScorecard from '@/components/matches/MatchForm/MatchScorecard';
 import { HoleResultData } from '@/hooks/useMatchForm';
 
 interface EditMatchResultsProps {
-  formData: {
+  scorecardData: {
     course_id: string | null;
     hole_results: HoleResultData[];
     nine_played: 'front' | 'back';
@@ -14,7 +14,7 @@ interface EditMatchResultsProps {
 }
 
 export default function EditMatchResults({
-  formData,
+  scorecardData,
   onHoleResultChange,
   yourTeamName,
   opponentTeamName
@@ -29,7 +29,7 @@ export default function EditMatchResults({
       </div>
 
       <div className="relative">
-        {!formData.course_id && (
+            {!scorecardData.course_id && (
           <div className="absolute inset-0 flex items-center justify-center bg-[--card-bg]/80 backdrop-blur-sm rounded-lg">
             <p className="text-[--muted] text-center">
               Please select a course to view and edit hole results
@@ -38,8 +38,8 @@ export default function EditMatchResults({
         )}
         
         <MatchScorecard
-          courseId={formData.course_id || ''}
-          formData={formData}
+          courseId={scorecardData.course_id || ''}
+          scorecardData={scorecardData}
           onHoleResultChange={onHoleResultChange}
           yourTeamName={yourTeamName}
           opponentTeamName={opponentTeamName}

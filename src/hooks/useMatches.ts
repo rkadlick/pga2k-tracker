@@ -37,12 +37,17 @@ interface MatchUpdateData {
   course_id?: string;
   your_team_id?: string;
   opponent_team_id?: string;
+  player1_id: string;
+  player2_id: string;
+  opponent1_id: string;
+  opponent2_id: string;
   nine_played?: NinePlayed;
   holes_won?: number;
   holes_tied?: number;
   holes_lost?: number;
   winner_id?: string | null;
-  rating_change?: number;
+  rating_change: number;
+  recent_rating_change: number;
   playoffs?: boolean;
   notes?: string;
   tags?: string[];
@@ -169,10 +174,15 @@ export function useMatches() {
     
     try {
       const { hole_results, ...basicMatchData } = matchData;
+
       const updatedMatch = await matchClient.updateMatch(id, basicMatchData);
       
       if (hole_results && hole_results.length > 0) {
         await matchClient.updateHoleResults(id, hole_results);
+      }
+
+      if(matchData.recent_rating_change !== 0) {
+        await updatePlayerRatings(matchData.player1_id, matchData.player2_id, matchData.recent_rating_change);
       }
       
       // Update the matches list

@@ -170,4 +170,27 @@ export async function findExistingTeamWithPlayers(playerIds: string[]): Promise<
 
   const data = await response.json();
   return data.data || null;
+}
+
+/**
+ * Check if a team name already exists
+ */
+export async function checkTeamNameExists(name: string): Promise<boolean> {
+  try {
+    const response = await fetch('/api/teams/check-name', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
+    
+    const result = await response.json() as ApiResponse<{ exists: boolean }>;
+    
+    if (!response.ok) {
+      throw new Error(result.error || 'Failed to check team name');
+    }
+    
+    return result.data!.exists;
+  } catch (error) {
+    throw formatError(error).error;
+  }
 } 

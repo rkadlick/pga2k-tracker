@@ -10,7 +10,7 @@ interface MatchFormData {
 
 interface MatchScorecardProps {
   courseId: string;
-  formData: MatchFormData;
+  scorecardData: MatchFormData;
   onHoleResultChange: (holeNumber: number, result: HoleResult | null) => void;
   yourTeamName?: string;
   opponentTeamName?: string;
@@ -25,7 +25,7 @@ interface CourseData {
   }[];
 }
 
-export default function MatchScorecard({ courseId, formData, onHoleResultChange, yourTeamName, opponentTeamName }: MatchScorecardProps) {
+export default function MatchScorecard({ courseId, scorecardData, onHoleResultChange, yourTeamName, opponentTeamName }: MatchScorecardProps) {
   const [courseData, setCourseData] = useState<CourseData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -54,16 +54,16 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
 
   if (loading) return <div className="text-[--muted]">Loading course data...</div>;
   if (error) return <div className="text-red-600 dark:text-red-400">{error}</div>;
-  if (!courseData && formData.course_id) return null;
+  if (!courseData && scorecardData.course_id) return null;
 
   const visibleHoles = courseData?.holes.slice(
-    formData.nine_played === 'front' ? 0 : 9,
-    formData.nine_played === 'front' ? 9 : 18
+    scorecardData.nine_played === 'front' ? 0 : 9,
+    scorecardData.nine_played === 'front' ? 9 : 18
   ) || Array(9).fill({ hole_number: 0, par: 0, distance: 0 });
 
   const renderHoleResultCell = (holeNumber: number, result: HoleResult | null) => {
-    const isSelected = formData.hole_results.find((hr: HoleResultData) => hr.hole_number === holeNumber)?.result === result;
-    const isDisabled = !formData.course_id;
+    const isSelected = scorecardData.hole_results.find((hr: HoleResultData) => hr.hole_number === holeNumber)?.result === result;
+    const isDisabled = !scorecardData.course_id;
 
     const baseClasses = "w-7 h-7 flex items-center justify-center text-xs font-medium rounded transition-colors duration-200";
     const disabledClasses = isDisabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer";
@@ -85,9 +85,9 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
 
   // Calculate match status
   const calculateMatchStatus = () => {
-    if (!formData.course_id) return null;
+    if (!scorecardData.course_id) return null;
 
-    const results = formData.hole_results
+    const results = scorecardData.hole_results
       .filter(hr => visibleHoles.some(h => h.hole_number === hr.hole_number))
       .filter(hr => hr.result !== null);
 
@@ -120,7 +120,7 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
               <th className="px-3 py-1.5 text-left text-xs font-medium text-[--muted] uppercase tracking-wider w-28">Hole</th>
               {visibleHoles.map(hole => (
                 <th key={hole.hole_number} className="px-1 py-1.5 text-center text-xs font-medium text-[--muted] uppercase tracking-wider w-24">
-                  {formData.course_id ? hole.hole_number : '-'}
+                  {scorecardData.course_id ? hole.hole_number : '-'}
                 </th>
               ))}
             </tr>
@@ -130,7 +130,7 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
               <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Par</td>
               {visibleHoles.map(hole => (
                 <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-purple-600 dark:text-purple-400 font-medium">
-                  {formData.course_id ? hole.par : '-'}
+                  {scorecardData.course_id ? hole.par : '-'}
                 </td>
               ))}
             </tr>
@@ -138,7 +138,7 @@ export default function MatchScorecard({ courseId, formData, onHoleResultChange,
               <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Dist</td>
               {visibleHoles.map(hole => (
                 <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-blue-600 dark:text-blue-400 font-medium">
-                  {formData.course_id ? hole.distance : '-'}
+                  {scorecardData.course_id ? hole.distance : '-'}
                 </td>
               ))}
             </tr>

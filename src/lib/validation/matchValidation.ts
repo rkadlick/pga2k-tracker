@@ -88,6 +88,12 @@ export function validateWinnerId(
   opponentTeamScore: number,
   playoffs: boolean
 ): string | null {
+  console.log('winnerId', winnerId);
+  console.log('yourTeamId', yourTeamId);
+  console.log('opponentTeamId', opponentTeamId);
+  console.log('yourTeamScore', yourTeamScore);
+  console.log('opponentTeamScore', opponentTeamScore);
+  console.log('playoffs', playoffs);
   if (winnerId === null) {
     // Null winner ID is allowed for ties
     if (yourTeamScore !== opponentTeamScore) {
@@ -96,8 +102,8 @@ export function validateWinnerId(
   } else if (winnerId !== yourTeamId && winnerId !== opponentTeamId) {
     return 'Winner ID must be one of the team IDs';
   } else if (!playoffs && // Only check scores if not playoffs
-    (winnerId === yourTeamId && yourTeamScore <= opponentTeamScore) ||
-    (winnerId === opponentTeamId && opponentTeamScore <= yourTeamScore)
+    ((winnerId === yourTeamId && yourTeamScore <= opponentTeamScore) ||
+    (winnerId === opponentTeamId && opponentTeamScore <= yourTeamScore))
   ) {
     return 'Winner ID must correspond to the team with the higher score';
   }

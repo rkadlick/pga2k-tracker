@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 interface EditMatchDetailsProps {
   matchData: Partial<Match>;
-  formData: {
+  scorecardData: {
     course_id: string | null;
     nine_played: 'front' | 'back';
     hole_results: Array<{
@@ -22,7 +22,7 @@ interface EditMatchDetailsProps {
 
 export default function EditMatchDetails({
   matchData,
-  formData,
+  scorecardData,
   onInputChange,
   onCourseSelect,
   onNinePlayedChange,
@@ -39,9 +39,9 @@ export default function EditMatchDetails({
   // Calculate if playoffs buttons should be enabled
   const calculatePlayoffsEnabled = () => {
     // Get the relevant holes based on nine_played
-    const relevantHoles = formData.hole_results.filter(hr => {
+    const relevantHoles = scorecardData.hole_results.filter(hr => {
       const holeNumber = hr.hole_number;
-      if (formData.nine_played === 'front') {
+      if (scorecardData.nine_played === 'front') {
         return holeNumber >= 1 && holeNumber <= 9;
       } else {
         return holeNumber >= 10 && holeNumber <= 18;
@@ -96,7 +96,7 @@ export default function EditMatchDetails({
         <div className="grid gap-6">
           <div className="space-y-2">
             <CourseSelect
-              selectedCourseId={formData.course_id}
+                selectedCourseId={scorecardData.course_id}
               onCourseSelect={onCourseSelect}
             />
           </div>
@@ -108,7 +108,7 @@ export default function EditMatchDetails({
             <select
               id="nine_played"
               name="nine_played"
-              value={formData.nine_played}
+              value={scorecardData.nine_played}
               onChange={(e) => onNinePlayedChange(e.target.value as 'front' | 'back')}
               className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
                        focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]

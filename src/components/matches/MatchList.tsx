@@ -8,7 +8,7 @@ interface MatchListProps {
 }
 
 export default function MatchList({ matches }: MatchListProps) {
-  // Group matches by date
+  // Group matches by date_played
   const groupedMatches = matches.reduce((groups, match) => {
     const date = match.date_played.split('T')[0]; // Get just the date part
     if (!groups[date]) {
@@ -22,6 +22,13 @@ export default function MatchList({ matches }: MatchListProps) {
   const sortedDates = Object.keys(groupedMatches).sort((a, b) => 
     new Date(b).getTime() - new Date(a).getTime()
   );
+
+  // Sort matches within each group by created_at in descending order
+  Object.keys(groupedMatches).forEach(date => {
+    groupedMatches[date].sort((a, b) => 
+      new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+    );
+  });
 
   if (matches.length === 0) {
     return (
@@ -58,11 +65,12 @@ export default function MatchList({ matches }: MatchListProps) {
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <h2 className="text-lg font-semibold">
-                {new Date(date).toLocaleDateString('en-US', {
+                {new Date(date + 'T00:00:00Z').toLocaleDateString('en-US', {
                   weekday: 'long',
                   year: 'numeric',
                   month: 'long',
-                  day: 'numeric'
+                  day: 'numeric',
+                  timeZone: 'UTC'
                 })}
               </h2>
             </div>

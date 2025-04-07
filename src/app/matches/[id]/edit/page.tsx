@@ -17,12 +17,17 @@ interface MatchUpdateData {
   course_id?: string;
   your_team_id?: string;
   opponent_team_id?: string;
+  player1_id?: string;
+  player2_id?: string;
+  opponent1_id?: string;
+  opponent2_id?: string;
   nine_played?: NinePlayed;
   holes_won?: number;
   holes_tied?: number;
   holes_lost?: number;
   winner_id?: string | null;
   rating_change?: number;
+  recent_rating_change?: number | null;
   playoffs?: boolean;
   notes?: string;
   tags?: string[];
@@ -32,7 +37,7 @@ interface MatchUpdateData {
   }>;
 }
 
-interface FormData {
+interface ScorecardData {
   hole_results: HoleResultData[];
   nine_played: 'front' | 'back';
   course_id: string | null;
@@ -46,7 +51,8 @@ export default function EditMatchPage() {
   const { teams, isLoading: teamsLoading } = useTeams();
   
   const [matchData, setMatchData] = useState<Partial<Match> | null>(null);
-  const [formData, setFormData] = useState<FormData>({
+  const [ratingData, setRatingData] = useState<number>(0);
+  const [scorecardData, setScorecardData] = useState<ScorecardData>({
     hole_results: [],
     nine_played: 'front',
     course_id: null
@@ -69,11 +75,12 @@ export default function EditMatchPage() {
           })) || [];
 
           setMatchData(fetchedMatch);
-          setFormData({
+          setScorecardData({
             hole_results: holeResults,
             nine_played: ninePlayed,
             course_id: fetchedMatch.course_id || null
           });
+          setRatingData(fetchedMatch.rating_change || null);
         }
       }
     };
@@ -105,7 +112,7 @@ export default function EditMatchPage() {
       if (!prev) return prev;
       return { ...prev, course_id: courseId || undefined };
     });
-    setFormData(prev => ({
+    setScorecardData(prev => ({
       ...prev,
       course_id: courseId,
       hole_results: []
@@ -119,7 +126,7 @@ export default function EditMatchPage() {
     }));
     
     // Clear hole results when switching nines
-    setFormData(prev => ({
+    setScorecardData(prev => ({
       ...prev,
       nine_played: value,
       hole_results: [] // Reset hole results
@@ -131,7 +138,7 @@ export default function EditMatchPage() {
 
   const handleHoleResultChange = (holeNumber: number, result: HoleResult) => {
     setHoleResultsModified(true);
-    const newHoleResults = [...formData.hole_results];
+    const newHoleResults = [...scorecardData.hole_results];
     const holeIndex = newHoleResults.findIndex(hr => hr.hole_number === holeNumber);
     
     if (holeIndex >= 0) {
@@ -140,13 +147,15 @@ export default function EditMatchPage() {
       newHoleResults.push({ hole_number: holeNumber, result });
     }
 
-    setFormData(prev => ({
+    setScorecardData(prev => ({
       ...prev,
       hole_results: newHoleResults
     }));
   };
 
   const handlePlayoffChange = (isPlayoff: boolean, winnerId: string | null) => {
+    console.log('isPlayoff', isPlayoff);
+    console.log('winnerId', winnerId);
     setMatchData(prev => {
       if (!prev) return prev;
       return {
@@ -160,7 +169,69 @@ export default function EditMatchPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!matchData || !matchId) return;
-    const errors = validateMatchUpdateData(matchData);
+
+      // Calculate holes won, lost, tied from hole results
+      const counts = scorecardData.hole_results.reduce((acc: { holesWon: number; holesLost: number; holesTied: number }, hr) => {
+        if (hr.result === 'win') return { ...acc, holesWon: acc.holesWon + 1 };
+        if (hr.result === 'loss') return { ...acc, holesLost: acc.holesLost + 1 };
+        if (hr.result === 'tie') return { ...acc, holesTied: acc.holesTied + 1 };
+        return acc;
+      }, { holesWon: 0, holesLost: 0, holesTied: 0 });
+
+      // Calculate winner based on holes
+      const yourTeamScore = counts.holesWon + (counts.holesTied * 0.5);
+      const opponentTeamScore = counts.holesLost + (counts.holesTied * 0.5);
+
+      let winnerId = null;
+      if (yourTeamScore > opponentTeamScore) {
+        winnerId = matchData.your_team_id;
+      } else if (opponentTeamScore > yourTeamScore) {
+        winnerId = matchData.opponent_team_id;
+      } else if (matchData.winner_id) {
+        winnerId = matchData.winner_id;
+      }     
+
+      
+      // Calculate rating change
+      console.log('ratingData', ratingData);
+      console.log('matchData.rating_change', matchData.rating_change);
+      
+      let rating_change = matchData.rating_change || 0;
+      if (winnerId !== matchData.your_team_id) {
+        rating_change = 0 - Math.abs(rating_change);
+      } else {
+        rating_change = Math.abs(rating_change);
+      }
+
+      console.log('rating_change', rating_change);
+      const recent_rating_change = (0 - ratingData) + rating_change;
+      console.log('recent_rating_change', recent_rating_change);
+
+
+      const updatedMatchData: MatchUpdateData = {
+        date_played: matchData.date_played,
+        course_id: matchData.course_id,
+        nine_played: matchData.nine_played as NinePlayed,
+        opponent_team_id: matchData.opponent_team_id,
+        player1_id: matchData.player1_id,
+        player2_id: matchData.player2_id,
+        opponent1_id: matchData.opponent1_id,
+        opponent2_id: matchData.opponent2_id,
+        holes_won: counts.holesWon,
+        holes_tied: counts.holesTied,
+        holes_lost: counts.holesLost,
+        winner_id: winnerId,
+        rating_change: rating_change,
+        recent_rating_change: recent_rating_change,
+        playoffs: matchData.playoffs,
+        notes: matchData.notes,
+        tags: matchData.tags,
+        ...(holeResultsModified ? { 
+          hole_results: scorecardData.hole_results
+        } : {})
+      };
+
+    const errors = validateMatchUpdateData(updatedMatchData);
     if (errors.length > 0) {
       setValidationErrors(errors);
       return;
@@ -174,64 +245,20 @@ export default function EditMatchPage() {
         throw new Error('Your team not found');
       }
 
-      if (!matchData.course_id) {
+      if (!updatedMatchData.course_id) {
         throw new Error('Course not selected');
       }
 
-      if (!matchData.opponent_team_id) {
+      if (!updatedMatchData.opponent_team_id) {
         throw new Error('Opponent team not selected');
       }
 
       // Verify that hole results are not empty
-      if (formData.hole_results.length === 0) {
+      if (scorecardData.hole_results.length === 0) {
         setValidationErrors(['Please enter hole results before saving']);
         setIsSubmitting(false);
         return;
       }
-
-      // Calculate holes won, lost, tied from hole results
-      const counts = formData.hole_results.reduce((acc: { holesWon: number; holesLost: number; holesTied: number }, hr) => {
-        if (hr.result === 'win') return { ...acc, holesWon: acc.holesWon + 1 };
-        if (hr.result === 'loss') return { ...acc, holesLost: acc.holesLost + 1 };
-        if (hr.result === 'tie') return { ...acc, holesTied: acc.holesTied + 1 };
-        return acc;
-      }, { holesWon: 0, holesLost: 0, holesTied: 0 });
-
-      // Calculate winner based on holes
-      const yourTeamScore = counts.holesWon + (counts.holesTied * 0.5);
-      const opponentTeamScore = counts.holesLost + (counts.holesTied * 0.5);
-
-      const winnerId = yourTeamScore > opponentTeamScore 
-        ? yourTeam.id 
-        : opponentTeamScore > yourTeamScore 
-          ? matchData.opponent_team_id 
-          : null;
-      
-      // Calculate rating change
-      let rating_change = matchData.rating_change || 0;
-      if (winnerId !== yourTeam.id) {
-        rating_change = 0 - Math.abs(rating_change);
-      } else {
-        rating_change = Math.abs(rating_change);
-      }
-
-      const updatedMatchData: MatchUpdateData = {
-        date_played: matchData.date_played,
-        course_id: matchData.course_id,
-        nine_played: matchData.nine_played as NinePlayed,
-        opponent_team_id: matchData.opponent_team_id,
-        holes_won: counts.holesWon,
-        holes_tied: counts.holesTied,
-        holes_lost: counts.holesLost,
-        winner_id: winnerId,
-        rating_change: rating_change,
-        playoffs: matchData.playoffs,
-        notes: matchData.notes,
-        tags: matchData.tags,
-        ...(holeResultsModified ? { 
-          hole_results: formData.hole_results
-        } : {})
-      };
   
       await updateMatch(matchId, updatedMatchData);
       router.push(`/matches/${matchId}`);
@@ -275,7 +302,7 @@ export default function EditMatchPage() {
         <div className="space-y-8">
           <EditMatchDetails
             matchData={matchData}
-            formData={formData}
+            scorecardData={scorecardData}
             onInputChange={handleInputChange}
             onCourseSelect={handleCourseSelect}
             onNinePlayedChange={handleNinePlayedChange}
@@ -285,7 +312,7 @@ export default function EditMatchPage() {
           />
 
           <EditMatchResults
-            formData={formData}
+            scorecardData={scorecardData}
             onHoleResultChange={handleHoleResultChange}
             yourTeamName={matchData.your_team}
             opponentTeamName={matchData.opponent_team}
