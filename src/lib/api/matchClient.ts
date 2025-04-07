@@ -1,4 +1,4 @@
-import { Match, HoleResultRecord, HoleResult, NinePlayed } from '@/types';
+import { Match, HoleResultRecord, NinePlayed } from '@/types';
 import { ApiResponse, formatError } from './errorHandling';
 
 interface MatchCreateData {

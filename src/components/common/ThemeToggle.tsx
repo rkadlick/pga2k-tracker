@@ -6,42 +6,23 @@ export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // Check for system preference on mount
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      setTheme('dark');
-      document.documentElement.setAttribute('data-theme', 'dark');
-    }
-
-    // Load saved theme from localStorage
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-
     setMounted(true);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
+    setTheme(theme === 'light' ? 'dark' : 'light');
   };
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-[--background] dark:bg-slate-800" />
+      <div className="w-10 h-10 rounded-xl bg-[--background] border border-[--border]" />
     );
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="theme-toggle-btn relative flex items-center justify-center w-10 h-10 rounded-xl 
-                bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700
-                hover:bg-slate-100 dark:hover:bg-slate-700
-                transition-all duration-200 shadow-sm"
+      className="theme-toggle"
       aria-label="Toggle theme"
     >
       <div className="relative flex items-center justify-center w-5 h-5">
@@ -80,4 +61,4 @@ export default function ThemeToggle() {
       </div>
     </button>
   );
-} 
+}

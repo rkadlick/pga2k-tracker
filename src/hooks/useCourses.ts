@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Course } from '@/types';
 import * as courseClient from '@/lib/api/courseClient';
 
@@ -11,9 +11,6 @@ export function useCourses() {
   const [error, setError] = useState<string | null>(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
-  
-  // Use a ref to prevent the effect from running more than once
-  const initialized = useRef(false);
   
   // Load courses on mount only
   useEffect(() => {
@@ -167,6 +164,7 @@ export function useCourses() {
 
   // Add a function to get a single course by ID
   const getCourseById = async (id: string): Promise<Course> => {
+    console.log('getting course by id', id);
     setIsLoading(true);
     setError(null);
     
@@ -178,6 +176,7 @@ export function useCourses() {
       }
       
       // If not found in state or doesn't have holes, fetch it directly
+      console.log('fetching course by id', id);
       const courseData = await courseClient.fetchCourse(id);
       
       // Update the courses list with the fetched course
@@ -204,23 +203,6 @@ export function useCourses() {
     }
   };
 
-  const getCourseWithHoles = async (courseId: string): Promise<Course | null> => {
-    try {
-      setIsLoading(true);
-      setError(null);
-      const response = await fetch(`/api/courses/${courseId}`);
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error);
-      return data.data;
-    } catch (err) {
-      const error = err instanceof Error ? err : new Error(String(err));
-      setError(error.message);
-      throw error;
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   return {
     courses,
     isLoading,
@@ -231,7 +213,6 @@ export function useCourses() {
     createCourseWithHoles,
     removeCourse,
     updateCourse,
-    getCourseById,
-    getCourseWithHoles,
+    getCourseById
   };
 } 

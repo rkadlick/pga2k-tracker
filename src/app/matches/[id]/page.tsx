@@ -20,7 +20,7 @@ export default function MatchDetailPage() {
   const matchId = Array.isArray(params.id) ? params.id[0] : params.id;
   const { getMatchById, isLoading, error } = useMatches();
   const [match, setMatch] = useState<Match | null>(null);
-  const { getCourseWithHoles, isLoading: isLoadingCourses, error: errorCourses } = useCourses();
+  const { getCourseById} = useCourses();
   const [course, setCourse] = useState<Course | null>(null);
   const [isLoadingCourse, setIsLoadingCourse] = useState(false);
 
@@ -30,12 +30,6 @@ export default function MatchDetailPage() {
         const fetchedMatch = await getMatchById(matchId);
         if (fetchedMatch) {
           setMatch(fetchedMatch);
-          // Fetch course details if needed
-          if (fetchedMatch.course_id) {
-            const response = await fetch(`/api/courses/${fetchedMatch.course_id}`);
-            const data = await response.json();
-            setCourse(data.data);
-          }
         }
       }
     };
@@ -47,16 +41,16 @@ export default function MatchDetailPage() {
     const fetchCourseData = async () => {
       if (match?.course_id) {
         setIsLoadingCourse(true);
-        const fetchedCourse = await getCourseWithHoles(match?.course_id);
+        const fetchedCourse = await getCourseById(match?.course_id);
         setCourse(fetchedCourse);
         setIsLoadingCourse(false);
         }
       }
 
     fetchCourseData();
-  }, [match?.course_id]);
+  }, [getCourseById, match?.course_id]);
 
-  if (isLoading || !match) {
+  if (isLoadingCourse || isLoading || !match) {
     return <LoadingState message="Loading match details..." />;
   }
 

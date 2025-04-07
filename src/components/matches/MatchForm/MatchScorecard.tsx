@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HoleResult } from '../../../types';
 import { HoleResultData } from '../../../hooks/useMatchForm';
+import { useCourses } from '@/hooks/useCourses';
 
 interface MatchFormData {
   hole_results: HoleResultData[];
@@ -26,37 +27,33 @@ interface CourseData {
 }
 
 export default function MatchScorecard({ courseId, scorecardData, onHoleResultChange, yourTeamName, opponentTeamName }: MatchScorecardProps) {
-  const [courseData, setCourseData] = useState<CourseData | null>(null);
+  const [course, setCourse] = useState<CourseData>();
+  const { getCourseById} = useCourses();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log('courseId', courseId);
     const fetchCourseData = async () => {
-      try {
-        const response = await fetch(`/api/courses/${courseId}`);
-        const data = await response.json();
-        setCourseData(data.data);
-      } catch (err) {
-        setError('Failed to load course data');
-        console.error('Error loading course data:', err);
-      } finally {
+      if (courseId) {
+        setLoading(true);
+        const fetchedCourse = await getCourseById(courseId);
+        setCourse(fetchedCourse);
         setLoading(false);
+        }
       }
-    };
 
     if (courseId) {
       fetchCourseData();
     } else {
       setLoading(false);
-      setCourseData(null);
+      setCourse(null);
     }
   }, [courseId]);
 
   if (loading) return <div className="text-[--muted]">Loading course data...</div>;
-  if (error) return <div className="text-red-600 dark:text-red-400">{error}</div>;
-  if (!courseData && scorecardData.course_id) return null;
+  if (!course && scorecardData.course_id) return null;
 
-  const visibleHoles = courseData?.holes.slice(
+  const visibleHoles = course?.holes.slice(
     scorecardData.nine_played === 'front' ? 0 : 9,
     scorecardData.nine_played === 'front' ? 9 : 18
   ) || Array(9).fill({ hole_number: 0, par: 0, distance: 0 });

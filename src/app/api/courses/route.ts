@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createCourseWithHoles, getCourses } from '@/lib/courseService';
-import { validateCourseName, validateHoles, hasValidationErrors } from '@/lib/validation/courseValidation';
+import { validateCourseName, validateHoles } from '@/lib/validation/courseValidation';
 import { HoleData } from '@/hooks/useCourseForm';
 
 export async function GET() {

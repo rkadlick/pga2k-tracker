@@ -222,7 +222,6 @@ export default function NewMatchPage() {
         ref={formRef} 
         onSubmit={handleSubmit} 
         yourTeam={yourTeam}
-        validationErrors={validationErrors}
       />
     </div>
   );

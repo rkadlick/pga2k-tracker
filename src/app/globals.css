@@ -97,6 +97,15 @@
            hover:bg-[var(--background)] hover:border-[var(--muted)];
   }
 
+  button.theme-toggle {
+    @apply !p-2 !bg-[var(--background)] !text-[var(--foreground)] 
+           border-[var(--border)] hover:border-[var(--muted)]
+           hover:!bg-[var(--card-bg)]
+           shadow-[var(--card-shadow)]
+           hover:shadow-[var(--card-shadow-hover)]
+           !transition-all;
+  }
+
   /* Win/Loss/Tie button variants */
   button.win {
     @apply bg-emerald-50 text-emerald-700

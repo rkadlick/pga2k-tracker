@@ -75,26 +75,16 @@ export function useMatches() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   
-  // Use a ref to prevent the effect from running more than once
-  const initialized = useRef(false);
+  // Use a ref for isLoading checks to avoid dependency cycles
+  const isLoadingRef = useRef(false);
   
   const { updatePlayerRatings } = usePlayers();
-  
-  // Load matches on mount only
-  useEffect(() => {
-    // Only run once
-    if (!initialized.current) {
-      loadMatches();
-      initialized.current = true;
-    }
-    
-    // No cleanup needed for this effect
-  }, []); // Empty dependency array ensures this only runs once
 
   // Function to load matches
   const loadMatches = useCallback(async () => {
-    if (isLoading) return;
+    if (isLoadingRef.current) return;
     
+    isLoadingRef.current = true;
     setIsLoading(true);
     setError(null);
     
@@ -108,8 +98,16 @@ export function useMatches() {
       throw error;
     } finally {
       setIsLoading(false);
+      isLoadingRef.current = false;
     }
-  }, [isLoading]);
+  }, []); // No dependencies needed now
+
+  // Load matches on mount
+  useEffect(() => {
+    loadMatches().catch(error => {
+      console.error('Failed to load matches:', error);
+    });
+  }, [loadMatches]);
 
   // Create a match
   const createMatch = useCallback(async (matchData: MatchCreateData) => {

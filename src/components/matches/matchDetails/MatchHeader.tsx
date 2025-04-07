@@ -6,7 +6,7 @@ interface MatchHeaderProps {
   isAuthenticated: boolean;
 }
 
-export default function MatchHeader({ matchId, onEdit, isAuthenticated }: MatchHeaderProps) {
+export default function MatchHeader({ onEdit, isAuthenticated }: MatchHeaderProps) {
   return (
     <div className="flex justify-between items-center">
       <Link 
