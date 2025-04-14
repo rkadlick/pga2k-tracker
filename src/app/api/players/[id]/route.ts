@@ -3,16 +3,17 @@ import { createClient } from '@/utils/supabase/server';
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
+    const { id } = await params;
     const { recent_rating } = await request.json();
     const supabase = await createClient();
 
     const { error } = await supabase
       .from('players')
       .update({ recent_rating })
-      .eq('id', params.id);
+      .eq('id', id);
 
     if (error) throw error;
     

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 export interface TeamMemberForm {
+  id: string;
   name: string;
   rank: number;
 }
@@ -14,8 +15,8 @@ export function useTeamForm() {
   const [formData, setFormData] = useState<TeamFormData>({
     name: '',
     members: [
-      { name: '', rank: 1500 },
-      { name: '', rank: 1500 }
+      { id: '', name: '', rank: 1500 },
+      { id: '', name: '', rank: 1500 }
     ]
   });
 
@@ -39,8 +40,8 @@ export function useTeamForm() {
     setFormData({
       name: '',
       members: [
-        { name: '', rank: 1500 },
-        { name: '', rank: 1500 }
+        { id: '', name: '', rank: 1500 },
+        { id: '', name: '', rank: 1500 }
       ]
     });
   };

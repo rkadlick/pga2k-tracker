@@ -50,7 +50,7 @@
 
 @layer base {
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-200;
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-100;
   }
 
   /* Modern focus styles */
@@ -76,7 +76,7 @@
     @apply bg-[var(--input-bg)] text-[var(--foreground)] rounded-xl px-4 py-2.5
            border border-[var(--input-border)] shadow-sm
            focus:border-[var(--input-focus)] focus:ring-1 focus:ring-[var(--input-focus)]
-           transition-all duration-200;
+          transition-all duration-50;
   }
 
   input::placeholder, textarea::placeholder {
@@ -85,7 +85,7 @@
 
   /* Buttons */
   button {
-    @apply px-4 py-2 font-medium rounded-lg transition-colors duration-200 cursor-pointer
+    @apply px-4 py-2 font-medium rounded-lg transition-colors duration-50 cursor-pointer
            bg-[var(--primary)] text-[var(--primary-foreground)] 
            hover:bg-[var(--primary-hover)]
            disabled:opacity-50 disabled:cursor-not-allowed;
@@ -148,13 +148,13 @@
 
   /* Links */
   a {
-    @apply text-[var(--primary)] hover:text-[var(--primary-hover)] transition-colors duration-200;
+    @apply text-[var(--primary)] hover:text-[var(--primary-hover)] transition-colors duration-50;
   }
 
   /* Cards */
   .card {
     @apply bg-[var(--card-bg)] rounded-xl shadow-[var(--card-shadow)]
-           hover:shadow-[var(--card-shadow-hover)] transition-all duration-200
+           hover:shadow-[var(--card-shadow-hover)] transition-all duration-50
            dark:border dark:border-slate-700/50;
   }
 }
@@ -186,5 +186,5 @@
 
 /* Transitions */
 * {
-  @apply transition-colors duration-200;
+  @apply transition-colors duration-50;
 }

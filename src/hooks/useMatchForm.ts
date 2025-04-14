@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export interface HoleResultData {
   hole_number: number;
@@ -72,10 +72,19 @@ export function useMatchForm() {
     setFormData(prev => ({ ...prev, opponent_team_id: teamId }));
   };
 
-  const setYourTeamPlayers = (players: { id: string; recent_rating: number }[]) => {
-    setFormData(prev => ({ ...prev, player1_id: players[0].id, player1_rating: players[0].recent_rating, player2_id: players[1].id, player2_rating: players[1].recent_rating }));
-  };
-
+  const setYourTeamPlayers = useCallback(
+    (players: { id: string; recent_rating: number }[]) => {
+      setFormData(prev => ({
+        ...prev,
+        player1_id: players[0].id,
+        player1_rating: players[0].recent_rating,
+        player2_id: players[1].id,
+        player2_rating: players[1].recent_rating
+      }));
+    },
+    [] // Empty dependency array since it only depends on setFormData, which is stable
+  );
+  
   const setOpponentTeamPlayers = (players: { id: string; recent_rating: number }[]) => {
     setFormData(prev => ({ ...prev, opponent1_id: players[0].id, opponent1_rating: players[0].recent_rating, opponent2_id: players[1].id, opponent2_rating: players[1].recent_rating }));
   };

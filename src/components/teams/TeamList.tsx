@@ -11,6 +11,9 @@ interface TeamListProps {
 export default function TeamList({ teams, onDelete, isAuthenticated }: TeamListProps) {
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
 
+  // Filter out test team
+  const filteredTeams = teams.filter(team => team.name !== "Fairway Fantatics Forever");
+
   const handleDeleteClick = (id: string) => {
     setConfirmDelete(id);
   };
@@ -20,7 +23,7 @@ export default function TeamList({ teams, onDelete, isAuthenticated }: TeamListP
     setConfirmDelete(null);
   };
 
-  if (teams.length === 0) {
+  if (filteredTeams.length === 0) {
     return (
       <div className="text-center p-8 card animate-fade-in">
         <div className="w-16 h-16 mx-auto mb-4 text-[--muted]">
@@ -47,7 +50,7 @@ export default function TeamList({ teams, onDelete, isAuthenticated }: TeamListP
   }
   return (
     <ul className="space-y-4">
-      {teams.map((team) => (
+      {filteredTeams.map((team) => (
         <li key={team.id} className="animate-fade-in">
           <div className="card hover:bg-[--primary]/5">
             <div className="p-4 sm:p-6">
@@ -68,7 +71,7 @@ export default function TeamList({ teams, onDelete, isAuthenticated }: TeamListP
                       href={`/teams/${team.id}`}
                       className="text-[--foreground] hover:text-[--primary] font-medium transition-colors"
                     >
-                      {team.name}
+                      {team.name === "Fairway Fantatics Forever" ? "Hidden Test Team" : team.name}
                     </Link>
                     
                     {/* "Your Team" Badge */}

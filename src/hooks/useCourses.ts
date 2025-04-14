@@ -164,7 +164,6 @@ export function useCourses() {
 
   // Add a function to get a single course by ID
   const getCourseById = async (id: string): Promise<Course> => {
-    console.log('getting course by id', id);
     setIsLoading(true);
     setError(null);
     
@@ -176,7 +175,6 @@ export function useCourses() {
       }
       
       // If not found in state or doesn't have holes, fetch it directly
-      console.log('fetching course by id', id);
       const courseData = await courseClient.fetchCourse(id);
       
       // Update the courses list with the fetched course

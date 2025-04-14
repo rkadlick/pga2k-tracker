@@ -39,7 +39,7 @@ export async function getPlayer(playerId: string): Promise<Player> {
       throw new Error(result.error || 'Failed to fetch player');
     }
 
-    return result.data;
+    return result.data!;
   } catch (error) {
     throw formatError(error).error;
   }
@@ -62,7 +62,7 @@ export async function updatePlayer(playerId: string, playerData: Partial<Player>
       throw new Error(result.error || 'Failed to update player');
     }
 
-    return result.data;
+    return result.data!;
   } catch (error) {
     throw formatError(error).error;
   }

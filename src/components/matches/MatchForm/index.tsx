@@ -6,7 +6,7 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { Team } from "@/lib/api/teamClient";
+import { Team } from "@/types";
 import * as teamClient from "@/lib/api/teamClient";
 import { useMatchForm, MatchFormData } from "../../../hooks/useMatchForm";
 import CourseSelect from "./CourseSelect";
@@ -35,6 +35,9 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [playerError, setPlayerError] = useState<string | null>(null);
     const [opponentTeam, setOpponentTeam] = useState<Team | null>(null);
+
+
+    
     const {
       formData,
       updateFormData,
@@ -65,7 +68,7 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
       }
 
       fetchTeamPlayers();
-    }, [yourTeam]);
+    }, [yourTeam, setYourTeamPlayers]);
 
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();

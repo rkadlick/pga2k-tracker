@@ -1,5 +1,5 @@
 interface TeamFormProps {
-  onSubmit: (name: string, players: { name: string; rating: number }[]) => void;
+  onSubmit: (name: string, players: {id: string,  name: string; rating: number }[]) => void;
   onCancel: () => void;
 }
 

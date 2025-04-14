@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { HoleResult } from '../../../types';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Course, HoleResult } from '../../../types';
 import { HoleResultData } from '../../../hooks/useMatchForm';
 import { useCourses } from '@/hooks/useCourses';
 
@@ -28,27 +28,56 @@ interface CourseData {
 
 export default function MatchScorecard({ courseId, scorecardData, onHoleResultChange, yourTeamName, opponentTeamName }: MatchScorecardProps) {
   const [course, setCourse] = useState<CourseData>();
-  const { getCourseById} = useCourses();
+  const { getCourseById } = useCourses();
   const [loading, setLoading] = useState(true);
 
+  // Memoize getCourseById
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const memoizedGetCourseById = useCallback(getCourseById, []);
+
+  // Memoize the data transformation function
+  const transformCourseData = useCallback((fetchedCourse: Course): CourseData => ({
+    name: fetchedCourse.name,
+    holes: fetchedCourse.holes?.map((hole: { hole_number: number; par: number; distance: number; }) => ({
+      hole_number: hole.hole_number,
+      par: hole.par,
+      distance: hole.distance
+    })) || []
+  }), []);
+
   useEffect(() => {
-    console.log('courseId', courseId);
+    let isMounted = true;
+
     const fetchCourseData = async () => {
-      if (courseId) {
-        setLoading(true);
-        const fetchedCourse = await getCourseById(courseId);
-        setCourse(fetchedCourse);
+      if (!courseId) {
         setLoading(false);
-        }
+        setCourse(undefined);
+        return;
       }
 
-    if (courseId) {
-      fetchCourseData();
-    } else {
-      setLoading(false);
-      setCourse(null);
-    }
-  }, [courseId]);
+      try {
+        setLoading(true);
+        const fetchedCourse = await memoizedGetCourseById(courseId);
+        if (isMounted) {
+          const transformedCourse = transformCourseData(fetchedCourse);
+          setCourse(transformedCourse);
+        }
+      } catch (error) {
+        console.error('Error fetching course:', error);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    };
+
+    fetchCourseData();
+
+    return () => {
+      isMounted = false;
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [courseId, memoizedGetCourseById]); // Only depend on courseId and memoized function
 
   if (loading) return <div className="text-[--muted]">Loading course data...</div>;
   if (!course && scorecardData.course_id) return null;

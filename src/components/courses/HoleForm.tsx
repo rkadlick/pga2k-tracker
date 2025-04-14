@@ -16,7 +16,7 @@ export default function HoleForm({
 }: HoleFormProps) {
   const [holeNumber, setHoleNumber] = useState(initialData?.hole_number || 1);
   const [par, setPar] = useState(initialData?.par || 4);
-  const [distance, setDistance] = useState(initialData?.distance || undefined);
+  const [distance, setDistance] = useState(initialData?.distance || 0);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
@@ -103,7 +103,7 @@ export default function HoleForm({
             type="number"
             id="distance"
             value={distance || ''}
-            onChange={(e) => setDistance(e.target.value ? parseInt(e.target.value) : undefined)}
+            onChange={(e) => setDistance(e.target.value ? parseInt(e.target.value) : 0)}
             min={100}
             max={700}
             className={`mt-1 block w-full rounded-lg border-[--border] bg-[--input-bg] text-[--foreground] focus:border-[--primary] focus:ring-[--primary] sm:text-sm ${

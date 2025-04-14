@@ -88,12 +88,7 @@ export function validateWinnerId(
   opponentTeamScore: number,
   playoffs: boolean
 ): string | null {
-  console.log('winnerId', winnerId);
-  console.log('yourTeamId', yourTeamId);
-  console.log('opponentTeamId', opponentTeamId);
-  console.log('yourTeamScore', yourTeamScore);
-  console.log('opponentTeamScore', opponentTeamScore);
-  console.log('playoffs', playoffs);
+
   if (winnerId === null) {
     // Null winner ID is allowed for ties
     if (yourTeamScore !== opponentTeamScore) {

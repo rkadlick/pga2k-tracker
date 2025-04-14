@@ -12,7 +12,6 @@ import MatchList from '@/components/matches/MatchList';
 export default function MatchesPage() {
   const { isAuthenticated } = useAuth();
   const { matches, isLoading, error } = useMatches();
-
   return (
     <div className="max-w-5xl mx-auto space-y-8 animate-fade-in">
       <MatchesHeader isAuthenticated={isAuthenticated} />

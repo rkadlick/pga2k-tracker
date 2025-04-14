@@ -3,10 +3,10 @@ import { getTeamPlayers } from '@/lib/teamService';
 
 export async function GET(
   request: NextRequest,
-  context: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = await context.params;
+    const { id } = await params;
     const players = await getTeamPlayers(id);
     return NextResponse.json({ data: players });
   } catch (error) {

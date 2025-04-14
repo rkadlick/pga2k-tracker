@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Match, HoleResult, NinePlayed } from '@/types';
+import { Match, HoleResult, NinePlayed, HoleResultRecord } from '@/types';
 import * as matchClient from '@/lib/api/matchClient';
 import { usePlayers } from '@/hooks/usePlayers';
 
@@ -29,6 +29,7 @@ interface MatchCreateData {
     hole_number: number;
     result: HoleResult;
     match_id?: string;
+    updated_at?: string;
   }>;
 }
 
@@ -51,17 +52,11 @@ interface MatchUpdateData {
   playoffs?: boolean;
   notes?: string;
   tags?: string[];
-}
-
-// Extend the Match interface to include hole_results
-interface MatchWithDetails extends Match {
   hole_results?: Array<{
-    id: string;
-    match_id: string;
     hole_number: number;
     result: HoleResult;
-    created_at: string;
-    updated_at: string;
+    match_id?: string;
+    updated_at?: string;
   }>;
 }
 
@@ -69,7 +64,7 @@ interface MatchWithDetails extends Match {
  * A hook for managing matches data and operations
  */
 export function useMatches() {
-  const [matches, setMatches] = useState<MatchWithDetails[]>([]);
+  const [matches, setMatches] = useState<Match[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -90,7 +85,7 @@ export function useMatches() {
     
     try {
       const data = await matchClient.fetchMatches();
-      setMatches(data as MatchWithDetails[]);
+      setMatches(data);
       return data;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
@@ -123,10 +118,14 @@ export function useMatches() {
       
       // Add hole results if they exist
       if (hole_results && hole_results.length > 0) {
-        await matchClient.addHoleResults(newMatch.id, hole_results);
+        const holeResultsWithTimestamp = hole_results.map(result => ({
+          ...result,
+          updated_at: new Date().toISOString()
+        }));
+        await matchClient.addHoleResults(newMatch.id, holeResultsWithTimestamp as Omit<HoleResultRecord, "id" | "created_at">[]);
       }
 
-      // Update player ratings if there's a rating change
+      // Update player ratings if there's a rating change  
       if (matchData.rating_change !== 0) {
         await updatePlayerRatings(matchData.player1_id, matchData.player2_id, matchData.rating_change);
       }
@@ -135,7 +134,7 @@ export function useMatches() {
       const completeMatch = await matchClient.fetchMatch(newMatch.id);
       
       // Update the matches list
-      setMatches(prev => [completeMatch as MatchWithDetails, ...prev]);
+      setMatches(prev => [completeMatch, ...prev]);
       
       return completeMatch;
     } catch (err) {
@@ -176,7 +175,11 @@ export function useMatches() {
       const updatedMatch = await matchClient.updateMatch(id, basicMatchData);
       
       if (hole_results && hole_results.length > 0) {
-        await matchClient.updateHoleResults(id, hole_results);
+        const holeResultsWithTimestamp = hole_results.map(result => ({
+          ...result,
+          updated_at: new Date().toISOString()
+        }));
+        await matchClient.updateHoleResults(id, holeResultsWithTimestamp as Omit<HoleResultRecord, "id" | "created_at">[]);
       }
 
       if(matchData.recent_rating_change !== 0) {
@@ -186,7 +189,7 @@ export function useMatches() {
       // Update the matches list
       setMatches(prevMatches => 
         prevMatches.map(match => 
-          match.id === id ? {...updatedMatch as MatchWithDetails} : match
+          match.id === id ? {...updatedMatch} : match
         )
       );
       
@@ -198,10 +201,10 @@ export function useMatches() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [updatePlayerRatings]);
 
   // Get a match by ID
-  const getMatchById = useCallback(async (id: string): Promise<MatchWithDetails> => {
+  const getMatchById = useCallback(async (id: string): Promise<Match> => {
     setIsLoading(true);
     setError(null);
     
@@ -220,17 +223,22 @@ export function useMatches() {
       // Update the matches list with the fetched match
       setMatches(prevMatches => {
         const matchIndex = prevMatches.findIndex(m => m.id === id);
+        
         if (matchIndex >= 0) {
-          // Replace the existing match
-          const newMatches = [...prevMatches];
-          newMatches[matchIndex] = matchData as MatchWithDetails;
-          return newMatches;
+          // Create a new array with the updated match
+          return prevMatches.map((match, index) => 
+            index === matchIndex 
+              ? { ...match, ...matchData } // Merge existing match with new data
+              : match
+          );
         } else {
-          // Add the new match
-          return [...prevMatches, matchData as MatchWithDetails];
+          // Add new match to the array
+          return [...prevMatches, matchData];
         }
       });
-      return matchData as MatchWithDetails;
+      
+      
+      return matchData;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       setError(error);
@@ -252,21 +260,21 @@ export function useMatches() {
     setError(null);
     
     try {
-      // Add match_id to each hole result
+      // Add match_id and updated_at to each hole result
       const holeResultsWithMatchId = holeResults.map(result => ({
         ...result,
-        match_id: matchId
+        match_id: matchId,
+        updated_at: new Date().toISOString()
       }));
       
       await matchClient.addHoleResults(matchId, holeResultsWithMatchId);
-      
       // Refresh the match to get updated data
       const updatedMatch = await matchClient.fetchMatch(matchId);
       
       // Update the matches list
       setMatches(prevMatches => 
         prevMatches.map(match => 
-          match.id === matchId ? updatedMatch as MatchWithDetails : match
+          match.id === matchId ? updatedMatch : match
         )
       );
       
@@ -298,11 +306,11 @@ export function useMatches() {
       // Update the matches list
       setMatches(prevMatches => 
         prevMatches.map(match => 
-          match.id === matchId ? updatedMatch as MatchWithDetails : match
+          match.id === matchId ? updatedMatch : match
         )
       );
       
-      return updatedMatch as MatchWithDetails;
+      return updatedMatch;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       setError(error);

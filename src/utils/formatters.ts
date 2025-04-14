@@ -9,8 +9,6 @@ export function formatNinePlayed(ninePlayed: NinePlayed): string {
       return 'Front 9';
     case 'back':
       return 'Back 9';
-    case 'full':
-      return 'Full 18';
     default:
       return ninePlayed;
   }

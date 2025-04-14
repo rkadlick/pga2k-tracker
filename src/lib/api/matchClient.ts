@@ -75,7 +75,7 @@ export async function fetchMatch(id: string): Promise<Match> {
       throw new Error(result.error || 'Failed to fetch match');
     }
     
-    return result;
+    return result.data!;
   } catch (error) {
     throw formatError(error).error;
   }
@@ -100,7 +100,7 @@ export async function createMatch(matchData: MatchCreateData): Promise<Match> {
       throw new Error(`${errorMessage}${errorDetails}`);
     }
     
-    return result;
+    return result.data!;
   } catch (error) {
     throw formatError(error).error;
   }

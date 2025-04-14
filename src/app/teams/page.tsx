@@ -18,9 +18,9 @@ export default function TeamsPage() {
     deleteTeam 
   } = useTeams();
 
-  const handleAddTeam = async (name: string, players: { name: string; rating: number }[]) => {
+  const handleAddTeam = async (name: string, players: { id: string, name: string; rating: number }[]) => {
     try {
-      await createTeam({ name, players });
+      await createTeam({ name, players, playerIds: players.map(player => player.id), playerRatings: players.map(player => player.rating) });
       setIsAddingTeam(false);
     } catch (err) {
       console.error("Error adding team:", err);

@@ -1,10 +1,16 @@
 import { Match } from '@/types';
+import { getName } from '@/utils/nameHelpers';
 
 interface MatchDetailsProps {
   match: Match;
 }
 
 export default function MatchDetails({ match }: MatchDetailsProps) {
+  // Helper function to get team name
+
+  const yourTeamName = getName(match.your_team);
+  const opponentTeamName = getName(match.opponent_team);
+
   return (
     <div className="p-6 space-y-6">
       <div>
@@ -16,7 +22,7 @@ export default function MatchDetails({ match }: MatchDetailsProps) {
       <div className="bg-[--input-bg] rounded-lg p-4 border border-[--border]">
         <div className="grid grid-cols-3 gap-4 text-center">
           <div>
-            <p className="text-sm text-[--muted] mb-2">{match.your_team}</p>
+            <p className="text-sm text-[--muted] mb-2">{yourTeamName}</p>
             <p className="font-medium text-2xl text-green-600 dark:text-green-400">{match.holes_won}</p>
           </div>
           <div>
@@ -24,7 +30,7 @@ export default function MatchDetails({ match }: MatchDetailsProps) {
             <p className="font-medium text-2xl text-yellow-600 dark:text-yellow-400">{match.holes_tied}</p>
           </div>
           <div>
-            <p className="text-sm text-[--muted] mb-2">{match.opponent_team}</p>
+            <p className="text-sm text-[--muted] mb-2">{opponentTeamName}</p>
             <p className="font-medium text-2xl text-red-600 dark:text-red-400">{match.holes_lost}</p>
           </div>
         </div>
@@ -41,8 +47,8 @@ export default function MatchDetails({ match }: MatchDetailsProps) {
             {match.winner_id === null
               ? 'Match Tied'
               : match.winner_id === match.your_team_id
-              ? `${match.your_team} won${match.playoffs ? ' (Playoff)' : ''}`
-              : `${match.opponent_team} won${match.playoffs ? ' (Playoff)' : ''}`}
+              ? `${yourTeamName} won${match.playoffs ? ' (Playoff)' : ''}`
+              : `${opponentTeamName} won${match.playoffs ? ' (Playoff)' : ''}`}
           </span>
         </div>
       </div>
@@ -79,4 +85,4 @@ export default function MatchDetails({ match }: MatchDetailsProps) {
       </div>
     </div>
   );
-} 
+}

@@ -12,7 +12,7 @@ export interface FormOptions<T> {
   onSubmit?: (values: T) => void | Promise<void>;
 }
 
-export function useForm<T extends Record<string, any>>({
+export function useForm<T>({
   initialValues,
   validators = {},
   onSubmit
@@ -22,7 +22,7 @@ export function useForm<T extends Record<string, any>>({
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Update a single field value
-  const setValue = useCallback((field: keyof T, value: any) => {
+  const setValue = useCallback(<K extends keyof T>(field: K, value: T[K]) => {
     setValues(prev => ({ ...prev, [field]: value }));
     
     // Clear error when field is updated

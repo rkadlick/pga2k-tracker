@@ -1,6 +1,9 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Team, TeamCreateData, TeamUpdateData } from '@/lib/api/teamClient';
+import { TeamCreateData, TeamUpdateData } from '@/lib/api/teamClient';
 import * as teamClient from '@/lib/api/teamClient';
+import { Team } from '@/types';
+
+
 
 /**
  * A hook for managing teams data and operations
@@ -11,12 +14,12 @@ interface UseTeamsReturn {
   isCreating: boolean;
   isDeleting: boolean;
   error: Error | null;
-  loadTeams: () => Promise<void>;
+  loadTeams: () => Promise<Team[] | void>;
   createTeam: (data: TeamCreateData) => Promise<{ team: Team; wasExisting: boolean }>;
   updateTeam: (id: string, teamData: TeamUpdateData) => Promise<Team>;
   deleteTeam: (id: string) => Promise<void>;
   getTeamById: (id: string) => Promise<Team>;
-  refreshTeams: () => Promise<void>;
+  refreshTeams: () => Promise<Team[] | void>;
 }
 
 export function useTeams(): UseTeamsReturn {
@@ -26,22 +29,14 @@ export function useTeams(): UseTeamsReturn {
   const [isDeleting, setIsDeleting] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   
-  // Use a ref to prevent the effect from running more than once
-  const initialized = useRef(false);
-  
-  // Load teams on mount only
-  useEffect(() => {
-    // Only run once
-    if (!initialized.current) {
-      loadTeams();
-      initialized.current = true;
-    }
-  }, []); // Empty dependency array ensures this only runs once
+  // Use ref for loading state check
+  const isLoadingRef = useRef(false);
 
   // Function to load teams
   const loadTeams = useCallback(async () => {
-    if (!isLoading) return;
+    if (isLoadingRef.current) return;
     
+    isLoadingRef.current = true;
     setIsLoading(true);
     setError(null);
     
@@ -55,11 +50,17 @@ export function useTeams(): UseTeamsReturn {
       throw error;
     } finally {
       setIsLoading(false);
+      isLoadingRef.current = false;
     }
-  }, [isLoading]);
+  }, []);
+
+  // Load teams on mount
+  useEffect(() => {
+    loadTeams();
+  }, [loadTeams]);
 
   // Create a team
-  const createTeam = useCallback(async (data: TeamCreateData) => {
+  const createTeam = useCallback(async (data: TeamCreateData): Promise<{ team: Team; wasExisting: boolean }> => {
     setIsCreating(true);
     setError(null);
     
@@ -80,7 +81,7 @@ export function useTeams(): UseTeamsReturn {
       }
 
       // Create new team if no existing team found
-      const newTeam = await teamClient.createTeam(data.name, data.is_your_team || false, data.playerIds);
+      const newTeam = await teamClient.createTeam(data);
       
       // Update player ratings if provided
       if (data.playerRatings) {
@@ -92,7 +93,7 @@ export function useTeams(): UseTeamsReturn {
       }
 
       await loadTeams(); // Refresh the teams list
-      return { team: newTeam, wasExisting: false };
+      return { team: newTeam.team, wasExisting: false };
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       setError(error);
@@ -126,7 +127,7 @@ export function useTeams(): UseTeamsReturn {
     setError(null);
     
     try {
-      const updatedTeam = await teamClient.updateTeam(id, teamData);
+      const updatedTeam = await teamClient.updateTeam(id, teamData.name);
       
       // Update the teams list
       setTeams(prevTeams => 

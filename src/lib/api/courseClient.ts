@@ -29,7 +29,6 @@ export async function fetchCourses(): Promise<Course[]> {
  * Fetch a single course with its holes
  */
 export async function fetchCourse(id: string): Promise<Course> {
-  console.log('fetching course by id', id);
   const response = await fetch(`/api/courses/${id}`);
   const data = await response.json();
   return data.data;

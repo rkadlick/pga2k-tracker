@@ -4,11 +4,11 @@ import { validateMatchUpdateData } from '@/lib/validation/matchValidation';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const matchId = params.id;
-    const match = await getMatchWithDetails(matchId);
+    const { id } = await params;
+    const match = await getMatchWithDetails(id);
     
     if (!match) {
       return NextResponse.json({ error: 'Match not found' }, { status: 404 });
@@ -23,10 +23,10 @@ export async function GET(
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const matchId = params.id;
+    const { id } = await params;
     const matchData = await request.json();
     
     // Validate match update data
@@ -36,7 +36,7 @@ export async function PATCH(
     }
     
     // Update match
-    const updatedMatch = await updateMatch(matchId, {
+    const updatedMatch = await updateMatch(id, {
       date_played: matchData.date_played,
       course_id: matchData.course_id,
       your_team_id: matchData.your_team_id,
@@ -65,16 +65,13 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const matchId = params.id;
-    const result = await deleteMatch(matchId);
+    const { id } = await params;
+    await deleteMatch(id);
     
-    if (!result) {
-      return NextResponse.json({ error: 'Match not found' }, { status: 404 });
-    }
-    
+
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Error deleting match:', error);

@@ -1,5 +1,5 @@
 import { ApiResponse, formatError } from './errorHandling';
-import { Team as TeamType, Player } from '@/types';
+import { Team, Player } from '@/types';
 
 export interface TeamMember {
   id: string;
@@ -8,29 +8,24 @@ export interface TeamMember {
   created_at: string;
 }
 
-export interface Team {
-  id: string;
-  name: string;
-  is_your_team: boolean;
-  created_at: string;
-  updated_at: string;
-}
 
 export interface TeamCreateData {
   name: string;
   players: { name: string; rating: number }[];
   is_your_team?: boolean;
+  playerIds: string[];
+  playerRatings?: number[];
 }
 
 export interface TeamUpdateData {
-  name?: string;
+  name: string;
   is_your_team?: boolean;
 }
 
 /**
  * Fetch all teams
  */
-export async function fetchTeams(): Promise<TeamType[]> {
+export async function fetchTeams(): Promise<Team[]> {
   const response = await fetch('/api/teams');
   const data = await response.json();
   return data.data;
@@ -39,7 +34,7 @@ export async function fetchTeams(): Promise<TeamType[]> {
 /**
  * Fetch a single team with its details
  */
-export async function fetchTeam(id: string): Promise<TeamType> {
+export async function fetchTeam(id: string): Promise<Team> {
   const response = await fetch(`/api/teams/${id}`);
   const data = await response.json();
   return data.data;
@@ -67,7 +62,7 @@ export async function createTeam(data: TeamCreateData): Promise<{ team: Team; wa
 /**
  * Update an existing team
  */
-export async function updateTeam(id: string, name: string): Promise<TeamType> {
+export async function updateTeam(id: string, name: string): Promise<Team> {
   try {
     const response = await fetch(`/api/teams/${id}`, {
       method: 'PATCH',
@@ -75,7 +70,7 @@ export async function updateTeam(id: string, name: string): Promise<TeamType> {
       body: JSON.stringify({ name })
     });
     
-    const result = await response.json() as ApiResponse<TeamType>;
+    const result = await response.json() as ApiResponse<Team>;
     
     if (!response.ok) {
       throw new Error(result.error || 'Failed to update team');

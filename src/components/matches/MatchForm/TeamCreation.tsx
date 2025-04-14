@@ -65,7 +65,8 @@ export default function TeamCreation({ isYourTeam, onTeamCreated }: TeamCreation
           name: m.name,
           rating: m.rank
         })),
-        is_your_team: isYourTeam
+        is_your_team: isYourTeam,
+        playerIds: formData.members.map(m => m.id)
       });
 
       const players = await teamClient.getTeamPlayers(result.team.id);

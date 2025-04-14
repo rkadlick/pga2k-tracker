@@ -17,17 +17,17 @@ interface MatchUpdateData {
   course_id?: string;
   your_team_id?: string;
   opponent_team_id?: string;
-  player1_id?: string;
-  player2_id?: string;
-  opponent1_id?: string;
-  opponent2_id?: string;
+  player1_id: string;
+  player2_id: string;
+  opponent1_id: string;
+  opponent2_id: string;
   nine_played?: NinePlayed;
   holes_won?: number;
   holes_tied?: number;
   holes_lost?: number;
   winner_id?: string | null;
-  rating_change?: number;
-  recent_rating_change?: number | null;
+  rating_change: number;
+  recent_rating_change: number;
   playoffs?: boolean;
   notes?: string;
   tags?: string[];
@@ -80,7 +80,7 @@ export default function EditMatchPage() {
             nine_played: ninePlayed,
             course_id: fetchedMatch.course_id || null
           });
-          setRatingData(fetchedMatch.rating_change || null);
+          setRatingData(fetchedMatch.rating_change || 0);
         }
       }
     };
@@ -154,8 +154,6 @@ export default function EditMatchPage() {
   };
 
   const handlePlayoffChange = (isPlayoff: boolean, winnerId: string | null) => {
-    console.log('isPlayoff', isPlayoff);
-    console.log('winnerId', winnerId);
     setMatchData(prev => {
       if (!prev) return prev;
       return {
@@ -191,10 +189,7 @@ export default function EditMatchPage() {
         winnerId = matchData.winner_id;
       }     
 
-      
-      // Calculate rating change
-      console.log('ratingData', ratingData);
-      console.log('matchData.rating_change', matchData.rating_change);
+    
       
       let rating_change = matchData.rating_change || 0;
       if (winnerId !== matchData.your_team_id) {
@@ -203,9 +198,7 @@ export default function EditMatchPage() {
         rating_change = Math.abs(rating_change);
       }
 
-      console.log('rating_change', rating_change);
       const recent_rating_change = (0 - ratingData) + rating_change;
-      console.log('recent_rating_change', recent_rating_change);
 
 
       const updatedMatchData: MatchUpdateData = {
@@ -213,10 +206,10 @@ export default function EditMatchPage() {
         course_id: matchData.course_id,
         nine_played: matchData.nine_played as NinePlayed,
         opponent_team_id: matchData.opponent_team_id,
-        player1_id: matchData.player1_id,
-        player2_id: matchData.player2_id,
-        opponent1_id: matchData.opponent1_id,
-        opponent2_id: matchData.opponent2_id,
+        player1_id: matchData.player1_id || '',
+        player2_id: matchData.player2_id || '',
+        opponent1_id: matchData.opponent1_id || '',
+        opponent2_id: matchData.opponent2_id || '',
         holes_won: counts.holesWon,
         holes_tied: counts.holesTied,
         holes_lost: counts.holesLost,
@@ -269,6 +262,11 @@ export default function EditMatchPage() {
       setIsSubmitting(false);
     }
   };
+
+  const getTeamName = (team: string | { name: string; } | undefined) => {
+    if (!team) return ''; // or some default value
+    return typeof team === 'string' ? team : team.name;
+  };
   
   if (matchLoading || teamsLoading || !matchData) {
     return (
@@ -314,8 +312,8 @@ export default function EditMatchPage() {
           <EditMatchResults
             scorecardData={scorecardData}
             onHoleResultChange={handleHoleResultChange}
-            yourTeamName={matchData.your_team}
-            opponentTeamName={matchData.opponent_team}
+            yourTeamName={getTeamName(matchData.your_team)}
+            opponentTeamName={getTeamName(matchData.opponent_team)}
           />
         </div>
       </div>

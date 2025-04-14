@@ -4,10 +4,10 @@ import { validateHoleResults } from "@/lib/validation/matchValidation";
 
 export async function POST(
   request: NextRequest,
-  { params }: { params: { id: string } }
-) {
+  { params }: { params: Promise<{ id: string }> }
+): Promise<NextResponse> {
   try {
-    const { id } = params;
+    const { id } = await params;
     const payload = await request.json();
 
     // Validate hole results
@@ -29,13 +29,14 @@ export async function POST(
     );
   }
 }
+  
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params;
+    const { id } = await params;
     const payload = await request.json();
 
     // Validate hole results

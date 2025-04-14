@@ -1,5 +1,70 @@
 import { createClient } from '@/utils/supabase/server';
+import { PostgrestError } from '@supabase/supabase-js';
 import { Match, HoleResultRecord, HoleResult, NinePlayed } from '@/types';
+
+interface RawMatchResponse {
+  id: string;
+  date_played: string;
+  course_id: string;
+  course: { name: string };
+  your_team_id: string;
+  your_team: { name: string };
+  opponent_team_id: string;
+  opponent_team: { name: string };
+  player1_id: string;
+  player1: { name: string };
+  player1_rating: number;
+  player2_id: string;
+  player2: { name: string };
+  player2_rating: number;
+  opponent1_id: string;
+  opponent1: { name: string };
+  opponent1_rating: number;
+  opponent2_id: string;
+  opponent2: { name: string };
+  opponent2_rating: number;
+  nine_played: NinePlayed;
+  holes_won: number;
+  holes_tied: number;
+  holes_lost: number;
+  winner_id: string | null;
+  rating_change: number;
+  playoffs: boolean;
+  notes?: string;
+  tags?: string[];
+  created_at: string;
+  updated_at: string;
+}
+
+interface RawMatchInsertResponse {
+  id: string;
+  date_played: string;
+  course_id: string;
+  courses: { name: string }; // Note: this is different from the previous 'course'
+  your_team_id: string;
+  your_team: { name: string };
+  opponent_team_id: string;
+  opponent_team: { name: string };
+  player1_id: string;
+  player1_rating: number;
+  player2_id: string;
+  player2_rating: number;
+  opponent1_id: string;
+  opponent1_rating: number;
+  opponent2_id: string;
+  opponent2_rating: number;
+  nine_played: NinePlayed;
+  holes_won: number;
+  holes_tied: number;
+  holes_lost: number;
+  winner_id: string | null;
+  rating_change: number;
+  playoffs: boolean;
+  notes?: string;
+  tags?: string[];
+  created_at: string;
+  updated_at: string;
+}
 
 /**
  * Get all matches with related information
@@ -50,14 +115,19 @@ export async function getMatches(): Promise<Match[]> {
         updated_at
       )
     `)
-    .order('date_played', { ascending: false });
+    .order('date_played', { ascending: false }) as { 
+      data: RawMatchResponse[] | null, 
+      error: PostgrestError | null
+    };
   if (error) throw error;
+  if (!data) return [];
   // Transform data to match the expected format
+
   return data.map(match => ({
     ...match,
-    course: match.course.name, 
+    course: match.course.name,
     your_team: match.your_team.name,
-    opponent_team: match.opponent_team.name,
+    opponent_team: match.opponent_team.name, 
     player1_name: match.player1.name,
     player2_name: match.player2.name,
     opponent1_name: match.opponent1.name,
@@ -108,16 +178,23 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
       updated_at
     `)
     .eq('id', id)
-    .single();
+    .single() as { 
+      data: RawMatchResponse | null, 
+      error: PostgrestError | null
+    };
   
   if (matchError) throw matchError;
+  if (!match) throw new Error('Match not found');
   
   // Get hole results for this match
   const { data: holeResults, error: holeResultsError } = await supabase
     .from('hole_results')
     .select('*')
     .eq('match_id', id)
-    .order('hole_number');
+    .order('hole_number') as {
+      data: HoleResultRecord[] | null,
+      error: PostgrestError | null
+    };
   
   if (holeResultsError) throw holeResultsError;
   
@@ -134,6 +211,7 @@ export async function getMatchWithDetails(id: string): Promise<Match> {
     hole_results: holeResults || []
   };
 }
+
 
 /**
  * Create a new match
@@ -164,15 +242,13 @@ export async function createMatch(matchData: {
 }): Promise<Match> {
   const supabase = await createClient();
   
-  // Add timestamps
   const now = new Date().toISOString();
   const dataWithTimestamps = {
     ...matchData,
     created_at: now,
     updated_at: now
   };
-  
-  // Create the match
+
   const { data: match, error: matchError } = await supabase
     .from('matches')
     .insert([dataWithTimestamps])
@@ -205,9 +281,13 @@ export async function createMatch(matchData: {
       created_at,
       updated_at
     `)
-    .single();
+    .single() as {
+      data: RawMatchInsertResponse | null,
+      error: PostgrestError | null
+    };
   
   if (matchError) throw matchError;
+  if (!match) throw new Error('Failed to create match');
   
   // Create hole results if provided
   if (matchData.hole_results && matchData.hole_results.length > 0) {
@@ -220,7 +300,9 @@ export async function createMatch(matchData: {
     
     const { error: holeResultsError } = await supabase
       .from('hole_results')
-      .insert(holeResultsWithMatchId);
+      .insert(holeResultsWithMatchId) as {
+        error: PostgrestError | null
+      };
     
     if (holeResultsError) throw holeResultsError;
   }
@@ -228,13 +310,21 @@ export async function createMatch(matchData: {
   // Transform data to match the expected format
   return {
     ...match,
-    course_name: match.course?.[0]?.name || '',
-    your_team_name: match.your_team?.[0]?.name || '',
-    opponent_team_name: match.opponent_team?.[0]?.name || '',
+    course: match.courses.name, // Note the change from course to courses
+    your_team: match.your_team.name,
+    opponent_team: match.opponent_team.name,
+    player1_name: '', // or you might want to fetch these separately
+    player2_name: '',
+    opponent1_name: '',
+    opponent2_name: '',
     hole_results: matchData.hole_results || []
-  };
+  } as Match; // Add type assertion to Match if needed
 }
 
+
+/**
+ * Update an existing match
+ */
 /**
  * Update an existing match
  */
@@ -306,18 +396,28 @@ export async function updateMatch(
       created_at,
       updated_at
     `)
-    .single();
+    .single() as {
+      data: RawMatchResponse | null,
+      error: PostgrestError | null
+    };
   
   if (error) throw error;
+  if (!data) throw new Error('Match not found');
   
   // Transform data to match the expected format
   return {
     ...data,
-    course_name: data.course?.[0]?.name || '',
-    your_team_name: data.your_team?.[0]?.name || '',
-    opponent_team_name: data.opponent_team?.[0]?.name || ''
-  };
+    course: data.course.name,
+    your_team: data.your_team.name,
+    opponent_team: data.opponent_team.name,
+    player1_name: '', // or fetch separately if needed
+    player2_name: '',
+    opponent1_name: '',
+    opponent2_name: '',
+    hole_results: [] // You might want to fetch these separately if needed
+  } as Match;
 }
+
 
 /**
  * Delete a match
@@ -420,55 +520,3 @@ export async function deleteHoleResult(id: string): Promise<void> {
   
   if (error) throw error;
 }
-
-/**
- * Create a match with hole results in one operation
- */
-export async function createMatchWithHoleResults(
-  matchData: {
-    date_played: string;
-    course_id: string;
-    your_team_id: string;
-    opponent_team_id: string;
-    nine_played: NinePlayed;
-    holes_won: number;
-    holes_tied: number;
-    holes_lost: number;
-    winner_id: string | null;
-    rating_change?: number;
-    playoffs: boolean;
-    notes?: string;
-    tags?: string[];
-  },
-  holeResults: Array<{
-    hole_number: number;
-    result: HoleResult;
-  }>
-): Promise<Match> {
-  // Start a transaction
-  try {
-    // First create the match with hole results
-    const match = await createMatch({
-      ...matchData,
-      hole_results: holeResults
-    });
-    
-    // Return the complete match with hole results
-    return await getMatchWithDetails(match.id);
-  } catch (error) {
-    // If an error occurs, attempt to clean up (won't work if the match wasn't created)
-    try {
-      if (error instanceof Error && error.message.includes('match')) {
-        // Get match id from error message if possible
-        const idMatch = error.message.match(/match with id ([a-f0-9-]+)/i);
-        if (idMatch && idMatch[1]) {
-          await deleteMatch(idMatch[1]);
-        }
-      }
-    } catch {
-      // Ignore cleanup errors
-    }
-    
-    throw error;
-  }
-} 
