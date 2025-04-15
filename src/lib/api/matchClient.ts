@@ -93,6 +93,7 @@ export async function createMatch(matchData: MatchCreateData): Promise<Match> {
     });
     
     const result = await response.json() as ApiResponse<Match>;
+    console.log('result', result);
     
     if (!response.ok) {
       const errorMessage = result.error || 'Failed to create match';

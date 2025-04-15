@@ -14,7 +14,7 @@ export async function GET(
       return NextResponse.json({ error: 'Match not found' }, { status: 404 });
     }
     
-    return NextResponse.json(match);
+    return NextResponse.json({ data: match });
   } catch (error) {
     console.error('Error fetching match:', error);
     return NextResponse.json({ error: 'Failed to fetch match' }, { status: 500 });
@@ -56,7 +56,7 @@ export async function PATCH(
       return NextResponse.json({ error: 'Match not found' }, { status: 404 });
     }
     
-    return NextResponse.json(updatedMatch);
+    return NextResponse.json({ data: updatedMatch });
   } catch (error) {
     console.error('Error updating match:', error);
     return NextResponse.json({ error: 'Failed to update match' }, { status: 500 });

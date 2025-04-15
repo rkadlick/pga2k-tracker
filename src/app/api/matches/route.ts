@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
       tags: matchData.tags
     });
     
-    return NextResponse.json(match);
+    return NextResponse.json({ data: match });
   } catch (error) {
     console.error('Error creating match:', error);
     return NextResponse.json({ error: 'Failed to create match' }, { status: 500 });

@@ -108,6 +108,7 @@ export default function NewMatchPage() {
       }
       
       const newMatch = await createMatch(matchData);
+      console.log('newMatch', newMatch);
       if (newMatch) {
         // Reset form and redirect only after successful submission
         formRef.current?.resetForm();

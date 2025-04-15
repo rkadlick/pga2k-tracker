@@ -115,6 +115,7 @@ export function useMatches() {
       
       // Create the match
       const newMatch = await matchClient.createMatch(basicMatchData);
+      console.log('newMatch', newMatch);
       
       // Add hole results if they exist
       if (hole_results && hole_results.length > 0) {
@@ -132,7 +133,7 @@ export function useMatches() {
       
       // Fetch the complete match with hole results
       const completeMatch = await matchClient.fetchMatch(newMatch.id);
-      
+      console.log('completeMatch', completeMatch);
       // Update the matches list
       setMatches(prev => [completeMatch, ...prev]);
       
