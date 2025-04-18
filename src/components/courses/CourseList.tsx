@@ -63,13 +63,18 @@ export default function CourseList({ courses, onDelete, isAuthenticated }: Cours
                     </svg>
                   </div>
 
-                  {/* Course Name */}
-                  <Link
-                    href={`/courses/${course.id}`}
-                    className="text-[--foreground] hover:text-[--primary] font-medium transition-colors"
-                  >
-                    {course.name}
-                  </Link>
+                  {/* Course Name and Record */}
+                  <div className="flex flex-col">
+                    <Link
+                      href={`/courses/${course.id}`}
+                      className="text-[--foreground] hover:text-[--primary] font-medium transition-colors"
+                    >
+                      {course.name}
+                    </Link>
+                    <span className="text-sm text-[--muted]">
+                      Record: {course.wins || 0}-{course.losses || 0}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Actions */}

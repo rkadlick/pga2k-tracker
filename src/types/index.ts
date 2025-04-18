@@ -30,6 +30,8 @@ export interface Course extends BaseRecord {
 	back_distance?: number;
 	total_par?: number;
 	total_distance?: number;
+	wins?: number;
+	losses?: number;
 }
 
 export interface Hole extends BaseRecord {
@@ -89,7 +91,7 @@ export interface Match extends BaseRecord {
 	holes_won: number;
 	holes_tied: number;
 	holes_lost: number;
-	winner_id: string | null;
+	winner_id: string;
 	rating_change?: number;	
 	playoffs: boolean;
 	notes?: string;
