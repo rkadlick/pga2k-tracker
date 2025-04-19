@@ -1,4 +1,4 @@
-import Scorecard from '@/components/common/Scorecard';
+import HoleSection from './HoleSection';
 
 interface HoleData {
   id: string;
@@ -12,9 +12,10 @@ interface EditCourseHolesProps {
   holes: HoleData[];
   onHoleUpdate: (holeNumber: number, field: 'par' | 'distance', value: number | null) => void;
   holeErrors: string[];
+  isSubmitting?: boolean;
 }
 
-export default function EditCourseHoles({ holes, onHoleUpdate, holeErrors }: EditCourseHolesProps) {
+export default function EditCourseHoles({ holes, onHoleUpdate, holeErrors, isSubmitting = false }: EditCourseHolesProps) {
   // Prepare data for the scorecard
   const frontNine = holes.filter(hole => hole.hole_number <= 9).sort((a, b) => a.hole_number - b.hole_number);
   const backNine = holes.filter(hole => hole.hole_number > 9).sort((a, b) => a.hole_number - b.hole_number);
@@ -42,68 +43,42 @@ export default function EditCourseHoles({ holes, onHoleUpdate, holeErrors }: Edi
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 relative">
+      {isSubmitting && (
+        <div className="absolute inset-0 bg-[--background]/50 backdrop-blur-sm flex items-center justify-center z-10 rounded-lg">
+          <div className="flex items-center gap-3">
+            <svg className="animate-spin h-5 w-5 text-[--primary]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            <span className="text-[--foreground] font-medium">Saving changes...</span>
+          </div>
+        </div>
+      )}
+
       {/* Front Nine */}
       <div>
         <h2 className="text-lg font-semibold mb-4">Front Nine</h2>
-        <Scorecard
-          columns={[
-            { id: 'label', label: '' },
-            ...frontNine.map(hole => ({ 
-              id: `hole-${hole.hole_number}`,
-              label: hole.hole_number.toString() 
-            }))
-          ]}
-          rows={[
-            {
-              id: 'frontPar',
-              type: 'par',
-              label: 'Par',
-              values: frontNine.map(hole => hole.par?.toString() || ''),
-              total: frontPar,
-              onChange: updateHolePar
-            },
-            {
-              id: 'frontDistance',
-              type: 'distance',
-              label: 'Yards',
-              values: frontNine.map(hole => hole.distance?.toString() || ''),
-              total: frontDistance,
-              onChange: updateHoleDistance
-            }
-          ]}
+        <HoleSection
+          title="Front Nine"
+          holes={frontNine}
+          totalPar={frontPar}
+          totalDistance={frontDistance}
+          updateHolePar={updateHolePar}
+          updateHoleDistance={updateHoleDistance}
         />
       </div>
 
       {/* Back Nine */}
       <div>
         <h2 className="text-lg font-semibold mb-4">Back Nine</h2>
-        <Scorecard
-          columns={[
-            { id: 'label', label: '' },
-            ...backNine.map(hole => ({ 
-              id: `hole-${hole.hole_number}`,
-              label: hole.hole_number.toString() 
-            }))
-          ]}
-          rows={[
-            {
-              id: 'backPar',
-              type: 'par',
-              label: 'Par',
-              values: backNine.map(hole => hole.par?.toString() || ''),
-              total: backPar,
-              onChange: updateHolePar
-            },
-            {
-              id: 'backDistance',
-              type: 'distance',
-              label: 'Yards',
-              values: backNine.map(hole => hole.distance?.toString() || ''),
-              total: backDistance,
-              onChange: updateHoleDistance
-            }
-          ]}
+        <HoleSection
+          title="Back Nine"
+          holes={backNine}
+          totalPar={backPar}
+          totalDistance={backDistance}
+          updateHolePar={updateHolePar}
+          updateHoleDistance={updateHoleDistance}
         />
       </div>
 

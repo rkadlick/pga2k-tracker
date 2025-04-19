@@ -6,7 +6,7 @@ import { Course, Hole } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
 import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib/validation/courseValidation';
 import { useCourses } from '@/hooks/useCourses';
-import EditCourseHoles from '@/components/courses/EditCourseHoles';
+import EditCourseHoles from '@/components/courses/CourseForm/EditCourseHoles';
 import { use } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 
@@ -40,6 +40,7 @@ export default function CourseDetailPage({
   const [holes, setHoles] = useState<HoleData[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
   const [courseName, setCourseName] = useState('');
   const [nameError, setNameError] = useState('');
   const [holeErrors, setHoleErrors] = useState<string[]>([]);
@@ -119,6 +120,7 @@ export default function CourseDetailPage({
     const totalDistance = frontDistance + backDistance;
 
     try {
+      setIsSaving(true);
       // Use the updateCourse function from the hook
       const updatedCourse = await updateCourse(
         id,
@@ -137,6 +139,8 @@ export default function CourseDetailPage({
     } catch (err) {
       console.error('Error updating course:', err);
       setNameError(err instanceof Error ? err.message : 'An unknown error occurred');
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -282,6 +286,7 @@ export default function CourseDetailPage({
               holes={holes}
               onHoleUpdate={updateHole}
               holeErrors={holeErrors}
+              isSubmitting={isSaving}
             />
           </div>
         </div>

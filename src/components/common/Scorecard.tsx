@@ -93,7 +93,7 @@ export default function Scorecard({
                   </div>
                   {row.values.map((value, index) => (
                     <div
-                      key={`${row.id}-${index}-${value}`}
+                      key={`${row.id}-${index}`}
                       className={`px-3 py-2.5 text-center ${
                         row.type === 'match'
                           ? value === 'W'

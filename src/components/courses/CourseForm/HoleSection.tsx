@@ -1,6 +1,6 @@
 import React from 'react';
 import Scorecard from '@/components/common/Scorecard';
-import { HoleData } from './useCourseForms';
+import { HoleData } from '@/hooks/useCourseForm';
 
 interface HoleSectionProps {
   title: string;
@@ -42,7 +42,7 @@ export default function HoleSection({
           id: parRowId,
           type: 'par',
           label: 'Par',
-          values: holes.map(hole => hole.par),
+          values: holes.map(hole => hole.par?.toString() || ''),
           total: totalPar,
           onChange: updateHolePar
         },
@@ -50,7 +50,7 @@ export default function HoleSection({
           id: distanceRowId,
           type: 'distance',
           label: 'Yards',
-          values: holes.map(hole => hole.distance),
+          values: holes.map(hole => hole.distance?.toString() || ''),
           total: totalDistance,
           onChange: updateHoleDistance
         }
