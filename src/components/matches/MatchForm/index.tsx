@@ -158,102 +158,97 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
           </div>
         </div>
 
-        {/* Teams Section - Only show if course is selected */}
-        {formData.course_id && (
-          <div className="card">
-            <div className="p-6">
-              <h2 className="text-xl font-semibold text-[--foreground] mb-6">
-                Teams
-              </h2>
-              <div className="space-y-6">
-                <div className="bg-[--input-bg] rounded-lg p-4 border border-[--border]">
-                  <h3 className="text-lg font-medium text-[--foreground]">
-                    {yourTeam.name}
-                  </h3>
-                  <div className="mt-2 space-y-1">
-                    {isLoadingPlayers ? (
-                      <p className="text-[--muted]">Loading team players...</p>
-                    ) : playerError ? (
-                      <p className="text-red-600 dark:text-red-400">
-                        {playerError}
-                      </p>
-                    ) : (
-                      <ul className="list-disc pl-6 text-[--muted]">
-                        {teamPlayers.map((player, index) => (
-                          <li key={index}>
-                            {player.name} - Rating: {player.recent_rating}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+        {/* Teams Section */}
+        <div className="card">
+          <div className="p-6">
+            <h2 className="text-xl font-semibold text-[--foreground] mb-6">
+              Teams
+            </h2>
+            <div className="space-y-6">
+              <div className="bg-[--input-bg] rounded-lg p-4 border border-[--border]">
+                <h3 className="text-lg font-medium text-[--foreground]">
+                  {yourTeam.name}
+                </h3>
+                <div className="mt-2 space-y-1">
+                  {isLoadingPlayers ? (
+                    <p className="text-[--muted]">Loading team players...</p>
+                  ) : playerError ? (
+                    <p className="text-red-600 dark:text-red-400">
+                      {playerError}
+                    </p>
+                  ) : (
+                    <ul className="list-disc pl-6 text-[--muted]">
+                      {teamPlayers.map((player, index) => (
+                        <li key={index}>
+                          {player.name} - Rating: {player.recent_rating}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
+              </div>
 
-                <div className="bg-[--input-bg] rounded-lg p-4">
-                  <TeamCreation
-                    isYourTeam={false}
-                    onTeamCreated={handleOpponentTeamCreated}
-                  />
-                </div>
+              <div className="bg-[--input-bg] rounded-lg p-4">
+                <TeamCreation
+                  isYourTeam={false}
+                  onTeamCreated={handleOpponentTeamCreated}
+                />
               </div>
             </div>
           </div>
-        )}
+        </div>
 
-        {/* Scorecard and Match Details - Only show if both course and opponent team are selected */}
-        {formData.course_id && formData.opponent_team_id && (
-          <>
-            <div className="card">
-              <div className="p-6">
-                <MatchScorecard
-                  courseId={formData.course_id}
-                  scorecardData={formData}
-                  onHoleResultChange={updateHoleResult}
-                  yourTeamName={yourTeam.name}
-                  opponentTeamName={opponentTeam?.name}
-                />
-              </div>
-            </div>
+        {/* Scorecard Section */}
+        <div className="card">
+          <div className="p-6">
+            <MatchScorecard
+              courseId={formData.course_id || ""}
+              scorecardData={formData}
+              onHoleResultChange={updateHoleResult}
+              yourTeamName={yourTeam.name}
+              opponentTeamName={opponentTeam?.name || ''}
+            />
+          </div>
+        </div>
 
-            <div className="card">
-              <div className="p-6">
-                <MatchDetails
-                  ratingChange={formData.rating_change}
-                  playoffs={formData.playoffs}
-                  notes={formData.notes}
-                  tags={formData.tags}
-                  onInputChange={updateFormData}
-                  holeResults={formData.hole_results}
-                  ninePlayed={formData.nine_played}
-                  yourTeamId={yourTeam.id}
-                  opponentTeamId={formData.opponent_team_id || ""}
-                  formData={formData}
-                />
-              </div>
-            </div>
+        {/* Match Details Section */}
+        <div className="card">
+          <div className="p-6">
+            <MatchDetails
+              ratingChange={formData.rating_change}
+              playoffs={formData.playoffs}
+              notes={formData.notes}
+              tags={formData.tags}
+              onInputChange={updateFormData}
+              holeResults={formData.hole_results}
+              ninePlayed={formData.nine_played}
+              yourTeamId={yourTeam.id}
+              opponentTeamId={formData.opponent_team_id || ""}
+              formData={formData}
+            />
+          </div>
+        </div>
 
-            {/* Submit Button */}
-            <div className="flex justify-end">
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <>
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Submitting...
-                  </>
-                ) : (
-                  'Create Match'
-                )}
-              </button>
-            </div>
-          </>
-        )}
+        {/* Submit Button - Only enabled when all required data is present */}
+        <div className="flex justify-end">
+          <button
+            type="submit"
+            disabled={isSubmitting || !formData.course_id || !formData.opponent_team_id}
+            className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {isSubmitting ? (
+              <>
+                <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Submitting...
+              </>
+            ) : (
+              'Create Match'
+            )}
+          </button>
+        </div>
       </form>
     );
   }

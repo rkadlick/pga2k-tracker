@@ -85,7 +85,11 @@ export default function MatchScorecard({ courseId, scorecardData, onHoleResultCh
   const visibleHoles = course?.holes.slice(
     scorecardData.nine_played === 'front' ? 0 : 9,
     scorecardData.nine_played === 'front' ? 9 : 18
-  ) || Array(9).fill({ hole_number: 0, par: 0, distance: 0 });
+  ) || Array(9).fill(null).map((_, index) => ({
+    hole_number: scorecardData.nine_played === 'front' ? index + 1 : index + 10,
+    par: 0,
+    distance: 0
+  }));
 
   const renderHoleResultCell = (holeNumber: number, result: HoleResult | null) => {
     const isSelected = scorecardData.hole_results.find((hr: HoleResultData) => hr.hole_number === holeNumber)?.result === result;
