@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PGA 2K25 Match Tracker
 
-## Getting Started
+A sophisticated web application built to track and analyze PGA 2K25 ranked matchmaking games. This project provides detailed statistics and historical data for matches, teams, and courses, offering insights into gaming performance and trends.
 
-First, run the development server:
+## 🎯 Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+PGA 2K25 Match Tracker is a personal project designed to maintain a comprehensive record of ranked matchmaking games between friends. It goes beyond simple match tracking by providing detailed statistics and analytics for teams, players, and courses, helping to identify patterns and improve gameplay strategies.
+
+## ✨ Features
+
+- **Match History Tracking**
+  - Detailed record of all played matches
+  - Individual match details and statistics
+  - Historical performance data
+
+- **Team Analytics**
+  - Comprehensive team/player listings
+  - Team-based performance metrics
+  - Player statistics and trends
+
+- **Course Insights**
+  - Database of all played courses
+  - Course-specific statistics
+  - Performance analysis by course
+
+- **Modern User Experience**
+  - Clean, intuitive interface
+  - Responsive design
+  - Seamless data interactions
+  - Robust validation and loading states
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**
+  - Next.js 15
+  - React 19
+  - TypeScript
+
+- **Styling**
+  - TailwindCSS
+  - Next Themes (for theme management)
+
+- **Backend & Database**
+  - Supabase (Backend as a Service)
+  - Supabase SSR integration
+
+- **Development Tools**
+  - ESLint
+  - PostCSS
+  - TurboRepo
+
+## 🚀 Installation and Setup
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/pga2k-tracker.git
+   cd pga2k-tracker
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   Create a `.env.local` file with the following variables:
+   ```
+   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## 📁 Code Structure
+
+```
+src/
+├── app/              # Next.js app router pages and layouts
+├── components/       # Reusable UI components
+├── hooks/           # Custom React hooks
+├── lib/             # Core utilities and configurations
+├── types/           # TypeScript type definitions
+└── utils/           # Helper functions and utilities
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Database Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This project uses Supabase as its backend. To replicate the environment:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a new Supabase project
+2. Set up the database schema (schema documentation available upon request)
+3. Configure authentication and security rules
+4. Update environment variables with your Supabase credentials
 
-## Learn More
+## 🤝 Contributing
 
-To learn more about Next.js, take a look at the following resources:
+While this is primarily a personal project, suggestions and feedback are welcome. Feel free to:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Fork the repository
+2. Create a feature branch
+3. Submit a pull request
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 License
 
-## Deploy on Vercel
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 👤 Author
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Ryan Kadlick
+
+## 📸 Screenshots
+
+[Screenshots coming soon]
+
+---
+
+*Note: This project is primarily for personal use and demonstration purposes. It showcases modern web development practices, clean code architecture, and effective state management in a real-world application.*
