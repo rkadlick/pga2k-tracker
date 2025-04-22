@@ -5,6 +5,7 @@ import CourseList from "@/components/courses/CourseList";
 import CourseForm from "@/components/courses/CourseForm";
 import { useCourses } from "@/hooks/useCourses";
 import { useAuth } from "@/hooks/useAuth";
+import { sortCourses, SortOption } from "@/utils/courseSorting";
 
 /**
  * Alternative implementation of the Courses page using the domain-specific hook
@@ -12,6 +13,7 @@ import { useAuth } from "@/hooks/useAuth";
  */
 export default function CoursesPageAlternative() { // Renamed to avoid conflicts
   const [isAddingCourse, setIsAddingCourse] = useState(false);
+  const [sortBy, setSortBy] = useState<SortOption>('alphabetical');
   const { isAuthenticated } = useAuth();
   
   const { 
@@ -20,6 +22,9 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     error, 
     createCourseWithHoles
   } = useCourses();
+
+  // Sort courses based on selected option
+  const sortedCourses = sortCourses(courses, sortBy);
 
   const handleAddCourse = async (
     courseName: string,
@@ -48,7 +53,21 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
   return (
     <div className="space-y-12">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl course-title text-[--foreground]">Course Management</h1>
+        <div>
+          <h1 className="text-3xl course-title text-[--foreground]">Course Management</h1>
+          <div className="mt-4 flex items-center gap-2">
+            <span className="text-sm text-[--muted]">Sort by:</span>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value as SortOption)}
+              className="text-sm bg-[--background] border border-[--border] rounded-md px-2 py-1"
+            >
+              <option value="alphabetical">A-Z</option>
+              <option value="winPercentage">Win %</option>
+              <option value="mostPlayed">Most Played</option>
+            </select>
+          </div>
+        </div>
 
         {!isAddingCourse && isAuthenticated && (
           <button
@@ -114,7 +133,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
           <p className="mt-2 text-[--muted]">Loading courses...</p>
         </div>
       ) : (
-        <CourseList courses={courses} isAuthenticated={isAuthenticated} />
+        <CourseList courses={sortedCourses} isAuthenticated={isAuthenticated} />
       )}
     </div>
   );
