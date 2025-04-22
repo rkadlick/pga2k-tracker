@@ -91,7 +91,7 @@ export interface Match extends BaseRecord {
 	holes_won: number;
 	holes_tied: number;
 	holes_lost: number;
-	winner_id: string;
+	winner_id: string | null;
 	rating_change?: number;	
 	playoffs: boolean;
 	notes?: string;
