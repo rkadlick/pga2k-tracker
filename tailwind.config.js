@@ -5,10 +5,17 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/globals.css",
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        primary: ['var(--font-primary)'],
+        secondary: ['var(--font-secondary)'],
+        tertiary: ['var(--font-tertiary)'],
+      },
+    },
   },
   plugins: [],
 }; 

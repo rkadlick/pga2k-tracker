@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Course } from '@/types';
 import * as courseClient from '@/lib/api/courseClient';
+import { useMatches } from './useMatches';
 
 /**
  * A hook for managing courses data and operations
@@ -12,12 +13,41 @@ export function useCourses() {
   const [isCreating, setIsCreating] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   
+  const { matches } = useMatches();
+
+  // Calculate course records from matches
+  const calculateCourseRecords = useCallback((coursesData: Course[]) => {
+    return coursesData.map(course => {
+      const courseMatches = matches.filter(match => match.course_id === course.id);
+      const record = courseMatches.reduce(
+        (acc, match) => {
+          // Since winner_id is always present, we can directly check if your team won
+          const isYourTeamWinner = match.winner_id === match.your_team_id;
+          if (isYourTeamWinner) {
+            acc.wins++;
+          } else {
+            acc.losses++;
+          }
+          return acc;
+        },
+        { wins: 0, losses: 0 }
+      );
+
+      return {
+        ...course,
+        wins: record.wins,
+        losses: record.losses,
+      };
+    });
+  }, [matches]);
+
   // Load courses on mount only
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         const data = await courseClient.fetchCourses();
-        setCourses(data);
+        const coursesWithRecords = calculateCourseRecords(data);
+        setCourses(coursesWithRecords);
       } catch (err) {
         console.error('Failed to load courses:', err);
         setError('Failed to load courses');
@@ -27,7 +57,7 @@ export function useCourses() {
     };
 
     fetchCourses();
-  }, []);
+  }, [calculateCourseRecords]);
 
   // Function to load courses
   const loadCourses = useCallback(async () => {
@@ -38,8 +68,9 @@ export function useCourses() {
     
     try {
       const data = await courseClient.fetchCourses();
-      setCourses(data);
-      return data;
+      const coursesWithRecords = calculateCourseRecords(data);
+      setCourses(coursesWithRecords);
+      return coursesWithRecords;
     } catch (err) {
       console.error('Failed to load courses:', err);
       setError('Failed to load courses');
@@ -47,7 +78,7 @@ export function useCourses() {
     } finally {
       setIsLoading(false);
     }
-  }, [isLoading]);
+  }, [isLoading, calculateCourseRecords]);
 
   // Create a course with holes
   const createCourseWithHoles = useCallback(async (
@@ -84,8 +115,15 @@ export function useCourses() {
         totalDistance
       });
       
-      setCourses(prev => [...prev, newCourse]);
-      return newCourse;
+      // Add initial record of 0-0
+      const courseWithRecord = {
+        ...newCourse,
+        wins: 0,
+        losses: 0
+      };
+      
+      setCourses(prev => [...prev, courseWithRecord]);
+      return courseWithRecord;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       setError(error.message);
@@ -146,14 +184,22 @@ export function useCourses() {
         totalDistance
       );
       
+      // Preserve the record when updating
+      const existingCourse = courses.find(c => c.id === id);
+      const courseWithRecord = {
+        ...updatedCourse,
+        wins: existingCourse?.wins || 0,
+        losses: existingCourse?.losses || 0
+      };
+      
       // Update the courses list with the updated course
       setCourses(prevCourses => 
         prevCourses.map(course => 
-          course.id === id ? updatedCourse : course
+          course.id === id ? courseWithRecord : course
         )
       );
       
-      return updatedCourse;
+      return courseWithRecord;
     } catch (err) {
       setError(err instanceof Error ? err.message : String(err));
       throw err;
@@ -177,21 +223,42 @@ export function useCourses() {
       // If not found in state or doesn't have holes, fetch it directly
       const courseData = await courseClient.fetchCourse(id);
       
+      // Calculate record for the single course
+      const courseMatches = matches.filter(match => match.course_id === id);
+      const record = courseMatches.reduce(
+        (acc, match) => {
+          const isYourTeamWinner = match.winner_id === match.your_team_id;
+          if (isYourTeamWinner) {
+            acc.wins++;
+          } else {
+            acc.losses++;
+          }
+          return acc;
+        },
+        { wins: 0, losses: 0 }
+      );
+
+      const courseWithRecord = {
+        ...courseData,
+        wins: record.wins,
+        losses: record.losses
+      };
+      
       // Update the courses list with the fetched course
       setCourses(prevCourses => {
         const courseIndex = prevCourses.findIndex(c => c.id === id);
         if (courseIndex >= 0) {
           // Replace the existing course
           const newCourses = [...prevCourses];
-          newCourses[courseIndex] = courseData;
+          newCourses[courseIndex] = courseWithRecord;
           return newCourses;
         } else {
           // Add the new course
-          return [...prevCourses, courseData];
+          return [...prevCourses, courseWithRecord];
         }
       });
       
-      return courseData;
+      return courseWithRecord;
     } catch (err) {
       const error = err instanceof Error ? err : new Error(String(err));
       setError(error.message);

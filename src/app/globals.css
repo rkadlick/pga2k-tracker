@@ -9,66 +9,120 @@
   --muted: #64748b;
   --muted-hover: #475569;
   --border: #e2e8f0;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
+  
+  /* Primary Colors - Teal */
+  --primary: #0d9488;
+  --primary-hover: #0f766e;
   --primary-foreground: #ffffff;
-  --secondary: #10b981;
-  --accent: #8b5cf6;
+  
+  /* Secondary Colors */
+  --secondary: #8b5cf6;
+  --accent: #f59e0b;
+  
+  /* Input and Form Elements */
   --input-bg: #ffffff;
   --input-border: #e2e8f0;
-  --input-focus: #3b82f6;
+  --input-focus: #0d9488;
   --input-placeholder: #94a3b8;
-  --button-bg: #3b82f6;
-  --button-text: #ffffff;
-  --button-hover: #2563eb;
-  --card-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --card-shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  
+  /* Shadows */
+  --card-shadow: none;
+  --card-shadow-hover: 0 4px 12px -2px rgb(0 0 0 / 0.1);
 }
 
 [data-theme="dark"] {
   --background: #0a0f1a;
   --foreground: #f8fafc;
   --card-bg: #1e293b;
-  --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
   --muted: #94a3b8;
   --muted-hover: #cbd5e1;
   --border: #334155;
-  --primary: #3b82f6;
-  --primary-hover: #60a5fa;
-  --primary-foreground: #ffffff;
-  --secondary: #34d399;
-  --accent: #a78bfa;
+  
+  /* Dark Theme Primary Colors */
+  --primary: #2dd4bf;
+  --primary-hover: #14b8a6;
+  --primary-foreground: #0f172a;
+  
+  /* Dark Theme Secondary */
+  --secondary: #a78bfa;
+  --accent: #fbbf24;
+  
+  /* Dark Input and Form */
   --input-bg: #1e293b;
   --input-border: #334155;
-  --input-focus: #60a5fa;
+  --input-focus: #2dd4bf;
   --input-placeholder: #64748b;
-  --button-bg: #60a5fa;
-  --button-text: #ffffff;
-  --button-hover: #3b82f6;
-  --card-shadow-hover: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
+  
+  /* Dark Shadows */
+  --card-shadow: none;
+  --card-shadow-hover: 0 8px 16px -4px rgb(0 0 0 / 0.3);
 }
 
 @layer base {
+  /* Base styles */
   body {
     @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-100;
+    font-family: var(--font-secondary);
   }
 
-  /* Modern focus styles */
+  /* Typography System */
+  /* Primary Font - Used for titles and important headings */
+  h1, h2, h3, .title {
+    font-family: var(--font-primary);
+  }
+
+  h1, .title-lg {
+    @apply text-3xl tracking-tight;
+  }
+
+  h2, .title-md {
+    @apply text-2xl tracking-tight;
+  }
+
+  h3, .title-sm {
+    @apply text-xl tracking-tight;
+  }
+
+  /* Secondary Font - Used for body text and general UI */
+  .text-body {
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+  }
+
+  /* Tertiary Font - Used for metadata and supporting text */
+  .text-meta {
+    font-family: var(--font-tertiary);
+    font-size: 1rem;
+  }
+
+  /* Card Typography */
+  .card-title {
+    @apply text-[var(--foreground)] hover:text-[var(--primary)] transition-colors duration-150;
+    font-family: var(--font-primary);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+  }
+
+  /* Card action buttons/links */
+  .card-action {
+    @apply text-[var(--muted)] hover:text-[var(--primary)] transition-colors duration-150
+           flex items-center gap-2 font-medium;
+    font-family: var(--font-secondary);
+    font-size: 1rem;
+  }
+
+  /* Card metadata */
+  .card-meta {
+    font-family: var(--font-tertiary);
+    font-size: 1rem;
+    font-weight: 500;
+    @apply text-[var(--muted)];
+  }
+
+  /* Focus styles */
   *:focus-visible {
     @apply outline-none ring-2 ring-[var(--primary)] ring-offset-2 ring-offset-[var(--background)];
-  }
-
-  /* Typography */
-  h1 {
-    @apply text-3xl font-bold tracking-tight;
-  }
-
-  h2 {
-    @apply text-2xl font-semibold tracking-tight;
-  }
-
-  h3 {
-    @apply text-xl font-semibold;
   }
 
   /* Form elements */
@@ -76,86 +130,130 @@
     @apply bg-[var(--input-bg)] text-[var(--foreground)] rounded-xl px-4 py-2.5
            border border-[var(--input-border)] shadow-sm
            focus:border-[var(--input-focus)] focus:ring-1 focus:ring-[var(--input-focus)]
-          transition-all duration-50;
+           transition-all duration-50;
   }
 
   input::placeholder, textarea::placeholder {
     @apply text-[var(--input-placeholder)];
   }
 
+  /* Links */
+  a {
+    @apply text-[var(--primary)] hover:text-[var(--primary-hover)] transition-colors duration-150;
+  }
+
   /* Buttons */
   button {
-    @apply px-4 py-2 font-medium rounded-lg transition-colors duration-50 cursor-pointer
-           bg-[var(--primary)] text-[var(--primary-foreground)] 
-           hover:bg-[var(--primary-hover)]
-           disabled:opacity-50 disabled:cursor-not-allowed;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.625rem 1.25rem;
+    border: 1px solid var(--primary);
+    border-radius: 0.75rem;
+    color: var(--primary);
+    background-color: rgba(13, 148, 136, 0.1);
+    transition-property: color, transform, box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    will-change: color, transform;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(13, 148, 136, 0.1);
+  }
+
+  button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: var(--primary);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.5s ease;
+  }
+
+  button:hover {
+    color: #ffffff;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(13, 148, 136, 0.15);
+    transform: translateY(-1px);
+  }
+
+  button:active {
+    transform: translateY(1px);
+    box-shadow: 0 0 0 1px rgba(13, 148, 136, 0.2),
+                inset 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  button:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+
+  button:active:before {
+    background: var(--primary-hover);
+  }
+
+  /* Disabled state */
+  button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--muted);
+    color: var(--muted);
+  }
+
+  button:disabled:before {
+    display: none;
   }
 
   /* Secondary button variant */
   button.secondary {
-    @apply bg-transparent border border-[var(--border)] text-[var(--foreground)]
-           hover:bg-[var(--background)] hover:border-[var(--muted)];
+    border-color: var(--border);
+    color: var(--foreground);
   }
 
-  button.theme-toggle {
-    @apply !p-2 !bg-[var(--background)] !text-[var(--foreground)] 
-           border-[var(--border)] hover:border-[var(--muted)]
-           hover:!bg-[var(--card-bg)]
-           shadow-[var(--card-shadow)]
-           hover:shadow-[var(--card-shadow-hover)]
-           !transition-all;
+  button.secondary:before {
+    background: var(--border);
   }
 
-  /* Win/Loss/Tie button variants */
-  button.win {
-    @apply bg-emerald-50 text-emerald-700
-           dark:bg-emerald-400/10 dark:text-emerald-300
-           hover:bg-emerald-100 dark:hover:bg-emerald-400/20
-           focus:ring-emerald-500 focus:ring-offset-2
-           shadow-none hover:shadow-none;
+  button.secondary:hover {
+    color: var(--foreground);
   }
 
-  button.win[aria-pressed="true"] {
-    @apply bg-emerald-600 text-white
-           dark:bg-emerald-500;
+  button.secondary:active:before {
+    background: var(--muted);
   }
 
-  button.tie {
-    @apply bg-amber-50 text-amber-700
-           dark:bg-amber-400/10 dark:text-amber-300
-           hover:bg-amber-100 dark:hover:bg-amber-400/20
-           focus:ring-amber-500 focus:ring-offset-2
-           shadow-none hover:shadow-none;
+  /* Dark mode adjustments */
+  [data-theme="dark"] button {
+    border-color: var(--primary);
+    color: var(--primary);
   }
 
-  button.tie[aria-pressed="true"] {
-    @apply bg-amber-600 text-white
-           dark:bg-amber-500;
+  [data-theme="dark"] button:hover {
+    color: #ffffff;
   }
 
-  button.loss {
-    @apply bg-rose-50 text-rose-700
-           dark:bg-rose-400/10 dark:text-rose-300
-           hover:bg-rose-100 dark:hover:bg-rose-400/20
-           focus:ring-rose-500 focus:ring-offset-2
-           shadow-none hover:shadow-none;
+  [data-theme="dark"] button.secondary {
+    border-color: var(--border);
+    color: var(--foreground);
   }
 
-  button.loss[aria-pressed="true"] {
-    @apply bg-rose-600 text-white
-           dark:bg-rose-500;
-  }
-
-  /* Links */
-  a {
-    @apply text-[var(--primary)] hover:text-[var(--primary-hover)] transition-colors duration-50;
+  [data-theme="dark"] button.secondary:hover {
+    color: var(--foreground);
   }
 
   /* Cards */
   .card {
-    @apply bg-[var(--card-bg)] rounded-xl shadow-[var(--card-shadow)]
-           hover:shadow-[var(--card-shadow-hover)] transition-all duration-50
-           dark:border dark:border-slate-700/50;
+    @apply bg-[var(--card-bg)] rounded-xl border border-[var(--border)]
+           shadow-[var(--card-shadow)] hover:shadow-[var(--card-shadow-hover)]
+           transition-all duration-200
+           dark:border-slate-700/50;
   }
 }
 

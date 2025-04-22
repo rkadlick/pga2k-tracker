@@ -156,9 +156,9 @@ export const theme: Theme = {
 		input: 'w-full px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 focus:ring-2 focus:ring-primary-300 dark:focus:ring-primary-600 focus:border-transparent transition-all duration-200',
 		button: {
 			base: 'px-4 py-2 rounded-lg font-medium transition-all duration-200',
-			primary: 'bg-primary-500 hover:bg-primary-600 text-white',
-			secondary: 'bg-secondary-500 hover:bg-secondary-600 text-white',
-			accent: 'bg-accent-500 hover:bg-accent-600 text-white'
+			primary: 'bg-primary-500 hover:bg-primary-600',
+			secondary: 'bg-secondary-500 hover:bg-secondary-600',
+			accent: 'bg-accent-500 hover:bg-accent-600'
 		}
 	}
 };

@@ -45,12 +45,12 @@ export default function CourseDetail({
       <div className="card animate-fade-in">
         <div className="p-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-bold text-[--foreground]">{course.name}</h2>
+            <h2 className="card-title text-[--foreground]">{course.name}</h2>
             
             {!isAddingHole && (
               <button
                 onClick={handleAddHole}
-                className="inline-flex items-center space-x-2"
+                className="inline-flex items-center space-x-2 card-action"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
