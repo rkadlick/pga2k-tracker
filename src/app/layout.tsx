@@ -1,17 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins, Lato, Overlock_SC } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout/Layout";
 import { Providers } from "./providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const primaryFont = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  variable: '--font-primary',
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const secondaryFont = Lato({
+  weight: ['100', '300', '400', '700', '900'],
+  subsets: ['latin'],
+  variable: '--font-secondary',
+});
+
+const tertiaryFont = Overlock_SC({
+  weight: ['400'],
+  subsets: ['latin'],
+  variable: '--font-tertiary',
 });
 
 export const metadata: Metadata = {
@@ -27,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${primaryFont.variable} ${secondaryFont.variable} ${tertiaryFont.variable} font-secondary antialiased`}
       >
         <Providers>
           <Layout>{children}</Layout>

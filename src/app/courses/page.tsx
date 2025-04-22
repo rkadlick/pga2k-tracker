@@ -18,8 +18,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     courses, 
     isLoading, 
     error, 
-    createCourseWithHoles, 
-    removeCourse 
+    createCourseWithHoles
   } = useCourses();
 
   const handleAddCourse = async (
@@ -44,25 +43,17 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
     }
   };
 
-  const handleDeleteCourse = async (id: string) => {
-    try {
-      await removeCourse(id);
-    } catch (err) {
-      console.error("Error deleting course:", err);
-    }
-  };
-
   const errorMessage = error ? (typeof error === 'string' ? error : 'An error occurred') : null;
 
   return (
     <div className="space-y-12">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-[--foreground]">Course Management</h1>
+        <h1 className="text-3xl course-title text-[--foreground]">Course Management</h1>
 
         {!isAddingCourse && isAuthenticated && (
           <button
             onClick={() => setIsAddingCourse(true)}
-            className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors"
+            className="inline-flex items-center"
           >
             Add New Course
           </button>
@@ -123,7 +114,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
           <p className="mt-2 text-[--muted]">Loading courses...</p>
         </div>
       ) : (
-        <CourseList courses={courses} onDelete={handleDeleteCourse} isAuthenticated={isAuthenticated} />
+        <CourseList courses={courses} isAuthenticated={isAuthenticated} />
       )}
     </div>
   );

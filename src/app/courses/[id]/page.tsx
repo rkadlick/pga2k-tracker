@@ -43,9 +43,10 @@ export default function CourseDetailPage({
   const [courseName, setCourseName] = useState('');
   const [nameError, setNameError] = useState('');
   const [holeErrors, setHoleErrors] = useState<string[]>([]);
+  const [confirmDelete, setConfirmDelete] = useState(false);
   
   const router = useRouter();
-  const { updateCourse } = useCourses();
+  const { updateCourse, removeCourse } = useCourses();
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
@@ -175,6 +176,15 @@ export default function CourseDetailPage({
     });
   };
 
+  const handleDeleteCourse = async () => {
+    try {
+      await removeCourse(id);
+      router.push('/courses');
+    } catch (err) {
+      console.error('Error deleting course:', err);
+    }
+  };
+
   if (isLoading || !course) {
     return (
       <div className="flex items-center justify-center min-h-[50vh]">
@@ -224,12 +234,20 @@ export default function CourseDetailPage({
             
             {!isEditing ? (
               isAuthenticated && (
-                <button
-                  onClick={() => setIsEditing(true)}
-                  className="inline-flex items-center px-4 py-2 rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
-                >
-                  Edit Course
-                </button>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="inline-flex items-center px-4 py-2 rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
+                  >
+                    Edit Course
+                  </button>
+                  <button
+                    onClick={() => setConfirmDelete(true)}
+                    className="inline-flex items-center px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20"
+                  >
+                    Delete Course
+                  </button>
+                </div>
               )
             ) : (
               <div className="flex gap-2">
@@ -364,6 +382,31 @@ export default function CourseDetailPage({
             </div>
           </div>
         </>
+      )}
+
+      {confirmDelete && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-[--card] p-6 rounded-2xl max-w-md w-full mx-4">
+            <h3 className="text-lg font-semibold mb-2">Delete Course</h3>
+            <p className="text-[--muted] mb-6">
+              Are you sure you want to delete this course? This action cannot be undone.
+            </p>
+            <div className="flex justify-end gap-2">
+              <button
+                onClick={() => setConfirmDelete(false)}
+                className="px-4 py-2 rounded-xl bg-[--background]/50 text-[--muted] hover:text-[--foreground] hover:bg-[--background]/75"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleDeleteCourse}
+                className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20"
+              >
+                Delete Course
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
