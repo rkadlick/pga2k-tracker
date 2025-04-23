@@ -234,7 +234,7 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
           <button
             type="submit"
             disabled={isSubmitting || !formData.course_id || !formData.opponent_team_id}
-            className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="inline-flex items-center"
           >
             {isSubmitting ? (
               <>

@@ -102,6 +102,7 @@ export default function MatchDetails({
         <div>
           <label className="block text-sm font-medium text-[--foreground]">
             Playoffs
+            </label>
             <div className="mt-1 flex gap-2">
               <button
                 type="button"
@@ -126,7 +127,7 @@ export default function MatchDetails({
                 L
               </button>
             </div>
-          </label>
+
         </div>
       </div>
 

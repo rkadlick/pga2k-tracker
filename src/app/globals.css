@@ -362,6 +362,167 @@
   [data-theme="dark"] .sign-in-button:active:before {
     background: rgb(22, 163, 74);
   }
+
+  /* Match Scorecard Result Buttons */
+  button.win,
+  button.tie,
+  button.loss {
+    position: relative;
+    overflow: hidden;
+    box-shadow: none;
+    will-change: background-color, color;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    padding: 0;
+    margin: 0;
+    width: 1.75rem;
+    height: 1.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  button.win:before,
+  button.tie:before,
+  button.loss:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    transition: all 0.25s ease-out;
+    border-radius: inherit;
+  }
+
+  button.win:hover:before,
+  button.tie:hover:before,
+  button.loss:hover:before {
+    top: 0;
+  }
+
+  button.win {
+    color: rgb(22, 163, 74);
+    background-color: rgba(22, 163, 74, 0.1);
+    border: 1px solid transparent;
+  }
+
+  button.win:before {
+    background-color: rgb(22, 163, 74);
+  }
+
+  button.win:hover {
+    color: #ffffff;
+  }
+
+  button.win[aria-pressed="true"] {
+    color: #ffffff;
+    background-color: rgb(22, 163, 74);
+  }
+
+  [data-theme="dark"] button.win {
+    color: rgb(74, 222, 128);
+    background-color: rgba(74, 222, 128, 0.1);
+  }
+
+  [data-theme="dark"] button.win:before {
+    background-color: rgb(74, 222, 128);
+  }
+
+  [data-theme="dark"] button.win[aria-pressed="true"] {
+    color: rgb(15, 23, 42);
+    background-color: rgb(74, 222, 128);
+  }
+
+  button.tie {
+    color: rgb(202, 138, 4);
+    background-color: rgba(202, 138, 4, 0.1);
+    border: 1px solid transparent;
+  }
+
+  button.tie:before {
+    background-color: rgb(202, 138, 4);
+  }
+
+  button.tie:hover {
+    color: #ffffff;
+  }
+
+  button.tie[aria-pressed="true"] {
+    color: #ffffff;
+    background-color: rgb(202, 138, 4);
+  }
+
+  [data-theme="dark"] button.tie {
+    color: rgb(250, 204, 21);
+    background-color: rgba(250, 204, 21, 0.1);
+  }
+
+  [data-theme="dark"] button.tie:before {
+    background-color: rgb(250, 204, 21);
+  }
+
+  [data-theme="dark"] button.tie[aria-pressed="true"] {
+    color: rgb(15, 23, 42);
+    background-color: rgb(250, 204, 21);
+  }
+
+  button.loss {
+    color: rgb(220, 38, 38);
+    background-color: rgba(220, 38, 38, 0.1);
+    border: 1px solid transparent;
+  }
+
+  button.loss:before {
+    background-color: rgb(220, 38, 38);
+  }
+
+  button.loss:hover {
+    color: #ffffff;
+  }
+
+  button.loss[aria-pressed="true"] {
+    color: #ffffff;
+    background-color: rgb(220, 38, 38);
+  }
+
+  [data-theme="dark"] button.loss {
+    color: rgb(248, 113, 113);
+    background-color: rgba(248, 113, 113, 0.1);
+  }
+
+  [data-theme="dark"] button.loss:before {
+    background-color: rgb(248, 113, 113);
+  }
+
+  [data-theme="dark"] button.loss[aria-pressed="true"] {
+    color: rgb(15, 23, 42);
+    background-color: rgb(248, 113, 113);
+  }
+
+  /* Disabled state */
+  button.win:disabled,
+  button.tie:disabled,
+  button.loss:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    border-color: var(--muted);
+    color: var(--muted);
+  }
+
+  button.win:disabled:before,
+  button.tie:disabled:before,
+  button.loss:disabled:before {
+    display: none;
+  }
+
+  /* Hover effects */
+  button.win:hover:not([aria-pressed="true"]),
+  button.tie:hover:not([aria-pressed="true"]),
+  button.loss:hover:not([aria-pressed="true"]) {
+    background-color: rgba(var(--color), 0.2);
+  }
 }
 
 /* Animations */

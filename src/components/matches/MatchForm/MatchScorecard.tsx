@@ -144,40 +144,52 @@ export default function MatchScorecard({ courseId, scorecardData, onHoleResultCh
   return (
     <div className="space-y-6">
       <div className="overflow-x-auto">
-        <table className="min-w-full border border-[--border] rounded-lg overflow-hidden">
+        <table className="min-w-full border border-[--border] rounded-lg overflow-hidden" style={{ fontFamily: 'var(--font-tertiary)' }}>
           <thead>
             <tr className="bg-[--card-bg]">
-              <th className="px-3 py-1.5 text-left text-xs font-medium text-[--muted] uppercase tracking-wider w-28">Hole</th>
+              <th className="px-3 py-2 text-center text-xs font-medium text-[--muted] uppercase tracking-wider w-28">
+                <div className="inline-block border-b border-[--border] mx-auto pb-0.5">Hole</div>
+              </th>
               {visibleHoles.map(hole => (
-                <th key={hole.hole_number} className="px-1 py-1.5 text-center text-xs font-medium text-[--muted] uppercase tracking-wider w-24">
-                  {scorecardData.course_id ? hole.hole_number : '-'}
+                <th key={hole.hole_number} className="px-1 py-2 text-center text-xs font-medium text-[--muted] uppercase tracking-wider w-24">
+                  <div className="inline-block border-b border-[--border] mx-auto pb-0.5">
+                    {scorecardData.course_id ? hole.hole_number : '-'}
+                  </div>
                 </th>
               ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-[--border]">
+          <tbody>
             <tr className="bg-[--input-bg]/50">
-              <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Par</td>
+              <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-[--foreground] text-center">
+                <div className="inline-block border-b border-[--border]/30 mx-auto pb-0.5">Par</div>
+              </td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-purple-600 dark:text-purple-400 font-medium">
-                  {scorecardData.course_id ? hole.par : '-'}
+                <td key={hole.hole_number} className="px-1 py-2 whitespace-nowrap text-center text-sm text-purple-600 dark:text-purple-400 font-medium">
+                  <div className="inline-block border-b border-[--border]/30 mx-auto pb-0.5">
+                    {scorecardData.course_id ? hole.par : '-'}
+                  </div>
                 </td>
               ))}
             </tr>
             <tr className="bg-[--input-bg]/30">
-              <td className="px-3 py-1.5 whitespace-nowrap text-sm font-medium text-[--foreground]">Dist</td>
+              <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-[--foreground] text-center">
+                <div className="inline-block border-b border-[--border]/30 mx-auto pb-0.5">Distance</div>
+              </td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-1 py-1.5 whitespace-nowrap text-center text-sm text-blue-600 dark:text-blue-400 font-medium">
-                  {scorecardData.course_id ? hole.distance : '-'}
+                <td key={hole.hole_number} className="px-1 py-2 whitespace-nowrap text-center text-sm text-blue-600 dark:text-blue-400 font-medium">
+                  <div className="inline-block border-b border-[--border]/30 mx-auto pb-0.5">
+                    {scorecardData.course_id ? hole.distance : '-'}
+                  </div>
                 </td>
               ))}
             </tr>
             <tr>
-              <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-[--foreground]">
+              <td className="px-3 py-2 whitespace-nowrap text-sm font-medium text-[--foreground] text-center">
                 {yourTeamName || 'Your Team'}
               </td>
               {visibleHoles.map(hole => (
-                <td key={hole.hole_number} className="px-1 py-2.5 whitespace-nowrap">
+                <td key={hole.hole_number} className="px-1 py-2 whitespace-nowrap">
                   <div className="flex justify-center gap-0.5">
                     {renderHoleResultCell(hole.hole_number, 'win')}
                     {renderHoleResultCell(hole.hole_number, 'tie')}
@@ -192,7 +204,7 @@ export default function MatchScorecard({ courseId, scorecardData, onHoleResultCh
 
       {/* Match Status */}
       {status && (
-        <div className="bg-[--card-bg] rounded-lg p-3">
+        <div className="bg-[--card-bg] rounded-lg p-3" style={{ fontFamily: 'var(--font-tertiary)' }}>
           <div className="grid grid-cols-3 gap-3 text-center mb-2">
             <div>
               <p className="text-xs text-[--muted] mb-0.5">Wins</p>
