@@ -255,6 +255,113 @@
            transition-all duration-200
            dark:border-slate-700/50;
   }
+
+  /* Sign Out Button */
+  button.sign-out {
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgb(220, 38, 38);
+    color: rgb(220, 38, 38);
+    background-color: rgba(220, 38, 38, 0.1);
+    box-shadow: none;
+  }
+
+  button.sign-out:before {
+    background: rgb(220, 38, 38);
+  }
+
+  button.sign-out:hover {
+    color: #ffffff;
+  }
+
+  button.sign-out:active:before {
+    background: rgb(185, 28, 28);
+  }
+
+  [data-theme="dark"] button.sign-out {
+    border-color: rgb(248, 113, 113);
+    color: rgb(248, 113, 113);
+  }
+
+  [data-theme="dark"] button.sign-out:before {
+    background: rgb(248, 113, 113);
+  }
+
+  [data-theme="dark"] button.sign-out:hover {
+    color: #ffffff;
+  }
+
+  [data-theme="dark"] button.sign-out:active:before {
+    background: rgb(220, 38, 38);
+  }
+
+  /* Sign In Button/Link */
+  .sign-in-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    font-size: 0.875rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgb(22, 163, 74);
+    border-radius: 0.5rem;
+    color: rgb(22, 163, 74);
+    background-color: rgba(22, 163, 74, 0.1);
+    transition-property: color, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    will-change: color, transform;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .sign-in-button:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: rgb(22, 163, 74);
+    height: 150px;
+    width: 200px;
+    border-radius: 50%;
+    top: 100%;
+    left: 100%;
+    transition: all 0.5s ease;
+  }
+
+  .sign-in-button:hover {
+    color: #ffffff;
+    transform: translateY(-1px);
+  }
+
+  .sign-in-button:active {
+    transform: translateY(1px);
+  }
+
+  .sign-in-button:hover:before {
+    top: -30px;
+    left: -30px;
+  }
+
+  .sign-in-button:active:before {
+    background: rgb(21, 128, 61);
+  }
+
+  [data-theme="dark"] .sign-in-button {
+    border-color: rgb(74, 222, 128);
+    color: rgb(74, 222, 128);
+  }
+
+  [data-theme="dark"] .sign-in-button:before {
+    background: rgb(74, 222, 128);
+  }
+
+  [data-theme="dark"] .sign-in-button:hover {
+    color: #ffffff;
+  }
+
+  [data-theme="dark"] .sign-in-button:active:before {
+    background: rgb(22, 163, 74);
+  }
 }
 
 /* Animations */

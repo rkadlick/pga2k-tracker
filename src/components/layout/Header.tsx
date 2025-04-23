@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
+import { IoGolf } from "react-icons/io5";
 
 export default function Header() {
   const pathname = usePathname();
@@ -26,10 +27,9 @@ export default function Header() {
           <Link 
             href="/" 
             className="flex items-center space-x-2 font-bold text-xl text-[--foreground] hover:text-[--primary] transition-colors"
+            style={{ fontFamily: 'var(--font-primary)' }}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-            </svg>
+            <IoGolf className="w-8 h-8" />
             <span>PGA2K25 Tracker</span>
           </Link>
           
@@ -51,9 +51,7 @@ export default function Header() {
                   </span>
                   <button
                     onClick={handleSignOut}
-                    className="text-sm bg-rose-500/10 text-rose-600 dark:text-rose-400
-                             hover:bg-rose-500/20 rounded-lg px-4 py-2 
-                             transition-colors shadow-none"
+                    className="sign-out"
                   >
                     Sign Out
                   </button>
@@ -61,8 +59,7 @@ export default function Header() {
               ) : (
                 <Link 
                   href="/login"
-                  className="text-sm bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20 
-                           px-4 py-2 rounded-lg transition-colors"
+                  className="sign-in-button"
                 >
                   Sign In
                 </Link>
@@ -122,9 +119,10 @@ function NavLink({ href, label, pathname }: NavLinkProps) {
   return (
     <Link 
       href={href}
-      className={`text-sm font-medium transition-colors hover:text-[--primary] ${
+      style={{ fontFamily: 'var(--font-tertiary)' }}
+      className={`text-lg font-medium transition-colors hover:text-[--primary] hover:underline ${
         isActive 
-          ? 'text-[--primary] font-semibold' 
+          ? 'text-[--primary] font-semibold underline underline-offset-4' 
           : 'text-[--muted] hover:text-[--muted-hover]'
       }`}
     >
@@ -145,9 +143,10 @@ function MobileNavLink({ href, label, pathname, onClick }: MobileNavLinkProps) {
     <Link 
       href={href}
       onClick={onClick}
-      className={`text-sm font-medium px-4 py-2 rounded-lg transition-colors
+      style={{ fontFamily: 'var(--font-tertiary)' }}
+      className={`text-lg font-medium px-4 py-2 rounded-lg transition-colors hover:underline
                  ${isActive 
-                   ? 'bg-[--primary]/10 text-[--primary]' 
+                   ? 'bg-[--primary]/10 text-[--primary] underline underline-offset-4' 
                    : 'text-[--muted] hover:text-[--muted-hover] hover:bg-[--primary]/5'
                  }`}
     >
