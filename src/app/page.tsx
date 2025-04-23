@@ -1,13 +1,36 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Home() {
   return (
     <div className="space-y-12">
       <section className="text-center py-12">
-        <h1 className="text-4xl font-bold mb-4 text-[--foreground]">PGA2K25 Match Tracker</h1>
-        <p className="text-xl text-[--muted] max-w-2xl mx-auto">
-          Track and analyze your alternate shot 2v2 matches in PGA2K25
-        </p>
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mb-8">
+          <div className="hidden lg:block relative w-[200px] h-[400px]">
+            <Image
+              src="/rk.png"
+              alt="Golfer on left"
+              fill
+              style={{ objectFit: 'contain' }}
+              className="rounded-lg"
+            />
+          </div>
+          <div className="flex flex-col items-center">
+            <h1 className="text-4xl font-bold mb-4 text-[--foreground]">PGA2K25 Match Tracker</h1>
+            <p className="text-xl text-[--muted] max-w-2xl mx-auto">
+              Track and analyze your alternate shot 2v2 matches in PGA2K25
+            </p>
+          </div>
+          <div className="hidden lg:block relative w-[200px] h-[400px]">
+            <Image
+              src="/tj.png"
+              alt="Golfer on right"
+              fill
+              style={{ objectFit: 'contain' }}
+              className="rounded-lg"
+            />
+          </div>
+        </div>
         <div className="mt-8 flex justify-center gap-4">
           <Link 
             href="/matches/new" 
@@ -61,6 +84,49 @@ export default function Home() {
                   d="M18 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
           }
         />
+      </section>
+
+      {/* Responsive images section below cards */}
+      <section className="flex md:hidden justify-center gap-4 py-2 mb-2">
+        <div className="relative w-[100px] h-[200px]">
+          <Image
+            src="/rk.png"
+            alt="Golfer on left"
+            fill
+            style={{ objectFit: 'contain' }}
+            className="rounded-lg"
+          />
+        </div>
+        <div className="relative w-[100px] h-[200px]">
+          <Image
+            src="/tj.png"
+            alt="Golfer on right"
+            fill
+            style={{ objectFit: 'contain' }}
+            className="rounded-lg"
+          />
+        </div>
+      </section>
+
+      <section className="hidden md:flex lg:hidden justify-center gap-8 py-2 mb-2">
+        <div className="relative w-[150px] h-[300px]">
+          <Image
+            src="/rk.png"
+            alt="Golfer on left"
+            fill
+            style={{ objectFit: 'contain' }}
+            className="rounded-lg"
+          />
+        </div>
+        <div className="relative w-[150px] h-[300px]">
+          <Image
+            src="/tj.png"
+            alt="Golfer on right"
+            fill
+            style={{ objectFit: 'contain' }}
+            className="rounded-lg"
+          />
+        </div>
       </section>
     </div>
   );
