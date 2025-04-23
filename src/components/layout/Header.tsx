@@ -22,27 +22,31 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[--border] backdrop-blur-md bg-[--background]/80">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="flex items-center space-x-2 font-bold text-xl text-[--foreground] hover:text-[--primary] transition-colors"
-            style={{ fontFamily: 'var(--font-primary)' }}
-          >
-            <IoGolf className="w-8 h-8" />
-            <span>PGA2K25 Tracker</span>
-          </Link>
+          <div className="flex-shrink-0">
+            <Link 
+              href="/" 
+              className="flex items-center space-x-2 font-bold text-xl text-[--foreground] hover:text-[--primary] transition-colors"
+              style={{ fontFamily: 'var(--font-primary)' }}
+            >
+              <IoGolf className="w-8 h-8" />
+              <span>PGA2K25 Tracker</span>
+            </Link>
+          </div>
           
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <NavLink href="/" label="Home" pathname={pathname} />
-            <NavLink href="/matches" label="Matches" pathname={pathname} />
-            <NavLink href="/courses" label="Courses" pathname={pathname} />
-            <NavLink href="/teams" label="Teams" pathname={pathname} />
-          </nav>
+          {/* Desktop Navigation - Absolutely Centered */}
+          <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <nav className="flex items-center space-x-8">
+              <NavLink href="/" label="Home" pathname={pathname} />
+              <NavLink href="/matches" label="Matches" pathname={pathname} />
+              <NavLink href="/courses" label="Courses" pathname={pathname} />
+              <NavLink href="/teams" label="Teams" pathname={pathname} />
+            </nav>
+          </div>
           
           {/* Right side items */}
-          <div className="flex items-center space-x-4">            
+          <div className="flex-1 flex justify-end items-center space-x-4">            
             <div className="min-w-[100px] flex justify-end">
               {isAuthenticated ? (
                 <div className="flex items-center space-x-4">
@@ -59,9 +63,9 @@ export default function Header() {
               ) : (
                 <Link 
                   href="/login"
-                  className="sign-in-button"
+                  className="inline-flex items-center justify-center"
                 >
-                  Sign In
+                  <button>Sign In</button>
                 </Link>
               )}
             </div>

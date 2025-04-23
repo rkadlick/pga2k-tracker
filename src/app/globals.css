@@ -170,14 +170,14 @@
     font-family: var(--font-secondary);
     font-weight: 500;
     font-size: 1rem;
-    padding: 0.625rem 1.25rem;
+    padding: 0.5rem 1rem;
     border: 1px solid var(--primary);
     border-radius: 0.75rem;
     color: var(--primary);
     background-color: rgba(13, 148, 136, 0.1);
     transition-property: color, transform, box-shadow;
-    transition-duration: 0.5s;
-    transition-timing-function: ease;
+    transition-duration: 0.8s;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     will-change: color, transform;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
                 0 0 0 1px rgba(13, 148, 136, 0.1);
@@ -188,12 +188,13 @@
     position: absolute;
     z-index: -1;
     background: var(--primary);
-    height: 150px;
-    width: 200px;
+    top: 50%;
+    left: 50%;
+    width: 300%;
+    padding-bottom: 300%;
     border-radius: 50%;
-    top: 100%;
-    left: 100%;
-    transition: all 0.5s ease;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   button:not(:disabled):hover {
@@ -203,15 +204,14 @@
     transform: translateY(-1px);
   }
 
+  button:not(:disabled):hover:before {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
   button:not(:disabled):active {
     transform: translateY(1px);
     box-shadow: 0 0 0 1px rgba(13, 148, 136, 0.2),
                 inset 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  button:not(:disabled):hover:before {
-    top: -30px;
-    left: -30px;
   }
 
   button:not(:disabled):active:before {
@@ -284,7 +284,7 @@
 
   /* Sign Out Button */
   button.sign-out {
-    font-size: 0.875rem;
+    font-size: 1rem;
     padding: 0.5rem 1rem;
     border: 1px solid rgb(220, 38, 38);
     color: rgb(220, 38, 38);

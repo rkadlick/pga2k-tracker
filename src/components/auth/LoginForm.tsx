@@ -40,9 +40,6 @@ export default function LoginForm() {
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="bg-[--card-bg] shadow-[var(--card-shadow)] rounded-xl p-8 animate-fade-in">
-        <h2 className="text-2xl font-bold mb-8 text-center text-[--foreground]">
-          Sign In
-        </h2>
 
         {error && (
           <div className="mb-6">
