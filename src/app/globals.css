@@ -28,6 +28,10 @@
   /* Shadows */
   --card-shadow: none;
   --card-shadow-hover: 0 4px 12px -2px rgb(0 0 0 / 0.1);
+
+  /* Theme transition timing */
+  --theme-transition-duration: 400ms;
+  --theme-transition-easing: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] {
@@ -61,8 +65,23 @@
 @layer base {
   /* Base styles */
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] antialiased transition-colors duration-100;
+    @apply bg-[var(--background)] text-[var(--foreground)] antialiased;
     font-family: var(--font-secondary);
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-easing),
+                color var(--theme-transition-duration) var(--theme-transition-easing);
+  }
+
+  /* Add smooth transitions for common theme-affected properties */
+  .card,
+  button,
+  input,
+  select,
+  textarea {
+    transition: background-color var(--theme-transition-duration) var(--theme-transition-easing),
+                border-color var(--theme-transition-duration) var(--theme-transition-easing),
+                color var(--theme-transition-duration) var(--theme-transition-easing),
+                box-shadow var(--theme-transition-duration) var(--theme-transition-easing),
+                transform 0.2s ease;
   }
 
   /* Typography System */
@@ -626,5 +645,7 @@
 
 /* Transitions */
 * {
-  @apply transition-colors duration-50;
+  @apply transition-colors;
+  transition-duration: var(--theme-transition-duration);
+  transition-timing-function: var(--theme-transition-easing);
 }
