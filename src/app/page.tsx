@@ -18,7 +18,7 @@ export default function Home() {
           <div className="flex flex-col items-center">
             <h1 className="text-4xl font-bold mb-4 text-[--foreground]">PGA2K25 Match Tracker</h1>
             <p className="text-xl text-[--muted] max-w-2xl mx-auto">
-              Track and analyze your alternate shot 2v2 matches in PGA2K25
+              Tracking and analyzing alternate shot 2v2 matches in PGA2K25
             </p>
           </div>
           <div className="hidden lg:block relative w-[200px] h-[400px]">
@@ -31,35 +31,12 @@ export default function Home() {
             />
           </div>
         </div>
-        <div className="mt-8 flex justify-center gap-4">
-          <Link 
-            href="/matches/new" 
-            className="inline-flex items-center space-x-2 bg-[--primary] text-[--primary-foreground]
-                     hover:bg-[--primary-hover] transition-colors px-6 py-2 rounded-lg"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
-            </svg>
-            <span>Record New Match</span>
-          </Link>
-          <Link 
-            href="/matches" 
-            className="inline-flex items-center space-x-2 bg-[--card-bg] text-[--foreground] border border-[--border]
-                     hover:bg-[--primary]/5 transition-colors px-6 py-2 rounded-lg"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
-                    d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-            <span>View Match History</span>
-          </Link>
-        </div>
       </section>
 
       <section className="grid md:grid-cols-3 gap-6">
         <FeatureCard 
           title="Match History" 
-          description="View all your past matches with detailed results and statistics."
+          description="View all past matches with detailed results and statistics."
           link="/matches"
           icon={
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
@@ -141,26 +118,38 @@ interface FeatureCardProps {
 
 function FeatureCard({ title, description, link, icon }: FeatureCardProps) {
   return (
-    <div className="card hover:bg-[--primary]/5 animate-fade-in">
-      <div className="p-6">
-        <div className="w-10 h-10 mb-4 rounded-lg bg-[--primary]/10 text-[--primary] 
-                      flex items-center justify-center">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            {icon}
-          </svg>
+    <Link href={link} className="block card hover:bg-[var(--primary)]/5 transition-colors duration-150 h-[230px]">
+      <div className="px-4 md:px-5 py-3 h-full flex flex-col">
+        {/* Icon and Title - Fixed Height */}
+        <div className="flex items-center gap-3 h-[68px]">
+          <div className="w-14 h-14 flex-shrink-0 flex items-center justify-center text-[var(--primary)]">
+            <svg className="w-11 h-11" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {icon}
+            </svg>
+          </div>
+          <h2 className="card-title text-base md:text-lg line-clamp-2">{title}</h2>
         </div>
-        <h2 className="text-xl font-semibold mb-2 text-[--foreground]">{title}</h2>
-        <p className="text-[--muted] mb-4">{description}</p>
-        <Link 
-          href={link} 
-          className="inline-flex items-center text-[--primary] hover:text-[--primary-hover] font-medium"
-        >
-          Learn more
-          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-          </svg>
-        </Link>
+
+        {/* Description - Fixed Height */}
+        <div className="flex-1 py-3">
+          <p className="card-meta line-clamp-3">{description}</p>
+        </div>
+
+        {/* Action - Fixed Height */}
+        <div className="h-[52px] pt-3 border-t border-[var(--border)]">
+          <span className="card-action group py-2 flex items-center justify-center gap-2">
+            Learn more
+            <svg 
+              className="w-[18px] h-[18px] text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-150" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }
