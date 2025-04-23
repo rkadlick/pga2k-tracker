@@ -15,17 +15,30 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-[--background] border border-[--border]" />
+      <div className="fixed bottom-8 right-8 w-14 h-14 rounded-full bg-[var(--card-bg)] border border-[var(--border)]" />
     );
   }
 
   return (
     <button
       onClick={toggleTheme}
-      className="theme-toggle"
+      className="fixed bottom-8 right-8 w-14 h-14 rounded-full
+                bg-[var(--card-bg)] text-[var(--foreground)]
+                border border-[var(--border)]
+                shadow-lg hover:shadow-xl
+                transition-all duration-300 ease-in-out
+                overflow-hidden
+                before:content-[''] before:absolute 
+                before:-left-[25%] before:-top-[25%]
+                before:w-[150%] before:h-[150%]
+                before:bg-[var(--background)] before:rounded-full
+                before:scale-0 hover:before:scale-100
+                before:transition-transform before:duration-300
+                before:origin-center
+                active:shadow-inner active:scale-95"
       aria-label="Toggle theme"
     >
-      <div className="relative flex items-center justify-center w-5 h-5">
+      <div className="relative flex items-center justify-center w-full h-full">
         {/* Sun icon */}
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +46,7 @@ export default function ThemeToggle() {
           fill="none"
           strokeWidth="2"
           stroke="currentColor"
-          className={`absolute w-5 h-5 text-amber-500 dark:text-amber-400
+          className={`absolute w-7 h-7 text-[var(--foreground)]
                      transition-all duration-300 ease-in-out
                      ${theme === 'light' 
                        ? 'scale-100 rotate-0 opacity-100' 
@@ -50,7 +63,7 @@ export default function ThemeToggle() {
           fill="none"
           strokeWidth="2"
           stroke="currentColor"
-          className={`absolute w-5 h-5 text-slate-800 dark:text-blue-300
+          className={`absolute w-7 h-7 text-[var(--foreground)]
                      transition-all duration-300 ease-in-out
                      ${theme === 'dark' 
                        ? 'scale-100 rotate-0 opacity-100' 

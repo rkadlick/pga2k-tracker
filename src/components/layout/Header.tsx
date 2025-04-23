@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
-import ThemeToggle from '@/components/common/ThemeToggle';
 
 export default function Header() {
   const pathname = usePathname();
@@ -43,9 +42,7 @@ export default function Header() {
           </nav>
           
           {/* Right side items */}
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            
+          <div className="flex items-center space-x-4">            
             <div className="min-w-[100px] flex justify-end">
               {isAuthenticated ? (
                 <div className="flex items-center space-x-4">

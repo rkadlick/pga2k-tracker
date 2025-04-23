@@ -2,6 +2,8 @@
 import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import ThemeToggle from "@/components/common/ThemeToggle";
+
 interface LayoutProps {
   children: ReactNode;
 }
@@ -14,6 +16,7 @@ export default function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
+      <ThemeToggle />
     </div>
   );
 }
