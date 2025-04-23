@@ -90,8 +90,9 @@ export default function MatchDetails({
             Rating Change
             <input
               type="number"
-              value={ratingChange}
-              onChange={(e) => onInputChange('rating_change', parseInt(e.target.value, 10) || 0)}
+              min="0"
+              value={Math.abs(ratingChange)}
+              onChange={(e) => onInputChange('rating_change', Math.abs(parseInt(e.target.value, 10)) || 0)}
               className="mt-1 block w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
                        focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
                        transition-all duration-200"

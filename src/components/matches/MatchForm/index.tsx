@@ -165,11 +165,15 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
               Teams
             </h2>
             <div className="space-y-6">
-              <div className="bg-[--input-bg] rounded-lg p-4 border border-[--border]">
-                <h3 className="text-lg font-medium text-[--foreground]">
-                  {yourTeam.name}
-                </h3>
-                <div className="mt-2 space-y-1">
+              {/* Your Team */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                  <h3 className="text-lg font-medium text-[--foreground]">
+                    {yourTeam.name}
+                  </h3>
+                </div>
+                <div className="pl-4 border-l-2 border-emerald-500/20">
                   {isLoadingPlayers ? (
                     <p className="text-[--muted]">Loading team players...</p>
                   ) : playerError ? (
@@ -177,22 +181,32 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
                       {playerError}
                     </p>
                   ) : (
-                    <ul className="list-disc pl-6 text-[--muted]">
+                    <div className="space-y-2">
                       {teamPlayers.map((player, index) => (
-                        <li key={index}>
-                          {player.name} - Rating: {player.recent_rating}
-                        </li>
+                        <div key={index} className="flex items-center gap-2">
+                          <span className="text-[--foreground]">{player.name}</span>
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300">
+                            {player.recent_rating}
+                          </span>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   )}
                 </div>
               </div>
 
-              <div className="bg-[--input-bg] rounded-lg p-4">
-                <TeamCreation
-                  isYourTeam={false}
-                  onTeamCreated={handleOpponentTeamCreated}
-                />
+              {/* Opponent Team */}
+              <div className="flex flex-col">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  <h3 className="text-lg font-medium text-[--foreground]">Opponent Team</h3>
+                </div>
+                <div className="pl-4 border-l-2 border-blue-500/20">
+                  <TeamCreation
+                    isYourTeam={false}
+                    onTeamCreated={handleOpponentTeamCreated}
+                  />
+                </div>
               </div>
             </div>
           </div>
