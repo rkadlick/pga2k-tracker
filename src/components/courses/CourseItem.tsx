@@ -27,36 +27,34 @@ export default function CourseItem({ course, isAuthenticated }: CourseItemProps)
         </div>
 
         {/* Record */}
-        <div className="mb-4">
+        <div className="flex-1">
           <span className="card-meta">
             Record: {course.wins || 0}-{course.losses || 0}
           </span>
         </div>
 
         {/* Actions */}
-        {isAuthenticated && (
-          <div className="mt-auto pt-3 border-t border-[var(--border)]">
-            <Link
-              href={`/courses/${course.id}`}
-              className="card-action group py-2.5 justify-center"
+        <div className="mt-4 pt-3 border-t border-[var(--border)]">
+          <Link
+            href={`/courses/${course.id}`}
+            className="card-action group py-2.5 flex items-center justify-center gap-2"
+          >
+            <svg 
+              className="w-[18px] h-[18px] text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-150" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
             >
-              <svg 
-                className="w-[18px] h-[18px] text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-150" 
-                fill="none" 
-                stroke="currentColor" 
-                viewBox="0 0 24 24"
-              >
-                <path 
-                  strokeLinecap="round" 
-                  strokeLinejoin="round" 
-                  strokeWidth="2" 
-                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" 
-                />
-              </svg>
-              View & Edit Course
-            </Link>
-          </div>
-        )}
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                strokeWidth="2" 
+                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" 
+              />
+            </svg>
+            {isAuthenticated ? 'View & Edit' : 'View Details'}
+          </Link>
+        </div>
       </div>
     </div>
   );
