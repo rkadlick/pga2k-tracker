@@ -239,39 +239,40 @@
 
   /* Secondary button variant */
   button.secondary {
-    border-color: var(--border);
-    color: var(--foreground);
+    border-color: var(--secondary);
+    color: var(--secondary);
+    background-color: rgba(139, 92, 246, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(139, 92, 246, 0.1);
   }
 
   button.secondary:before {
-    background: var(--border);
+    background: var(--secondary);
   }
 
   button.secondary:hover {
-    color: var(--foreground);
+    color: #ffffff;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1),
+                0 0 0 1px rgba(139, 92, 246, 0.15);
   }
 
   button.secondary:active:before {
-    background: var(--muted);
+    background: #7c3aed; /* Darker violet for click state */
   }
 
   /* Dark mode adjustments */
-  [data-theme="dark"] button {
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-
-  [data-theme="dark"] button:hover {
-    color: #ffffff;
-  }
-
   [data-theme="dark"] button.secondary {
-    border-color: var(--border);
-    color: var(--foreground);
+    border-color: var(--secondary);
+    color: var(--secondary);
+    background-color: rgba(167, 139, 250, 0.1);
   }
 
   [data-theme="dark"] button.secondary:hover {
-    color: var(--foreground);
+    color: #ffffff;
+  }
+
+  [data-theme="dark"] button.secondary:active:before {
+    background: #8b5cf6; /* Slightly darker for click state in dark mode */
   }
 
   /* Cards */
