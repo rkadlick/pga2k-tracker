@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import FormHeader from './FormHeader';
 import HoleSection from './HoleSection';
 import CourseTotals from './CourseTotals';
@@ -9,19 +9,7 @@ interface CourseFormProps {
   onCancel: () => void;
 }
 
-export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollThreshold = 200; // Adjust this value to change when the buttons move
-      setIsScrolled(window.scrollY > scrollThreshold);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+export default function CourseForm({ onSubmit }: CourseFormProps) {
   const {
     courseName,
     setCourseName,
@@ -40,31 +28,9 @@ export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
     onSubmit(name, holes, frontPar, backPar, totalPar, frontDist, backDist, totalDist);
   });
 
-  const ActionButtons = () => (
-    <div className="flex justify-end gap-4">
-      <button
-        type="button"
-        onClick={onCancel}
-        className="secondary"
-      >
-        Cancel
-      </button>
-      <button
-        type="submit"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Creating...' : 'Create Course'}
-      </button>
-    </div>
-  );
-
   return (
-    <div className="animate-fade-in mt-[-48px]">
-      <div className={`flex justify-end mb-8 transition-opacity duration-300 ${isScrolled ? 'hidden' : 'block'}`}>
-        <ActionButtons />
-      </div>
-
-      <form onSubmit={handleFormSubmit} className="space-y-8">
+    <div className="animate-fade-in mt-2">
+      <form onSubmit={handleFormSubmit} className="space-y-6">
         <div className="card p-8">
           <FormHeader
             courseName={courseName}
@@ -103,9 +69,13 @@ export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
           />
         </div>
 
-        {/* Bottom buttons that show when scrolled */}
-        <div className={`transition-opacity duration-300 ${isScrolled ? 'block' : 'hidden'}`}>
-          <ActionButtons />
+        <div className="flex justify-end mt-6">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? 'Creating...' : 'Create Course'}
+          </button>
         </div>
       </form>
     </div>

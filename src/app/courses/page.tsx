@@ -6,6 +6,7 @@ import CourseForm from "@/components/courses/CourseForm";
 import { useCourses } from "@/hooks/useCourses";
 import { useAuth } from "@/hooks/useAuth";
 import { sortCourses, SortOption } from "@/utils/courseSorting";
+import { IoArrowBack } from "react-icons/io5";
 
 /**
  * Alternative implementation of the Courses page using the domain-specific hook
@@ -55,7 +56,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl course-title text-[--foreground]">Course Management</h1>
-          {!isAddingCourse && (
+          {!isAddingCourse ? (
             <div className="mt-4 flex items-center gap-2">
               <span className="text-sm text-[--muted]">Sort by:</span>
               <select
@@ -67,6 +68,11 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
                 <option value="winPercentage">Win %</option>
                 <option value="mostPlayed">Most Played</option>
               </select>
+            </div>
+          ) : (
+            <div className="mt-4 breadcrumb" onClick={() => setIsAddingCourse(false)}>
+              <IoArrowBack className="breadcrumb-icon" />
+              <span className="breadcrumb-text">Back to Course List</span>
             </div>
           )}
         </div>

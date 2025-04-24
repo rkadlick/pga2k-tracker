@@ -9,6 +9,7 @@ import { useCourses } from '@/hooks/useCourses';
 import EditCourseHoles from '@/components/courses/CourseForm/EditCourseHoles';
 import { use } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import { IoArrowBack, IoClose } from "react-icons/io5";
 
 interface HoleData {
   id: string;
@@ -57,7 +58,6 @@ export default function CourseDetailPage({
         const data = await response.json();
         setCourse(data.data);
         setCourseName(data.data.name);
-        // Convert holes to match the HoleData interface
         const convertedHoles = (data.data.holes || []).map((hole: Hole): HoleData => ({
           id: hole.id,
           hole_number: hole.hole_number,
@@ -77,19 +77,16 @@ export default function CourseDetailPage({
   }, [id]);
 
   const handleUpdateCourse = async () => {
-    // Reset errors
     setNameError('');
     setHoleErrors([]);
     let hasErrors = false;
 
-    // Validate course name
     const nameError = validateCourseName(courseName);
     if (nameError) {
       setNameError(nameError);
       hasErrors = true;
     }
 
-    // Validate holes
     const newHoleErrors: string[] = [];
     holes.forEach((hole, index) => {
       const parError = validateHolePar(hole.par);
@@ -108,7 +105,6 @@ export default function CourseDetailPage({
       return;
     }
 
-    // Calculate totals
     const frontNine = holes.filter(hole => hole.hole_number <= 9);
     const backNine = holes.filter(hole => hole.hole_number > 9);
 
@@ -122,7 +118,6 @@ export default function CourseDetailPage({
 
     try {
       setIsSaving(true);
-      // Use the updateCourse function from the hook
       const updatedCourse = await updateCourse(
         id,
         courseName,
@@ -146,10 +141,8 @@ export default function CourseDetailPage({
   };
 
   const handleCancel = () => {
-    // Reset to original values
     if (course) {
       setCourseName(course.name);
-      // Convert holes to match the HoleData interface
       const convertedHoles = (course.holes || []).map((hole: Hole): HoleData => ({
         id: hole.id,
         hole_number: hole.hole_number,
@@ -172,7 +165,6 @@ export default function CourseDetailPage({
           : hole
       )
     );
-    // Clear any existing error for this hole
     setHoleErrors(prevErrors => {
       const newErrors = [...prevErrors];
       newErrors[holeNumber - 1] = '';
@@ -203,7 +195,6 @@ export default function CourseDetailPage({
     );
   }
 
-  // Calculate totals for display
   const frontNine = holes.filter(hole => hole.hole_number <= 9);
   const backNine = holes.filter(hole => hole.hole_number > 9);
 
@@ -219,80 +210,81 @@ export default function CourseDetailPage({
     <div className="space-y-6">
       <style jsx global>{inputStyles}</style>
       
+      {/* Breadcrumb outside card */}
+      <div 
+        onClick={() => isEditing ? handleCancel() : router.push('/courses')}
+        className="breadcrumb"
+      >
+        {isEditing ? (
+          <IoClose className="breadcrumb-icon" />
+        ) : (
+          <IoArrowBack className="breadcrumb-icon" />
+        )}
+        <span className="breadcrumb-text">
+          {isEditing ? 'Cancel' : 'Back to Course List'}
+        </span>
+      </div>
+
       <div className="card">
         <div className="p-6">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <button
-                onClick={() => router.push('/courses')}
-                className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-[--primary]/5 text-[--primary] hover:bg-[--primary]/10"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
-                </svg>
-              </button>
-              {!isEditing && (
-                <h2 className="text-3xl font-bold text-[--foreground]">{course.name}</h2>
-              )}
-            </div>
-            
+          <div className="flex flex-col gap-4">
             {!isEditing ? (
-              isAuthenticated && (
-                <div className="flex gap-2">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>
+                  {course.name}
+                </h2>
+                {isAuthenticated && (
                   <button
                     onClick={() => setIsEditing(true)}
-                    className="inline-flex items-center px-4 py-2 rounded-xl bg-[--primary]/10 text-[--primary] hover:bg-[--primary]/20"
+                    className="inline-flex items-center"
                   >
                     Edit Course
                   </button>
-                  <button
-                    onClick={() => setConfirmDelete(true)}
-                    className="inline-flex items-center px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20"
-                  >
-                    Delete Course
-                  </button>
-                </div>
-              )
+                )}
+              </div>
             ) : (
-              <div className="flex gap-2">
-                <button
-                  onClick={handleCancel}
-                  className="inline-flex items-center px-4 py-2 rounded-xl bg-[--background]/50 text-[--muted] hover:text-[--foreground] hover:bg-[--background]/75"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={handleUpdateCourse}
-                  className="inline-flex items-center px-4 py-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20"
-                >
-                  Save Changes
-                </button>
+              <div className="flex flex-col gap-6">
+                <div>
+                  <label htmlFor="courseName" className="block text-sm font-medium text-[--muted] mb-2">
+                    Course Name
+                  </label>
+                  <div className="flex items-start gap-4">
+                    <div className="flex-1">
+                      <input
+                        type="text"
+                        id="courseName"
+                        value={courseName}
+                        onChange={(e) => {
+                          setCourseName(e.target.value);
+                          setNameError('');
+                        }}
+                        className={`block w-full px-4 py-2.5 rounded-xl bg-[--background]/50 border border-[--border] focus:border-[--primary] focus:ring-[--primary] text-[--foreground] ${
+                          nameError ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500' : ''
+                        }`}
+                      />
+                      {nameError && (
+                        <p className="mt-2 text-sm text-rose-600 dark:text-rose-400">{nameError}</p>
+                      )}
+                    </div>
+                    <div className="flex gap-2 flex-shrink-0">
+                      <button
+                        onClick={() => setConfirmDelete(true)}
+                        className="sign-out"
+                      >
+                        Delete Course
+                      </button>
+                      <button
+                        onClick={handleUpdateCourse}
+                        disabled={isSaving}
+                      >
+                        {isSaving ? 'Saving...' : 'Save Changes'}
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
-          
-          {isEditing && (
-            <div className="mt-6">
-              <label htmlFor="courseName" className="block text-sm font-medium text-[--muted] mb-2">
-                Course Name
-              </label>
-              <input
-                type="text"
-                id="courseName"
-                value={courseName}
-                onChange={(e) => {
-                  setCourseName(e.target.value);
-                  setNameError('');
-                }}
-                className={`block w-full px-4 py-2.5 rounded-xl bg-[--background]/50 border border-[--border] focus:border-[--primary] focus:ring-[--primary] text-[--foreground] ${
-                  nameError ? 'border-rose-500 focus:border-rose-500 focus:ring-rose-500' : ''
-                }`}
-              />
-              {nameError && (
-                <p className="mt-2 text-sm text-rose-600 dark:text-rose-400">{nameError}</p>
-              )}
-            </div>
-          )}
         </div>
       </div>
       
@@ -369,19 +361,19 @@ export default function CourseDetailPage({
           {/* Course Totals */}
           <div className="card">
             <div className="p-6">
-              <h3 className="text-lg font-semibold mb-4">Course Totals</h3>
+              <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: 'var(--font-primary)' }}>Course Totals</h3>
               <div className="grid grid-cols-3 gap-6">
                 <div>
-                  <p className="text-sm text-[--muted]">Total Par</p>
-                  <p className="text-2xl font-bold text-[--foreground]">{totalPar}</p>
+                  <p className="text-sm text-[--muted]" style={{ fontFamily: 'var(--font-tertiary)' }}>Total Par</p>
+                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{totalPar}</p>
                 </div>
                 <div>
-                  <p className="text-sm text-[--muted]">Total Distance</p>
-                  <p className="text-2xl font-bold text-[--foreground]">{totalDistance} yards</p>
+                  <p className="text-sm text-[--muted]" style={{ fontFamily: 'var(--font-tertiary)' }}>Total Distance</p>
+                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{totalDistance} yards</p>
                 </div>
                 <div>
-                  <p className="text-sm text-[--muted]">Total Holes</p>
-                  <p className="text-2xl font-bold text-[--foreground]">{holes.length}</p>
+                  <p className="text-sm text-[--muted]" style={{ fontFamily: 'var(--font-tertiary)' }}>Total Holes</p>
+                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{holes.length}</p>
                 </div>
               </div>
             </div>
@@ -389,23 +381,24 @@ export default function CourseDetailPage({
         </>
       )}
 
+      {/* Delete Confirmation Modal */}
       {confirmDelete && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="bg-[--card] p-6 rounded-2xl max-w-md w-full mx-4">
-            <h3 className="text-lg font-semibold mb-2">Delete Course</h3>
-            <p className="text-[--muted] mb-6">
+          <div className="bg-[--card-bg] p-6 rounded-xl max-w-md w-full mx-4">
+            <h3 className="text-lg font-semibold mb-2" style={{ fontFamily: 'var(--font-primary)' }}>Delete Course</h3>
+            <p className="text-[--muted] mb-6" style={{ fontFamily: 'var(--font-secondary)' }}>
               Are you sure you want to delete this course? This action cannot be undone.
             </p>
             <div className="flex justify-end gap-2">
               <button
                 onClick={() => setConfirmDelete(false)}
-                className="px-4 py-2 rounded-xl bg-[--background]/50 text-[--muted] hover:text-[--foreground] hover:bg-[--background]/75"
+                className="secondary"
               >
                 Cancel
               </button>
               <button
                 onClick={handleDeleteCourse}
-                className="px-4 py-2 rounded-xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20"
+                className="sign-out"
               >
                 Delete Course
               </button>

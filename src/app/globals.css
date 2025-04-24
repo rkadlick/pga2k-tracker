@@ -617,6 +617,23 @@
     color: #60a5fa;
     opacity: 0.5;
   }
+
+  /* Breadcrumb styles */
+  .breadcrumb {
+    @apply inline-flex items-center gap-1.5 text-sm text-[--secondary] hover:text-[--secondary] cursor-pointer;
+  }
+
+  .breadcrumb-icon {
+    @apply w-4 h-4 transform transition-transform;
+  }
+
+  .breadcrumb:hover .breadcrumb-icon {
+    @apply -translate-x-0.5;
+  }
+
+  .breadcrumb-text {
+    @apply font-medium;
+  }
 }
 
 /* Animations */
