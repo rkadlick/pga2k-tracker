@@ -7,7 +7,7 @@ interface CourseTotalsProps {
 
 export default function CourseTotals({ totalPar, totalDistance }: CourseTotalsProps) {
   return (
-    <div className="card p-3">
+    <div>
       <h3 className="text-lg font-medium text-[--foreground] mb-6">Course Totals</h3>
       <div className="grid grid-cols-2 gap-8">
         <div>

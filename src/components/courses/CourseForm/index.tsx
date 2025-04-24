@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import FormHeader from './FormHeader';
 import HoleSection from './HoleSection';
 import CourseTotals from './CourseTotals';
@@ -10,6 +10,18 @@ interface CourseFormProps {
 }
 
 export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollThreshold = 200; // Adjust this value to change when the buttons move
+      setIsScrolled(window.scrollY > scrollThreshold);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const {
     courseName,
     setCourseName,
@@ -28,62 +40,74 @@ export default function CourseForm({ onSubmit, onCancel }: CourseFormProps) {
     onSubmit(name, holes, frontPar, backPar, totalPar, frontDist, backDist, totalDist);
   });
 
+  const ActionButtons = () => (
+    <div className="flex justify-end gap-4">
+      <button
+        type="button"
+        onClick={onCancel}
+        className="secondary"
+      >
+        Cancel
+      </button>
+      <button
+        type="submit"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? 'Creating...' : 'Create Course'}
+      </button>
+    </div>
+  );
+
   return (
-    <form onSubmit={handleFormSubmit} className="space-y-8">
-      <div className="card">
-        <FormHeader
-          courseName={courseName}
-          setCourseName={setCourseName}
-          error={errors.courseName}
-          clearError={() => {}}
-        />
+    <div className="animate-fade-in mt-[-48px]">
+      <div className={`flex justify-end mb-8 transition-opacity duration-300 ${isScrolled ? 'hidden' : 'block'}`}>
+        <ActionButtons />
       </div>
 
-      <div className="card">
-        <HoleSection
-          title="Front Nine"
-          holes={frontNine}
-          totalPar={frontNinePar}
-          totalDistance={frontNineDistance}
-          updateHolePar={updateHolePar}
-          updateHoleDistance={updateHoleDistance}
-        />
-      </div>
+      <form onSubmit={handleFormSubmit} className="space-y-8">
+        <div className="card p-8">
+          <FormHeader
+            courseName={courseName}
+            setCourseName={setCourseName}
+            error={errors.courseName}
+            clearError={() => {}}
+          />
+        </div>
 
-      <div className="card">
-        <HoleSection
-          title="Back Nine"
-          holes={backNine}
-          totalPar={backNinePar}
-          totalDistance={backNineDistance}
-          updateHolePar={updateHolePar}
-          updateHoleDistance={updateHoleDistance}
-        />
-      </div>
+        <div className="card p-8 space-y-8">
+          <HoleSection
+            title="Front Nine"
+            holes={frontNine}
+            totalPar={frontNinePar}
+            totalDistance={frontNineDistance}
+            updateHolePar={updateHolePar}
+            updateHoleDistance={updateHoleDistance}
+          />
 
-      <div className="card">
-        <CourseTotals
-          totalPar={frontNinePar + backNinePar}
-          totalDistance={frontNineDistance + backNineDistance}
-        />
-      </div>
+          <div className="border-t border-[--border] pt-8">
+            <HoleSection
+              title="Back Nine"
+              holes={backNine}
+              totalPar={backNinePar}
+              totalDistance={backNineDistance}
+              updateHolePar={updateHolePar}
+              updateHoleDistance={updateHoleDistance}
+            />
+          </div>
+        </div>
 
-      <div className="flex justify-end gap-4">
-        <button
-          type="button"
-          onClick={onCancel}
-          className="px-4 py-2 rounded-lg text-sm font-medium text-[--foreground] bg-[--input-bg] hover:bg-[--hover-bg] focus:outline-none focus:ring-2 focus:ring-[--primary] transition-colors"
-        >
-          Cancel
-        </button>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className="px-4 py-2 rounded-lg text-sm font-medium text-white bg-[--primary] hover:bg-[--primary-hover] focus:outline-none focus:ring-2 focus:ring-[--primary] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-        >
-          {isSubmitting ? 'Creating...' : 'Create Course'}
-        </button>
-      </div>
-    </form>
+        <div className="card p-8">
+          <CourseTotals
+            totalPar={frontNinePar + backNinePar}
+            totalDistance={frontNineDistance + backNineDistance}
+          />
+        </div>
+
+        {/* Bottom buttons that show when scrolled */}
+        <div className={`transition-opacity duration-300 ${isScrolled ? 'block' : 'hidden'}`}>
+          <ActionButtons />
+        </div>
+      </form>
+    </div>
   );
 }

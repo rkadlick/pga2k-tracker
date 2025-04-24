@@ -55,18 +55,20 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl course-title text-[--foreground]">Course Management</h1>
-          <div className="mt-4 flex items-center gap-2">
-            <span className="text-sm text-[--muted]">Sort by:</span>
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as SortOption)}
-              className="text-sm bg-[--background] border border-[--border] rounded-md px-2 py-1"
-            >
-              <option value="alphabetical">A-Z</option>
-              <option value="winPercentage">Win %</option>
-              <option value="mostPlayed">Most Played</option>
-            </select>
-          </div>
+          {!isAddingCourse && (
+            <div className="mt-4 flex items-center gap-2">
+              <span className="text-sm text-[--muted]">Sort by:</span>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as SortOption)}
+                className="text-sm bg-[--background] border border-[--border] rounded-md px-2 py-1"
+              >
+                <option value="alphabetical">A-Z</option>
+                <option value="winPercentage">Win %</option>
+                <option value="mostPlayed">Most Played</option>
+              </select>
+            </div>
+          )}
         </div>
 
         {!isAddingCourse && isAuthenticated && (

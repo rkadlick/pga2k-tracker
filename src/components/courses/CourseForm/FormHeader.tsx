@@ -13,10 +13,10 @@ export default function FormHeader({
   error
 }: FormHeaderProps) {
   return (
-    <div className="p-6">
-      <h2 className="text-xl font-semibold text-[--foreground] mb-4">
+    <div>
+      <h3 className="text-lg font-medium text-[--foreground] mb-6">
         Course Details
-      </h2>
+      </h3>
       <label htmlFor="courseName" className="block text-sm font-medium text-[--muted] mb-2">
         Course Name
       </label>
