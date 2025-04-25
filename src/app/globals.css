@@ -620,7 +620,14 @@
 
   /* Breadcrumb styles */
   .breadcrumb {
-    @apply inline-flex items-center gap-1.5 text-sm text-[--secondary] hover:text-[--secondary] cursor-pointer;
+    @apply inline-flex items-center gap-1.5 text-sm text-[--muted] hover:text-[--muted-hover] transition-colors duration-200 cursor-pointer;
+    width: fit-content;
+    color: var(--muted) !important;
+    cursor: pointer;
+  }
+
+  .breadcrumb:hover {
+    color: var(--muted-hover) !important;
   }
 
   .breadcrumb-icon {

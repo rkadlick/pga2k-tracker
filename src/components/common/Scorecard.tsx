@@ -33,51 +33,51 @@ export default function Scorecard({
   className = ''
 }: ScorecardProps) {
   return (
-    <div className={`card ${className}`}>
+    <div className={`${className}`} style={{ fontFamily: 'var(--font-tertiary)' }}>
       {title && (
-        <div className="px-4 py-3 border-b border-[--border]">
-          <h3 className="text-lg font-medium text-[--foreground]">{title}</h3>
+        <div className="px-4 py-3 border-b border-[var(--border)]">
+          <h3 className="text-lg font-medium text-[var(--foreground)]" style={{ fontFamily: 'var(--font-primary)' }}>{title}</h3>
         </div>
       )}
       
       {/* Desktop View */}
-      <div className="hidden md:block min-w-full divide-y divide-[--border]">
-        <div className="bg-[--background]/50">
+      <div className="hidden md:block min-w-full divide-y divide-[var(--border)]/90">
+        <div className="bg-[var(--background)]/80">
           <div className="grid grid-cols-[100px_repeat(9,1fr)_100px]">
-            <div className="px-3 py-2.5 text-xs font-medium text-[--muted] uppercase tracking-wider sticky left-0 bg-[--background]/50 text-left">
+            <div className="px-3 py-2.5 text-xs font-medium text-[var(--muted)] uppercase tracking-wider sticky left-0 bg-[var(--background)]/80 text-left">
               {columns[0].label}
             </div>
-            {columns.slice(1, 10).map(column => (
+            {columns.slice(1, -1).map(column => (
               <div
                 key={column.id}
-                className="px-3 py-2.5 text-xs font-medium text-[--muted] uppercase tracking-wider text-center"
+                className="px-3 py-2.5 text-xs font-medium text-[var(--muted)] uppercase tracking-wider text-center"
               >
                 {column.label}
               </div>
             ))}
-            <div className="px-3 py-2.5 text-xs font-medium text-[--muted] uppercase tracking-wider text-center font-semibold">
-              Total
+            <div className="px-3 py-2.5 text-xs font-medium text-[var(--muted)] uppercase tracking-wider text-center">
+              {columns[columns.length - 1].label}
             </div>
           </div>
         </div>
         
-        <div className="divide-y divide-[--border] bg-transparent">
+        <div className="divide-y divide-[var(--border)]/90 bg-transparent">
           {rows.map((row) => {
             let rowClass = 'transition-colors duration-200';
             let bgClass = '';
             
             switch (row.type) {
               case 'par':
-                bgClass = 'bg-blue-500/5 hover:bg-blue-500/10';
+                bgClass = 'bg-[var(--input-bg)]/80';
                 break;
               case 'distance':
-                bgClass = 'bg-purple-500/5 hover:bg-purple-500/10';
+                bgClass = 'bg-[var(--input-bg)]/60';
                 break;
               case 'match':
-                bgClass = 'bg-[--background]/50 hover:bg-[--background]/75';
+                bgClass = 'bg-[var(--background)]/80 hover:bg-[var(--background)]/90';
                 break;
               default:
-                bgClass = 'hover:bg-[--background]/50';
+                bgClass = 'hover:bg-[var(--background)]/80';
             }
 
             rowClass += ` ${bgClass}`;
@@ -88,7 +88,7 @@ export default function Scorecard({
             return (
               <div key={row.id} className={rowClass}>
                 <div className="grid grid-cols-[100px_repeat(9,1fr)_100px]">
-                  <div className={`px-3 py-2.5 font-medium text-[--foreground] sticky left-0 ${bgClass}`}>
+                  <div className={`px-3 py-2.5 font-medium text-[var(--foreground)] sticky left-0 ${bgClass}`}>
                     {row.label}
                   </div>
                   {row.values.map((value, index) => (
@@ -102,12 +102,12 @@ export default function Scorecard({
                             ? 'text-rose-600 dark:text-rose-400 font-medium'
                             : value === 'T'
                             ? 'text-amber-600 dark:text-amber-400 font-medium'
-                            : 'text-[--muted]'
+                            : 'text-[var(--muted)]'
                           : row.type === 'par'
-                          ? 'text-blue-600 dark:text-blue-400 font-medium'
-                          : row.type === 'distance'
                           ? 'text-purple-600 dark:text-purple-400 font-medium'
-                          : 'text-[--muted]'
+                          : row.type === 'distance'
+                          ? 'text-blue-600 dark:text-blue-400 font-medium'
+                          : 'text-[var(--muted)]'
                       }`}
                     >
                       {row.onChange ? (
@@ -115,24 +115,24 @@ export default function Scorecard({
                           type="text"
                           value={value?.toString() || ''}
                           onChange={(e) => row.onChange!(row.id, index, e.target.value)}
-                          className="w-full text-center bg-transparent border-b-2 border-current focus:outline-none focus:border-[--primary] transition-colors"
+                          className="w-full text-center bg-transparent border-b border-current focus:outline-none focus:border-[var(--primary)] transition-colors"
                           inputMode="numeric"
                           pattern="[0-9]*"
                         />
                       ) : (
-                        value?.toString() || ''
+                        value?.toString() || '-'
                       )}
                     </div>
                   ))}
                   {row.total !== undefined && (
                     <div className={`px-3 py-2.5 text-center font-medium ${
                       row.type === 'par'
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : row.type === 'distance'
                         ? 'text-purple-600 dark:text-purple-400'
-                        : 'text-[--foreground]'
+                        : row.type === 'distance'
+                        ? 'text-blue-600 dark:text-blue-400'
+                        : ''
                     }`}>
-                      {row.total}
+                      {row.type === 'match' ? '' : row.total}
                     </div>
                   )}
                 </div>
@@ -145,79 +145,61 @@ export default function Scorecard({
       {/* Mobile View */}
       <div className="md:hidden">
         <div className="grid grid-cols-3 p-4">
-          {columns.slice(1, 10).map((column, columnIndex) => (
+          {columns.slice(1, -1).map((column, columnIndex) => (
             <div key={column.id} className={`space-y-2 p-2 relative ${
-              // Add right border for first two columns
-              columnIndex % 3 < 2 ? 'border-r border-white/40' : ''
+              columnIndex % 3 < 2 ? 'border-r border-[var(--border)]/90' : ''
             } ${
-              // Add bottom border for first two rows
-              columnIndex < 6 ? 'border-b border-white/40' : ''
+              columnIndex < 6 ? 'border-b border-[var(--border)]/90' : ''
             }`}>
-              <div className="text-center bg-[--background]/50 p-2 rounded-lg">
-                <div className="text-sm font-medium text-[--muted] pb-2 border-b border-white/25">Hole {column.label}</div>
-                {rows.map((row, rowIndex) => (
-                  <div
-                    key={`${row.id}-${columnIndex}`}
-                    className={`mt-1 font-medium ${
-                      row.type === 'match'
-                        ? row.values[columnIndex] === 'W'
-                          ? 'text-emerald-600 dark:text-emerald-400'
-                          : row.values[columnIndex] === 'L'
-                          ? 'text-rose-600 dark:text-rose-400'
-                          : row.values[columnIndex] === 'T'
-                          ? 'text-amber-600 dark:text-amber-400'
-                          : 'text-[--muted]'
-                        : row.type === 'par'
-                        ? 'text-blue-600 dark:text-blue-400'
-                        : row.type === 'distance'
-                        ? 'text-purple-600 dark:text-purple-400'
-                        : 'text-[--muted]'
-                    } ${
-                      // Add bottom border for all but last row
-                      rowIndex < rows.length - 1 ? 'pb-1 border-b border-white/15' : ''
-                    }`}
-                  >
-                    <div className="text-xs text-[--muted]">{row.label}</div>
-                    {row.onChange ? (
-                      <input
-                        type="text"
-                        value={row.values[columnIndex]?.toString() || ''}
-                        onChange={(e) => row.onChange!(row.id, columnIndex, e.target.value)}
-                        className="w-full text-center bg-transparent border-b border-current focus:outline-none focus:border-[--primary]"
-                        inputMode="numeric"
-                        pattern="[0-9]*"
-                      />
-                    ) : (
-                      row.values[columnIndex]?.toString() || '-'
-                    )}
+              <div className="text-center bg-[var(--background)]/80 p-2 rounded-lg">
+                {/* Hole Number */}
+                <div className="text-sm font-medium text-[var(--muted)] pb-2 border-b border-[var(--border)]/90">
+                  Hole {column.label}
+                </div>
+
+                {/* Par and Distance Row */}
+                <div className="py-2 flex justify-center items-center gap-1.5">
+                  <div className="text-purple-600 dark:text-purple-400 font-medium inline-flex items-center">
+                    Par {rows[0].values[columnIndex]}
                   </div>
-                ))}
+                  <div className="text-[var(--muted)]/90 text-[10px] leading-none translate-y-px">•</div>
+                  <div className="text-blue-600 dark:text-blue-400 font-medium inline-flex items-center">
+                    {rows[1].values[columnIndex]}y
+                  </div>
+                </div>
+
+                {/* Result Row */}
+                <div className="pt-2 border-t border-[var(--border)]/90">
+                  <div className={`font-medium ${
+                    rows[2].values[columnIndex] === 'W'
+                      ? 'text-emerald-600 dark:text-emerald-400'
+                      : rows[2].values[columnIndex] === 'L'
+                      ? 'text-rose-600 dark:text-rose-400'
+                      : rows[2].values[columnIndex] === 'T'
+                      ? 'text-amber-600 dark:text-amber-400'
+                      : 'text-[var(--muted)]'
+                  }`}>
+                    {rows[2].values[columnIndex]?.toString() || '-'}
+                  </div>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Mobile Totals Section */}
-        <div className="border-t border-[--border] p-4">
-          <div className="grid grid-cols-3 gap-4">
-            {rows.map((row) => (
+        <div className="border-b border-[var(--border)]/90 p-4">
+          <div className="grid grid-cols-2 gap-4">
+            {rows.slice(0, 2).map((row) => (
               <div
                 key={`${row.id}-total`}
-                className={`text-center p-2 rounded-lg ${
-                  row.type === 'par'
-                    ? 'bg-blue-500/5'
-                    : row.type === 'distance'
-                    ? 'bg-purple-500/5'
-                    : 'bg-[--background]/50'
-                }`}
+                className={`text-center p-2 rounded-lg ${row.className || ''}`}
               >
-                <div className="text-xs text-[--muted] mb-1">{row.label} Total</div>
+                <div className="text-xs text-[var(--muted)] mb-1">{row.label} Total</div>
                 <div className={`font-medium ${
                   row.type === 'par'
-                    ? 'text-blue-600 dark:text-blue-400'
-                    : row.type === 'distance'
                     ? 'text-purple-600 dark:text-purple-400'
-                    : 'text-[--foreground]'
+                    : 'text-blue-600 dark:text-blue-400'
                 }`}>
                   {row.total}
                 </div>

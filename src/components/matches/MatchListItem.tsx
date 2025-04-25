@@ -38,25 +38,32 @@ export default function MatchListItem({ match, index }: MatchListItemProps) {
     >
       <div className="p-4 md:p-5">
         {/* Main Container */}
-        <div className="flex items-center gap-4">
+        <div className="flex flex-col md:flex-row gap-4">
           {/* Opponent Team Letter Icon */}
           <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-[var(--primary)]">
             <LetterIcon className="w-9 h-9" />
           </div>
 
           {/* Match Info */}
-          <div className="flex-1 min-w-0 flex items-center gap-6">
+          <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
             {/* Teams and Course */}
             <div className="flex-1 min-w-0">
-              <h3 className="card-title text-base md:text-lg truncate">
-                {yourTeamName} <span className="text-[--muted]">vs</span> {opponentTeamName}
-              </h3>
-              <div className="flex items-center gap-2 mt-1">
-                <div className="flex items-center gap-1.5 text-[--primary]">
+              <div className="flex flex-col md:flex-row md:items-center gap-2">
+                <h3 className="card-title text-base md:text-lg truncate">
+                  {yourTeamName} <span className="text-[var(--muted)]">vs</span> {opponentTeamName}
+                </h3>
+                {match.playoffs && (
+                  <span className="self-start md:self-auto inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-500/30 dark:text-purple-200">
+                    Playoff
+                  </span>
+                )}
+              </div>
+              <div className="flex items-center gap-4 mt-2">
+                <div className="flex items-center gap-1.5 text-[var(--primary)]">
                   <GiGolfFlag className="w-4 h-4" />
                   <span className="card-meta truncate">{courseName}</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-[--primary]">
+                <div className="flex items-center gap-1.5 text-[var(--primary)]">
                   <TbMapPin2 className="w-4 h-4" />
                   <span className="card-meta">{formatNinePlayed(match.nine_played)}</span>
                 </div>
@@ -64,44 +71,40 @@ export default function MatchListItem({ match, index }: MatchListItemProps) {
             </div>
 
             {/* Match Result and Rating */}
-            <div className="flex items-center gap-3 flex-shrink-0">
-              <span className={`inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium ${
+            <div className="flex flex-wrap items-center gap-2 md:gap-3 flex-shrink-0">
+              <div className={`inline-flex items-center rounded-md text-xs font-medium ${
                 match.winner_id === match.your_team_id 
                   ? 'bg-green-500/10 text-green-600 dark:text-green-400' 
                   : match.winner_id === match.opponent_team_id 
                     ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400' 
-                    : 'bg-[--primary]/10 text-[--primary]'}`}
+                    : 'bg-[var(--primary)]/10 text-[var(--primary)]'}`}
               >
-                {match.winner_id === match.your_team_id 
-                  ? `${yourTeamName} won` 
-                  : match.winner_id === match.opponent_team_id 
-                    ? `${opponentTeamName} won`
-                    : 'Tied'}
-              </span>
-              {match.rating_change !== undefined && (
-                <span className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-md text-xs font-medium ${
-                  match.rating_change > 0
-                    ? 'bg-green-500/10 text-green-600 dark:text-green-400'
-                    : match.rating_change < 0
-                      ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400'
-                      : 'bg-[--primary]/10 text-[--primary]'
-                }`}>
-                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {match.rating_change > 0 ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    ) : match.rating_change < 0 ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                    ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
-                    )}
-                  </svg>
-                  <span>{match.rating_change > 0 ? '+' : ''}{match.rating_change}</span>
+                <span className="px-2.5 py-1">
+                  {match.winner_id === match.your_team_id 
+                    ? `${yourTeamName} won` 
+                    : match.winner_id === match.opponent_team_id 
+                      ? `${opponentTeamName} won`
+                      : 'Tied'}
                 </span>
-              )}
+                {match.rating_change !== undefined && (
+                  <div className="flex items-center gap-1 border-l border-current/10 px-2.5 py-1">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      {match.rating_change > 0 ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                      ) : match.rating_change < 0 ? (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
+                      ) : (
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 12H4" />
+                      )}
+                    </svg>
+                    <span>{match.rating_change > 0 ? '+' : ''}{match.rating_change}</span>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* View Details Arrow */}
-            <div className="flex-shrink-0 text-[--muted] group-hover:text-[--primary] transition-colors duration-150">
+            <div className="hidden md:block flex-shrink-0 text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors duration-150">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
               </svg>
@@ -111,7 +114,7 @@ export default function MatchListItem({ match, index }: MatchListItemProps) {
 
         {/* Notes and Tags Container */}
         {(match.notes || (match.tags && match.tags.length > 0)) && (
-          <div className="mt-4 space-y-3 pl-16">
+          <div className="mt-4 space-y-3 md:pl-16">
             {/* Notes */}
             {match.notes && (
               <div>
@@ -125,8 +128,7 @@ export default function MatchListItem({ match, index }: MatchListItemProps) {
                 {match.tags.map((tag, idx) => (
                   <span 
                     key={idx} 
-                    className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium
-                             bg-[--primary]/5 text-[--primary] border border-[--primary]/10"
+                    className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-[var(--primary)]/5 text-[var(--primary)] border border-[var(--primary)]/10"
                   >
                     #{tag}
                   </span>
