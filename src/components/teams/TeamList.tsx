@@ -7,7 +7,7 @@ interface TeamListProps {
   isAuthenticated: boolean;
 }
 
-export default function TeamList({ teams, isAuthenticated }: TeamListProps) {
+export default function TeamList({ teams, isAuthenticated}: TeamListProps) {
   // Filter out test team
   const filteredTeams = teams.filter(team => team.name !== "Fairway Fantatics Forever");
 

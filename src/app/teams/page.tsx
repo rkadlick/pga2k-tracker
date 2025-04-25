@@ -15,7 +15,7 @@ export default function TeamsPage() {
     isLoading, 
     error,
     createTeam,
-    deleteTeam 
+    //deleteTeam 
   } = useTeams();
 
   const handleAddTeam = async (name: string, players: { id: string, name: string; rating: number }[]) => {
@@ -27,13 +27,13 @@ export default function TeamsPage() {
     }
   };
 
-  const handleDeleteTeam = async (id: string) => {
+  /* const handleDeleteTeam = async (id: string) => {
     try {
       await deleteTeam(id);
     } catch (err) {
       console.error("Error deleting team:", err);
     }
-  };
+  }; */
 
   return (
     <div className="space-y-12">
@@ -104,7 +104,7 @@ export default function TeamsPage() {
           <p className="mt-2 text-[--muted]">Loading teams...</p>
         </div>
       ) : (
-        <TeamList teams={teams} onDelete={handleDeleteTeam} isAuthenticated={isAuthenticated} />
+        <TeamList teams={teams} isAuthenticated={isAuthenticated} />
       )}
     </div>
   );
