@@ -162,26 +162,28 @@ export default function Scorecard({
                   <div className="text-purple-600 dark:text-purple-400 font-medium inline-flex items-center">
                     Par {rows[0].values[columnIndex]}
                   </div>
-                  <div className="text-[var(--muted)]/90 text-[10px] leading-none translate-y-px">•</div>
+                  <div className="text-[var(--muted)] opacity-90 text-[10px] leading-none translate-y-px">•</div>
                   <div className="text-blue-600 dark:text-blue-400 font-medium inline-flex items-center">
                     {rows[1].values[columnIndex]}y
                   </div>
                 </div>
 
                 {/* Result Row */}
-                <div className="pt-2 border-t border-[var(--border)]/90">
-                  <div className={`font-medium ${
-                    rows[2].values[columnIndex] === 'W'
-                      ? 'text-emerald-600 dark:text-emerald-400'
-                      : rows[2].values[columnIndex] === 'L'
-                      ? 'text-rose-600 dark:text-rose-400'
-                      : rows[2].values[columnIndex] === 'T'
-                      ? 'text-amber-600 dark:text-amber-400'
-                      : 'text-[var(--muted)]'
-                  }`}>
-                    {rows[2].values[columnIndex]?.toString() || '-'}
+                {rows[2] && (
+                  <div className="pt-2 border-t border-[var(--border)]/90">
+                    <div className={`font-medium ${
+                      rows[2].values[columnIndex] === 'W'
+                        ? 'text-emerald-600 dark:text-emerald-400'
+                        : rows[2].values[columnIndex] === 'L'
+                        ? 'text-rose-600 dark:text-rose-400'
+                        : rows[2].values[columnIndex] === 'T'
+                        ? 'text-amber-600 dark:text-amber-400'
+                        : 'text-[var(--muted)]'
+                    }`}>
+                      {rows[2].values[columnIndex]?.toString() || '-'}
+                    </div>
                   </div>
-                </div>
+                )}
               </div>
             </div>
           ))}

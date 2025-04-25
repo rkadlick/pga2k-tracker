@@ -4,8 +4,8 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div className="space-y-12">
-      <section className="text-center py-12">
-        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mb-8">
+      <section className="text-center py-12 md:pt-12 pb-6">
+        <div className="flex flex-col lg:flex-row justify-center items-center gap-8 mb-8 md:mb-8 mb-4">
           <div className="hidden lg:block relative w-[200px] h-[400px]">
             <Image
               src="/rk.png"
@@ -33,38 +33,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid md:grid-cols-3 gap-6">
-        <FeatureCard 
-          title="Match History" 
-          description="View all past matches with detailed results and statistics."
-          link="/matches"
-          icon={
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
-                  d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          }
-        />
-        <FeatureCard 
-          title="Manage Courses" 
-          description="Add and edit courses with hole details for more accurate tracking."
-          link="/courses"
-          icon={
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                  d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
-          }
-        />
-        <FeatureCard 
-          title="Team Stats" 
-          description="See performance statistics for different teams and matchups."
-          link="/teams"
-          icon={
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
-                  d="M18 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          }
-        />
-      </section>
-
       {/* Responsive images section below cards */}
-      <section className="flex md:hidden justify-center gap-4 py-2 mb-2">
+      <section className="flex md:hidden justify-center gap-4 py-2 mb-2 -mt-4">
         <div className="relative w-[100px] h-[200px]">
           <Image
             src="/rk.png"
@@ -105,6 +75,38 @@ export default function Home() {
           />
         </div>
       </section>
+
+      <section className="grid md:grid-cols-3 gap-6">
+        <FeatureCard 
+          title="Match History" 
+          description="View all past matches with detailed results and statistics."
+          link="/matches"
+          icon={
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                  d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          }
+        />
+        <FeatureCard 
+          title="Manage Courses" 
+          description="Add and edit courses with hole details for more accurate tracking."
+          link="/courses"
+          icon={
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+                  d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          }
+        />
+        <FeatureCard 
+          title="Team Stats" 
+          description="See performance statistics for different teams and matchups."
+          link="/teams"
+          icon={
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" 
+                  d="M18 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          }
+        />
+      </section>
+
+      
     </div>
   );
 }
