@@ -40,8 +40,16 @@ export default function MatchListItem({ match, index }: MatchListItemProps) {
         {/* Main Container */}
         <div className="flex flex-col md:flex-row gap-4">
           {/* Opponent Team Letter Icon */}
-          <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-[var(--primary)]">
+          <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center text-[var(--primary)] relative">
             <LetterIcon className="w-9 h-9" />
+            <span className={`absolute -top-2.5 -left-2.5 text-xs font-bold px-2.5 py-1 rounded-full
+              ${match.season === 1 ? 'text-[var(--season-1)] bg-[var(--season-1-bg)]' :
+                match.season === 2 ? 'text-[var(--season-2)] bg-[var(--season-2-bg)]' :
+                match.season === 3 ? 'text-[var(--season-3)] bg-[var(--season-3-bg)]' :
+                match.season === 4 ? 'text-[var(--season-4)] bg-[var(--season-4-bg)]' :
+                'text-[var(--season-5)] bg-[var(--season-5-bg)]'}`}>
+              S{match.season}
+            </span>
           </div>
 
           {/* Match Info */}

@@ -136,6 +136,22 @@ export default function EditMatchDetails({
           </div>
 
           <div className="space-y-2">
+            <label htmlFor="season" className="block text-sm font-medium text-[--foreground]">
+              Season
+            </label>
+            <input
+              type="number"
+              name="season"
+              id="season"
+              value={matchData.season || 2}
+              onChange={onInputChange}
+              className="w-full bg-[--input-bg] border border-[--input-border] text-[--foreground] rounded-lg px-4 py-2 
+                       focus:border-[--input-focus] focus:ring-1 focus:ring-[--input-focus]
+                       transition-all duration-200"
+            />
+          </div>
+
+          <div className="space-y-2">
             <label htmlFor="rating_change" className="block text-sm font-medium text-[--foreground]">
               Rating Change
             </label>

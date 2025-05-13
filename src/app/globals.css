@@ -19,6 +19,18 @@
   --secondary: #8b5cf6;
   --accent: #f59e0b;
   
+  /* Season Colors */
+  --season-1: #559CAD;
+  --season-1-bg: #559CAD20;
+  --season-2: #4A5899;
+  --season-2-bg: #4A589920;
+  --season-3: #92374D;
+  --season-3-bg: #92374D20;
+  --season-4: #8C5383;
+  --season-4-bg: #8C538320;
+  --season-5: #C1B2AB;
+  --season-5-bg: #C1B2AB20;
+  
   /* Input and Form Elements */
   --input-bg: #ffffff;
   --input-border: #e2e8f0;
@@ -51,6 +63,17 @@
   --secondary: #a78bfa;
   --accent: #fbbf24;
   
+  /* Dark Theme Season Colors */
+  --season-1: #7BD5FF;
+  --season-1-bg: #7BD5FF15;
+  --season-2: #7B9FFF;
+  --season-2-bg: #7B9FFF15;
+  --season-3: #FF6B8B;
+  --season-3-bg: #FF6B8B15;
+  --season-4: #B47AFF;
+  --season-4-bg: #B47AFF15;
+  --season-5: #FFD6C9;
+  --season-5-bg: #FFD6C915;
   /* Dark Input and Form */
   --input-bg: #1e293b;
   --input-border: #334155;

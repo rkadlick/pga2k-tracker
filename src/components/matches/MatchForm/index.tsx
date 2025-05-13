@@ -158,8 +158,21 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
           </div>
         </div>
 
-        {/* Teams Section */}
+        {/* Scorecard Section */}
         <div className="card">
+          <div className="p-6">
+            <MatchScorecard
+              courseId={formData.course_id || ""}
+              scorecardData={formData}
+              onHoleResultChange={updateHoleResult}
+              yourTeamName={yourTeam.name}
+              opponentTeamName={opponentTeam?.name || ''}
+            />
+          </div>
+        </div>
+
+                {/* Teams Section */}
+                <div className="card">
           <div className="p-6">
             <h2 className="text-xl font-semibold text-[--foreground] mb-6">
               Teams
@@ -212,19 +225,6 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
           </div>
         </div>
 
-        {/* Scorecard Section */}
-        <div className="card">
-          <div className="p-6">
-            <MatchScorecard
-              courseId={formData.course_id || ""}
-              scorecardData={formData}
-              onHoleResultChange={updateHoleResult}
-              yourTeamName={yourTeam.name}
-              opponentTeamName={opponentTeam?.name || ''}
-            />
-          </div>
-        </div>
-
         {/* Match Details Section */}
         <div className="card">
           <div className="p-6">
@@ -239,6 +239,7 @@ const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
               yourTeamId={yourTeam.id}
               opponentTeamId={formData.opponent_team_id || ""}
               formData={formData}
+              season={formData.season}
             />
           </div>
         </div>

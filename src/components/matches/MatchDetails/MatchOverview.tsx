@@ -38,9 +38,19 @@ export default function MatchOverview({ match }: MatchOverviewProps) {
         {/* Match Info */}
         <div className="flex-1 space-y-2 md:space-y-0">
           <div className="space-y-2">
-            <h3 className="text-lg font-semibold text-[var(--foreground)] flex items-center gap-2">
-              {yourTeamName} <span className="text-[var(--muted)]">vs</span> {opponentTeamName}
-            </h3>
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-[var(--foreground)] flex items-center gap-2">
+                {yourTeamName} <span className="text-[var(--muted)]">vs</span> {opponentTeamName}
+              </h3>
+              <span className={`text-xs font-bold px-2.5 py-1 rounded-full
+                ${match.season === 1 ? 'text-[var(--season-1)] bg-[var(--season-1-bg)]' :
+                  match.season === 2 ? 'text-[var(--season-2)] bg-[var(--season-2-bg)]' :
+                  match.season === 3 ? 'text-[var(--season-3)] bg-[var(--season-3-bg)]' :
+                  match.season === 4 ? 'text-[var(--season-4)] bg-[var(--season-4-bg)]' :
+                  'text-[var(--season-5)] bg-[var(--season-5-bg)]'}`}>
+                Season {match.season}
+              </span>
+            </div>
             {match.playoffs && (
               <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-700 dark:bg-purple-500/30 dark:text-purple-200">
                 Playoff

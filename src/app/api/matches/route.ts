@@ -44,7 +44,8 @@ export async function POST(request: NextRequest) {
       rating_change: matchData.rating_change,
       playoffs: matchData.playoffs || false,
       notes: matchData.notes,
-      tags: matchData.tags
+      tags: matchData.tags,
+      season: matchData.season  
     });
     
     return NextResponse.json({ data: match });

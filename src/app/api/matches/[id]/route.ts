@@ -48,6 +48,7 @@ export async function PATCH(
       winner_id: matchData.winner_id,
       rating_change: matchData.rating_change,
       playoffs: matchData.playoffs,
+      season: matchData.season,
       notes: matchData.notes,
       tags: matchData.tags
     });

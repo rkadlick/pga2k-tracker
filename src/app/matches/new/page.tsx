@@ -96,6 +96,7 @@ export default function NewMatchPage() {
         holes_tied: holesTied,
         holes_lost: holesLost,
         winner_id: winnerId,
+        season: data.season,
         playoffs: data.playoffs,
         notes: data.notes,
         tags: data.tags
@@ -109,7 +110,7 @@ export default function NewMatchPage() {
       }
       
       const newMatch = await createMatch(matchData);
-      console.log('newMatch', newMatch);
+      // console.log('newMatch', newMatch);
       if (newMatch) {
         // Reset form and redirect only after successful submission
         formRef.current?.resetForm();

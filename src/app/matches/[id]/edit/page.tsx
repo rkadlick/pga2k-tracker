@@ -31,6 +31,7 @@ interface MatchUpdateData {
   playoffs?: boolean;
   notes?: string;
   tags?: string[];
+  season?: number;
   hole_results?: Array<{
     hole_number: number;
     result: HoleResult;
@@ -95,12 +96,14 @@ export default function EditMatchPage() {
       if (!prev) return prev;
       
       if (type === 'number') {
-        return { ...prev, [name]: value ? Number(value) : null };
+        return { ...prev, [name]: value ? Number(value) : undefined };
       } else if (name === 'playoffs') {
         return { ...prev, [name]: (e.target as HTMLInputElement).checked };
       } else if (name === 'tags') {
         const tags = value.split(',').map(tag => tag.trim()).filter(tag => tag);
         return { ...prev, [name]: tags };
+      } else if (name === 'season') {
+        return { ...prev, [name]: value ? Number(value) : undefined };
       } else {
         return { ...prev, [name]: value };
       }
@@ -219,6 +222,7 @@ export default function EditMatchPage() {
         playoffs: matchData.playoffs,
         notes: matchData.notes,
         tags: matchData.tags,
+        season: matchData.season,
         ...(holeResultsModified ? { 
           hole_results: scorecardData.hole_results
         } : {})

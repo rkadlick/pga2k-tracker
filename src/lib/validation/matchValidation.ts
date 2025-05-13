@@ -11,6 +11,7 @@ interface MatchData {
   holes_tied: number;
   winner_id: string | null;
   playoffs: boolean;
+  season: number;
   hole_results?: Array<{
     hole_number: number;
     result: HoleResult;
@@ -143,6 +144,17 @@ export function validateNinePlayed(ninePlayed: NinePlayed): string | null {
 }
 
 /**
+ * Validates a season value
+ */
+export function validateSeason(season: number): string | null {
+  if (!Number.isInteger(season) || season < 1) {
+    return 'Season must be a positive integer';
+  }
+
+  return null;
+}
+
+/**
  * Validates playoffs flag
  */
 export function validatePlayoffs(playoffs: boolean): string | null {
@@ -239,6 +251,9 @@ export function validateMatchData(matchData: MatchData): string[] {
   const ninePlayedError = validateNinePlayed(matchData.nine_played);
   if (ninePlayedError) errors.push(`Nine Played: ${ninePlayedError}`);
   
+  const seasonError = validateSeason(matchData.season);
+  if (seasonError) errors.push(`Season: ${seasonError}`);
+  
   // Validate hole counts
   const holesWonError = validateScore(matchData.holes_won);
   if (holesWonError) errors.push(`Holes Won: ${holesWonError}`);
@@ -330,6 +345,11 @@ export function validateMatchUpdateData(matchData: MatchUpdateData): string[] {
   if (matchData.playoffs !== undefined) {
     const playoffsError = validatePlayoffs(matchData.playoffs);
     if (playoffsError) errors.push(`Playoffs: ${playoffsError}`);
+  }
+
+  if (matchData.season !== undefined) {
+    const seasonError = validateSeason(matchData.season);
+    if (seasonError) errors.push(`Season: ${seasonError}`);
   }
 
   // Validate tied match condition

@@ -15,6 +15,7 @@ export interface MatchFormData {
   playoffs: boolean;
   notes: string;
   tags: string[];
+  season: number;
   player1_id?: string;
   player1_rating?: number;
   player2_id?: string;
@@ -54,7 +55,8 @@ export function useMatchForm() {
     rating_change: 0,
     playoffs: false,
     notes: '',
-    tags: []
+    tags: [],
+    season: 3
   });
 
   const updateFormData = <K extends keyof MatchFormData>(
@@ -111,7 +113,8 @@ export function useMatchForm() {
       rating_change: 0,
       playoffs: false,
       notes: '',
-      tags: []
+      tags: [],
+      season: 2
     });
   };
 

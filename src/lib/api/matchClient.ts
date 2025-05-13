@@ -21,6 +21,7 @@ interface MatchCreateData {
   winner_id: string | null;
   rating_change?: number;
   playoffs: boolean;
+  season: number;
   notes?: string;
   tags?: string[];
   hole_results?: HoleResultRecord[];
@@ -43,6 +44,7 @@ interface MatchUpdateData {
   winner_id?: string | null;
   rating_change?: number;
   playoffs?: boolean;
+  season?: number;
   notes?: string;
   tags?: string[];
 }
