@@ -1,4 +1,4 @@
-import { HoleData } from '@/hooks/useCourseForm';
+import { HoleData } from '@/types';
 
 /**
  * Validation rules for course data that can be used on both client and server

@@ -4,14 +4,13 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
 import MatchForm from '@/components/matches/MatchForm';
-import { MatchFormData } from '@/hooks/useMatchForm';
+import { MatchFormData, MatchFormRef } from '@/types';
 import Link from 'next/link';
 import { useAuth } from '@/hooks/useAuth';
 import { useTeams } from '@/hooks/useTeams';
-import { HoleResult } from '@/types';
+import { HoleResult, Team } from '@/types';
 import { validateMatchData } from '@/lib/validation/matchValidation';
 import ValidationErrors from '@/components/common/ValidationErrors';
-import { MatchFormRef } from '@/components/matches/MatchForm';
 import { IoArrowBack } from 'react-icons/io5';
 
 export default function NewMatchPage() {
@@ -22,7 +21,7 @@ export default function NewMatchPage() {
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const formRef = useRef<MatchFormRef>(null);
 
-  const yourTeam = teams.find(team => team.is_your_team);
+  const yourTeam = teams.find((team: Team) => team.is_your_team);
   
   const handleSubmit = async (data: MatchFormData) => {
     try {
@@ -96,7 +95,7 @@ export default function NewMatchPage() {
         holes_tied: holesTied,
         holes_lost: holesLost,
         winner_id: winnerId,
-        season: data.season,
+        season: data.season ?? 1,
         playoffs: data.playoffs,
         notes: data.notes,
         tags: data.tags

@@ -1,5 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
-import { Course, Hole } from '@/types';
+import { Course, CourseDetail, Hole, HoleData } from '@/types';
 
 export async function getCourses(): Promise<Course[]> {
   const supabase = await createClient();
@@ -12,7 +12,7 @@ export async function getCourses(): Promise<Course[]> {
   return data || [];
 }
 
-export async function getCourseWithHoles(id: string): Promise<Course> {
+export async function getCourseWithHoles(id: string): Promise<CourseDetail> {
   // Get course
   const supabase = await createClient();
   const { data: course, error: courseError } = await supabase
@@ -171,20 +171,14 @@ export async function createCourseWithHoles(
 export async function updateCourseWithHoles(
   courseId: string,
   courseName: string,
-  holes: Array<{ 
-    id: string; 
-    hole_number: number; 
-    par: number | null; 
-    distance: number | null;
-    course_id: string;
-  }>,
+  holes: HoleData[],
   frontPar: number,
   backPar: number,
   totalPar: number,
   frontDistance: number,
   backDistance: number,
   totalDistance: number
-): Promise<Course> {
+): Promise<CourseDetail> {
   const supabase = await createClient();
   
   // Update the course with all totals
@@ -204,8 +198,11 @@ export async function updateCourseWithHoles(
   
   if (courseError) throw courseError;
   
-  // Update all holes - remove the updated_at field since it doesn't exist in the table
+  // Update all holes - ensure required identifiers are present
   for (const hole of holes) {
+    if (!hole.id || !hole.course_id) {
+      throw new Error('Hole id or course_id missing while updating course');
+    }
     const { error: holeError } = await supabase
       .from('holes')
       .update({ 

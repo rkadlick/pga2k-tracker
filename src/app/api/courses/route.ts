@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createCourseWithHoles, getCourses } from '@/lib/courseService';
 import { validateCourseName, validateHoles } from '@/lib/validation/courseValidation';
-import { HoleData } from '@/hooks/useCourseForm';
+import { HoleData } from '@/types';
 
 export async function GET() {
   try {

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Course, Hole, HoleData } from '@/types';
+import { CourseDetail, Hole, HoleData } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
 import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib/validation/courseValidation';
 import { useCourses } from '@/hooks/useCourses';
@@ -30,7 +30,7 @@ export default function CourseDetailPage({
   params: Promise<{ id: string }>
 }) {
   const { id } = use(params);
-  const [course, setCourse] = useState<Course | null>(null);
+  const [course, setCourse] = useState<CourseDetail | null>(null);
   const [holes, setHoles] = useState<HoleData[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

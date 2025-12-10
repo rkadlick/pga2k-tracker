@@ -1,5 +1,5 @@
 
-import { Course, CourseCreateData, Hole } from '@/types';
+import { Course, CourseCreateData, Hole, HoleData, CourseDetail } from '@/types';
 import { formatError } from './errorHandling';
 import { ApiResponse } from '@/types';
 
@@ -54,20 +54,14 @@ export async function createCourse(courseData: CourseCreateData): Promise<Course
 export async function updateCourse(
   id: string, 
   name: string, 
-  holes: Array<{ 
-    id: string; 
-    hole_number: number; 
-    par: number | null; 
-    distance: number | null;
-    course_id: string;
-  }>,
+  holes: HoleData[],
   frontPar: number,
   backPar: number,
   totalPar: number,
   frontDistance: number,
   backDistance: number,
   totalDistance: number
-): Promise<Course> {
+): Promise<CourseDetail> {
   try {
     const response = await fetch(`/api/courses/${id}`, {
       method: 'PATCH',

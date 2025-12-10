@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
-import { Match, HoleResult, NinePlayed, MatchUpdateData } from '@/types';
+import { Match, HoleResult, NinePlayed, MatchUpdateData, Team } from '@/types';
 import { validateMatchUpdateData } from '@/lib/validation/matchValidation';
 import { useTeams } from '@/hooks/useTeams';
 import EditMatchHeader from '@/components/matches/MatchDetails/EditMatchHeader';
@@ -20,19 +20,18 @@ export default function EditMatchPage() {
   
   const [matchData, setMatchData] = useState<Partial<Match> | null>(null);
   const [ratingData, setRatingData] = useState<number>(0);
-  const [scorecardData, setScorecardData] = useState<Match['hole_results']>([]);
+  const [scorecardData, setScorecardData] = useState<Array<{ hole_number: number; result: HoleResult | null }>>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [holeResultsModified, setHoleResultsModified] = useState(false);
 
-  const yourTeam = teams.find(team => team.is_your_team);
+  const yourTeam = teams.find((team: Team) => team.is_your_team);
   
   useEffect(() => {
     const fetchMatch = async () => {
       if (matchId) {
         const fetchedMatch = await getMatchById(matchId);
         if (fetchedMatch) {
-          const ninePlayed = (fetchedMatch.nine_played || 'front').toLowerCase() as 'front' | 'back';
           const holeResults = fetchedMatch.hole_results?.map(hr => ({
             hole_number: hr.hole_number,
             result: hr.result
@@ -120,7 +119,7 @@ export default function EditMatchPage() {
     if (!matchData || !matchId) return;
 
       // Calculate holes won, lost, tied from hole results
-      const counts = scorecardData.hole_results.reduce((acc: { holesWon: number; holesLost: number; holesTied: number }, hr) => {
+      const counts = scorecardData.reduce((acc: { holesWon: number; holesLost: number; holesTied: number }, hr) => {
         if (hr.result === 'win') return { ...acc, holesWon: acc.holesWon + 1 };
         if (hr.result === 'loss') return { ...acc, holesLost: acc.holesLost + 1 };
         if (hr.result === 'tie') return { ...acc, holesTied: acc.holesTied + 1 };
@@ -153,6 +152,7 @@ export default function EditMatchPage() {
 
 
       const updatedMatchData: MatchUpdateData = {
+        id: matchId,
         date_played: matchData.date_played,
         course_id: matchData.course_id,
         nine_played: matchData.nine_played as NinePlayed,
@@ -171,8 +171,8 @@ export default function EditMatchPage() {
         notes: matchData.notes,
         tags: matchData.tags,
         season: matchData.season,
-        ...(holeResultsModified ? { 
-          hole_results: scorecardData.hole_results
+        ...(holeResultsModified ? {
+          hole_results: scorecardData
         } : {})
       };
 
@@ -199,7 +199,7 @@ export default function EditMatchPage() {
       }
 
       // Verify that hole results are not empty
-      if (scorecardData.hole_results.length === 0) {
+      if (scorecardData.length === 0) {
         setValidationErrors(['Please enter hole results before saving']);
         setIsSubmitting(false);
         return;

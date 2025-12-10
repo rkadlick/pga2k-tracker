@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Course } from '@/types';
+import { Course, HoleData } from '@/types';
 import * as courseClient from '@/lib/api/courseClient';
 import { useMatches } from './useMatches';
 
@@ -154,13 +154,7 @@ export function useCourses() {
   const updateCourse = async (
     id: string,
     name: string,
-    holes: Array<{ 
-      id: string; 
-      hole_number: number; 
-      par: number | null; 
-      distance: number | null;
-      course_id: string;
-    }>,
+    holes: HoleData[],
     frontPar: number,
     backPar: number,
     totalPar: number,
