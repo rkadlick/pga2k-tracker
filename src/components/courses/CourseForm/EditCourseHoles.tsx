@@ -1,19 +1,7 @@
+import { EditCourseHolesProps } from '@/types';
 import HoleSection from './HoleSection';
 
-interface HoleData {
-  id: string;
-  hole_number: number;
-  par: number | null;
-  distance: number | null;
-  course_id: string;
-}
 
-interface EditCourseHolesProps {
-  holes: HoleData[];
-  onHoleUpdate: (holeNumber: number, field: 'par' | 'distance', value: number | null) => void;
-  holeErrors: string[];
-  isSubmitting?: boolean;
-}
 
 export default function EditCourseHoles({ holes, onHoleUpdate, holeErrors, isSubmitting = false }: EditCourseHolesProps) {
   // Prepare data for the scorecard

@@ -1,11 +1,5 @@
 import React from 'react';
-
-interface FormHeaderProps {
-  courseName: string;
-  setCourseName: (name: string) => void;
-  error: string;
-  clearError: () => void;
-}
+import { FormHeaderProps } from '@/types';
 
 export default function FormHeader({ 
   courseName, 

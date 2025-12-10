@@ -3,19 +3,9 @@
 import { use } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTeams } from '@/hooks/useTeams';
+import { TeamWithPlayers, Player } from '@/types';
 
-interface Player {
-  id: string;
-  name: string;
-  recent_rating: number;
-}
 
-interface TeamWithPlayers {
-  id: string;
-  name: string;
-  is_your_team: boolean;
-  players?: Player[];
-}
 
 export default function TeamDetailPage({
   params

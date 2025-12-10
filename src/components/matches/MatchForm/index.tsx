@@ -6,27 +6,14 @@ import React, {
   forwardRef,
   useImperativeHandle,
 } from "react";
-import { Team } from "@/types";
+import { MatchFormProps, MatchFormRef, Team, TeamPlayerDetails } from "@/types";
 import * as teamClient from "@/lib/api/teamClient";
-import { useMatchForm, MatchFormData } from "../../../hooks/useMatchForm";
+import { useMatchForm } from "../../../hooks/useMatchForm";
 import CourseSelect from "./CourseSelect";
 import TeamCreation from "./TeamCreation";
 import MatchScorecard from "./MatchScorecard";
 import MatchDetails from "./MatchDetails";
 
-interface MatchFormProps {
-  yourTeam: Team;
-  onSubmit: (formData: MatchFormData) => void;
-}
-
-interface TeamPlayerDetails {
-  name: string;
-  recent_rating: number;
-}
-
-export interface MatchFormRef {
-  resetForm: () => void;
-}
 
 const MatchForm = forwardRef<MatchFormRef, MatchFormProps>(
   ({ yourTeam, onSubmit }, ref) => {

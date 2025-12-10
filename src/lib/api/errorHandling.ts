@@ -2,13 +2,10 @@
  * Standardized error handling for API responses
  */
 
+import { ApiResponse } from "@/types";
+
 // Standard API response format
-export interface ApiResponse<T> {
-  data?: T;
-  error?: string;
-  details?: string[];
-  status?: number;
-}
+
 
 // Error types
 export enum ErrorType {

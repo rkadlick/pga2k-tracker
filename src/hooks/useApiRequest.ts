@@ -1,9 +1,5 @@
 import { useState, useCallback } from 'react';
-
-interface UseApiRequestOptions<T, P extends unknown[]> {
-  onSuccess?: (data: T, args: P) => void;
-  onError?: (error: Error) => void;
-}
+import { UseApiRequestOptions } from '@/types';
 
 /**
  * A generic hook for handling API requests with loading and error states

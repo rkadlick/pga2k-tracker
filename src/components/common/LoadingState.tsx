@@ -1,8 +1,7 @@
+import { LoadingStateProps } from '@/types';
 import React from 'react';
 
-interface LoadingStateProps {
-  message?: string;
-}
+
 
 export default function LoadingState({ message = 'Loading...' }: LoadingStateProps) {
   return (

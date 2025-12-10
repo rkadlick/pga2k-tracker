@@ -1,13 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Course } from '@/types';
+import { CourseItemProps } from '@/types';
 import { GiGolfFlag } from "react-icons/gi";
 
-interface CourseItemProps {
-  course: Course;
-  isAuthenticated: boolean;
-}
+
 
 export default function CourseItem({ course, isAuthenticated }: CourseItemProps) {
   return (

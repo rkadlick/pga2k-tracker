@@ -1,26 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { TeamCreateData, TeamUpdateData } from '@/lib/api/teamClient';
 import * as teamClient from '@/lib/api/teamClient';
-import { Team } from '@/types';
+import { Team, TeamCreateData, TeamUpdateData, UseTeamsReturn } from '@/types';
 
 
 
 /**
  * A hook for managing teams data and operations
  */
-interface UseTeamsReturn {
-  teams: Team[];
-  isLoading: boolean;
-  isCreating: boolean;
-  isDeleting: boolean;
-  error: Error | null;
-  loadTeams: () => Promise<Team[] | void>;
-  createTeam: (data: TeamCreateData) => Promise<{ team: Team; wasExisting: boolean }>;
-  updateTeam: (id: string, teamData: TeamUpdateData) => Promise<Team>;
-  deleteTeam: (id: string) => Promise<void>;
-  getTeamById: (id: string) => Promise<Team>;
-  refreshTeams: () => Promise<Team[] | void>;
-}
 
 export function useTeams(): UseTeamsReturn {
   const [teams, setTeams] = useState<Team[]>([]);

@@ -1,6 +1,5 @@
-interface ValidationErrorsProps {
-  errors: string[];
-}
+
+import { ValidationErrorsProps } from '@/types';
 
 export default function ValidationErrors({ errors }: ValidationErrorsProps) {
   if (errors.length === 0) return null;

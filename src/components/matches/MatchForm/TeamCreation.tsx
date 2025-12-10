@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useTeamForm } from '@/hooks/useTeamForm';
 import * as teamClient from '@/lib/api/teamClient';
+import { TeamCreationProps } from '@/types';
 
-interface TeamCreationProps {
-  isYourTeam: boolean;
-  onTeamCreated: (teamId: string) => void;
-}
+
 
 export default function TeamCreation({ isYourTeam, onTeamCreated }: TeamCreationProps) {
   const { formData, updateMemberField, updateTeamName, resetForm, isValid } = useTeamForm();

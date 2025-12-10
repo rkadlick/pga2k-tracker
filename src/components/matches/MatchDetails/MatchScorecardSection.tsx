@@ -1,11 +1,8 @@
-import { Course, Hole, Match } from '@/types';
+import { Hole, MatchScorecardSectionProps } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
 import { getName } from '@/utils/nameHelpers';
 
-interface MatchScorecardSectionProps {
-  match: Match;
-  course: Course;
-}
+
 
 export default function MatchScorecardSection({ match, course }: MatchScorecardSectionProps) {
   // Prepare scorecard data

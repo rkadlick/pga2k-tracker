@@ -1,34 +1,7 @@
+import { MatchFormData } from '@/types';
 import { useCallback, useState } from 'react';
 
-export interface HoleResultData {
-  hole_number: number;
-  result: 'win' | 'loss' | 'tie' | null;
-}
 
-export interface MatchFormData {
-  date_played: string;
-  course_id: string | null;
-  nine_played: 'front' | 'back';
-  opponent_team_id: string | null;
-  hole_results: HoleResultData[];
-  rating_change: number;
-  playoffs: boolean;
-  notes: string;
-  tags: string[];
-  season: number;
-  player1_id?: string;
-  player1_rating?: number;
-  player2_id?: string;
-  player2_rating?: number;
-  opponent1_id?: string;
-  opponent1_rating?: number;
-  opponent2_id?: string;
-  opponent2_rating?: number;
-  holes_won?: number;
-  holes_tied?: number;
-  holes_lost?: number;
-  winner_id?: string | null;
-}
 
 export function useMatchForm() {
   const [formData, setFormData] = useState<MatchFormData>({

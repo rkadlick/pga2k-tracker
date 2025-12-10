@@ -3,46 +3,13 @@
 import { useState, useEffect } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import { useMatches } from '@/hooks/useMatches';
-import { Match, HoleResult, NinePlayed } from '@/types';
+import { Match, HoleResult, NinePlayed, MatchUpdateData } from '@/types';
 import { validateMatchUpdateData } from '@/lib/validation/matchValidation';
 import { useTeams } from '@/hooks/useTeams';
-import { HoleResultData } from '@/hooks/useMatchForm';
 import EditMatchHeader from '@/components/matches/MatchDetails/EditMatchHeader';
 import ValidationErrors from '@/components/common/ValidationErrors';
 import EditMatchDetails from '@/components/matches/MatchDetails/EditMatchDetails';
 import EditMatchResults from '@/components/matches/MatchDetails/EditMatchResults';
-
-interface MatchUpdateData {
-  date_played?: string;
-  course_id?: string;
-  your_team_id?: string;
-  opponent_team_id?: string;
-  player1_id: string;
-  player2_id: string;
-  opponent1_id: string;
-  opponent2_id: string;
-  nine_played?: NinePlayed;
-  holes_won?: number;
-  holes_tied?: number;
-  holes_lost?: number;
-  winner_id?: string | null;
-  rating_change: number;
-  recent_rating_change: number;
-  playoffs?: boolean;
-  notes?: string;
-  tags?: string[];
-  season?: number;
-  hole_results?: Array<{
-    hole_number: number;
-    result: HoleResult;
-  }>;
-}
-
-interface ScorecardData {
-  hole_results: HoleResultData[];
-  nine_played: 'front' | 'back';
-  course_id: string | null;
-}
 
 export default function EditMatchPage() {
   const params = useParams();
@@ -53,11 +20,7 @@ export default function EditMatchPage() {
   
   const [matchData, setMatchData] = useState<Partial<Match> | null>(null);
   const [ratingData, setRatingData] = useState<number>(0);
-  const [scorecardData, setScorecardData] = useState<ScorecardData>({
-    hole_results: [],
-    nine_played: 'front',
-    course_id: null
-  });
+  const [scorecardData, setScorecardData] = useState<Match['hole_results']>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationErrors, setValidationErrors] = useState<string[]>([]);
   const [holeResultsModified, setHoleResultsModified] = useState(false);
@@ -76,11 +39,7 @@ export default function EditMatchPage() {
           })) || [];
 
           setMatchData(fetchedMatch);
-          setScorecardData({
-            hole_results: holeResults,
-            nine_played: ninePlayed,
-            course_id: fetchedMatch.course_id || null
-          });
+          setScorecardData(holeResults);
           setRatingData(fetchedMatch.rating_change || 0);
         }
       }
@@ -115,11 +74,7 @@ export default function EditMatchPage() {
       if (!prev) return prev;
       return { ...prev, course_id: courseId || undefined };
     });
-    setScorecardData(prev => ({
-      ...prev,
-      course_id: courseId,
-      hole_results: []
-    }));
+    setScorecardData([]);
   };
 
   const handleNinePlayedChange = (value: 'front' | 'back') => {
@@ -129,11 +84,7 @@ export default function EditMatchPage() {
     }));
     
     // Clear hole results when switching nines
-    setScorecardData(prev => ({
-      ...prev,
-      nine_played: value,
-      hole_results: [] // Reset hole results
-    }));
+    setScorecardData([]);
 
     // Mark as modified since we're clearing results
     setHoleResultsModified(true);
@@ -141,7 +92,7 @@ export default function EditMatchPage() {
 
   const handleHoleResultChange = (holeNumber: number, result: HoleResult) => {
     setHoleResultsModified(true);
-    const newHoleResults = [...scorecardData.hole_results];
+    const newHoleResults = [...scorecardData];
     const holeIndex = newHoleResults.findIndex(hr => hr.hole_number === holeNumber);
     
     if (holeIndex >= 0) {
@@ -150,10 +101,7 @@ export default function EditMatchPage() {
       newHoleResults.push({ hole_number: holeNumber, result });
     }
 
-    setScorecardData(prev => ({
-      ...prev,
-      hole_results: newHoleResults
-    }));
+    setScorecardData(newHoleResults);
   };
 
   const handlePlayoffChange = (isPlayoff: boolean, winnerId: string | null) => {

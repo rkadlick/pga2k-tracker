@@ -1,66 +1,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { Match, HoleResult, NinePlayed, HoleResultRecord } from '@/types';
+import { Match, HoleResult, HoleResultRecord, MatchCreateData, MatchUpdateData } from '@/types';
 import * as matchClient from '@/lib/api/matchClient';
-import { usePlayers } from '@/hooks/usePlayers';
-
-interface MatchCreateData {
-  date_played: string;
-  course_id: string;
-  your_team_id: string;
-  opponent_team_id: string;
-  player1_id: string;
-  player2_id: string;
-  opponent1_id: string;
-  opponent2_id: string;
-  player1_rating: number;
-  player2_rating: number;
-  opponent1_rating: number;
-  opponent2_rating: number;
-  nine_played: NinePlayed;
-  holes_won: number;
-  holes_tied: number;
-  holes_lost: number;
-  winner_id: string | null;
-  rating_change: number;
-  playoffs: boolean;
-  season: number;
-  notes?: string;
-  tags?: string[];
-  hole_results?: Array<{
-    hole_number: number;
-    result: HoleResult;
-    match_id?: string;
-    updated_at?: string;
-  }>;
-}
-
-interface MatchUpdateData {
-  date_played?: string;
-  course_id?: string;
-  your_team_id?: string;
-  opponent_team_id?: string;
-  player1_id: string;
-  player2_id: string;
-  opponent1_id: string;
-  opponent2_id: string;
-  nine_played?: NinePlayed;
-  holes_won?: number;
-  holes_tied?: number;
-  holes_lost?: number;
-  winner_id?: string | null;
-  rating_change: number;
-  recent_rating_change: number;
-  playoffs?: boolean;
-  season?: number;
-  notes?: string;
-  tags?: string[];
-  hole_results?: Array<{
-    hole_number: number;
-    result: HoleResult;
-    match_id?: string;
-    updated_at?: string;
-  }>;
-}
+import { usePlayers } from '@/hooks/usePlayers';  
 
 /**
  * A hook for managing matches data and operations

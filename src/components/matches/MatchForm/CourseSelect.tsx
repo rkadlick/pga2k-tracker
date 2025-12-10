@@ -1,10 +1,7 @@
 import React from 'react';
 import { useCourses } from '@/hooks/useCourses';
+import { CourseSelectProps } from '@/types';
 
-interface CourseSelectProps {
-  selectedCourseId: string | null;
-  onCourseSelect: (courseId: string | null) => void;
-}
 
 export default function CourseSelect({ selectedCourseId, onCourseSelect }: CourseSelectProps) {
   const { courses, isLoading, error } = useCourses();

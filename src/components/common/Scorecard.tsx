@@ -1,30 +1,8 @@
 // src/app/components/common/Scorecard.tsx
 import React from 'react';
+import { ScorecardProps } from '@/types';
 
-export type RowType = 'par' | 'distance' | 'score' | 'match' | 'custom';
 
-interface Column {
-  id: string;
-  label: string;
-  className?: string;
-}
-
-interface Row {
-  id: string;
-  type: RowType;
-  label: string;
-  values: (string | number | null | undefined)[];
-  total?: number | string;
-  className?: string;
-  onChange?: (rowId: string, index: number, value: string) => void;
-}
-
-interface ScorecardProps {
-  title?: string;
-  columns: Column[];
-  rows: Row[];
-  className?: string;
-}
 
 export default function Scorecard({
   title,

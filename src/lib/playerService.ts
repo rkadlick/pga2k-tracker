@@ -1,10 +1,5 @@
-import { Player } from '@/types';
+import { Player, PlayerCreateData } from '@/types';
 import { createClient } from '@/utils/supabase/server';
-
-interface PlayerCreateData {
-  name: string;
-  recent_rating: number;
-}
 
 export async function createPlayer(playerData: PlayerCreateData): Promise<Player> {
   const supabase = await createClient();

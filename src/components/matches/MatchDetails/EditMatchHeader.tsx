@@ -1,10 +1,5 @@
 import Link from 'next/link';
-
-interface EditMatchHeaderProps {
-  matchId: string;
-  isSubmitting: boolean;
-  onSubmit: (e: React.FormEvent) => void;
-}
+import { EditMatchHeaderProps } from '@/types';
 
 export default function EditMatchHeader({ matchId, isSubmitting, onSubmit }: EditMatchHeaderProps) {
   return (

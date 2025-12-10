@@ -1,16 +1,5 @@
+import { FormOptions } from '@/types';
 import { useState, useCallback } from 'react';
-
-type ValidationRule<T> = (value: T) => string | null;
-
-export type FieldValidators<T> = {
-  [K in keyof T]?: ValidationRule<T[K]>;
-};
-
-export interface FormOptions<T> {
-  initialValues: T;
-  validators?: FieldValidators<T>;
-  onSubmit?: (values: T) => void | Promise<void>;
-}
 
 export function useForm<T>({
   initialValues,

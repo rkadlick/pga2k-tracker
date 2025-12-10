@@ -1,11 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
-import { Match } from '@/types';
+import { Match, MatchListProps } from '@/types';
 import MatchListItem from './MatchListItem';
 
-interface MatchListProps {
-  matches: Match[];
-}
+
 
 export default function MatchList({ matches }: MatchListProps) {
   // Group matches by date_played

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { FeatureCardProps } from '@/types';
 
 export default function Home() {
   return (
@@ -111,12 +112,7 @@ export default function Home() {
   );
 }
 
-interface FeatureCardProps {
-  title: string;
-  description: string;
-  link: string;
-  icon: React.ReactNode;
-}
+  
 
 function FeatureCard({ title, description, link, icon }: FeatureCardProps) {
   return (

@@ -6,6 +6,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
 import { IoGolf } from "react-icons/io5";
+import { MobileNavLinkProps, NavLinkProps } from '@/types';
 
 export default function Header() {
   const pathname = usePathname();
@@ -110,12 +111,6 @@ export default function Header() {
   );
 }
 
-interface NavLinkProps {
-  href: string;
-  label: string;
-  pathname: string | null;
-}
-
 function NavLink({ href, label, pathname }: NavLinkProps) {
   const isActive = pathname === href || 
     (href !== '/' && pathname?.startsWith(href));
@@ -135,9 +130,7 @@ function NavLink({ href, label, pathname }: NavLinkProps) {
   );
 }
 
-interface MobileNavLinkProps extends NavLinkProps {
-  onClick: () => void;
-}
+
 
 function MobileNavLink({ href, label, pathname, onClick }: MobileNavLinkProps) {
   const isActive = pathname === href || 

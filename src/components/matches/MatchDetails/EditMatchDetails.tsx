@@ -1,24 +1,7 @@
-import { Match } from '@/types';
+
+import { EditMatchDetailsProps } from '@/types';
 import CourseSelect from '@/components/matches/MatchForm/CourseSelect';
 import { useEffect } from 'react';
-
-interface EditMatchDetailsProps {
-  matchData: Partial<Match>;
-  scorecardData: {
-    course_id: string | null;
-    nine_played: 'front' | 'back';
-    hole_results: Array<{
-      hole_number: number;
-      result: 'win' | 'loss' | 'tie' | null;
-    }>;
-  };
-  onInputChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
-  onCourseSelect: (courseId: string | null) => void;
-  onNinePlayedChange: (value: 'front' | 'back') => void;
-  onPlayoffChange: (isPlayoff: boolean, winnerId: string | null) => void;
-  yourTeamId: string;
-  opponentTeamId: string;
-}
 
 export default function EditMatchDetails({
   matchData,

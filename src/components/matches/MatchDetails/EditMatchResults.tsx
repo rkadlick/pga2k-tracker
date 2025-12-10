@@ -1,17 +1,6 @@
-import { HoleResult } from '@/types';
-import MatchScorecard from '@/components/matches/MatchForm/MatchScorecard';
-import { HoleResultData } from '@/hooks/useMatchForm';
 
-interface EditMatchResultsProps {
-  scorecardData: {
-    course_id: string | null;
-    hole_results: HoleResultData[];
-    nine_played: 'front' | 'back';
-  };
-  onHoleResultChange: (holeNumber: number, result: HoleResult) => void;
-  yourTeamName?: string;
-  opponentTeamName?: string;
-}
+import { EditMatchResultsProps } from '@/types';
+import MatchScorecard from '@/components/matches/MatchForm/MatchScorecard';     
 
 export default function EditMatchResults({
   scorecardData,

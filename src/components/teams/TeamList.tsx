@@ -1,11 +1,6 @@
 import Link from 'next/link';
-import { Team } from '@/types';
+import { TeamListProps } from '@/types';
 import TeamItem from './TeamItem';
-
-interface TeamListProps {
-  teams: Team[];
-  isAuthenticated: boolean;
-}
 
 export default function TeamList({ teams, isAuthenticated}: TeamListProps) {
   // Filter out test team

@@ -1,13 +1,10 @@
-import { Match } from '@/types';
+
+  import { MatchOverviewProps } from '@/types';
 import { getName } from '@/utils/nameHelpers';
 import { format } from 'date-fns';
 import { GiGolfFlag } from "react-icons/gi";
 import { TbMapPin2, TbCalendar } from "react-icons/tb";
 import { getLetterIcon, shouldUseFilled } from '@/utils/letterIcons';
-
-interface MatchOverviewProps {
-  match: Match;
-}
 
 const formatNinePlayed = (nine: string) => {
   return nine === 'FRONT' ? 'Front 9' : 'Back 9';

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
+import { MatchesHeaderProps } from '@/types';
 
-interface MatchesHeaderProps {
-  isAuthenticated: boolean;
-}
+
 
 export default function MatchesHeader({ isAuthenticated }: MatchesHeaderProps) {
   const router = useRouter();

@@ -1,15 +1,5 @@
 import { useState } from 'react';
-
-export interface TeamMemberForm {
-  id: string;
-  name: string;
-  rank: number;
-}
-
-export interface TeamFormData {
-  name: string;
-  members: TeamMemberForm[];
-}
+import { TeamFormData, TeamMemberForm } from '@/types';
 
 export function useTeamForm() {
   const [formData, setFormData] = useState<TeamFormData>({

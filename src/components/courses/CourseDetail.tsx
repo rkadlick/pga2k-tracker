@@ -1,13 +1,6 @@
 import { useState } from 'react';
-import { Course, Hole } from '@/types';
+import { CourseDetailProps, Hole, HoleTableProps } from '@/types';
 import HoleForm from './HoleForm';
-
-interface CourseDetailProps {
-  course: Course;
-  onUpdateHole: (holeData: Pick<Hole, 'course_id' | 'hole_number' | 'par' | 'distance'>) => void;
-  onEditHole: (hole: Hole) => void;
-  onDeleteHole: (id: string) => void;
-}
 
 export default function CourseDetail({
   course,
@@ -130,14 +123,7 @@ export default function CourseDetail({
   );
 }
 
-interface HoleTableProps {
-  holes: Hole[];
-  onEdit: (hole: Hole) => void;
-  onDelete: (id: string) => void;
-  confirmDelete: string | null;
-  onConfirmDelete: (id: string) => void;
-  onCancelDelete: () => void;
-}
+
 
 function HoleTable({
   holes,

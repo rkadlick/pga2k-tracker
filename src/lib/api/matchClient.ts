@@ -1,53 +1,9 @@
-import { Match, HoleResultRecord, NinePlayed } from '@/types';
-import { ApiResponse, formatError } from './errorHandling';
 
-interface MatchCreateData {
-  date_played: string; // ISO date string
-  course_id: string;
-  your_team_id: string;
-  opponent_team_id: string;
-  player1_id: string;
-  player1_rating: number;
-  player2_id: string;
-  player2_rating: number;
-  opponent1_id: string;
-  opponent1_rating: number;
-  opponent2_id: string;
-  opponent2_rating: number;
-  nine_played: NinePlayed;
-  holes_won: number;
-  holes_tied: number;
-  holes_lost: number;
-  winner_id: string | null;
-  rating_change?: number;
-  playoffs: boolean;
-  season: number;
-  notes?: string;
-  tags?: string[];
-  hole_results?: HoleResultRecord[];
-}
+import { Match, HoleResultRecord, MatchCreateData, MatchUpdateData } from '@/types';
+import { formatError } from './errorHandling';
+import { ApiResponse } from '@/types';
 
-interface MatchUpdateData {
-  date_played?: string;
-  course_id?: string;
-  your_team_id?: string;
-  opponent_team_id?: string;
-  player1_id?: string;
-  player1_rating?: number;
-  player2_id?: string;
-  player2_rating?: number;
-  opponent1_id?: string;
-  opponent1_rating?: number;
-  opponent2_id?: string;
-  opponent2_rating?: number;
-  nine_played?: NinePlayed;
-  winner_id?: string | null;
-  rating_change?: number;
-  playoffs?: boolean;
-  season?: number;
-  notes?: string;
-  tags?: string[];
-}
+
 
 /**
  * Fetch all matches

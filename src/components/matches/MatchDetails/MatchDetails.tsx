@@ -1,8 +1,5 @@
-import { Match } from '@/types';
 
-interface MatchDetailsProps {
-  match: Match;
-}
+import { MatchDetailsProps } from '@/types';
 
 export default function MatchDetails({ match }: MatchDetailsProps) {
   return (

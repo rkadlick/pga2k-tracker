@@ -1,22 +1,4 @@
-import { HoleResult, NinePlayed } from '@/types';
-
-interface MatchData {
-  date_played: string;
-  course_id: string;
-  your_team_id: string;
-  opponent_team_id: string;
-  nine_played: NinePlayed;
-  holes_won: number;
-  holes_lost: number;
-  holes_tied: number;
-  winner_id: string | null;
-  playoffs: boolean;
-  season: number;
-  hole_results?: Array<{
-    hole_number: number;
-    result: HoleResult;
-  }>;
-}
+import { HoleResult, MatchData, NinePlayed } from '@/types';
 
 type MatchUpdateData = Partial<MatchData>;
 

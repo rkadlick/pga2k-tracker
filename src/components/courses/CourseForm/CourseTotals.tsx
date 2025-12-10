@@ -1,9 +1,5 @@
+import { CourseTotalsProps } from '@/types';
 import React from 'react';
-
-interface CourseTotalsProps {
-  totalPar: number;
-  totalDistance: number;
-}
 
 export default function CourseTotals({ totalPar, totalDistance }: CourseTotalsProps) {
   return (

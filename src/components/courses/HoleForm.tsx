@@ -1,12 +1,7 @@
 import { useState } from 'react';
-import { Hole } from '@/types';
+import { HoleFormProps } from '@/types';
 
-interface HoleFormProps {
-  courseId: string;
-  initialData?: Partial<Hole>;
-  onSubmit: (holeData: Pick<Hole, 'course_id' | 'hole_number' | 'par' | 'distance'>) => void;
-  onCancel: () => void;
-}
+
 
 export default function HoleForm({
   courseId,

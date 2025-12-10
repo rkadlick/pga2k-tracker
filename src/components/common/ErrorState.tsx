@@ -1,8 +1,7 @@
+import { ErrorStateProps } from '@/types';
 import React from 'react';
 
-interface ErrorStateProps {
-  message: string;
-}
+
 
 export default function ErrorState({ message }: ErrorStateProps) {
   return (

@@ -4,12 +4,7 @@ import { Match, NinePlayed } from '@/types';
 import { getName } from '@/utils/nameHelpers';
 import { getLetterIcon, shouldUseFilled } from '@/utils/letterIcons';
 import { GiGolfFlag } from "react-icons/gi";
-import { TbMapPin2 } from "react-icons/tb";
-
-interface MatchListItemProps {
-  match: Match;
-  index: number;
-}
+import { TbMapPin2 } from "react-icons/tb"
 
 // Helper function to format nine_played value for display
 function formatNinePlayed(ninePlayed: NinePlayed): string {
@@ -23,7 +18,9 @@ function formatNinePlayed(ninePlayed: NinePlayed): string {
   }
 }
 
-export default function MatchListItem({ match, index }: MatchListItemProps) {
+
+
+export default function MatchListItem({ match, index }: { match: Match; index: number }) {
   const yourTeamName = getName(match.your_team);
   const opponentTeamName = getName(match.opponent_team);
   const courseName = getName(match.course);

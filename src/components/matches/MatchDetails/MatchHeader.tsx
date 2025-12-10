@@ -1,10 +1,5 @@
-import Link from 'next/link';
-
-interface MatchHeaderProps {
-  matchId: string;
-  onEdit: () => void;
-  isAuthenticated: boolean;
-}
+import { MatchHeaderProps } from '@/types';
+import Link from 'next/link'; 
 
 export default function MatchHeader({ onEdit, isAuthenticated }: MatchHeaderProps) {
   return (

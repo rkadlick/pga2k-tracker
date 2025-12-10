@@ -5,17 +5,7 @@ import {
   validateHolePar, 
   validateHoleDistance 
 } from '@/lib/validation/courseValidation';
-
-export interface HoleData {
-  hole_number: number;
-  par: number | null;
-  distance: number | null;
-}
-
-interface CourseFormValues {
-  courseName: string;
-  holes: HoleData[];
-}
+import { CourseFormValues, HoleData } from '@/types';
 
 // Validation rules for course form using shared validation
 const courseValidators: FieldValidators<CourseFormValues> = {

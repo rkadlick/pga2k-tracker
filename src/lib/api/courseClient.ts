@@ -1,20 +1,9 @@
-import { Course, Hole } from '@/types';
-import { ApiResponse, formatError } from './errorHandling';
 
-interface CourseCreateData {
-  name: string;
-  holes: Array<{
-    hole_number: number;
-    par: number;
-    distance: number;
-  }>;
-  frontPar: number;
-  backPar: number;
-  totalPar: number;
-  frontDistance: number;
-  backDistance: number;
-  totalDistance: number;
-}
+import { Course, CourseCreateData, Hole } from '@/types';
+import { formatError } from './errorHandling';
+import { ApiResponse } from '@/types';
+
+
 
 /**
  * Fetch all courses

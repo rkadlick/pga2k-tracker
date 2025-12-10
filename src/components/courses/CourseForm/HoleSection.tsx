@@ -1,14 +1,6 @@
 import React from 'react';
-import { HoleData } from '@/hooks/useCourseForm';
 
-interface HoleSectionProps {
-  title: string;
-  holes: HoleData[];
-  totalPar: number;
-  totalDistance: number;
-  updateHolePar: (rowId: string, colIndex: number, value: string) => void;
-  updateHoleDistance: (rowId: string, colIndex: number, value: string) => void;
-}
+import { HoleSectionProps } from '@/types';
 
 export default function HoleSection({
   title,

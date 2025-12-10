@@ -1,26 +1,5 @@
-import { ApiResponse, formatError } from './errorHandling';
-import { Team, Player } from '@/types';
-
-export interface TeamMember {
-  id: string;
-  team_id: string;
-  player_id: string;
-  created_at: string;
-}
-
-
-export interface TeamCreateData {
-  name: string;
-  players: { name: string; rating: number }[];
-  is_your_team?: boolean;
-  playerIds: string[];
-  playerRatings?: number[];
-}
-
-export interface TeamUpdateData {
-  name: string;
-  is_your_team?: boolean;
-}
+import { formatError } from './errorHandling';
+import { Team, Player, TeamCreateData, ApiResponse } from '@/types';
 
 /**
  * Fetch all teams

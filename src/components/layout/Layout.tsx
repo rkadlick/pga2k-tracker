@@ -1,12 +1,11 @@
 "use client";
-import { ReactNode } from "react";
+
 import Header from "./Header";
 import Footer from "./Footer";
 import ThemeToggle from "@/components/common/ThemeToggle";
+import { LayoutProps } from "@/types";
 
-interface LayoutProps {
-  children: ReactNode;
-}
+
 
 export default function Layout({ children }: LayoutProps) {
   return (

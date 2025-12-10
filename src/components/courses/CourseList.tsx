@@ -1,11 +1,8 @@
 import Link from 'next/link';
-import { Course } from '@/types';
+import { CourseListProps } from '@/types';
 import CourseItem from './CourseItem';
 
-interface CourseListProps {
-  courses: Course[];
-  isAuthenticated: boolean;
-}
+
 
 export default function CourseList({ courses, isAuthenticated }: CourseListProps) {
   if (courses.length === 0) {

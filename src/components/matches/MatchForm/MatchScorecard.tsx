@@ -1,30 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Course, HoleResult } from '../../../types';
-import { HoleResultData } from '../../../hooks/useMatchForm';
+import { Course, HoleResult, MatchScorecardProps, HoleResultData, CourseData } from '@/types';
 import { useCourses } from '@/hooks/useCourses';
 
-interface MatchFormData {
-  hole_results: HoleResultData[];
-  nine_played: 'front' | 'back';
-  course_id: string | null;
-}
+  
 
-interface MatchScorecardProps {
-  courseId: string;
-  scorecardData: MatchFormData;
-  onHoleResultChange: (holeNumber: number, result: HoleResult | null) => void;
-  yourTeamName?: string;
-  opponentTeamName?: string;
-}
-
-interface CourseData {
-  name: string;
-  holes: {
-    hole_number: number;
-    par: number;
-    distance: number;
-  }[];
-}
+  
 
 export default function MatchScorecard({ courseId, scorecardData, onHoleResultChange, yourTeamName, opponentTeamName }: MatchScorecardProps) {
   const [course, setCourse] = useState<CourseData>();

@@ -1,14 +1,10 @@
 'use client';
 
 import Link from 'next/link';
-import { Team } from '@/types';
+import { TeamItemProps } from '@/types';
 import { getLetterIcon, shouldUseFilled } from '@/utils/letterIcons';
 
-interface TeamItemProps {
-  team: Team;
-  isAuthenticated: boolean;
-  index: number;
-}
+
 
 export default function TeamItem({ team, isAuthenticated, index }: TeamItemProps) {
   const LetterIcon = getLetterIcon(team.name, shouldUseFilled(index));

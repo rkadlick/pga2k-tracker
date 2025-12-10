@@ -1,13 +1,6 @@
 import React from 'react';
-import { useRouter } from 'next/navigation';
-
-interface EmptyStateProps {
-  isAuthenticated: boolean;
-  title?: string;
-  description?: string;
-  actionLabel?: string;
-  actionPath?: string;
-}
+import { useRouter } from 'next/navigation';  
+import { EmptyStateProps } from '@/types';
 
 export default function EmptyState({ 
   isAuthenticated,

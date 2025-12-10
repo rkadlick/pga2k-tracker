@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
-import { MatchFormData, HoleResultData } from '../../../hooks/useMatchForm';
+import { MatchDetailsProps } from '@/types';
 
-interface MatchDetailsProps {
-  ratingChange: number;
-  playoffs: boolean;
-  notes: string;
-  tags: string[];
-  onInputChange: <K extends keyof MatchFormData>(field: K, value: MatchFormData[K]) => void;
-  holeResults: HoleResultData[];
-  ninePlayed: 'front' | 'back';
-  yourTeamId: string;
-  opponentTeamId: string;
-  formData: MatchFormData;
-  season: number;
-}
+
 
 export default function MatchDetails({
   season,

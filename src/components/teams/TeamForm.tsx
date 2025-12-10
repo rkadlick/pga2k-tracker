@@ -1,7 +1,5 @@
-interface TeamFormProps {
-  onSubmit: (name: string, players: {id: string,  name: string; rating: number }[]) => void;
-  onCancel: () => void;
-}
+import { TeamFormProps } from "@/types";
+
 
 export default function TeamForm({ onSubmit, onCancel }: TeamFormProps) {
   return (

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { Course, Hole } from '@/types';
+import { Course, Hole, HoleData } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
 import { validateCourseName, validateHolePar, validateHoleDistance } from '@/lib/validation/courseValidation';
 import { useCourses } from '@/hooks/useCourses';
@@ -11,13 +11,6 @@ import { use } from 'react';
 import { useAuth } from '@/hooks/useAuth';
 import { IoArrowBack, IoClose } from "react-icons/io5";
 
-interface HoleData {
-  id: string;
-  hole_number: number;
-  par: number | null;
-  distance: number | null;
-  course_id: string;
-}
 
 const inputStyles = `
   /* Remove arrows from number inputs */

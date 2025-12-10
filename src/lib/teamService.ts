@@ -1,15 +1,6 @@
 import { createClient } from '@/utils/supabase/server';
-import { Team } from '@/types';
+import { ExistingPlayer, Team, TeamCreateData, TeamUpdateData } from '@/types';
 import { teamNames } from './data/teamNames';
-
-export interface TeamCreateData {
-  name: string;
-  players: { name: string; rating: number }[];
-}
-
-export interface TeamUpdateData {
-  name?: string;
-}
 
 export async function getTeams(): Promise<Team[]> {
   const supabase = await createClient();
@@ -32,12 +23,6 @@ export async function getTeam(id: string): Promise<Team | null> {
     
   if (error) throw error;
   return data;
-}
-
-interface ExistingPlayer {
-  id: string;
-  name: string;
-  recent_rating: number;
 }
 
 async function findPlayersByNames(names: string[]): Promise<ExistingPlayer[]> {

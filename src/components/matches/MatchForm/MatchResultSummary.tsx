@@ -1,16 +1,5 @@
 import React from 'react';
-import { HoleResult } from '@/types';
-
-interface MatchResultSummaryProps {
-  yourTeamId: string;
-  opponentTeamId: string;
-  yourTeamName: string;
-  opponentTeamName: string;
-  yourTeamScore: number;
-  opponentTeamScore: number;
-  margin: number;
-  holeResults: Array<{ result: HoleResult }>;
-}
+import { MatchResultSummaryProps } from '@/types';
 
 export default function MatchResultSummary({
   yourTeamId,

@@ -2,12 +2,8 @@ import React from 'react';
 import FormHeader from './FormHeader';
 import HoleSection from './HoleSection';
 import CourseTotals from './CourseTotals';
-import { useCourseForm, HoleData } from '@/hooks/useCourseForm';
-
-interface CourseFormProps {
-  onSubmit: (courseName: string, holes: HoleData[], frontPar: number, backPar: number, totalPar: number, frontDistance: number, backDistance: number, totalDistance: number) => void;
-  onCancel: () => void;
-}
+import { useCourseForm } from '@/hooks/useCourseForm';
+import { CourseFormProps } from '@/types';
 
 export default function CourseForm({ onSubmit }: CourseFormProps) {
   const {
