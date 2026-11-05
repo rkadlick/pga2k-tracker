@@ -24,12 +24,12 @@ export interface UserState {
 export interface Course extends BaseRecord {
 	name: string;
 	holes?: Hole[];
-	front_par?: number;
-	back_par?: number;
-	front_distance?: number;
-	back_distance?: number;
-	total_par?: number;
-	total_distance?: number;
+	front_par?: number | null;
+	back_par?: number | null;
+	front_distance?: number | null;
+	back_distance?: number | null;
+	total_par?: number | null;
+	total_distance?: number | null;
 	wins?: number;
 	losses?: number;
 }
@@ -37,8 +37,8 @@ export interface Course extends BaseRecord {
 export interface Hole extends BaseRecord {
 	course_id: string;
 	hole_number: number;
-	par: number;
-	distance: number;
+	par: number | null;
+	distance: number | null;
 }
 
 // Team types

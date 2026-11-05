@@ -1,6 +1,7 @@
 import { Course, Hole, Match } from '@/types';
 import Scorecard from '@/components/common/Scorecard';
 import { getName } from '@/utils/nameHelpers';
+import { sumIfComplete } from '@/utils/formatters';
 
 interface MatchScorecardSectionProps {
   match: Match;
@@ -33,7 +34,7 @@ export default function MatchScorecardSection({ match, course }: MatchScorecardS
       type: 'par' as const,
       label: 'Par',
       values: visibleHoles?.map((hole: Hole) => hole.par) || [],
-      total: visibleHoles?.reduce((sum: number, hole: Hole) => sum + hole.par, 0) || 0,
+      total: sumIfComplete(visibleHoles?.map((hole: Hole) => hole.par) || []) ?? '-',
       className: 'bg-[--input-bg]/50'
     },
     {
@@ -41,7 +42,7 @@ export default function MatchScorecardSection({ match, course }: MatchScorecardS
       type: 'distance' as const,
       label: 'Distance',
       values: visibleHoles?.map((hole: Hole) => hole.distance) || [],
-      total: visibleHoles?.reduce((sum: number, hole: Hole) => sum + (hole.distance || 0), 0) || 0,
+      total: sumIfComplete(visibleHoles?.map((hole: Hole) => hole.distance) || []) ?? '-',
       className: 'bg-[--input-bg]/30'
     },
     {

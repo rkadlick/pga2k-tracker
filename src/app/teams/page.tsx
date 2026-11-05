@@ -38,7 +38,7 @@ export default function TeamsPage() {
   return (
     <div className="space-y-12">
       <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold text-[--foreground]">Team Management</h1>
+        <h1 className="text-3xl font-bold text-[--foreground]">Teams</h1>
 
         {!isAddingTeam && isAuthenticated && (
           <button

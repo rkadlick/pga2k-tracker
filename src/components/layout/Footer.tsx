@@ -26,6 +26,9 @@ export default function Footer() {
             <p className="text-[--muted] text-sm">
               © {new Date().getFullYear()} PGA2K25 Tracker
             </p>
+            <p className="text-[--muted] text-xs">
+              Archived project: read-only snapshot of matches from March to May 2025
+            </p>
             <div className="flex space-x-6">
               <Link
                 href="https://ryanismy.name"

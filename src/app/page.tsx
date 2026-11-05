@@ -87,8 +87,8 @@ export default function Home() {
           }
         />
         <FeatureCard 
-          title="Manage Courses" 
-          description="Add and edit courses with hole details for more accurate tracking."
+          title="Course Stats" 
+          description="Browse every course played, with hole details and our record at each."
           link="/courses"
           icon={
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"

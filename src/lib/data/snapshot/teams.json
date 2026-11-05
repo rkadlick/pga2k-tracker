@@ -1,0 +1,464 @@
+[
+  {
+    "id": "0d68315a-8509-43ac-a1b7-1c974b114235",
+    "is_your_team": false,
+    "created_at": "2025-04-19T17:52:33.662889+00:00",
+    "name": "Bunker Bombers!"
+  },
+  {
+    "id": "10d4642d-2ad9-4fc9-bae5-c16893e00243",
+    "is_your_team": false,
+    "created_at": "2025-04-14T23:15:49.417077+00:00",
+    "name": "Fairway Fantatics Forever"
+  },
+  {
+    "id": "17111a17-621e-4fb9-ad9b-514191e64e21",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:15:48.965042+00:00",
+    "name": "Caddy Corner Capers"
+  },
+  {
+    "id": "1a3ae581-47ee-4aaa-8fd9-fa5f3bcc252f",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:26:16.37881+00:00",
+    "name": "Fore Sure!"
+  },
+  {
+    "id": "1b3ce14f-c87d-467a-af18-87b5406487b8",
+    "is_your_team": false,
+    "created_at": "2025-05-12T02:30:43.380563+00:00",
+    "name": "The Green Scene"
+  },
+  {
+    "id": "20845b1a-e6a7-44f4-8bc7-9ab1cb528b74",
+    "is_your_team": false,
+    "created_at": "2025-04-07T19:21:18.495953+00:00",
+    "name": "Swingin’ Seniors"
+  },
+  {
+    "id": "216fb5a7-c6cf-4ba7-8e59-00f8265303ae",
+    "is_your_team": false,
+    "created_at": "2025-04-18T21:05:27.258429+00:00",
+    "name": "Fore Friends Foremost"
+  },
+  {
+    "id": "2e7be379-d74c-4af7-91e3-c604f74d2024",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:07:41.69914+00:00",
+    "name": "Putt Power"
+  },
+  {
+    "id": "2f19fc37-96b3-4aa5-80ab-9d66f45030e7",
+    "is_your_team": false,
+    "created_at": "2025-05-02T03:55:29.203037+00:00",
+    "name": "The Sand Trap Sensations"
+  },
+  {
+    "id": "3a6040e4-4d46-4dbc-a7b3-bae1212bc9b8",
+    "is_your_team": false,
+    "created_at": "2025-04-19T17:59:35.414895+00:00",
+    "name": "Drive Like You Stole It"
+  },
+  {
+    "id": "3d16091c-457d-422a-9eb9-459d5e8876d6",
+    "is_your_team": false,
+    "created_at": "2025-05-09T02:43:58.199706+00:00",
+    "name": "Back Nine Buddies"
+  },
+  {
+    "id": "3e4bc6df-3c32-4a70-8219-7ae2410bc549",
+    "is_your_team": false,
+    "created_at": "2025-05-05T02:48:49.857724+00:00",
+    "name": "Weekend Warlocks"
+  },
+  {
+    "id": "410f4075-a5fb-4e52-ba97-dd8b8dedeee1",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:15:09.977939+00:00",
+    "name": "Weekend Wows!"
+  },
+  {
+    "id": "41e638f0-dbbb-456d-a6f3-6b3bdb328ab4",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:33:55.319079+00:00",
+    "name": "Caddy's Curse"
+  },
+  {
+    "id": "4627d883-ad63-4d8f-8bf7-54df52b47684",
+    "is_your_team": false,
+    "created_at": "2025-05-14T02:18:41.561558+00:00",
+    "name": "Divot Doctors"
+  },
+  {
+    "id": "46e65ee4-f2d9-49f4-b1c5-3d22cedbca04",
+    "is_your_team": false,
+    "created_at": "2025-04-22T02:14:52.278894+00:00",
+    "name": "The Rough Rangers"
+  },
+  {
+    "id": "48b3fbc7-8c8e-4353-9db4-04ad49947ab7",
+    "is_your_team": false,
+    "created_at": "2025-04-23T02:41:25.638102+00:00",
+    "name": "Grip & Grin"
+  },
+  {
+    "id": "49b6740f-543b-4ab0-ad1b-aa27518372b6",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:02:54.859414+00:00",
+    "name": "Fore!"
+  },
+  {
+    "id": "4b856422-e9fb-43dd-a7a5-b121c6ffd3ac",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:47:43.674058+00:00",
+    "name": "Tee Tricksters"
+  },
+  {
+    "id": "4babab47-bd3b-48c4-aaee-a7ebbf5dc99d",
+    "is_your_team": false,
+    "created_at": "2025-04-07T00:26:38.603389+00:00",
+    "name": "Dimple Dynasty Divas"
+  },
+  {
+    "id": "4bb687c7-6508-4d7a-84cc-450cf5335c42",
+    "is_your_team": false,
+    "created_at": "2025-04-27T02:02:38.117956+00:00",
+    "name": "Bogey Busters Inc."
+  },
+  {
+    "id": "4cb9c36f-b9ed-49a0-bf6d-3e72cb080143",
+    "is_your_team": false,
+    "created_at": "2025-04-15T01:17:06.951665+00:00",
+    "name": "Caddy Crisis Control"
+  },
+  {
+    "id": "4f0ba052-356b-4649-84f5-3b60bf42cdf2",
+    "is_your_team": false,
+    "created_at": "2025-04-19T17:47:56.557905+00:00",
+    "name": "Slice Me Nice"
+  },
+  {
+    "id": "5355f5f9-989b-4cce-88cd-e6c05dcb3d47",
+    "is_your_team": false,
+    "created_at": "2025-04-23T02:19:28.784346+00:00",
+    "name": "Long Drive League"
+  },
+  {
+    "id": "56b23656-b4ad-4766-af37-1444aa9a9f63",
+    "is_your_team": false,
+    "created_at": "2025-04-18T21:12:09.644097+00:00",
+    "name": "Ballistic Duo"
+  },
+  {
+    "id": "5a024068-6824-43f7-92d2-31c2aeaa319b",
+    "is_your_team": false,
+    "created_at": "2025-04-07T00:44:06.551843+00:00",
+    "name": "Sand Save Society"
+  },
+  {
+    "id": "5d2eb72e-cd92-4dfb-a873-fe8155d4b20d",
+    "is_your_team": false,
+    "created_at": "2025-04-18T21:15:25.369711+00:00",
+    "name": "Dimple Destroyers"
+  },
+  {
+    "id": "5d698cf2-4307-4ab7-b150-beaa72b27059",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:20:02.836931+00:00",
+    "name": "19th Heaven"
+  },
+  {
+    "id": "5f249445-601a-4eac-86ee-2d516edfec2c",
+    "is_your_team": false,
+    "created_at": "2025-04-22T01:05:09.795424+00:00",
+    "name": "Caddy Confidential"
+  },
+  {
+    "id": "610bdfc8-450a-4645-a439-33ed2707bd83",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:31:48.018135+00:00",
+    "name": "Green Guerrillas"
+  },
+  {
+    "id": "6db93022-33ab-4b1a-8e9b-6efe81b09c20",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:36:09.460061+00:00",
+    "name": "The Grip Rippers"
+  },
+  {
+    "id": "6e59b579-8eec-4122-88c5-eee51724223a",
+    "is_your_team": false,
+    "created_at": "2025-04-07T00:47:43.615251+00:00",
+    "name": "Slice and Grice"
+  },
+  {
+    "id": "7231f7c8-4a10-4c69-8128-be5707f80ff0",
+    "is_your_team": false,
+    "created_at": "2025-05-11T04:34:49.073084+00:00",
+    "name": "Fairway Freaks"
+  },
+  {
+    "id": "731d7a97-b990-41a8-963f-79f0c81b8498",
+    "is_your_team": false,
+    "created_at": "2025-04-23T01:50:56.725666+00:00",
+    "name": "Tee-Total Teasers"
+  },
+  {
+    "id": "778589fd-8d1d-4a7c-8992-ddd6878f6cea",
+    "is_your_team": false,
+    "created_at": "2025-05-12T02:56:09.924652+00:00",
+    "name": "Pin High Pilgrims"
+  },
+  {
+    "id": "7fc2f37d-7e98-4230-af7a-c3af030e549f",
+    "is_your_team": false,
+    "created_at": "2025-04-07T00:30:02.820355+00:00",
+    "name": "Putt Pirates: Curse of the Green"
+  },
+  {
+    "id": "8667f32e-776c-4c1c-8105-ddcea353e0dc",
+    "is_your_team": false,
+    "created_at": "2025-05-09T02:22:31.830436+00:00",
+    "name": "Putt Putt Revolution"
+  },
+  {
+    "id": "88dbea76-af7c-478d-8cf8-a809bca601f7",
+    "is_your_team": false,
+    "created_at": "2025-04-22T01:46:01.271696+00:00",
+    "name": "The Sunday Funday Club"
+  },
+  {
+    "id": "8aa12415-d77d-4b1b-9eb5-6878cc139837",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:11:12.03025+00:00",
+    "name": "Putt Your Passion"
+  },
+  {
+    "id": "8b681dfe-a870-4975-ba99-31f88c16c36b",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:40:02.235849+00:00",
+    "name": "Dimple Diamonds Divine"
+  },
+  {
+    "id": "8ba19e50-a96c-4fa9-ba42-37fab8f6136e",
+    "is_your_team": false,
+    "created_at": "2025-05-05T02:20:38.358342+00:00",
+    "name": "Double Trouble"
+  },
+  {
+    "id": "8d318cd5-534f-4540-a9a0-98f2a59036e5",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:28:23.254437+00:00",
+    "name": "Weekend Wonders"
+  },
+  {
+    "id": "8e8ea2a7-9527-49da-a37b-453595d9851a",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:03:32.449029+00:00",
+    "name": "Tee Time Titans"
+  },
+  {
+    "id": "904b366b-754d-40e9-8e3f-b08f9b21a530",
+    "is_your_team": false,
+    "created_at": "2025-05-05T01:58:33.592795+00:00",
+    "name": "Mulligan Mob Mania"
+  },
+  {
+    "id": "91827a70-dfc1-4052-92fc-bc495fa5229a",
+    "is_your_team": false,
+    "created_at": "2025-04-07T00:39:07.193534+00:00",
+    "name": "Slice Samurai Slices"
+  },
+  {
+    "id": "92e254ae-a16f-45b9-aa01-bb54f49e95fd",
+    "is_your_team": false,
+    "created_at": "2025-05-14T02:33:20.357657+00:00",
+    "name": "Putt Planet"
+  },
+  {
+    "id": "95b986ed-66c5-4db7-bb7b-b21250cce93c",
+    "is_your_team": false,
+    "created_at": "2025-04-18T21:01:45.037588+00:00",
+    "name": "Long Drive Lords"
+  },
+  {
+    "id": "987f9bd7-ecf4-4c06-a605-0269bd7cd869",
+    "is_your_team": false,
+    "created_at": "2025-04-07T19:17:50.364432+00:00",
+    "name": "Eagle Warriors"
+  },
+  {
+    "id": "9c1ef389-1ecd-4433-bb8e-b242c0a74ecf",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:13:52.075435+00:00",
+    "name": "The Ball Bashers"
+  },
+  {
+    "id": "9edc12a3-40aa-484c-8f38-519a1a2c962b",
+    "is_your_team": false,
+    "created_at": "2025-04-07T19:31:58.648857+00:00",
+    "name": "The Short Game Shamans"
+  },
+  {
+    "id": "9f7da011-6875-4f87-912a-fb532acb2e27",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:49:49.546228+00:00",
+    "name": "The Caddy Conspiracy"
+  },
+  {
+    "id": "a3b7f4e7-6170-4502-9f5c-2e8aa496a988",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:01:56.735824+00:00",
+    "name": "Greenhorn Golfers"
+  },
+  {
+    "id": "a4e784d6-cd88-4724-8f8e-2f5f8b07fbbf",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:32:19.455184+00:00",
+    "name": "Sand Trap Experts"
+  },
+  {
+    "id": "a58c0976-97ef-4536-a601-f9355ddd584a",
+    "is_your_team": false,
+    "created_at": "2025-04-07T00:51:33.257585+00:00",
+    "name": "Putt Pirates!"
+  },
+  {
+    "id": "aedf139e-572d-4bbf-8e51-d1dd9a971d30",
+    "is_your_team": false,
+    "created_at": "2025-05-05T01:53:47.732786+00:00",
+    "name": "Rough Road"
+  },
+  {
+    "id": "b2025af9-ef83-4060-aa99-79f51796a73a",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:42:59.845369+00:00",
+    "name": "Fairway Friends"
+  },
+  {
+    "id": "b5b319e8-ec8b-4d8e-9d80-383621a516d4",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:14:06.608466+00:00",
+    "name": "The 19th Hole Hotshots"
+  },
+  {
+    "id": "be5f5127-2d8d-454c-a7a1-dab8770e0d7e",
+    "is_your_team": false,
+    "created_at": "2025-04-19T18:05:25.059167+00:00",
+    "name": "Mulligan Mafia"
+  },
+  {
+    "id": "c150da1b-91a2-486c-bbba-5622d6bee48a",
+    "is_your_team": false,
+    "created_at": "2025-04-24T03:18:45.493595+00:00",
+    "name": "Tee Time Tyrants"
+  },
+  {
+    "id": "c31e6d7c-647b-4aa6-807e-363ef3a112f7",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:04:44.483753+00:00",
+    "name": "Grip Gods Gone"
+  },
+  {
+    "id": "c37b98ff-34f8-4e09-8385-e7ca0ebbd51c",
+    "is_your_team": false,
+    "created_at": "2025-05-08T03:46:44.784827+00:00",
+    "name": "Long Drivers"
+  },
+  {
+    "id": "c68be599-8581-4d19-82cb-3c9532dfc838",
+    "is_your_team": false,
+    "created_at": "2025-04-27T02:22:13.142424+00:00",
+    "name": "Green Ghosts"
+  },
+  {
+    "id": "c8a2579d-4b14-4e62-8e7f-682532d3727b",
+    "is_your_team": false,
+    "created_at": "2025-04-07T19:27:56.754578+00:00",
+    "name": "The Caddy Captains"
+  },
+  {
+    "id": "cc3c3603-2f69-4fae-bcb5-10bf4a115fe8",
+    "is_your_team": false,
+    "created_at": "2025-04-07T19:07:48.968488+00:00",
+    "name": "Fairway Flights"
+  },
+  {
+    "id": "ceb58fe0-429b-44ea-a1df-8f55ae39dfd2",
+    "is_your_team": false,
+    "created_at": "2025-04-22T01:07:32.482632+00:00",
+    "name": "Tee Time Twosome"
+  },
+  {
+    "id": "d1e7b4bb-f8dc-41a4-bb53-d778e709ae50",
+    "is_your_team": false,
+    "created_at": "2025-04-22T02:45:14.858204+00:00",
+    "name": "Balls Of Fire"
+  },
+  {
+    "id": "d5293b1b-c336-480e-9657-6c55676a35b2",
+    "is_your_team": false,
+    "created_at": "2025-05-08T04:13:29.319295+00:00",
+    "name": "Green Grumps"
+  },
+  {
+    "id": "d553f4a5-7d61-4200-b71a-a2801b4d87bd",
+    "is_your_team": false,
+    "created_at": "2025-04-22T01:11:54.441171+00:00",
+    "name": "Slice of the Action"
+  },
+  {
+    "id": "d9ab4acb-3162-4db3-9b19-cc75406cff4f",
+    "is_your_team": false,
+    "created_at": "2025-04-27T02:47:29.829184+00:00",
+    "name": "Double Bogey Blues"
+  },
+  {
+    "id": "e1201460-283f-4015-961f-dc63d7ce6b6d",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:37:52.48301+00:00",
+    "name": "The Short Stack"
+  },
+  {
+    "id": "e6514a3c-753a-4e54-bd46-4e04b03321e6",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:44:50.817841+00:00",
+    "name": "Long Ball Legends"
+  },
+  {
+    "id": "eaebbcb1-0658-4cd0-ac4b-e3cb71d4ec11",
+    "is_your_team": false,
+    "created_at": "2025-04-24T02:15:13.503127+00:00",
+    "name": "Sandtrap Scholars Club"
+  },
+  {
+    "id": "ed7b8493-74bd-48eb-ad91-4992966524f6",
+    "is_your_team": false,
+    "created_at": "2025-04-24T02:50:21.836403+00:00",
+    "name": "Sand Trap Angels"
+  },
+  {
+    "id": "f3112eff-fb9b-482d-a817-6d16d183eb7d",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:29:08.740644+00:00",
+    "name": "Long Ball Hitters"
+  },
+  {
+    "id": "f91b45f3-600c-449b-a37c-cf9edf642422",
+    "is_your_team": false,
+    "created_at": "2025-04-20T02:12:36.395488+00:00",
+    "name": "Rough & Tumble"
+  },
+  {
+    "id": "fa0ccbe7-c54e-4dee-94ed-dbabf33f1c34",
+    "is_your_team": false,
+    "created_at": "2025-04-07T01:35:53.340004+00:00",
+    "name": "Green Gardeners"
+  },
+  {
+    "id": "fc825174-dc14-46b6-a30d-078096e071f1",
+    "is_your_team": true,
+    "created_at": "2025-03-31T21:09:39.447289+00:00",
+    "name": "The Dream Team"
+  }
+]

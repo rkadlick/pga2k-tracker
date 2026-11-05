@@ -160,11 +160,11 @@ export default function Scorecard({
                 {/* Par and Distance Row */}
                 <div className="py-2 flex justify-center items-center gap-1.5">
                   <div className="text-purple-600 dark:text-purple-400 font-medium inline-flex items-center">
-                    Par {rows[0].values[columnIndex]}
+                    Par {rows[0].values[columnIndex] || '-'}
                   </div>
                   <div className="text-[var(--muted)] opacity-90 text-[10px] leading-none translate-y-px">•</div>
                   <div className="text-blue-600 dark:text-blue-400 font-medium inline-flex items-center">
-                    {rows[1].values[columnIndex]}y
+                    {rows[1].values[columnIndex] ? `${rows[1].values[columnIndex]}y` : '-'}
                   </div>
                 </div>
 

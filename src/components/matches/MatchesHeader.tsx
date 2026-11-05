@@ -12,7 +12,7 @@ export default function MatchesHeader({ isAuthenticated }: MatchesHeaderProps) {
     <div className="flex justify-between items-center">
       <div>
         <h1 className="text-3xl text-[--foreground]">Match History</h1>
-        <p className="mt-4 text-sm text-[--muted]">View and manage your match history.</p>
+        <p className="mt-4 text-sm text-[--muted]">Every ranked match we played, hole by hole.</p>
       </div>
       
       {isAuthenticated && (

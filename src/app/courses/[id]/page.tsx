@@ -9,6 +9,7 @@ import { useCourses } from '@/hooks/useCourses';
 import EditCourseHoles from '@/components/courses/CourseForm/EditCourseHoles';
 import { use } from 'react';
 import { useAuth } from '@/hooks/useAuth';
+import { sumIfComplete } from '@/utils/formatters';
 import { IoArrowBack, IoClose } from "react-icons/io5";
 
 interface HoleData {
@@ -198,13 +199,13 @@ export default function CourseDetailPage({
   const frontNine = holes.filter(hole => hole.hole_number <= 9);
   const backNine = holes.filter(hole => hole.hole_number > 9);
 
-  const frontNinePar = frontNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
-  const backNinePar = backNine.reduce((sum, hole) => sum + (hole.par || 0), 0);
-  const totalPar = frontNinePar + backNinePar;
+  const frontNinePar = sumIfComplete(frontNine.map(hole => hole.par));
+  const backNinePar = sumIfComplete(backNine.map(hole => hole.par));
+  const totalPar = sumIfComplete(holes.map(hole => hole.par));
 
-  const frontNineDistance = frontNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
-  const backNineDistance = backNine.reduce((sum, hole) => sum + (hole.distance || 0), 0);
-  const totalDistance = frontNineDistance + backNineDistance;
+  const frontNineDistance = sumIfComplete(frontNine.map(hole => hole.distance));
+  const backNineDistance = sumIfComplete(backNine.map(hole => hole.distance));
+  const totalDistance = sumIfComplete(holes.map(hole => hole.distance));
 
   return (
     <div className="space-y-6">
@@ -310,7 +311,8 @@ export default function CourseDetailPage({
               ...frontNine.map(hole => ({ 
                 id: `hole-${hole.hole_number}`,
                 label: hole.hole_number.toString()
-              }))
+              })),
+              { id: 'total', label: 'Total' }
             ]}
             rows={[
               {
@@ -318,14 +320,14 @@ export default function CourseDetailPage({
                 type: 'par',
                 label: 'Par',
                 values: frontNine.map(hole => hole.par?.toString() || ''),
-                total: frontNinePar
+                total: frontNinePar ?? '-'
               },
               {
                 id: 'frontDistance',
                 type: 'distance',
                 label: 'Yards',
                 values: frontNine.map(hole => hole.distance?.toString() || ''),
-                total: frontNineDistance
+                total: frontNineDistance ?? '-'
               }
             ]}
           />
@@ -338,7 +340,8 @@ export default function CourseDetailPage({
               ...backNine.map(hole => ({ 
                 id: `hole-${hole.hole_number}`,
                 label: hole.hole_number.toString()
-              }))
+              })),
+              { id: 'total', label: 'Total' }
             ]}
             rows={[
               {
@@ -346,14 +349,14 @@ export default function CourseDetailPage({
                 type: 'par',
                 label: 'Par',
                 values: backNine.map(hole => hole.par?.toString() || ''),
-                total: backNinePar
+                total: backNinePar ?? '-'
               },
               {
                 id: 'backDistance',
                 type: 'distance',
                 label: 'Yards',
                 values: backNine.map(hole => hole.distance?.toString() || ''),
-                total: backNineDistance
+                total: backNineDistance ?? '-'
               }
             ]}
           />
@@ -365,11 +368,11 @@ export default function CourseDetailPage({
               <div className="grid grid-cols-3 gap-6">
                 <div>
                   <p className="text-sm text-[--muted]" style={{ fontFamily: 'var(--font-tertiary)' }}>Total Par</p>
-                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{totalPar}</p>
+                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{totalPar ?? '-'}</p>
                 </div>
                 <div>
                   <p className="text-sm text-[--muted]" style={{ fontFamily: 'var(--font-tertiary)' }}>Total Distance</p>
-                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{totalDistance} yards</p>
+                  <p className="text-2xl font-bold text-[--foreground]" style={{ fontFamily: 'var(--font-primary)' }}>{totalDistance === null ? '-' : `${totalDistance} yards`}</p>
                 </div>
                 <div>
                   <p className="text-sm text-[--muted]" style={{ fontFamily: 'var(--font-tertiary)' }}>Total Holes</p>

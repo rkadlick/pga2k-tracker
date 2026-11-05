@@ -6,6 +6,8 @@ A sophisticated web application built to track and analyze PGA 2K25 ranked match
 
 PGA 2K25 Match Tracker is a personal project designed to maintain a comprehensive record of ranked matchmaking games between friends. It goes beyond simple match tracking by providing detailed statistics and analytics for teams, players, and courses, helping to identify patterns and improve gameplay strategies.
 
+> **This project is archived.** The site now runs as a read-only snapshot of the matches played from March to May 2025. The original Supabase database and sign-in have been retired, and the data ships with the site as JSON. The admin data entry forms are still in the code, but aren't reachable on the site.
+
 ## ✨ Features
 
 - **Match History Tracking**
@@ -40,9 +42,9 @@ PGA 2K25 Match Tracker is a personal project designed to maintain a comprehensiv
   - TailwindCSS
   - Next Themes (for theme management)
 
-- **Backend & Database**
-  - Supabase (Backend as a Service)
-  - Supabase SSR integration
+- **Data**
+  - Next.js API routes serving a JSON snapshot
+  - Originally backed by Supabase (Postgres and Auth)
 
 - **Development Tools**
   - ESLint
@@ -62,14 +64,7 @@ PGA 2K25 Match Tracker is a personal project designed to maintain a comprehensiv
    npm install
    ```
 
-3. Set up environment variables:
-   Create a `.env.local` file with the following variables:
-   ```
-   NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-
-4. Run the development server:
+3. Run the development server:
    ```bash
    npm run dev
    ```
@@ -86,14 +81,11 @@ src/
 └── utils/           # Helper functions and utilities
 ```
 
-## 🔧 Database Setup
+## 🔧 Data
 
-This project uses Supabase as its backend. To replicate the environment:
+The site reads from the JSON files in `src/lib/data/snapshot/`, so it needs no database or environment variables. They were generated from the final Supabase table exports with `scripts/export-db-dump.mjs`.
 
-1. Create a new Supabase project
-2. Set up the database schema (schema documentation available upon request)
-3. Configure authentication and security rules
-4. Update environment variables with your Supabase credentials
+Some courses were entered with filler distances or pars. The snapshot keeps those values as exported, and `src/lib/courseService.ts` hides them on the site.
 
 ## 🤝 Contributing
 

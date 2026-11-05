@@ -2,22 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
-import { createClient } from '@/utils/supabase/client';
-import { useAuth } from '@/hooks/useAuth';
+import { usePathname } from 'next/navigation';
 import { IoGolf } from "react-icons/io5";
 
 export default function Header() {
   const pathname = usePathname();
-  const router = useRouter();
-  const { user, isAuthenticated } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  
-  const handleSignOut = async () => {
-    const supabase = createClient();
-    await supabase.auth.signOut();
-    router.refresh();
-  };
   
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[--border] backdrop-blur-md bg-[--background]/80">
@@ -47,29 +37,6 @@ export default function Header() {
           
           {/* Right side items */}
           <div className="flex-1 flex justify-end items-center space-x-4">            
-            <div className="min-w-[100px] flex justify-end">
-              {isAuthenticated ? (
-                <div className="flex items-center space-x-4">
-                  <span className="text-sm text-[--muted] hidden sm:inline">
-                    {user?.email}
-                  </span>
-                  <button
-                    onClick={handleSignOut}
-                    className="sign-out"
-                  >
-                    Sign Out
-                  </button>
-                </div>
-              ) : (
-                <Link 
-                  href="/login"
-                  className="inline-flex items-center justify-center"
-                >
-                  <button>Sign In</button>
-                </Link>
-              )}
-            </div>
-            
             {/* Mobile menu button */}
             <button 
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}

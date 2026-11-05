@@ -1,0 +1,4610 @@
+[
+  {
+    "id": "005a319f-c565-4414-96e8-ba9047ac07a2",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "005bb815-3bb8-45e1-903e-3c5292db5004",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "00b77cc5-df29-413c-b357-c3cc9ce9512f",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "01737372-0597-4257-b336-82d4624780d8",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "01de027d-db41-400a-995b-3c434155f2f4",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "02449041-fd7d-4c15-92c2-3fad74df4f7e",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "02849227-7182-48ee-a924-595baa8bcbb4",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "02d54199-a946-4f36-a01e-c745d2401fa1",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "032c3591-7ed2-40cb-ad50-49e5227fc782",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "03a7b95f-0ab2-435d-b267-ff312e27095b",
+    "match_id": "12d8c3ab-9fbc-432c-9dbc-22af5bbf2189",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-20T02:31:50.212137+00:00",
+    "updated_at": "2025-04-20T02:31:50.212137+00:00"
+  },
+  {
+    "id": "03dd14c2-2bb7-4dd6-b101-a6dead223dbc",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "04210d48-71a6-43d8-8f57-390c205dfc0a",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 9,
+    "result": "win",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "04aa68ce-e97b-4bce-b69a-9b36457fd05f",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "04c5270b-67bc-46c2-a09a-f20b44db3c84",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "065f2578-5a8c-42cd-a11e-d4882f86dd85",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "06a4db48-c1aa-4a25-9374-2458fae4b269",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "06b4d99c-90b1-4ba9-bf76-f55ff8f4dae6",
+    "match_id": "a21dbde4-3cf4-4b83-9486-751f93350a34",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-19T17:51:17.350651+00:00",
+    "updated_at": "2025-04-19T17:51:17.350651+00:00"
+  },
+  {
+    "id": "06e2b03d-1eab-4ae6-b21b-6b78d42bdda4",
+    "match_id": "d4e6a691-1148-469f-9164-6113e70a6566",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-07T01:40:31.468991+00:00",
+    "updated_at": "2025-04-07T01:40:31.468991+00:00"
+  },
+  {
+    "id": "09169b84-4f18-4089-93b4-4869820db066",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "099337b8-9d6e-4d59-8381-64393659839e",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "09bed259-11df-4254-9400-75a0f48fbae0",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "09c236f5-367f-42b5-b172-c7761500c9c7",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "0a2af60f-e023-490a-bd65-da8c09e47c6d",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "0a2f056a-418d-4397-b967-6a0a87a5f79d",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "0a325ec2-3033-4fd4-b5cb-d6dee86883d2",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "0a448536-369d-47ef-8ff8-9849423a8a86",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "0a48936c-684d-4a16-81cc-f6f4616e249e",
+    "match_id": "15d5ceff-5c4a-48c4-8012-79f5f9ab5d74",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-19T18:11:32.911124+00:00",
+    "updated_at": "2025-04-19T18:11:32.911124+00:00"
+  },
+  {
+    "id": "0a82390f-6cdb-4501-8db5-2b6f794782f3",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "0aebafe6-5840-4a0f-b027-f5e71b52c2e2",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "0b473cd8-0e75-4a60-89aa-b0f33798eea2",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "0bcf24b9-abb6-4034-a14e-a7b4b6830cd5",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "0be2b3c9-fa37-4e2e-914a-48ae1f6c656e",
+    "match_id": "e5908d54-5d0e-4d36-a293-179d6ccafad8",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-27T02:22:17.079724+00:00",
+    "updated_at": "2025-04-27T02:22:17.079724+00:00"
+  },
+  {
+    "id": "0c49dd3a-c83d-4df8-8449-4e8f10deb281",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "0c8ba513-2ca6-4825-9e5f-306a5aaec9f6",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "0d320046-acbd-4895-8f15-6e3ad7e52b36",
+    "match_id": "db3710c5-123b-44f3-acb8-61f6dd77b55a",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-19T17:53:06.351645+00:00",
+    "updated_at": "2025-04-19T17:53:06.351645+00:00"
+  },
+  {
+    "id": "0d643f9c-5c79-4538-96d3-1b0b9658eb29",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "0e0557d8-976d-47b0-8775-e3c41bef49b8",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "0e13051e-8c72-48a0-9707-89707a9fc785",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "0e1d8c80-2c4d-45c0-8391-174c828032c8",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "0e62d4ea-7608-4931-b0b4-9956f7f46c63",
+    "match_id": "7e27ca51-4476-4302-bfad-ca20ff5a0622",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-07T01:14:26.109711+00:00",
+    "updated_at": "2025-04-07T01:14:26.109711+00:00"
+  },
+  {
+    "id": "0e973d6a-70f5-46f8-8d2b-1597f1724d2e",
+    "match_id": "513a4a06-d6e0-45ca-a872-3228d485b8e3",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-05-14T02:33:38.951679+00:00",
+    "updated_at": "2025-05-14T02:33:38.951679+00:00"
+  },
+  {
+    "id": "0f2232d5-8d38-4410-b13a-6b7c21c051e1",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "0f4cff7b-980d-44ce-b533-90a96294b4a6",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "0f595f0e-07eb-42b9-a842-89e974d9881c",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "10b3e015-2616-4afd-8548-0bef7590f77b",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "112508a8-5414-44ff-a2c4-c73caebed312",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "12066397-efe9-429f-b8a4-0ed3e29491cf",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 9,
+    "result": "tie",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "132190dc-718c-41fb-9c7d-cff397a63aff",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "13719c1e-da63-4ca4-8469-290d4d2b1cc7",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "145e81cf-a895-4d0a-9393-39833ea18013",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "14aa8e6b-db4e-40cd-bdf9-34ab08449455",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "1526f403-caf8-4b6a-b458-2e780349e5e2",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "15517d7c-c0cb-4509-943d-1d0e24f6f8f5",
+    "match_id": "5a1e1c3f-8f95-427b-9306-6efbb46669aa",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-07T01:36:04.694189+00:00",
+    "updated_at": "2025-04-07T01:36:04.694189+00:00"
+  },
+  {
+    "id": "15b2c16a-6201-4ff4-a2c6-18dfa2fdf080",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "15bd0e7d-0177-4e0e-bc44-3672002e55f9",
+    "match_id": "7c7e8370-4099-4dc3-98f2-48519c0af26a",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-19T17:48:02.844878+00:00",
+    "updated_at": "2025-04-19T17:48:02.844878+00:00"
+  },
+  {
+    "id": "15eeb99d-d2e6-4744-b96d-cf05af30d77a",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "16dcbbf0-1095-42ef-a6ba-9e1468403422",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "17c19495-b427-423d-8546-e5c80f904e1e",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "17eb4065-3488-4ebe-8484-05d36e61defc",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 13,
+    "result": "win",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "181f5243-b1ea-4b72-980d-c6eafcc23aeb",
+    "match_id": "e5908d54-5d0e-4d36-a293-179d6ccafad8",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-27T02:22:17.079724+00:00",
+    "updated_at": "2025-04-27T02:22:17.079724+00:00"
+  },
+  {
+    "id": "18b58ab0-7223-4393-83f4-bc090b718958",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "18d12101-57db-46f9-ae99-68d6d1527991",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "18ed9a34-a9c4-418e-b5d3-ddb416b6e7e3",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "19195f5d-299b-41ae-995d-c92e8fbbb1f9",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "1958c2eb-9546-4525-a921-f51d5357650c",
+    "match_id": "a21dbde4-3cf4-4b83-9486-751f93350a34",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-19T17:51:17.350651+00:00",
+    "updated_at": "2025-04-19T17:51:17.350651+00:00"
+  },
+  {
+    "id": "195be195-69ab-45c4-9808-78547d322b57",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "19db100e-8f7b-4e3e-aa5c-a7c45b36c0d6",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "1a14b25b-0198-4158-acc1-a15068ef3509",
+    "match_id": "f233bbf1-bb9c-48f4-b382-5f014286c854",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-05-02T03:55:33.296286+00:00",
+    "updated_at": "2025-05-02T03:55:33.296286+00:00"
+  },
+  {
+    "id": "1a2a6a25-c1d9-4f16-998b-75183b2c2a63",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "1a65357e-fe52-4f55-9e8f-dc0f9d54b090",
+    "match_id": "7c7e8370-4099-4dc3-98f2-48519c0af26a",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-19T17:48:02.844878+00:00",
+    "updated_at": "2025-04-19T17:48:02.844878+00:00"
+  },
+  {
+    "id": "1b25ec37-0d1e-4a48-aa94-3b6c1df0244d",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "1b2d12c1-4cad-4519-b61c-d22e5a430b47",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 17,
+    "result": "win",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "1bf32180-7c13-4c18-ace7-8d76d964832e",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "1c57b7cc-e0dd-46e6-9f82-cf72b35ef2e9",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "1cf6f2a8-f76d-47e2-986f-c7096642d41e",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "1d6f2b95-51c9-45d0-ad1a-e33dbad6c7f8",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "1e281edc-aee3-4fd0-9145-1b822e0d6402",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "1e4fbc2a-98f3-40c7-8677-5cfd9d5b9f61",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "1e67ec41-6717-4d76-895a-4836c9e33bb6",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "1ec8fb91-d275-43a6-9c13-9b8b8a7ef8ae",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "1ede7905-75e3-4e4f-a874-a88070361659",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "21136519-57a0-4afa-821b-c1ba66d3e6d6",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "215fbf8c-4bf0-4e25-9990-8159986d38ec",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "216580e1-656c-4828-b775-a25b48a66bc2",
+    "match_id": "5a1e1c3f-8f95-427b-9306-6efbb46669aa",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-07T01:36:04.694189+00:00",
+    "updated_at": "2025-04-07T01:36:04.694189+00:00"
+  },
+  {
+    "id": "21ddd579-775f-4f87-8da2-070e4fb71e39",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "224e9dfa-38d2-4714-b677-a7c58ba5d9ca",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 18,
+    "result": "win",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "23166fe7-2c44-4b2e-811c-a4138d2b7078",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "2322c564-c238-40d2-918e-064298bc362b",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "234033e1-e876-4cce-8007-1dfc05929069",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "242492e3-a034-4024-8aa9-ace32913233a",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "2440054b-d9e7-444b-a0c3-6d6f272e169a",
+    "match_id": "15d5ceff-5c4a-48c4-8012-79f5f9ab5d74",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-04-19T18:11:32.911124+00:00",
+    "updated_at": "2025-04-19T18:11:32.911124+00:00"
+  },
+  {
+    "id": "2471ab81-7a04-4b18-99a7-68bd3834bd80",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "2602405c-4980-498f-8199-067bfccc3e26",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "27ad9ee3-1c0d-436b-90b6-ff9f59c16f30",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "27e23f24-0765-4ad7-99c7-e2c8b5242666",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "2810c9b4-ce63-429e-be1f-aa48763a414a",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 9,
+    "result": "tie",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "296ddc1f-c39b-4c40-aad5-b404bf9e4945",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 9,
+    "result": "loss",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "29cb0725-3613-400a-8a31-01e6c2874b39",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "2aeef8ac-3e5b-4896-87fb-10ae004f6f92",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "2b65745d-f654-4420-884c-be2929198720",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "2bcb44b2-4aaa-44c8-b94f-c74d056e77ae",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "2bec757b-9767-416c-8947-36ee83b607b4",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "2bf63374-e95a-4aad-92d0-97aaf5896e4b",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "2c2e0b6f-6d03-44d2-b862-71851a3f13d4",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 16,
+    "result": "win",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "2c5d7b7f-33cf-45ae-b93d-bc0ecc09e560",
+    "match_id": "d4e6a691-1148-469f-9164-6113e70a6566",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-07T01:40:31.468991+00:00",
+    "updated_at": "2025-04-07T01:40:31.468991+00:00"
+  },
+  {
+    "id": "2d37f5e9-bfe7-44e6-a525-4dad6461ee4d",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "2d5c9670-3b68-4f4f-9cd8-c70a8d14189c",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "2e3e8c1c-3a53-46a6-95eb-c4e9ed83ebb5",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "2ef8f380-9e64-46ff-9a66-5830316c5f96",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "2f4e169c-57a3-4a3e-8332-bbed321f54e1",
+    "match_id": "f233bbf1-bb9c-48f4-b382-5f014286c854",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-05-02T03:55:33.296286+00:00",
+    "updated_at": "2025-05-02T03:55:33.296286+00:00"
+  },
+  {
+    "id": "2f5d0ae8-c97a-4415-a541-ed1f4ca58c72",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "2f89b56a-bf34-44c3-9e38-dfc7f03c23b0",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "302d5516-b46e-4624-bcbb-3314536060a6",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "3092be07-f0cb-4715-913d-b658c7b8fbb7",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "3104b39f-65eb-4e44-acc1-01ee5cd727d3",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "310b5d8e-15ed-4f25-8a08-e8bd9a0c03d2",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 9,
+    "result": "tie",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "3131db5c-0cc7-4560-931e-4d9f59146ff2",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "316669b4-88a8-498c-b887-5cd4edfb811b",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "31705e9d-56e1-4ed9-a21d-86ee9a0289d0",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "323d3957-4c32-4af0-9e9e-b9098fd40b53",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "327017aa-5502-4c59-bc26-12b634ee1ee0",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 17,
+    "result": "win",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "32a266e4-9480-493c-b438-171c9d7355a9",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "32a424a8-3ab2-4d75-8eb0-ec5ffb6a10a8",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "32b11627-b60c-4682-a12c-9cae836c88ef",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "32c0f981-f2f7-45c7-aeb2-68f21c2bd42a",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "32c2de25-6ba6-4234-8534-2ff1d0cc77a8",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "32c2f241-ae3f-4df2-a8f6-3a6ecc391dc2",
+    "match_id": "c9ff514a-8b9b-4b4e-8b56-7d8c8ac725c3",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-23T02:19:34.207094+00:00",
+    "updated_at": "2025-04-23T02:19:34.207094+00:00"
+  },
+  {
+    "id": "33c59c97-547e-40d4-a6a7-2d050d604437",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "33e9a687-7d20-4e70-9e89-6aecfb37068f",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "342828f8-3e18-4118-bf17-342ff64c4fa1",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 13,
+    "result": "win",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "34482402-4335-44d3-b112-39070ec7c338",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "349db0fb-cd8b-4715-8ff8-832f3abd5fed",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "34e4dda9-ed7f-4758-a97d-a37f81eeed9e",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "3586ea8c-99a7-48fb-88c7-f35c45b7871b",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "3605f803-31e7-409b-996a-b2f8053d9fd9",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "3626c848-e742-404c-ae68-33bbc22e673a",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "3708fd20-4382-4c08-9009-ba4f4afd3c47",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "37125f00-b38c-45ff-b79f-e03864891e16",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "373b756c-aeab-48ea-969f-c72bfeaf6a6d",
+    "match_id": "47f2b89c-2536-42b8-af1e-5df7d95c0ae6",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-05-05T01:53:53.807627+00:00",
+    "updated_at": "2025-05-05T01:53:53.807627+00:00"
+  },
+  {
+    "id": "375915ef-3fca-4707-8c0b-161dc30ac9d2",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "375d4be5-4856-4972-ac4d-9fb57a296c3b",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "37c94052-b1ec-4a73-a6fd-23c58f382f45",
+    "match_id": "c9ff514a-8b9b-4b4e-8b56-7d8c8ac725c3",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-23T02:19:34.207094+00:00",
+    "updated_at": "2025-04-23T02:19:34.207094+00:00"
+  },
+  {
+    "id": "3859a410-a964-4279-9bb5-74f1300dc52e",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "3902318b-4f08-4c2c-b818-bfa41c22ec92",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "39f4503b-f568-4285-81ba-db1321b8ec45",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "3a5e4044-f62e-4996-91a0-c77210486e5c",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "3a60eb5f-5455-406d-92fa-85a7332e1bb5",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "3afe357d-61e3-4c3d-b89a-e054c8dee68c",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "3c5fb678-514b-4074-b4cd-afa9c4136487",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "3cb75cd8-b061-42df-b138-5ec5d5ea765f",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "3da4a0f1-1ec1-4389-940f-1e2578d47c8e",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "3e8e0dcf-5547-484c-8f32-0363c3140eb7",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 9,
+    "result": "win",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "3ed9fb86-59cf-423a-a693-16f4f4dccc7e",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "3f964350-529b-4568-bed3-6270f023290c",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "3ff2340b-f606-4ddf-a0a1-f1276d9f6d6e",
+    "match_id": "12d8c3ab-9fbc-432c-9dbc-22af5bbf2189",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-20T02:31:50.212137+00:00",
+    "updated_at": "2025-04-20T02:31:50.212137+00:00"
+  },
+  {
+    "id": "40bf0764-aaa6-4dd3-956d-428cdb06d0b5",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "412daefa-5fc0-43f8-bc7f-8a8a3b4337f0",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "42000438-be09-4e97-9959-a6c3b7a26952",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "42d093c4-3615-4b6d-9c5b-601563de00a8",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "43373f85-720b-4966-9040-d86bdf4f0c6e",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "44bbd64a-151d-44e1-8e0e-c993ea61f831",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "453c0396-abac-4820-8be7-9ab74844ee6f",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "45623d7d-00c7-4eee-9619-175dcdf4bd85",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "4657282c-ad44-439a-8497-b6a8a2e58191",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "47dc2510-b942-4cd7-ae04-57772e6b1fad",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "49e01e3f-b692-44e6-b076-86973db79567",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "4bef8656-799d-4674-8ba5-6fdb013556bf",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "4c6a18a9-29e7-4fdf-97de-3c2a1e7fecdb",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "4c8d952e-2c8b-407c-8357-4ba9c6daf0d6",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "4cf4c2eb-1442-4aef-baf0-c18b4c7d716e",
+    "match_id": "5a1e1c3f-8f95-427b-9306-6efbb46669aa",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-07T01:36:04.694189+00:00",
+    "updated_at": "2025-04-07T01:36:04.694189+00:00"
+  },
+  {
+    "id": "4d570e18-7e98-449d-a1f4-b85933d016f7",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "4d73e2c4-8643-4d24-a4df-72532f34e4df",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "4e0d4336-58e7-44a1-a417-49bb5736f35f",
+    "match_id": "12d8c3ab-9fbc-432c-9dbc-22af5bbf2189",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-20T02:31:50.212137+00:00",
+    "updated_at": "2025-04-20T02:31:50.212137+00:00"
+  },
+  {
+    "id": "4e64f2cd-ce73-4bb3-910a-dbcb39bfffad",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "4eee6d0d-1243-459e-86d3-f8556782a03f",
+    "match_id": "f233bbf1-bb9c-48f4-b382-5f014286c854",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-05-02T03:55:33.296286+00:00",
+    "updated_at": "2025-05-02T03:55:33.296286+00:00"
+  },
+  {
+    "id": "4f07302b-b9f3-4898-9bd7-2bbfa5662089",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "4f0ae6d6-1426-4c6e-9e7d-2bf1f9177696",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "4f320493-3a2b-416a-b9a7-6d4f7e0a6f92",
+    "match_id": "513a4a06-d6e0-45ca-a872-3228d485b8e3",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-05-14T02:33:38.951679+00:00",
+    "updated_at": "2025-05-14T02:33:38.951679+00:00"
+  },
+  {
+    "id": "4f9cd90e-aa80-409d-a779-1aae8b8d7684",
+    "match_id": "d4e6a691-1148-469f-9164-6113e70a6566",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-07T01:40:31.468991+00:00",
+    "updated_at": "2025-04-07T01:40:31.468991+00:00"
+  },
+  {
+    "id": "5034e8b1-2614-4460-a594-d9ced2229400",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "50f44116-58e7-4908-a55e-e8e81bfef0e7",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "539d8c17-8300-4d17-8abe-bc66b23829a7",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "54148756-00c7-461e-9a1e-011ba05f2643",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "54ac0c43-efe1-40c5-94a7-eeab3ede5d21",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "54bfe7c5-0225-4e96-b41d-6211f26af0dc",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "54e0838c-97d1-412b-b13e-dd338e355e39",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "54e24620-d6d0-4c1b-955d-6677dda7ab07",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "54f1312c-c97e-49d4-84b6-3eaf26eabfc5",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "54f8f22d-c414-4bda-9340-f7c32f12fc32",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "55128d33-3ec9-4446-9a92-84d1cb848ace",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "55bb8945-93f4-4028-849c-d5bf7759eac7",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "56165d00-3e33-4a85-a4a6-6b8c18614d9b",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "5622750f-d859-4e55-8048-91cccc782c4d",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "56716a74-c01f-48e2-a2df-e3cf037106f5",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "56868986-2b53-4161-9f39-921009944689",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 9,
+    "result": "tie",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "56a00ced-1ab3-46f0-aaa1-43a3834266de",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "56e7946c-fd6b-43c1-b47b-7d889369b26f",
+    "match_id": "e5908d54-5d0e-4d36-a293-179d6ccafad8",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-27T02:22:17.079724+00:00",
+    "updated_at": "2025-04-27T02:22:17.079724+00:00"
+  },
+  {
+    "id": "56e8fda5-3344-48dd-a42d-92d2e33d6f56",
+    "match_id": "47f2b89c-2536-42b8-af1e-5df7d95c0ae6",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-05-05T01:53:53.807627+00:00",
+    "updated_at": "2025-05-05T01:53:53.807627+00:00"
+  },
+  {
+    "id": "576e40c9-53a7-49d1-b98f-8e7c71fe5b57",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "57a4883a-b09f-4b58-9e3d-fb9057302815",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "57ba751a-5a32-4836-a8bc-5be4f149ae82",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "57d56ffc-30d5-4b96-a951-affe22bfb086",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "5855251e-ba7b-4a22-a6ff-336e0b735a18",
+    "match_id": "db3710c5-123b-44f3-acb8-61f6dd77b55a",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-19T17:53:06.351645+00:00",
+    "updated_at": "2025-04-19T17:53:06.351645+00:00"
+  },
+  {
+    "id": "58a57911-d9b0-4bd1-bbbd-feaa4e637dbb",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "58bc46a7-9cd4-4b77-8221-7fa8e53b5780",
+    "match_id": "c9ff514a-8b9b-4b4e-8b56-7d8c8ac725c3",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-23T02:19:34.207094+00:00",
+    "updated_at": "2025-04-23T02:19:34.207094+00:00"
+  },
+  {
+    "id": "597d8542-242a-448d-adff-69bab2acbdc1",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 17,
+    "result": "win",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "5a5fb2d4-8eb8-499f-9015-3c04628a49ec",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "5b1f09a4-b353-4772-8130-de410265c9c1",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "5bd15dc1-5897-4dcf-8e73-65935aa7aaa2",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "5d28d22a-c9e2-44a6-a9ae-5a20489c616a",
+    "match_id": "47f2b89c-2536-42b8-af1e-5df7d95c0ae6",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-05-05T01:53:53.807627+00:00",
+    "updated_at": "2025-05-05T01:53:53.807627+00:00"
+  },
+  {
+    "id": "5dd39548-4ba1-4184-992f-cb2fea9ccd06",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "5de93449-f23a-4081-937b-c60a833cf8fc",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "5e3ba52d-0907-42a4-a768-5149b1bd9f90",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "5e7c48a4-944c-4372-9bbd-06b0cfb28ec9",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "5f174352-52b5-41ae-a912-935a685829d0",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 8,
+    "result": "win",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "6082e044-4729-4fa3-bc34-b35b1d99e6d2",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 18,
+    "result": "tie",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "60a4eb4d-c353-4003-8921-f584ce5563df",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "60aa3246-3ae3-474d-b03c-42041bddb4b6",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "60d4ced2-ecc7-4bf6-a54a-d15bfb62a74b",
+    "match_id": "d4e6a691-1148-469f-9164-6113e70a6566",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-07T01:40:31.468991+00:00",
+    "updated_at": "2025-04-07T01:40:31.468991+00:00"
+  },
+  {
+    "id": "61a61c88-4f16-407f-aecf-f5f006ace4b9",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "61d7d212-a641-4447-822e-1515176cf424",
+    "match_id": "47f2b89c-2536-42b8-af1e-5df7d95c0ae6",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-05-05T01:53:53.807627+00:00",
+    "updated_at": "2025-05-05T01:53:53.807627+00:00"
+  },
+  {
+    "id": "6211332c-0f9e-4119-8be6-40333bb6d785",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "622f6b0c-13e0-48e7-9ff9-b48047f7dacb",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "62a0a5c9-91c6-4c39-acaa-dc0a2d8a776a",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "62c06c30-600c-4771-9875-96a6b801f2a4",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "62d14dec-f9ac-420d-8b5a-7229cca28820",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "636b25e8-ee46-4f30-b355-a86940dca611",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 16,
+    "result": "win",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "64006525-9865-463c-b221-15a435a6fec7",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "645b1f80-44a7-4068-8838-e71e40beeff6",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "64ba5a15-6ebb-4bc4-a429-9379e24f5032",
+    "match_id": "15d5ceff-5c4a-48c4-8012-79f5f9ab5d74",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-19T18:11:32.911124+00:00",
+    "updated_at": "2025-04-19T18:11:32.911124+00:00"
+  },
+  {
+    "id": "6569ca29-0520-427a-90c2-8939eadedd4f",
+    "match_id": "7e27ca51-4476-4302-bfad-ca20ff5a0622",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-07T01:14:26.109711+00:00",
+    "updated_at": "2025-04-07T01:14:26.109711+00:00"
+  },
+  {
+    "id": "65a45d72-12a2-485c-a401-a4b0dfa3475a",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "65bea0cf-f46b-4841-bd20-64b1ce68ba4d",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "65bec8a3-134f-4ecf-99f6-3f7cb1f8ad6c",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "65cd02af-49fa-4b22-b773-2c8ccdd4b999",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "674cee47-bfe3-4922-9a96-5dec1567b74f",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "67cd7699-708e-48c9-bf6d-d1b668c5569c",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "68023ba5-03a5-44b7-add8-afb0bd33a350",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "68213db1-b001-4973-bc1e-ac59b4f4c698",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "68ab4642-1aca-4f83-9dfa-183390062ae4",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "693a384a-edd6-4c31-95bb-9ebe5f269af4",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "694129c7-e4eb-439f-9802-2449732197db",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "695a7d10-1bb2-400f-bbec-4d1474e71725",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "69683afa-ef92-4c45-98b4-a2f2fe86ad64",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "69a69f15-5bcc-446c-94cb-ca7b4442f5f7",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "69a7ee6c-11a9-4e40-a872-9d3eaed070bb",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "69b052ea-9b6e-4a0f-8501-30f8bc5f05cc",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "6a58f442-0514-4f4a-a30e-5b1982fd55dc",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "6aa2ea34-5b9e-4fad-991c-0cbb227d7b63",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "6aef00a2-feb8-4b91-b389-29de66c68641",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "6be7cf24-7a78-49ec-8c9c-b3e5e4b576eb",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "6c495ed0-7da0-4796-ac71-79b34739d1d9",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "6c5c9b48-0407-4f67-9a4a-ac5123f6acaf",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 9,
+    "result": "loss",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "6ee5706d-ecce-4aa7-995f-8333a26e3395",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "6f5717e6-da20-4201-87a4-7bc6193983e0",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "700814c1-5a5b-4f15-832c-b1a3b0b606e6",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "701b22ec-e462-4472-a169-083001e27c03",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "70748d8e-f06f-4c5a-84e4-6dc9e0821ace",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "70cbc09b-0299-4ee7-bc77-1c35a1910073",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "70d536a1-a16f-4514-8388-c7a09bc619cd",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "70d8bfdf-5d9d-4712-9c68-90856e7e2182",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "722ff60b-dbac-4c43-aee9-c1b13e1229fb",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "72a02614-7354-412a-a7d1-50a8a876b0f3",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "73bd6fef-8c9d-47aa-8e7b-7c4c7afc67c0",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 18,
+    "result": "win",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "748855bd-0527-400d-ba34-fa98f1109cc6",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "75578459-a5b1-42fb-8125-ac0ba45fe802",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "76f89d49-d82f-4a83-83e0-ae0f3a836ecf",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "775d0647-cb30-4f9b-aa76-938275924720",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "7787d5ea-0003-4ac3-a49c-bfeadaf417aa",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "77c4735a-7b9a-46ce-888c-7c7537ddf743",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 18,
+    "result": "tie",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "77c9457d-1fdc-4749-9784-9ed625dbf449",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "77f5ce73-6095-4b87-b056-def08f261477",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "7845383c-ba72-4c10-9ce9-e831b204dd5f",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 13,
+    "result": "win",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "796d262c-9eed-4ea7-bb55-1d6fea2166b6",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "79b54f88-c6b8-4b59-a7e3-b097b3cb06ea",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "7a1b71d4-2ca6-4be0-94ea-03e558ea8c32",
+    "match_id": "db3710c5-123b-44f3-acb8-61f6dd77b55a",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-19T17:53:06.351645+00:00",
+    "updated_at": "2025-04-19T17:53:06.351645+00:00"
+  },
+  {
+    "id": "7abb3419-6a1a-4bb7-86eb-66f66aa15f03",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "7b095fed-63a5-4484-88c6-bb3fe3c047ec",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "7b0fa91e-eefd-484a-9b06-8eaef1507552",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "7b39c035-a154-49f5-8a9d-dc2f4471456f",
+    "match_id": "7e27ca51-4476-4302-bfad-ca20ff5a0622",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-07T01:14:26.109711+00:00",
+    "updated_at": "2025-04-07T01:14:26.109711+00:00"
+  },
+  {
+    "id": "7b88a07a-e1ea-457c-a62f-3ac1cb84fef1",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "7c6f1453-789b-4387-9eb5-a5738f4ffc17",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "7cb7593e-af81-4b1d-b78b-a9598fd79ab1",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "7cc1c882-d778-49a8-84a1-82a89e0aae39",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "7d4ad2ce-0c1d-4a2f-825a-22dcc9611c58",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "7d6baafa-9073-4c0e-8534-294047d7f979",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "7d829e75-335c-4efb-84ca-f9e60bf99ed1",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "7ddddcec-6d28-41b2-8448-1c8e85c31027",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "7e4ce837-e283-448f-9450-698b43269237",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "7f53c37d-8aad-4429-b1e6-54cc549ee35f",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 8,
+    "result": "win",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "7fa2d8fe-9a14-4517-8de5-e133b27e8d20",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "7fac17c2-2891-4523-8597-14ab8da5f0ff",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "7fb34e12-67c2-4407-9405-d27a7aac3541",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "80a9f04a-e129-46d3-bb94-7bd64932474e",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "8157685d-14d4-481f-bbb3-581e84c5f400",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "8194001f-e6f9-4d9b-85d6-a8d7e98a721d",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "819d5296-4f20-4e69-aee2-b6cd0f57e64b",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "81c21013-63e7-402f-8a2a-17c8fe1ebd59",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "82d95e78-83ca-450e-aa85-f4601db5d64e",
+    "match_id": "db3710c5-123b-44f3-acb8-61f6dd77b55a",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-19T17:53:06.351645+00:00",
+    "updated_at": "2025-04-19T17:53:06.351645+00:00"
+  },
+  {
+    "id": "83278bc0-75ec-4605-9d6b-e38e148577a5",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "838ab005-5a03-4576-b80d-5739e3cb9801",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "83f61a65-ca18-4142-af8a-b89dbe2943b9",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "840290c2-cf41-4e81-9a79-2818880a1d53",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "857277dc-875f-4db2-af5f-04978eb8929d",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "864d2747-3730-42f5-bb2c-1ae641f676f7",
+    "match_id": "c9ff514a-8b9b-4b4e-8b56-7d8c8ac725c3",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-23T02:19:34.207094+00:00",
+    "updated_at": "2025-04-23T02:19:34.207094+00:00"
+  },
+  {
+    "id": "86e1df5c-841c-436f-bd3e-800c282594bb",
+    "match_id": "e5908d54-5d0e-4d36-a293-179d6ccafad8",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-27T02:22:17.079724+00:00",
+    "updated_at": "2025-04-27T02:22:17.079724+00:00"
+  },
+  {
+    "id": "87b5db43-04f7-404f-9e95-542232da6d3d",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "87e2a9a9-76df-4e38-b8ce-b9cdcb96c01c",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "8825e855-e2c4-4f3b-84b3-a005f720fa71",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "884a3d04-a427-4156-af19-e37c0d1dec2e",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "88531e53-9b23-4fca-b2f6-a1cb94f72299",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "8910987f-fea6-4110-b550-87f198d82fd3",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "895d26d1-ec3f-46b1-b787-70c7b331d17f",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "895efe05-f2ac-4b25-8142-1b3da9d4d7d4",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "89cafa78-c735-4342-814e-8d2ec7af7100",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "8d0fffcf-3588-4ee8-9cb8-f79f4845f121",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "8e959861-202d-412a-a56a-73eeadb96fdd",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "8f17b45b-4688-4f41-bec5-be8113544415",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "8fe36ab8-038a-4db7-94d2-e1ad6e219b19",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 16,
+    "result": "win",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "90106c17-b5a1-4504-b72c-7cc821462756",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "9045f585-0185-4f0f-9b2a-24b40be3661f",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "91917efa-bc87-46ea-b24a-9e5399a15646",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "91cfd5d8-1428-4704-ab50-75f972508302",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "9310be72-d763-40e4-82b7-c00512c04336",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "93e44f0a-5b30-4c02-b557-e7fb9e4a0c76",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "9433fbcd-f32c-4b5a-8022-2db4390e2930",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "9469bb4c-ed0c-42fe-873b-8e2d89083dd8",
+    "match_id": "7c7e8370-4099-4dc3-98f2-48519c0af26a",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-19T17:48:02.844878+00:00",
+    "updated_at": "2025-04-19T17:48:02.844878+00:00"
+  },
+  {
+    "id": "9480c847-b6ec-47a1-b8e4-8000cce77d65",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "949b58b2-494a-4458-a08e-80292b427bd2",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "95218da2-a81e-4663-9e5c-93b83e63addf",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 18,
+    "result": "tie",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "963a7266-5807-47ee-b431-646f6ab42d3d",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "96da9af9-b7ec-4ab7-b570-6de2bb22b6cb",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "96f02317-f1eb-4a08-8490-aedeaf8e337d",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "971ee0ce-5643-4487-a82b-b0598575afe0",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "975787a6-2574-4b43-8e4f-8c7a9d967cbc",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "9796df5a-e8ee-428e-81c4-a9bfcf665792",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "97b6c977-99c1-48a2-9a2c-8d7e84ee5999",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "98360d8a-4d22-4703-a007-68761dd532ac",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "986f3d59-9fc2-4b4b-a428-6e001adc6553",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "9898f874-7922-46d5-99b5-cb4072987b8b",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 18,
+    "result": "tie",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "98a9a922-bd3d-4547-8f44-fa0988e3a018",
+    "match_id": "a21dbde4-3cf4-4b83-9486-751f93350a34",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-19T17:51:17.350651+00:00",
+    "updated_at": "2025-04-19T17:51:17.350651+00:00"
+  },
+  {
+    "id": "98e2e38e-6046-4507-a7c4-04efd5ba0e23",
+    "match_id": "4d43abc8-331d-4a34-a89e-9d266d4f747c",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-20T02:15:13.282956+00:00",
+    "updated_at": "2025-04-20T02:15:13.282956+00:00"
+  },
+  {
+    "id": "98e4ce15-d507-4014-b26f-c348f234294b",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "991543ee-e3d1-4326-b22c-4a55465f2fb4",
+    "match_id": "42a82080-08e1-42ba-a889-60d5086b0aa1",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-05-05T01:58:40.1321+00:00",
+    "updated_at": "2025-05-05T01:58:40.1321+00:00"
+  },
+  {
+    "id": "995a6643-b9d4-4f06-b36e-7e56a21e182a",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "99846c06-d03c-4cda-b43a-46f15746903f",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "9996e6ea-f5f4-4f7f-a473-0c353a0f5840",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "99f5a0e8-008b-46c0-84d5-8b36f186cff8",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 9,
+    "result": "tie",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "9a95be0b-fc3c-4059-af89-3ae060063982",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "9aa6ac01-f0e9-42a6-8201-210ccd3e095a",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "9ad2d189-659f-4f10-8f6b-184cbf05ad35",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 9,
+    "result": "loss",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "9afe2f66-464b-4838-b5d0-052b5240d4e4",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "9b568562-1c6d-4c87-babd-7328052d2427",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "9c2af947-70f9-4bd1-8182-f21e63e3da56",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "9cabef40-cdd5-4027-a2bb-ab6e5e16cb0f",
+    "match_id": "f233bbf1-bb9c-48f4-b382-5f014286c854",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-05-02T03:55:33.296286+00:00",
+    "updated_at": "2025-05-02T03:55:33.296286+00:00"
+  },
+  {
+    "id": "9ce5cbbe-84be-49b3-8dff-21721f2d91c2",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "9d4e248a-5c45-49fe-b63d-458f23c69bf7",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "9dc3df71-75e7-41a5-8d22-c54c2878cf2c",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "9dedd527-1901-4862-9de5-e439909f5cff",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "9df56ab6-a8a7-48cf-9f46-ce0a0c799220",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "9dfa16b1-1e2b-4d73-b696-36bf0ec07807",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "9e1e2d2d-9508-49f9-8d80-0ddfd03b308a",
+    "match_id": "7e27ca51-4476-4302-bfad-ca20ff5a0622",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-07T01:14:26.109711+00:00",
+    "updated_at": "2025-04-07T01:14:26.109711+00:00"
+  },
+  {
+    "id": "9e5b5bec-ee00-4408-847a-95c5d8f071b8",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "9f16ce14-6f98-4896-b409-20451731407d",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "a00be306-73c6-4ade-aabb-796180c69bc0",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "a0a18bde-b310-4f27-8bd7-ffab1e1e70dc",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "a1b84e70-2d51-4ee3-adaa-f79e7792af44",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 17,
+    "result": "win",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "a27b5cc7-51d4-4d05-954e-426c25142c33",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "a2bc9399-8b36-4c99-871d-cfc4ddf050b6",
+    "match_id": "12d8c3ab-9fbc-432c-9dbc-22af5bbf2189",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-20T02:31:50.212137+00:00",
+    "updated_at": "2025-04-20T02:31:50.212137+00:00"
+  },
+  {
+    "id": "a2f3aa9c-261f-46a5-9575-ed06637217a6",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "a40765fb-a1dd-4c3d-b0a5-8685c0ab1801",
+    "match_id": "d4e6a691-1148-469f-9164-6113e70a6566",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-07T01:40:31.468991+00:00",
+    "updated_at": "2025-04-07T01:40:31.468991+00:00"
+  },
+  {
+    "id": "a41aa2fb-c754-4262-9d82-0b8fefdc3f29",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "a426a64a-20c2-412d-902c-34019c910794",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "a520bbc8-437c-4548-b29a-cb13c899f171",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "a5c6dc00-2717-4b93-a3ef-68d0be079dbf",
+    "match_id": "db3710c5-123b-44f3-acb8-61f6dd77b55a",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-19T17:53:06.351645+00:00",
+    "updated_at": "2025-04-19T17:53:06.351645+00:00"
+  },
+  {
+    "id": "a6503c87-e56a-46c7-b2b4-2200e4ef49f5",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "a6aef239-ee55-4e8f-b057-55aed20b2b88",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "a7240682-6896-4ae5-beaf-8a86dd885a53",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "a7d2066e-9f8e-44c8-b70e-77d206e31bb0",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "a8167804-91a8-4df4-9a1a-f200a31d508c",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "a872caa1-fe38-4d6d-9d72-252fcea5e543",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "a88303e8-2ccb-4f52-97d3-79d38b93b8bb",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "a8fd444e-d4df-4100-a798-698d5c094f62",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "a909284d-f6e1-4b7d-abb3-346724156a72",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "a96c0a77-eb51-4ec5-afa4-ac079442eb28",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "a9b1c90f-e4e1-452c-aafc-9436e3ca6f34",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "aafb98c2-0b45-45dc-a5a7-4330cf7e3905",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "ab0123f7-9ee1-4b23-b33b-561c013a5906",
+    "match_id": "7e27ca51-4476-4302-bfad-ca20ff5a0622",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-07T01:14:26.109711+00:00",
+    "updated_at": "2025-04-07T01:14:26.109711+00:00"
+  },
+  {
+    "id": "ab0f6bc3-646e-4732-9856-0290c20a63ef",
+    "match_id": "b8ca23d7-2f34-4aa2-b8a3-589e85ff35e7",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-05-09T02:44:01.100882+00:00",
+    "updated_at": "2025-05-09T02:44:01.100882+00:00"
+  },
+  {
+    "id": "ab17a7c4-790f-46b3-8760-fb7dbcedefa9",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "abc2f114-ebfe-4259-8308-e699b9fe6421",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "ac24b07d-19e7-4d17-b40c-a0d94413e7ec",
+    "match_id": "e5908d54-5d0e-4d36-a293-179d6ccafad8",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-27T02:22:17.079724+00:00",
+    "updated_at": "2025-04-27T02:22:17.079724+00:00"
+  },
+  {
+    "id": "acb6e9a9-30f5-4599-aa63-de73a819ac72",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "ad2c6c72-6d68-454e-aeda-04a21c8188dc",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "adffacf2-6749-48a1-934d-720a7638297e",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "af0a99f1-9bec-4011-ae7e-081a5b8a2189",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "af249c95-8c8d-4381-8110-d1356acb6fef",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 9,
+    "result": "tie",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "af427862-a503-4209-a6f0-959fe26552a2",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "af9353fa-2a07-4202-88db-95b3d2620ce9",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 17,
+    "result": "loss",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "b01c26f6-3459-46df-ac4a-70c1f6750a93",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "b085ec25-8bef-4d7b-a7c0-4c73eb6fc273",
+    "match_id": "48dc4fe0-60b4-4dac-aaa4-4cac53e9c73d",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-05-05T02:48:53.098077+00:00",
+    "updated_at": "2025-05-05T02:48:53.098077+00:00"
+  },
+  {
+    "id": "b0b73434-01d1-4276-9616-ab84cf232387",
+    "match_id": "e5547292-5437-4766-9cbc-198559fa8982",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-05-09T02:22:41.431962+00:00",
+    "updated_at": "2025-05-09T02:22:41.431962+00:00"
+  },
+  {
+    "id": "b0e6b1ed-e4c4-4b1a-ba7d-4b97eb15e8dd",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "b17830ea-ea61-4611-9c76-ea81816250d2",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "b1a0f97b-6a15-40fa-bf3c-41abc5cc51dd",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "b22f3a45-1ef6-4176-81c3-74bf6f3fdb9d",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "b286e384-ae7e-4537-bd81-0e20c1a3c2ed",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "b2a541b4-dc48-489a-a560-5922949dd750",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "b34e6b79-bfe9-4eee-86e0-046cdfa9f307",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "b3fb93b0-a1e2-424f-a03f-6e2beacb6e34",
+    "match_id": "d4e6a691-1148-469f-9164-6113e70a6566",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-07T01:40:31.468991+00:00",
+    "updated_at": "2025-04-07T01:40:31.468991+00:00"
+  },
+  {
+    "id": "b51dc853-81f1-41a5-b0aa-ff371684d9d2",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "b5d99e48-358f-4c04-b062-43bbad5c61de",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 17,
+    "result": "win",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "b6245f03-319f-4a97-89b4-2d0054b1e60e",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "b662852f-2c9d-4702-9129-0166c45d3ab9",
+    "match_id": "811b6ac6-dcdd-441c-99ab-6271424c7914",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-07T19:21:46.880324+00:00",
+    "updated_at": "2025-04-07T19:21:46.880324+00:00"
+  },
+  {
+    "id": "b9cf0d2f-51b9-432e-a58b-69879f43f4a9",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "ba567017-8c38-4f81-b853-f394d80d3fe0",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "bb1f4180-bdd5-45ab-92ad-4e06725d6d49",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "bba6a270-8cb2-4b57-97dd-6fab5fdff352",
+    "match_id": "8c955bbc-648e-4c45-8dbc-cb56fe6f8162",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-23T01:54:28.047795+00:00",
+    "updated_at": "2025-04-23T01:54:28.047795+00:00"
+  },
+  {
+    "id": "bbb4f76f-d798-4f6d-ab5d-9fc143de4b02",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "bc58f3a4-9d74-4426-ab21-d187968a96a2",
+    "match_id": "15d5ceff-5c4a-48c4-8012-79f5f9ab5d74",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-19T18:11:32.911124+00:00",
+    "updated_at": "2025-04-19T18:11:32.911124+00:00"
+  },
+  {
+    "id": "bc5eeb6d-8035-4b49-852c-66f5e58eac02",
+    "match_id": "f233bbf1-bb9c-48f4-b382-5f014286c854",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-05-02T03:55:33.296286+00:00",
+    "updated_at": "2025-05-02T03:55:33.296286+00:00"
+  },
+  {
+    "id": "bccaf192-63e8-42db-be78-92409f946b04",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "bce954b3-0ba1-4b6a-a389-cca2341b6540",
+    "match_id": "47f2b89c-2536-42b8-af1e-5df7d95c0ae6",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-05-05T01:53:53.807627+00:00",
+    "updated_at": "2025-05-05T01:53:53.807627+00:00"
+  },
+  {
+    "id": "be97c5c9-a78d-4c5c-be60-110b28440fc0",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "bf29c547-ef57-4e66-a746-5589edace253",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "bf6adde3-6f07-4b9e-9b6b-3e8454d318b2",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "c01474e5-80ad-495b-8c8f-1a04054cde02",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "c07e490c-ac93-427c-b8d9-de1b9abf61d5",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "c0999e83-e187-4e72-9b2a-907edf6951ce",
+    "match_id": "f68ca2c4-ab88-49a9-bce2-65578163b7e0",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-20T02:26:18.662453+00:00",
+    "updated_at": "2025-04-20T02:26:18.662453+00:00"
+  },
+  {
+    "id": "c0e9947c-974f-494a-8fd2-bf65da4f2572",
+    "match_id": "f233bbf1-bb9c-48f4-b382-5f014286c854",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-05-02T03:55:33.296286+00:00",
+    "updated_at": "2025-05-02T03:55:33.296286+00:00"
+  },
+  {
+    "id": "c112b83f-bdcc-4fb2-bb10-0cb1e11c45d3",
+    "match_id": "c67a048d-140c-4c62-9ff6-cff50007ac7f",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-04-19T18:05:58.259925+00:00",
+    "updated_at": "2025-04-19T18:05:58.259925+00:00"
+  },
+  {
+    "id": "c15e0007-365a-4688-85c5-5bf778cf361e",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "c17ea1c8-967e-4e3c-86d1-80100c86e5f1",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "c1a4f595-bad9-4aaa-a39f-62bd380c3893",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 18,
+    "result": "loss",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "c1b2657f-3c29-4e9c-976f-ffa75dde42f7",
+    "match_id": "5a1e1c3f-8f95-427b-9306-6efbb46669aa",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-04-07T01:36:04.694189+00:00",
+    "updated_at": "2025-04-07T01:36:04.694189+00:00"
+  },
+  {
+    "id": "c2a74431-a80a-4763-abbc-2f05af234e85",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "c2d4c364-b028-406e-aa5b-3900fd430cd8",
+    "match_id": "89d792ce-0950-4390-8646-b3a16ab91bad",
+    "hole_number": 18,
+    "result": "win",
+    "created_at": "2025-04-19T18:09:39.160217+00:00",
+    "updated_at": "2025-04-19T18:09:39.160217+00:00"
+  },
+  {
+    "id": "c450fa20-c077-4c0a-b6d1-f95720e66008",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 13,
+    "result": "tie",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "c4d3d200-29ed-429b-960a-327460096349",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "c4e26463-25be-401f-964f-44e8e61d9fb4",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "c52868e7-eee5-437d-aa88-035ab396d151",
+    "match_id": "32d34a9f-f9d6-4c8d-9b19-888051103fec",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-07T00:36:09.867803+00:00",
+    "updated_at": "2025-04-07T00:36:09.867803+00:00"
+  },
+  {
+    "id": "c570f36f-61cd-45a1-82a2-d3587ea0f3fe",
+    "match_id": "8961280f-8689-4c1b-a717-5c203f51cca1",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-22T02:45:22.945568+00:00",
+    "updated_at": "2025-04-22T02:45:22.945568+00:00"
+  },
+  {
+    "id": "c594913f-9ad3-48ca-906a-75d6bba22f8d",
+    "match_id": "d449178a-20b9-4ad5-92ae-6e6afa42c980",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-07T01:32:51.496683+00:00",
+    "updated_at": "2025-04-07T01:32:51.496683+00:00"
+  },
+  {
+    "id": "c705bdd3-2e84-4711-a847-4c4cbe9eb957",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "c7103dc0-4e4a-4de4-924e-5528926e5a7c",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "c7230687-b678-43f4-b32f-08812b670ebd",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "c771f26f-df77-4fcb-b0bc-182f02511687",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "c79a4e8b-077e-49b8-b113-462662c2a91b",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "c8afcb85-e5e6-4c59-918e-701d307c3d9b",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "c8d218dd-e44f-49df-9c93-207e7c6b7a01",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "ca44e04e-53cb-4073-b338-56cfff754a28",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 15,
+    "result": "tie",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "ca46543b-ad36-4551-9325-64265939d2ec",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "ca5c6755-5a22-495e-9bce-06f96364cd7b",
+    "match_id": "c896dab9-4bb2-4919-85c9-2df2cc829771",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-07T00:27:30.672757+00:00",
+    "updated_at": "2025-04-07T00:27:30.672757+00:00"
+  },
+  {
+    "id": "ca7fc171-51e0-41bc-8284-e2225f91f464",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 9,
+    "result": "win",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "cb2362ac-fcae-460b-88f5-6b24d17c5d15",
+    "match_id": "c9ff514a-8b9b-4b4e-8b56-7d8c8ac725c3",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-23T02:19:34.207094+00:00",
+    "updated_at": "2025-04-23T02:19:34.207094+00:00"
+  },
+  {
+    "id": "cb3a639a-1497-4c7b-bca6-f6fc14815589",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 9,
+    "result": "loss",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "cb46c633-d36a-4ff7-b3ea-170c470f7c75",
+    "match_id": "513a4a06-d6e0-45ca-a872-3228d485b8e3",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-05-14T02:33:38.951679+00:00",
+    "updated_at": "2025-05-14T02:33:38.951679+00:00"
+  },
+  {
+    "id": "cc69097d-8355-4f2c-8e7b-f158689fed61",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "cccad938-7c21-4005-806b-8672edd64cf2",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 18,
+    "result": "tie",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "cd27745f-859a-496f-b0a5-810901dde60e",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "cda21c0e-15b4-4870-a23f-107ebb025acb",
+    "match_id": "15d5ceff-5c4a-48c4-8012-79f5f9ab5d74",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-19T18:11:32.911124+00:00",
+    "updated_at": "2025-04-19T18:11:32.911124+00:00"
+  },
+  {
+    "id": "ce4d8746-0e07-4882-8815-66c78e926f3b",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "cec13cf9-9edf-4883-8a60-a5cf55285275",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "cef09a86-a843-4195-96e7-1bf5dbd7718b",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "cef860b2-fdb1-4ea2-8724-8d93450b1044",
+    "match_id": "b1d5b044-056f-46fb-bfef-4486f7a192de",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-22T01:46:08.361641+00:00",
+    "updated_at": "2025-04-22T01:46:08.361641+00:00"
+  },
+  {
+    "id": "cf6e2dc3-fb00-4db5-be26-78ab89e97c73",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 6,
+    "result": "win",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "d19bb3ce-5a66-4d15-b610-1befd6dee719",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "d1c25dc9-f04d-4271-a8e1-1420d1c45989",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "d1d8e150-ff44-47cb-be21-976e3f0fc572",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 9,
+    "result": "loss",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "d2406af5-34ec-4377-849c-c54123d22dba",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 5,
+    "result": "tie",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "d2ec2a81-cbd2-4dc0-9986-d4f8d9319cf9",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 14,
+    "result": "tie",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "d3c9cba2-09cb-4df3-a4bf-621a2e51eec0",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "d48cc1e7-5fc4-4805-bab5-505a9d87cfd6",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "d550eca6-d6bb-4c0c-b151-c52dd47febf6",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "d5dbf464-2382-4445-86ac-19cce919d779",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "d5f1d828-3243-40ee-bced-2465d17cb5b6",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 1,
+    "result": "loss",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "d62b06cb-fcc1-4a75-8035-0f47cd7a953b",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 18,
+    "result": "win",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "d6c53f3e-ea95-43c8-aa7a-529db89e2e39",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "d6fc96f5-ab21-469e-9fba-61428c6455b9",
+    "match_id": "a21dbde4-3cf4-4b83-9486-751f93350a34",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-19T17:51:17.350651+00:00",
+    "updated_at": "2025-04-19T17:51:17.350651+00:00"
+  },
+  {
+    "id": "d72dee4b-6952-4db4-818f-b266e6b60022",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "d7db9bc6-b01a-4e9c-bf0a-cdd05403beea",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "d7de7ab8-5f76-4cb8-b7c9-b3d7a9fb58e0",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "d80db2d4-8ccb-4764-a0ce-5918aa9dd361",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "d850442b-0724-43fe-91d5-bc7671a8f5bc",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "d850efdc-2d07-4a93-8936-68b85d14410c",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 8,
+    "result": "win",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "d8ae1f7a-6412-434c-a0dc-eede008ef1b7",
+    "match_id": "a21dbde4-3cf4-4b83-9486-751f93350a34",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-19T17:51:17.350651+00:00",
+    "updated_at": "2025-04-19T17:51:17.350651+00:00"
+  },
+  {
+    "id": "d8e49c10-9c80-4f7f-ae8f-e18ba2ea8379",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "d91dc3a8-207f-4973-8dcb-ecf288dddf5d",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "d94b813f-3bae-4e93-8567-9051472c6d52",
+    "match_id": "9cfd3d17-5cd4-44f2-a0b7-7035a34c6691",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-05-11T04:34:52.971143+00:00",
+    "updated_at": "2025-05-11T04:34:52.971143+00:00"
+  },
+  {
+    "id": "d97c168a-bbc1-4564-a602-a69da3a7c951",
+    "match_id": "12d8c3ab-9fbc-432c-9dbc-22af5bbf2189",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-20T02:31:50.212137+00:00",
+    "updated_at": "2025-04-20T02:31:50.212137+00:00"
+  },
+  {
+    "id": "da291d7c-4af9-4c60-8eec-3fa7b268a416",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  },
+  {
+    "id": "db470b0c-0555-424d-bdb3-32f41741245f",
+    "match_id": "8e18e024-839b-47c2-9e90-9a3332b61b93",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-04-20T02:38:26.12993+00:00",
+    "updated_at": "2025-04-20T02:38:26.12993+00:00"
+  },
+  {
+    "id": "db7d892d-ffde-4f32-b874-81df7f0b41e8",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 14,
+    "result": "win",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "db83826a-d05c-45ba-9240-1e7145686f6b",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 2,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "dbb075ea-da2b-481d-997a-45ec153c8a3e",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "dc343d6f-0662-4048-9dc3-7acf0fde73ac",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "dc627bcb-b745-45ea-927a-6ceff9c583a9",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "dc8880d4-deef-43aa-876c-446c03604b53",
+    "match_id": "15d5ceff-5c4a-48c4-8012-79f5f9ab5d74",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-04-19T18:11:32.911124+00:00",
+    "updated_at": "2025-04-19T18:11:32.911124+00:00"
+  },
+  {
+    "id": "dd448165-0504-4bb9-9358-4fbedb1a9979",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "de2561b1-7ebc-48d1-be45-07f94cab23a5",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "de9c144b-768e-4d92-854d-ea983f78e7e0",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "dfa936ec-f7b0-4642-b411-a134c36b3e4b",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 10,
+    "result": "tie",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "dfd47b87-8529-446e-af77-6c6a4ed22419",
+    "match_id": "31299ef5-2a3c-4af5-a469-47dce00836e8",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-18T21:02:25.636011+00:00",
+    "updated_at": "2025-04-18T21:02:25.636011+00:00"
+  },
+  {
+    "id": "dfe6b298-abe1-4c89-b960-93d647161f76",
+    "match_id": "152d0601-9fa1-4b78-a1db-211ce516d8c0",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-22T01:12:21.472412+00:00",
+    "updated_at": "2025-04-22T01:12:21.472412+00:00"
+  },
+  {
+    "id": "e024b261-76d5-4c1d-b246-9bdfc3603172",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "e0362f65-13d6-4a97-88c6-e7c7ba0ef220",
+    "match_id": "5a1e1c3f-8f95-427b-9306-6efbb46669aa",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-07T01:36:04.694189+00:00",
+    "updated_at": "2025-04-07T01:36:04.694189+00:00"
+  },
+  {
+    "id": "e077fdae-4eef-42b6-903e-beae7e1905d8",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "e08a9d7d-b997-46fb-af56-765b26679dae",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "e0a7032c-0f6e-41aa-b10b-0bd700c90bc9",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "e0faf342-9c53-47de-9deb-85d0e88dc55b",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "e147d9f2-f55f-4403-bbdb-ad396082633a",
+    "match_id": "6042c2cd-cf65-4afc-b26a-5ec9724bf1cb",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-04-07T00:39:48.229737+00:00",
+    "updated_at": "2025-04-07T00:39:48.229737+00:00"
+  },
+  {
+    "id": "e1534404-03b8-4dc2-b9d0-8dabb19cc8af",
+    "match_id": "a21dbde4-3cf4-4b83-9486-751f93350a34",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-19T17:51:17.350651+00:00",
+    "updated_at": "2025-04-19T17:51:17.350651+00:00"
+  },
+  {
+    "id": "e1d3dd7f-65fc-498f-890d-295ce9b2532b",
+    "match_id": "25c385f5-1ddd-4caf-8c2e-4cc634e0a538",
+    "hole_number": 7,
+    "result": "tie",
+    "created_at": "2025-05-12T02:56:14.364285+00:00",
+    "updated_at": "2025-05-12T02:56:14.364285+00:00"
+  },
+  {
+    "id": "e1e61718-e898-49e8-95fe-906bc52d931e",
+    "match_id": "529445dd-338b-4792-8f8c-4907841c1a2f",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-07T19:11:09.245071+00:00",
+    "updated_at": "2025-04-07T19:11:09.245071+00:00"
+  },
+  {
+    "id": "e26c82b5-4bf9-4340-a86e-b4ef956b6711",
+    "match_id": "d3f4f62f-c517-4a04-bcff-95ba9bddb8fc",
+    "hole_number": 9,
+    "result": null,
+    "created_at": "2025-04-07T19:01:51.174723+00:00",
+    "updated_at": "2025-04-07T19:01:51.174723+00:00"
+  },
+  {
+    "id": "e278562c-0095-462a-81a1-1c6c6c43fcd8",
+    "match_id": "9df3a4fe-82c4-44aa-9359-96b2b1908de4",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-24T02:50:25.855681+00:00",
+    "updated_at": "2025-04-24T02:50:25.855681+00:00"
+  },
+  {
+    "id": "e2bc0ac6-4383-430f-a842-67e426b0fb34",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "e2ecf9e9-bd1e-44f8-aace-eb2e6b2ba2c1",
+    "match_id": "c9ff514a-8b9b-4b4e-8b56-7d8c8ac725c3",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-23T02:19:34.207094+00:00",
+    "updated_at": "2025-04-23T02:19:34.207094+00:00"
+  },
+  {
+    "id": "e36bf97a-72ea-446d-9cd7-f37fb3097f7c",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "e3781694-3b8e-4ffe-aa1f-e61186173157",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 5,
+    "result": "loss",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "e39a8789-464b-4434-bae7-83730886600c",
+    "match_id": "83712078-ccf9-4ccd-a296-df7ac8615e9d",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-24T02:15:19.39883+00:00",
+    "updated_at": "2025-04-24T02:15:19.39883+00:00"
+  },
+  {
+    "id": "e4a2dcfa-02cc-4a63-bdb8-c9f7a47f0f28",
+    "match_id": "b951974b-0222-4c56-abe4-014440363d8f",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-05-08T03:46:50.605751+00:00",
+    "updated_at": "2025-05-08T03:46:50.605751+00:00"
+  },
+  {
+    "id": "e4bdd319-bd28-4dfb-9680-c195793ced20",
+    "match_id": "a33b17dc-6be1-4eb7-8a75-1fe2189eb1ec",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-19T18:16:39.568901+00:00",
+    "updated_at": "2025-04-19T18:16:39.568901+00:00"
+  },
+  {
+    "id": "e4cc655f-c515-49e4-bbb6-1d0b0c1a0ddb",
+    "match_id": "d5441de9-df29-454e-8ca4-3db1bef9ca20",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-22T01:08:01.986302+00:00",
+    "updated_at": "2025-04-22T01:08:01.986302+00:00"
+  },
+  {
+    "id": "e532d9cf-3e44-49d1-839f-00d6a819dca3",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 7,
+    "result": "win",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "e58cf865-7a51-40ae-a09d-db6e966d8d33",
+    "match_id": "6099d26b-ca23-4b02-a71d-f0e86d80b71a",
+    "hole_number": 9,
+    "result": "loss",
+    "created_at": "2025-04-07T01:28:59.854232+00:00",
+    "updated_at": "2025-04-07T01:28:59.854232+00:00"
+  },
+  {
+    "id": "e59dba99-4631-40be-9c89-a8d717b67020",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 16,
+    "result": "win",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "e5d9e6fe-2b41-4688-b423-8fad1a5becf5",
+    "match_id": "3686421e-e9fc-47d5-8886-d5f6f59e8046",
+    "hole_number": 5,
+    "result": "win",
+    "created_at": "2025-04-07T19:18:22.251883+00:00",
+    "updated_at": "2025-04-07T19:18:22.251883+00:00"
+  },
+  {
+    "id": "e5e2e751-0127-42f6-beda-88e54e689ec6",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 17,
+    "result": "tie",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "e62afc77-0c0f-46dc-bbbe-f9d9593dc757",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "e6eaf963-a23e-42cf-aa97-9ee1097daf21",
+    "match_id": "5d112d39-ebf4-4509-8595-32713e6cd61f",
+    "hole_number": 8,
+    "result": "win",
+    "created_at": "2025-04-07T01:48:19.491152+00:00",
+    "updated_at": "2025-04-07T01:48:19.491152+00:00"
+  },
+  {
+    "id": "e727d804-fdf7-413c-b376-b26f88234a93",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 16,
+    "result": "tie",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "e74d9c6d-0cc8-455f-ad8a-b728bb8d1ef5",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 15,
+    "result": "win",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "e8277b7c-80d9-4e9a-86eb-ff2c7884d3ee",
+    "match_id": "6277bd19-7dcd-4b60-895b-02c737cda493",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-07T01:45:16.477581+00:00",
+    "updated_at": "2025-04-07T01:45:16.477581+00:00"
+  },
+  {
+    "id": "e8f26cf5-e800-49d5-afd1-1c075ecbbc5c",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "e95ae6ef-890c-4ac8-9f9c-a49b58d59f4b",
+    "match_id": "d2481864-2097-4a91-bd08-d6db6ae965e4",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-20T02:20:27.787147+00:00",
+    "updated_at": "2025-04-20T02:20:27.787147+00:00"
+  },
+  {
+    "id": "e9ac0a31-ef48-409e-a049-aea9faf71ee5",
+    "match_id": "db3710c5-123b-44f3-acb8-61f6dd77b55a",
+    "hole_number": 6,
+    "result": "loss",
+    "created_at": "2025-04-19T17:53:06.351645+00:00",
+    "updated_at": "2025-04-19T17:53:06.351645+00:00"
+  },
+  {
+    "id": "ea5838fb-b78f-46d5-9ef6-58607ba20af3",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 8,
+    "result": "tie",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "ea657e80-90d4-4b02-b81d-01f7097fb964",
+    "match_id": "12d8c3ab-9fbc-432c-9dbc-22af5bbf2189",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-20T02:31:50.212137+00:00",
+    "updated_at": "2025-04-20T02:31:50.212137+00:00"
+  },
+  {
+    "id": "ec40ddea-edb9-4fb1-b9e4-4f5dcb764e71",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 12,
+    "result": "tie",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "ec860240-dffe-4773-8655-e2cd6523c53f",
+    "match_id": "72e38785-19c5-421b-aedd-f6917e4da6e1",
+    "hole_number": 12,
+    "result": "win",
+    "created_at": "2025-04-22T02:14:54.575249+00:00",
+    "updated_at": "2025-04-22T02:14:54.575249+00:00"
+  },
+  {
+    "id": "ed08dd0f-737a-433e-867c-81d41441db08",
+    "match_id": "768abb80-be85-4768-806c-b284532f9aee",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-20T02:02:57.417442+00:00",
+    "updated_at": "2025-04-20T02:02:57.417442+00:00"
+  },
+  {
+    "id": "ed2c86fa-f504-4a80-8bbc-463524e21898",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 16,
+    "result": "win",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "ed50717f-3f8c-4c17-b5ea-a5a0386eca2c",
+    "match_id": "d658f3a2-1ed8-4466-baed-5b63aac0cd25",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-19T18:02:20.656429+00:00",
+    "updated_at": "2025-04-19T18:02:20.656429+00:00"
+  },
+  {
+    "id": "eda47d49-ba47-49f1-8e39-295ea4f224cb",
+    "match_id": "822f281c-9100-433a-9899-af7c0f4dabf0",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-20T02:34:48.18077+00:00",
+    "updated_at": "2025-04-20T02:34:48.18077+00:00"
+  },
+  {
+    "id": "ef0d77e1-9197-4e8c-b39c-a34ed1aa4760",
+    "match_id": "9e88e892-e51b-4518-93f8-76b3114bf598",
+    "hole_number": 7,
+    "result": "loss",
+    "created_at": "2025-05-14T02:18:54.522344+00:00",
+    "updated_at": "2025-05-14T02:18:54.522344+00:00"
+  },
+  {
+    "id": "f1000a2d-b708-47cc-a50d-98789661bcaf",
+    "match_id": "7b7bce8c-f261-4cf0-8b59-af5a2983d418",
+    "hole_number": 13,
+    "result": "loss",
+    "created_at": "2025-04-07T01:43:32.422823+00:00",
+    "updated_at": "2025-04-07T01:43:32.422823+00:00"
+  },
+  {
+    "id": "f111dbf0-0741-4273-a133-eed1f19fe4ea",
+    "match_id": "63dc5d2e-e6aa-46c5-b620-cd695450e187",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-07T19:32:25.86158+00:00",
+    "updated_at": "2025-04-07T19:32:25.86158+00:00"
+  },
+  {
+    "id": "f2573b0f-be59-4587-b44e-c3e775a5257d",
+    "match_id": "c34c2170-b245-452b-bfb5-2c925cd95082",
+    "hole_number": 12,
+    "result": "loss",
+    "created_at": "2025-04-07T00:48:30.341935+00:00",
+    "updated_at": "2025-04-07T00:48:30.341935+00:00"
+  },
+  {
+    "id": "f28bdd29-d473-472c-b7bd-097db67c1494",
+    "match_id": "208b7179-4d3f-4853-acf5-5e69fd9f2bab",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-20T02:13:00.141443+00:00",
+    "updated_at": "2025-04-20T02:13:00.141443+00:00"
+  },
+  {
+    "id": "f2c5946e-d63a-4769-9600-8e275e677230",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 3,
+    "result": "loss",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "f2fe7a51-b6b5-4c38-bd1b-fdfe5f53a562",
+    "match_id": "550e3359-f3cf-45c8-ab02-2c3352564a00",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-05-05T02:20:42.047148+00:00",
+    "updated_at": "2025-05-05T02:20:42.047148+00:00"
+  },
+  {
+    "id": "f3c98325-8b56-4beb-b2c0-7bbab90dee77",
+    "match_id": "c3c2a105-58d3-42d0-ad24-8deb5cda2175",
+    "hole_number": 11,
+    "result": "tie",
+    "created_at": "2025-04-15T15:08:09.997218+00:00",
+    "updated_at": "2025-04-15T15:08:09.997218+00:00"
+  },
+  {
+    "id": "f4bf13c4-866d-42af-ac02-fdda4c309796",
+    "match_id": "650a2929-1e9b-4752-822e-15afacb3069c",
+    "hole_number": 3,
+    "result": "win",
+    "created_at": "2025-04-23T02:41:29.913617+00:00",
+    "updated_at": "2025-04-23T02:41:29.913617+00:00"
+  },
+  {
+    "id": "f4c81ed8-b42a-452d-9a03-b4d32979a2bc",
+    "match_id": "1c724447-69c7-434a-a06f-44997ba618b3",
+    "hole_number": 14,
+    "result": "loss",
+    "created_at": "2025-05-12T02:30:46.896456+00:00",
+    "updated_at": "2025-05-12T02:30:46.896456+00:00"
+  },
+  {
+    "id": "f51ede4b-078e-42e8-86ec-5f1d259aa484",
+    "match_id": "11c23658-f560-491c-b4f8-8609c6421b3c",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-18T21:12:33.578673+00:00",
+    "updated_at": "2025-04-18T21:12:33.578673+00:00"
+  },
+  {
+    "id": "f5e8b19c-2b2d-45b4-aca9-b2da99118b78",
+    "match_id": "04bac300-4886-4d9e-a410-e3c90e4702b0",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-19T18:04:04.34583+00:00",
+    "updated_at": "2025-04-19T18:04:04.34583+00:00"
+  },
+  {
+    "id": "f5ef7bbb-4e17-499a-8e10-464ea82a059d",
+    "match_id": "d1e2ce6a-9e52-4de4-ab5a-b5559c250807",
+    "hole_number": 16,
+    "result": "loss",
+    "created_at": "2025-04-27T02:02:42.901708+00:00",
+    "updated_at": "2025-04-27T02:02:42.901708+00:00"
+  },
+  {
+    "id": "f834772d-2d0d-4308-90cf-e0cd72b21cb2",
+    "match_id": "8344f63a-9e83-4067-8951-3f7f8a6f0c44",
+    "hole_number": 8,
+    "result": "loss",
+    "created_at": "2025-04-07T00:52:02.575646+00:00",
+    "updated_at": "2025-04-07T00:52:02.575646+00:00"
+  },
+  {
+    "id": "f83d22d6-2a54-4a5b-9a25-7c80f0495162",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 4,
+    "result": "loss",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "f84fd0b2-0a7f-444f-9ee1-838687c25603",
+    "match_id": "b13c6441-ac1e-4f41-9263-338e59baa255",
+    "hole_number": 6,
+    "result": "tie",
+    "created_at": "2025-04-24T03:18:49.454913+00:00",
+    "updated_at": "2025-04-24T03:18:49.454913+00:00"
+  },
+  {
+    "id": "f8611653-3920-4576-b8ad-ea93deea196e",
+    "match_id": "7c7e8370-4099-4dc3-98f2-48519c0af26a",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-19T17:48:02.844878+00:00",
+    "updated_at": "2025-04-19T17:48:02.844878+00:00"
+  },
+  {
+    "id": "f91791a4-6fae-4e30-90ff-e6b6f170ec19",
+    "match_id": "576054c1-1c46-422e-9b19-01da3de0bff3",
+    "hole_number": 4,
+    "result": "tie",
+    "created_at": "2025-04-19T18:00:16.28152+00:00",
+    "updated_at": "2025-04-19T18:00:16.28152+00:00"
+  },
+  {
+    "id": "faae4fd5-a127-4ecd-932c-a25d2f755d0c",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "fb19ee0c-5464-445e-83a5-6f28338baad7",
+    "match_id": "e5908d54-5d0e-4d36-a293-179d6ccafad8",
+    "hole_number": 1,
+    "result": "win",
+    "created_at": "2025-04-27T02:22:17.079724+00:00",
+    "updated_at": "2025-04-27T02:22:17.079724+00:00"
+  },
+  {
+    "id": "fb93d8c0-c918-4f2c-8974-1831f6bb4e7b",
+    "match_id": "912a1575-1ab7-4dec-98a1-cdf02a899d3a",
+    "hole_number": 15,
+    "result": "loss",
+    "created_at": "2025-04-27T02:47:33.165365+00:00",
+    "updated_at": "2025-04-27T02:47:33.165365+00:00"
+  },
+  {
+    "id": "fb973b3b-80ed-4142-bab0-e45475b91a46",
+    "match_id": "07115ee5-bda1-476c-94e0-7e553774ec02",
+    "hole_number": 4,
+    "result": "win",
+    "created_at": "2025-04-22T01:05:36.279346+00:00",
+    "updated_at": "2025-04-22T01:05:36.279346+00:00"
+  },
+  {
+    "id": "fb9cb4e4-3db5-43df-a022-e3ac0373cc6d",
+    "match_id": "65b781b9-1f38-4f29-806f-c28463addc53",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-07T19:28:31.959344+00:00",
+    "updated_at": "2025-04-07T19:28:31.959344+00:00"
+  },
+  {
+    "id": "fbea4653-dfce-4afa-ba50-b808afc617da",
+    "match_id": "33394071-ba4f-4bcc-8bde-69a6bcb51343",
+    "hole_number": 11,
+    "result": "win",
+    "created_at": "2025-05-08T04:13:53.444478+00:00",
+    "updated_at": "2025-05-08T04:13:53.444478+00:00"
+  },
+  {
+    "id": "fbf09751-9d5b-4f69-b987-3b2617c2e7f4",
+    "match_id": "46ea99ad-55d3-4db9-99f7-c35d37b7b230",
+    "hole_number": 2,
+    "result": "loss",
+    "created_at": "2025-04-20T02:06:42.549785+00:00",
+    "updated_at": "2025-04-20T02:06:42.549785+00:00"
+  },
+  {
+    "id": "fcf9469c-b97e-488e-863c-9e0106749225",
+    "match_id": "7b265b14-cf8b-4f8c-b986-f4ef9a49f8a7",
+    "hole_number": 11,
+    "result": "loss",
+    "created_at": "2025-04-20T02:29:38.714027+00:00",
+    "updated_at": "2025-04-20T02:29:38.714027+00:00"
+  },
+  {
+    "id": "fd05e454-aa4e-4f5d-a71e-2962b0c6a357",
+    "match_id": "7e27ca51-4476-4302-bfad-ca20ff5a0622",
+    "hole_number": 2,
+    "result": "win",
+    "created_at": "2025-04-07T01:14:26.109711+00:00",
+    "updated_at": "2025-04-07T01:14:26.109711+00:00"
+  },
+  {
+    "id": "fe185452-6285-467a-8785-767fcabe862b",
+    "match_id": "9a0ea847-08d3-4825-bee8-841692bf3a44",
+    "hole_number": 3,
+    "result": "tie",
+    "created_at": "2025-04-07T00:44:32.804591+00:00",
+    "updated_at": "2025-04-07T00:44:32.804591+00:00"
+  },
+  {
+    "id": "fe4001d1-b961-474c-9980-dbda9fd04d3f",
+    "match_id": "b3284281-2368-4dba-889d-61a636c0ba61",
+    "hole_number": 1,
+    "result": "tie",
+    "created_at": "2025-04-20T02:36:52.200884+00:00",
+    "updated_at": "2025-04-20T02:36:52.200884+00:00"
+  },
+  {
+    "id": "ff7a2aa1-b539-44f0-8164-de76106f78c5",
+    "match_id": "5db90647-8831-4e24-86e5-c7c8b5e2824e",
+    "hole_number": 10,
+    "result": "loss",
+    "created_at": "2025-04-19T18:14:08.070481+00:00",
+    "updated_at": "2025-04-19T18:14:08.070481+00:00"
+  },
+  {
+    "id": "ffe0b3f0-4d95-41b4-9d9a-10d0608923b5",
+    "match_id": "5d6e11c7-2bcf-4560-be93-567c909aa527",
+    "hole_number": 10,
+    "result": "win",
+    "created_at": "2025-04-18T21:10:12.342722+00:00",
+    "updated_at": "2025-04-18T21:10:12.342722+00:00"
+  }
+]

@@ -1,0 +1,926 @@
+[
+  {
+    "id": "00146f97-c39b-4623-812e-522ec548eaa5",
+    "created_at": "2025-05-11T04:34:49.130958+00:00",
+    "team_id": "7231f7c8-4a10-4c69-8128-be5707f80ff0",
+    "player_id": "c6549a03-f512-434f-aa6d-031dc798374a"
+  },
+  {
+    "id": "00326cca-3f5a-4e45-9d8d-246f94a9ddc7",
+    "created_at": "2025-04-07T01:14:06.675039+00:00",
+    "team_id": "b5b319e8-ec8b-4d8e-9d80-383621a516d4",
+    "player_id": "8827df5f-b15c-4a26-87a1-559a3c566fe8"
+  },
+  {
+    "id": "010c27da-9f0c-44a3-b782-3179768625d5",
+    "created_at": "2025-04-27T02:22:13.18839+00:00",
+    "team_id": "c68be599-8581-4d19-82cb-3c9532dfc838",
+    "player_id": "8f27a090-ec66-4f4c-88c5-6dca5b9e8e71"
+  },
+  {
+    "id": "029f2fc9-ec42-4511-9538-cf1ffddf308b",
+    "created_at": "2025-04-07T00:30:02.892858+00:00",
+    "team_id": "7fc2f37d-7e98-4230-af7a-c3af030e549f",
+    "player_id": "eeeea55c-348e-4712-83f2-277c0d40b7da"
+  },
+  {
+    "id": "0326f726-d9a0-468b-8144-ab1f57b53cd3",
+    "created_at": "2025-05-09T02:43:58.254993+00:00",
+    "team_id": "3d16091c-457d-422a-9eb9-459d5e8876d6",
+    "player_id": "d99d025a-e365-4ae2-b7df-82e977106db2"
+  },
+  {
+    "id": "03683271-8af1-4875-8b60-97a238f3d210",
+    "created_at": "2025-04-20T02:36:09.50627+00:00",
+    "team_id": "6db93022-33ab-4b1a-8e9b-6efe81b09c20",
+    "player_id": "676364d2-573b-4ec2-a56d-b929f0bcd7fc"
+  },
+  {
+    "id": "03a097f6-b780-4452-90dd-34b353e9bcdc",
+    "created_at": "2025-04-24T02:50:22.016231+00:00",
+    "team_id": "ed7b8493-74bd-48eb-ad91-4992966524f6",
+    "player_id": "ff777604-e875-4f1f-856f-d822e9ac725d"
+  },
+  {
+    "id": "067f4e3c-3aa6-4b7d-b63b-f735b4d7af2d",
+    "created_at": "2025-04-07T01:35:53.402856+00:00",
+    "team_id": "fa0ccbe7-c54e-4dee-94ed-dbabf33f1c34",
+    "player_id": "0cb02eb4-7203-4392-8f82-13e31c62d382"
+  },
+  {
+    "id": "06a2bcc1-fcd8-46c3-aa03-ff064a61e730",
+    "created_at": "2025-04-20T02:20:02.87799+00:00",
+    "team_id": "5d698cf2-4307-4ab7-b150-beaa72b27059",
+    "player_id": "a73eafaa-138c-4cde-ad24-d898bdc76934"
+  },
+  {
+    "id": "074574f9-a245-4853-b134-91ad00bfb603",
+    "created_at": "2025-05-12T02:56:09.97849+00:00",
+    "team_id": "778589fd-8d1d-4a7c-8992-ddd6878f6cea",
+    "player_id": "d0d829de-20cf-4b57-b7d0-022a1cdf9bc2"
+  },
+  {
+    "id": "077a9300-2392-4248-bd99-d9dd6e25bebe",
+    "created_at": "2025-04-24T02:50:22.016231+00:00",
+    "team_id": "ed7b8493-74bd-48eb-ad91-4992966524f6",
+    "player_id": "108d0094-997a-40d7-bb7a-3ac051d70130"
+  },
+  {
+    "id": "08893f7e-29dc-4537-a073-c35ce57323f6",
+    "created_at": "2025-04-07T19:27:56.827745+00:00",
+    "team_id": "c8a2579d-4b14-4e62-8e7f-682532d3727b",
+    "player_id": "00a88f00-61cc-40ac-94d4-eae0be53b7ee"
+  },
+  {
+    "id": "0937cf37-a96a-4985-9d6d-4609cae8771c",
+    "created_at": "2025-05-08T03:46:44.85248+00:00",
+    "team_id": "c37b98ff-34f8-4e09-8385-e7ca0ebbd51c",
+    "player_id": "50720506-4253-48ec-85aa-a0a5ca8ffa45"
+  },
+  {
+    "id": "09b6e130-06a8-4f00-8950-aa11b4931842",
+    "created_at": "2025-05-05T01:53:47.80207+00:00",
+    "team_id": "aedf139e-572d-4bbf-8e51-d1dd9a971d30",
+    "player_id": "2a37c53e-a304-448a-a011-09eb5e47e197"
+  },
+  {
+    "id": "0bd7a414-8635-4b11-8ca8-6703fae062ef",
+    "created_at": "2025-04-22T01:07:32.517749+00:00",
+    "team_id": "ceb58fe0-429b-44ea-a1df-8f55ae39dfd2",
+    "player_id": "1b58443b-b09f-40c6-911a-a701b543f1a7"
+  },
+  {
+    "id": "10697b5b-9c73-4462-8a7d-4709118b8162",
+    "created_at": "2025-04-24T02:15:13.550935+00:00",
+    "team_id": "eaebbcb1-0658-4cd0-ac4b-e3cb71d4ec11",
+    "player_id": "02a52ac0-cafe-4a0c-9263-cce87310e11e"
+  },
+  {
+    "id": "1127c459-ae72-4e5b-aa67-13846ae95d00",
+    "created_at": "2025-04-07T01:47:43.742807+00:00",
+    "team_id": "4b856422-e9fb-43dd-a7a5-b121c6ffd3ac",
+    "player_id": "c63b5372-aabd-4e74-8e8d-de72c7462bbb"
+  },
+  {
+    "id": "162957de-9a60-4c49-9ea6-5da0ca211794",
+    "created_at": "2025-04-27T02:47:29.858495+00:00",
+    "team_id": "d9ab4acb-3162-4db3-9b19-cc75406cff4f",
+    "player_id": "8f27a090-ec66-4f4c-88c5-6dca5b9e8e71"
+  },
+  {
+    "id": "174b3f22-c42e-4534-9a2a-df27a0d07a73",
+    "created_at": "2025-04-15T01:17:07.015086+00:00",
+    "team_id": "4cb9c36f-b9ed-49a0-bf6d-3e72cb080143",
+    "player_id": "10b05e9f-f3c1-49ae-8c4a-d61b1b1023db"
+  },
+  {
+    "id": "17b21f55-025a-42ce-8dbd-74646d8cb4c6",
+    "created_at": "2025-04-22T01:05:09.844991+00:00",
+    "team_id": "5f249445-601a-4eac-86ee-2d516edfec2c",
+    "player_id": "602a39dc-5480-488e-a575-82d959b9cb3d"
+  },
+  {
+    "id": "17e23340-925c-4e82-8761-c885d2c3d2cb",
+    "created_at": "2025-04-15T01:17:07.015086+00:00",
+    "team_id": "4cb9c36f-b9ed-49a0-bf6d-3e72cb080143",
+    "player_id": "1d81f668-3b1f-4a33-8cc3-0142c6be8044"
+  },
+  {
+    "id": "19077452-b4da-4e57-ad1b-c6fb2e9bd6fe",
+    "created_at": "2025-05-05T01:53:47.80207+00:00",
+    "team_id": "aedf139e-572d-4bbf-8e51-d1dd9a971d30",
+    "player_id": "51bedf35-eb44-493f-9cad-1b7efa5ade25"
+  },
+  {
+    "id": "19a12069-1928-46a8-8f5e-59af7ac45f49",
+    "created_at": "2025-04-07T19:07:49.045935+00:00",
+    "team_id": "cc3c3603-2f69-4fae-bcb5-10bf4a115fe8",
+    "player_id": "6bb3fb4f-ae24-45e6-84a1-2b0871ba63ed"
+  },
+  {
+    "id": "1d5c6e6e-87d1-4007-95f1-d84330abc93a",
+    "created_at": "2025-04-20T02:31:48.056517+00:00",
+    "team_id": "610bdfc8-450a-4645-a439-33ed2707bd83",
+    "player_id": "1b6a95de-3cb5-4a43-abf3-6c8e4bc89066"
+  },
+  {
+    "id": "219865fe-babd-43b2-8d95-24abd6f8b17f",
+    "created_at": "2025-05-08T04:13:29.365605+00:00",
+    "team_id": "d5293b1b-c336-480e-9657-6c55676a35b2",
+    "player_id": "da641b7f-0cca-499d-8c3b-030ef6206853"
+  },
+  {
+    "id": "2509ee7e-50f1-486e-9bb7-9973bf5aac48",
+    "created_at": "2025-05-14T02:33:20.399742+00:00",
+    "team_id": "92e254ae-a16f-45b9-aa01-bb54f49e95fd",
+    "player_id": "e9cad3f0-85e0-48ff-9692-c225613d4fcc"
+  },
+  {
+    "id": "25857c6d-499f-470d-9607-c3fdd334a3d2",
+    "created_at": "2025-04-07T01:42:59.906786+00:00",
+    "team_id": "b2025af9-ef83-4060-aa99-79f51796a73a",
+    "player_id": "ec60bc2d-7105-4156-a08d-740c15f7bebb"
+  },
+  {
+    "id": "27eba9f3-4080-4af2-b537-478c944c8403",
+    "created_at": "2025-04-19T18:11:12.072279+00:00",
+    "team_id": "8aa12415-d77d-4b1b-9eb5-6878cc139837",
+    "player_id": "da4a99aa-0c56-4224-b659-4d0ec29a7e81"
+  },
+  {
+    "id": "295d7900-a41a-4faa-8aca-1b4679a9ed62",
+    "created_at": "2025-05-05T02:48:49.911117+00:00",
+    "team_id": "3e4bc6df-3c32-4a70-8219-7ae2410bc549",
+    "player_id": "d3e8531b-6aa4-4b11-b83e-0439d6290917"
+  },
+  {
+    "id": "29deabc7-4a72-44df-b1aa-6bc7eebfa36d",
+    "created_at": "2025-05-09T02:43:58.254993+00:00",
+    "team_id": "3d16091c-457d-422a-9eb9-459d5e8876d6",
+    "player_id": "766bd459-3190-4199-b607-a24ceea772e6"
+  },
+  {
+    "id": "300ac3b6-9601-4373-bb5a-5373d8f35ec8",
+    "created_at": "2025-04-18T21:01:45.09217+00:00",
+    "team_id": "95b986ed-66c5-4db7-bb7b-b21250cce93c",
+    "player_id": "fbe6c47b-bc8f-4c64-aa8b-0da2ba0fbd93"
+  },
+  {
+    "id": "3013be8f-0d3b-4f07-bfaa-da707db26909",
+    "created_at": "2025-04-20T02:26:16.426757+00:00",
+    "team_id": "1a3ae581-47ee-4aaa-8fd9-fa5f3bcc252f",
+    "player_id": "77dfa129-aa2e-4b31-9436-c1e07e137673"
+  },
+  {
+    "id": "31032458-3768-4d65-8f3c-b71f6e75f902",
+    "created_at": "2025-04-07T00:44:06.614597+00:00",
+    "team_id": "5a024068-6824-43f7-92d2-31c2aeaa319b",
+    "player_id": "3ea67dac-3925-4cc6-8f45-16456d04112a"
+  },
+  {
+    "id": "33e0b4c7-c34a-4324-93d0-ee97c4635887",
+    "created_at": "2025-04-19T18:03:32.498203+00:00",
+    "team_id": "8e8ea2a7-9527-49da-a37b-453595d9851a",
+    "player_id": "385c4b17-ea97-478a-8806-c51b5574c5a8"
+  },
+  {
+    "id": "3445833c-31b6-4d1f-96fc-f94b9ec129d4",
+    "created_at": "2025-04-19T17:52:33.709312+00:00",
+    "team_id": "0d68315a-8509-43ac-a1b7-1c974b114235",
+    "player_id": "873413f0-ff2f-464d-8d36-55b36f7c6bc6"
+  },
+  {
+    "id": "3e85c06d-64c6-4505-9a8c-277afaf25761",
+    "created_at": "2025-04-19T18:01:56.776749+00:00",
+    "team_id": "a3b7f4e7-6170-4502-9f5c-2e8aa496a988",
+    "player_id": "fafead40-1cb4-49e3-aca4-247c066b6912"
+  },
+  {
+    "id": "3e9b9071-5d82-4174-b412-714dfb855ad5",
+    "created_at": "2025-05-05T01:58:33.646827+00:00",
+    "team_id": "904b366b-754d-40e9-8e3f-b08f9b21a530",
+    "player_id": "46d68185-c442-4b6f-874c-e1738c5d7b72"
+  },
+  {
+    "id": "3ffefb7a-53de-4e91-ae9c-4e763d60772d",
+    "created_at": "2025-04-27T02:22:13.18839+00:00",
+    "team_id": "c68be599-8581-4d19-82cb-3c9532dfc838",
+    "player_id": "8fc4bde2-615f-448a-bc0c-6635a17fbad1"
+  },
+  {
+    "id": "4067d04a-da61-4a78-88c4-68c228e3d165",
+    "created_at": "2025-05-02T03:55:29.27708+00:00",
+    "team_id": "2f19fc37-96b3-4aa5-80ab-9d66f45030e7",
+    "player_id": "12e4a80b-583e-462c-8a23-98d86e67b61c"
+  },
+  {
+    "id": "4072bca7-6aaf-4c3c-aff8-baa014873286",
+    "created_at": "2025-05-08T04:13:29.365605+00:00",
+    "team_id": "d5293b1b-c336-480e-9657-6c55676a35b2",
+    "player_id": "5aea587d-3e86-4b22-8f8e-6fa44a396cbc"
+  },
+  {
+    "id": "419ab387-d5f8-4f03-847a-aa38357c8bd7",
+    "created_at": "2025-04-07T00:51:33.34989+00:00",
+    "team_id": "a58c0976-97ef-4536-a601-f9355ddd584a",
+    "player_id": "ee7702f2-ed17-4d5a-bdb0-8b8ac8879d9f"
+  },
+  {
+    "id": "4521aa2b-a463-4a54-a7fb-3d1421f1b4fb",
+    "created_at": "2025-05-12T02:30:43.441484+00:00",
+    "team_id": "1b3ce14f-c87d-467a-af18-87b5406487b8",
+    "player_id": "4988a143-3ab7-4915-a3b1-6807054cffde"
+  },
+  {
+    "id": "468bb61a-de49-4ecd-86e9-44739f90bf27",
+    "created_at": "2025-04-19T17:47:56.613873+00:00",
+    "team_id": "4f0ba052-356b-4649-84f5-3b60bf42cdf2",
+    "player_id": "6510e3c4-996c-4d55-bd1e-2fd20cffd715"
+  },
+  {
+    "id": "47c66287-73be-4eae-8535-8aaccbc5f371",
+    "created_at": "2025-05-05T02:20:38.416253+00:00",
+    "team_id": "8ba19e50-a96c-4fa9-ba42-37fab8f6136e",
+    "player_id": "fae03780-a199-41d4-b2e7-ce81f1cc9409"
+  },
+  {
+    "id": "4980fa89-657b-49b0-8aaf-83dd5fa74d89",
+    "created_at": "2025-05-09T02:22:31.902566+00:00",
+    "team_id": "8667f32e-776c-4c1c-8105-ddcea353e0dc",
+    "player_id": "fe837ede-8c75-4114-aa1f-b0dbb5d516c0"
+  },
+  {
+    "id": "4d557fdd-eaf7-4afc-b50f-8464e1b60ccc",
+    "created_at": "2025-04-14T23:15:49.515783+00:00",
+    "team_id": "10d4642d-2ad9-4fc9-bae5-c16893e00243",
+    "player_id": "4e55fa2a-c5b2-4993-bd11-10de9e249135"
+  },
+  {
+    "id": "4e3bbe03-5348-4224-9872-9e75cc2c8721",
+    "created_at": "2025-04-07T00:26:38.665815+00:00",
+    "team_id": "4babab47-bd3b-48c4-aaee-a7ebbf5dc99d",
+    "player_id": "48347627-e8cd-411d-90ef-45b6cd2e1953"
+  },
+  {
+    "id": "4f23841b-16a2-4cbc-a53b-f9eb91ae0d3d",
+    "created_at": "2025-05-14T02:33:20.399742+00:00",
+    "team_id": "92e254ae-a16f-45b9-aa01-bb54f49e95fd",
+    "player_id": "dcdfd421-717a-4f3a-abe3-f69b0b2479c8"
+  },
+  {
+    "id": "4f6e954f-124e-4e2e-8bea-a3feead9ecb1",
+    "created_at": "2025-04-07T01:42:59.906786+00:00",
+    "team_id": "b2025af9-ef83-4060-aa99-79f51796a73a",
+    "player_id": "79bae3df-2bbb-410d-a375-d2309b73a7e1"
+  },
+  {
+    "id": "4f737b6c-db0d-4b7f-9947-c30732369726",
+    "created_at": "2025-04-19T18:07:41.730151+00:00",
+    "team_id": "2e7be379-d74c-4af7-91e3-c604f74d2024",
+    "player_id": "6d241ec2-eb1e-4309-aa30-19bf79481c72"
+  },
+  {
+    "id": "508a33eb-c3f9-4b53-baf9-d55527e1a035",
+    "created_at": "2025-04-19T18:05:25.096704+00:00",
+    "team_id": "be5f5127-2d8d-454c-a7a1-dab8770e0d7e",
+    "player_id": "80095bf3-7005-411e-b501-f4f2f07d055f"
+  },
+  {
+    "id": "50a0f4f8-9bab-44f4-8cc1-cad622ffc54f",
+    "created_at": "2025-04-20T02:02:54.927391+00:00",
+    "team_id": "49b6740f-543b-4ab0-ad1b-aa27518372b6",
+    "player_id": "e456b611-4651-44c6-a53c-cda30df5416b"
+  },
+  {
+    "id": "510c413e-82d2-44f9-abee-2331ebee59c0",
+    "created_at": "2025-04-07T00:47:43.675137+00:00",
+    "team_id": "6e59b579-8eec-4122-88c5-eee51724223a",
+    "player_id": "13862b49-14d3-4beb-9350-12265ed267be"
+  },
+  {
+    "id": "51b9e663-74d4-40ae-bcc7-77ea68d8d615",
+    "created_at": "2025-04-23T02:41:25.668376+00:00",
+    "team_id": "48b3fbc7-8c8e-4353-9db4-04ad49947ab7",
+    "player_id": "c64feb15-6177-4a84-8e1a-f0094ebf24f9"
+  },
+  {
+    "id": "548f27bd-105b-46c5-9c30-c7a55ac1ce80",
+    "created_at": "2025-05-12T02:30:43.441484+00:00",
+    "team_id": "1b3ce14f-c87d-467a-af18-87b5406487b8",
+    "player_id": "b91c3dcc-3644-43f6-9616-e2f19c716b01"
+  },
+  {
+    "id": "56224ec0-f07c-4eae-ac6d-63f29d78f94c",
+    "created_at": "2025-04-07T19:31:58.705252+00:00",
+    "team_id": "9edc12a3-40aa-484c-8f38-519a1a2c962b",
+    "player_id": "c323b1b8-4605-4778-bfcb-e22a538b9490"
+  },
+  {
+    "id": "58f38123-bd4f-4990-a08c-b9d80e50e539",
+    "created_at": "2025-04-07T19:21:18.55751+00:00",
+    "team_id": "20845b1a-e6a7-44f4-8bc7-9ab1cb528b74",
+    "player_id": "7f6cf813-fd1d-4e3b-aff0-d1e4b0eb0e67"
+  },
+  {
+    "id": "5973ae3e-c443-4feb-aa6e-85f7caa8e5ef",
+    "created_at": "2025-04-20T02:37:52.519613+00:00",
+    "team_id": "e1201460-283f-4015-961f-dc63d7ce6b6d",
+    "player_id": "ce554b3f-a846-4383-969b-b839d2a333a7"
+  },
+  {
+    "id": "59f948ac-c293-4d94-a702-9c2696aa453e",
+    "created_at": "2025-04-07T01:44:50.881985+00:00",
+    "team_id": "e6514a3c-753a-4e54-bd46-4e04b03321e6",
+    "player_id": "4d81354e-3144-446a-b124-5ee949d57cfc"
+  },
+  {
+    "id": "5bcaeb26-6d15-40b2-a482-42065d6cf1c1",
+    "created_at": "2025-04-07T01:47:43.742807+00:00",
+    "team_id": "4b856422-e9fb-43dd-a7a5-b121c6ffd3ac",
+    "player_id": "80642d8e-eb20-402b-97f6-e7dfe145f014"
+  },
+  {
+    "id": "5c37349d-6580-479b-92ba-d402249de968",
+    "created_at": "2025-04-20T02:04:44.526036+00:00",
+    "team_id": "c31e6d7c-647b-4aa6-807e-363ef3a112f7",
+    "player_id": "f6bc89bf-7094-4f14-bec4-83bf27774d94"
+  },
+  {
+    "id": "5d85cc8a-9e42-43be-9390-ee53c5d6861b",
+    "created_at": "2025-04-19T17:47:56.613873+00:00",
+    "team_id": "4f0ba052-356b-4649-84f5-3b60bf42cdf2",
+    "player_id": "b9458010-5811-42e6-ba05-543facb73186"
+  },
+  {
+    "id": "5e99c961-8bb3-458e-bef4-f439d128d2cb",
+    "created_at": "2025-05-08T03:46:44.85248+00:00",
+    "team_id": "c37b98ff-34f8-4e09-8385-e7ca0ebbd51c",
+    "player_id": "e2707861-1100-4d56-80aa-75b0e99b41d6"
+  },
+  {
+    "id": "5ee832c7-7c24-4895-b6e9-7c1dbe6b0502",
+    "created_at": "2025-05-09T02:22:31.902566+00:00",
+    "team_id": "8667f32e-776c-4c1c-8105-ddcea353e0dc",
+    "player_id": "d53b7267-46fc-49ad-9e80-640b14ed558d"
+  },
+  {
+    "id": "606e5894-4dd8-4ffb-a65e-1e70bc5b68ed",
+    "created_at": "2025-05-14T02:18:41.636982+00:00",
+    "team_id": "4627d883-ad63-4d8f-8bf7-54df52b47684",
+    "player_id": "f67189bf-dbad-4ef5-845b-bed4f1669bd5"
+  },
+  {
+    "id": "610c3c0d-1a64-4035-8a49-6d1ea9affc3b",
+    "created_at": "2025-03-31T21:09:39.447289+00:00",
+    "team_id": "fc825174-dc14-46b6-a30d-078096e071f1",
+    "player_id": "0871ca0a-a528-4888-bde0-7173bebd81fb"
+  },
+  {
+    "id": "63e62a46-97f4-43d6-b260-9b1b4aa62bcb",
+    "created_at": "2025-05-12T02:56:09.97849+00:00",
+    "team_id": "778589fd-8d1d-4a7c-8992-ddd6878f6cea",
+    "player_id": "de1b040b-3af6-4a98-bed9-540354475450"
+  },
+  {
+    "id": "661246ba-4a8f-4359-a45a-24afbd866067",
+    "created_at": "2025-04-19T17:59:35.457304+00:00",
+    "team_id": "3a6040e4-4d46-4dbc-a7b3-bae1212bc9b8",
+    "player_id": "0bcc1e11-881c-43ca-9e43-4ce9e0aa50d1"
+  },
+  {
+    "id": "67838e82-eb7e-46d7-8397-63c928afa8d3",
+    "created_at": "2025-04-18T21:15:25.40669+00:00",
+    "team_id": "5d2eb72e-cd92-4dfb-a873-fe8155d4b20d",
+    "player_id": "967b530b-4b57-4ef6-ad7c-4df9282bdc03"
+  },
+  {
+    "id": "681b887b-0052-48fc-a68a-4f1e16897116",
+    "created_at": "2025-04-22T01:05:09.844991+00:00",
+    "team_id": "5f249445-601a-4eac-86ee-2d516edfec2c",
+    "player_id": "5d9dc4c6-8b46-4d2e-ad33-fde4de2ee037"
+  },
+  {
+    "id": "68765a79-0bb5-4b99-8c17-28b56c0f5c2b",
+    "created_at": "2025-04-20T02:33:55.356577+00:00",
+    "team_id": "41e638f0-dbbb-456d-a6f3-6b3bdb328ab4",
+    "player_id": "dc029bb2-dfb2-4a26-b54e-578015eef776"
+  },
+  {
+    "id": "6b7f3f5a-0862-46a2-a0fc-1063164f59ec",
+    "created_at": "2025-04-19T18:13:52.106528+00:00",
+    "team_id": "9c1ef389-1ecd-4433-bb8e-b242c0a74ecf",
+    "player_id": "2d4ebed8-8402-4cca-8dc6-c850b7bd4002"
+  },
+  {
+    "id": "6ccfa793-2ef3-4e91-9e11-059cea58e4b0",
+    "created_at": "2025-04-23T01:50:56.78889+00:00",
+    "team_id": "731d7a97-b990-41a8-963f-79f0c81b8498",
+    "player_id": "2ea26086-71a3-4cb0-8a4b-7125869e7ddc"
+  },
+  {
+    "id": "6f2dc5ca-73d9-4969-ae8e-1606d6a4cfe3",
+    "created_at": "2025-04-14T23:15:49.515783+00:00",
+    "team_id": "10d4642d-2ad9-4fc9-bae5-c16893e00243",
+    "player_id": "b50cff2a-b09e-446e-92be-c10892affe54"
+  },
+  {
+    "id": "7189b8c7-13d1-4b1c-9b19-51acfe5eed5a",
+    "created_at": "2025-04-07T00:44:06.614597+00:00",
+    "team_id": "5a024068-6824-43f7-92d2-31c2aeaa319b",
+    "player_id": "38e42308-1702-4cb7-adbb-0683bb5c646b"
+  },
+  {
+    "id": "739fdecf-bd32-4b28-9162-92f05970a9a9",
+    "created_at": "2025-04-19T18:05:25.096704+00:00",
+    "team_id": "be5f5127-2d8d-454c-a7a1-dab8770e0d7e",
+    "player_id": "69cd5f6b-dbfc-4d5b-99a5-91f8acef9653"
+  },
+  {
+    "id": "7419827e-7a98-4186-bcbe-67b2beafb867",
+    "created_at": "2025-04-18T21:01:45.09217+00:00",
+    "team_id": "95b986ed-66c5-4db7-bb7b-b21250cce93c",
+    "player_id": "b9971698-2b71-4e1e-9efe-e4bc38d4865c"
+  },
+  {
+    "id": "747267cb-165d-4d4c-bec9-311e5ec1cc6f",
+    "created_at": "2025-04-20T02:12:36.432248+00:00",
+    "team_id": "f91b45f3-600c-449b-a37c-cf9edf642422",
+    "player_id": "7b090a1f-e0bb-48af-8e26-e548a7784ec9"
+  },
+  {
+    "id": "7954320f-aff8-4f16-8d0a-a7b5d10500fe",
+    "created_at": "2025-04-07T00:39:07.255364+00:00",
+    "team_id": "91827a70-dfc1-4052-92fc-bc495fa5229a",
+    "player_id": "deefee7a-18f3-47ed-b906-dfa957594431"
+  },
+  {
+    "id": "795e60c8-cd3b-47d6-a25d-1e139189593a",
+    "created_at": "2025-04-19T18:01:56.776749+00:00",
+    "team_id": "a3b7f4e7-6170-4502-9f5c-2e8aa496a988",
+    "player_id": "0f900ea1-0baf-4e14-ad3d-55b76bcdf6b0"
+  },
+  {
+    "id": "7b3bf0ce-5195-4597-b14e-d4a3c0757dc4",
+    "created_at": "2025-04-23T01:50:56.78889+00:00",
+    "team_id": "731d7a97-b990-41a8-963f-79f0c81b8498",
+    "player_id": "8e78e265-43be-43b1-a501-c007c59301fc"
+  },
+  {
+    "id": "7d53767b-6158-4723-b6e3-6844e8bdbcca",
+    "created_at": "2025-04-19T18:13:52.106528+00:00",
+    "team_id": "9c1ef389-1ecd-4433-bb8e-b242c0a74ecf",
+    "player_id": "d4c25d14-1dc3-4bc6-a916-aa6550762940"
+  },
+  {
+    "id": "7dfea420-7069-441e-8bfe-431fe985021d",
+    "created_at": "2025-05-02T03:55:29.27708+00:00",
+    "team_id": "2f19fc37-96b3-4aa5-80ab-9d66f45030e7",
+    "player_id": "d1512c98-1a73-4033-999c-fc7aac41cda4"
+  },
+  {
+    "id": "7f4da52b-c2d4-4e69-9089-4483920f2199",
+    "created_at": "2025-04-07T01:28:23.33462+00:00",
+    "team_id": "8d318cd5-534f-4540-a9a0-98f2a59036e5",
+    "player_id": "d8ac54f3-739c-4639-bf80-1c2a9a519c80"
+  },
+  {
+    "id": "815c539d-9647-4c0f-9225-5392c1db7b17",
+    "created_at": "2025-04-20T02:12:36.432248+00:00",
+    "team_id": "f91b45f3-600c-449b-a37c-cf9edf642422",
+    "player_id": "b314b8fd-8bc0-4781-89f0-96d40031526c"
+  },
+  {
+    "id": "818142a1-2660-4041-948e-b333cbfa994a",
+    "created_at": "2025-04-22T02:45:14.91025+00:00",
+    "team_id": "d1e7b4bb-f8dc-41a4-bb53-d778e709ae50",
+    "player_id": "92f44aa0-a96e-4546-96ad-c8851f7d1692"
+  },
+  {
+    "id": "81b765d7-8c7e-47e4-b41d-f10a77c49d45",
+    "created_at": "2025-04-20T02:15:10.020675+00:00",
+    "team_id": "410f4075-a5fb-4e52-ba97-dd8b8dedeee1",
+    "player_id": "3eb0feaf-4d97-4d3a-b245-12f913e84f99"
+  },
+  {
+    "id": "82677f43-ef43-4062-b39f-5bd3defc56d9",
+    "created_at": "2025-04-19T18:15:49.010627+00:00",
+    "team_id": "17111a17-621e-4fb9-ad9b-514191e64e21",
+    "player_id": "a0afb0da-cf7c-4f73-9b53-00394fdded57"
+  },
+  {
+    "id": "82aee37e-3167-4606-8b28-5466d3694677",
+    "created_at": "2025-04-23T02:19:28.829163+00:00",
+    "team_id": "5355f5f9-989b-4cce-88cd-e6c05dcb3d47",
+    "player_id": "d9b4c5d4-d51c-4ab0-8454-070cb1ee315e"
+  },
+  {
+    "id": "83c70595-8256-4975-b93a-591f8c3a3835",
+    "created_at": "2025-04-07T00:30:02.892858+00:00",
+    "team_id": "7fc2f37d-7e98-4230-af7a-c3af030e549f",
+    "player_id": "beb92019-48b8-4e4b-b0be-a58017015141"
+  },
+  {
+    "id": "83e046f6-26ec-4626-a982-7fdb674c423a",
+    "created_at": "2025-04-22T01:46:01.316621+00:00",
+    "team_id": "88dbea76-af7c-478d-8cf8-a809bca601f7",
+    "player_id": "ac5efec2-612b-4910-a0c4-68e15b931edc"
+  },
+  {
+    "id": "8514dd46-ddf4-4aea-a3ca-c528a7c99d0a",
+    "created_at": "2025-04-18T21:05:27.293036+00:00",
+    "team_id": "216fb5a7-c6cf-4ba7-8e59-00f8265303ae",
+    "player_id": "9cc5e05f-8dd2-484f-8209-95023581ada1"
+  },
+  {
+    "id": "8589e2b8-0de1-45fc-9c49-adeb6eec5099",
+    "created_at": "2025-04-20T02:04:44.526036+00:00",
+    "team_id": "c31e6d7c-647b-4aa6-807e-363ef3a112f7",
+    "player_id": "97448ca6-50da-4f97-9b34-7a3a48c11bb0"
+  },
+  {
+    "id": "867eaf73-dd03-4e3d-ab84-c5ebfeeb279e",
+    "created_at": "2025-04-18T21:12:09.681127+00:00",
+    "team_id": "56b23656-b4ad-4766-af37-1444aa9a9f63",
+    "player_id": "37b71868-44fd-4c00-bebd-cc9e1ecfc830"
+  },
+  {
+    "id": "869d7100-208c-4c9a-bf15-cbbe88f1a5ca",
+    "created_at": "2025-04-19T18:07:41.730151+00:00",
+    "team_id": "2e7be379-d74c-4af7-91e3-c604f74d2024",
+    "player_id": "a76686b3-fec9-4a9e-ba86-89a4906cdbf1"
+  },
+  {
+    "id": "887dfb63-4b86-425e-b121-b31e1910290a",
+    "created_at": "2025-04-22T01:11:54.481149+00:00",
+    "team_id": "d553f4a5-7d61-4200-b71a-a2801b4d87bd",
+    "player_id": "46665cf5-d622-4955-b187-f28cae876cf5"
+  },
+  {
+    "id": "89f25993-ab64-474f-8963-a727f4557ee0",
+    "created_at": "2025-04-07T00:26:38.665815+00:00",
+    "team_id": "4babab47-bd3b-48c4-aaee-a7ebbf5dc99d",
+    "player_id": "d464d015-5e13-468a-956b-1358ed5b8dba"
+  },
+  {
+    "id": "8d37efbf-8508-4eb7-a7e2-7722dbb240c4",
+    "created_at": "2025-05-05T02:20:38.416253+00:00",
+    "team_id": "8ba19e50-a96c-4fa9-ba42-37fab8f6136e",
+    "player_id": "6b8ca350-cc6c-4a77-bfe7-d2d1c7dc51c7"
+  },
+  {
+    "id": "8d86d2dd-8056-4b47-a038-0e67c47dcdb4",
+    "created_at": "2025-04-07T19:27:56.827745+00:00",
+    "team_id": "c8a2579d-4b14-4e62-8e7f-682532d3727b",
+    "player_id": "d3defd61-52a8-40be-9588-5b7130b222a0"
+  },
+  {
+    "id": "8ee52f7f-d2fc-4796-bd14-81189019aed9",
+    "created_at": "2025-04-18T21:05:27.293036+00:00",
+    "team_id": "216fb5a7-c6cf-4ba7-8e59-00f8265303ae",
+    "player_id": "6dec6cbc-435d-454f-860f-eb8f5632537b"
+  },
+  {
+    "id": "8effc6d0-fa8a-4909-9add-a2ef4a7bd0ca",
+    "created_at": "2025-04-22T01:11:54.481149+00:00",
+    "team_id": "d553f4a5-7d61-4200-b71a-a2801b4d87bd",
+    "player_id": "7aef3267-074a-41af-9e58-bd947527ecf3"
+  },
+  {
+    "id": "8f0120fe-34b1-4e7e-a36d-bd7f035eaefa",
+    "created_at": "2025-04-07T01:44:50.881985+00:00",
+    "team_id": "e6514a3c-753a-4e54-bd46-4e04b03321e6",
+    "player_id": "596a5e78-4dd0-4bfe-bee8-2b44ebb8349c"
+  },
+  {
+    "id": "910ad7d5-518e-4d65-b1d3-71847f1a3dac",
+    "created_at": "2025-04-23T02:41:25.668376+00:00",
+    "team_id": "48b3fbc7-8c8e-4353-9db4-04ad49947ab7",
+    "player_id": "071537fe-ef85-447b-ba34-aa6aea8af3b6"
+  },
+  {
+    "id": "91fd1862-7c3c-4513-9978-060947d5abc2",
+    "created_at": "2025-04-20T02:15:10.020675+00:00",
+    "team_id": "410f4075-a5fb-4e52-ba97-dd8b8dedeee1",
+    "player_id": "8fe3eaf8-9bc8-4702-904f-430205c16225"
+  },
+  {
+    "id": "94eab44b-53c6-4128-93ce-fd65158b25fe",
+    "created_at": "2025-04-22T02:14:52.319015+00:00",
+    "team_id": "46e65ee4-f2d9-49f4-b1c5-3d22cedbca04",
+    "player_id": "24b1c52e-c51e-4acb-8f71-1f62c6aa2aaf"
+  },
+  {
+    "id": "96d0e540-c144-46b9-a59a-45a761a1e9d5",
+    "created_at": "2025-04-18T21:12:09.681127+00:00",
+    "team_id": "56b23656-b4ad-4766-af37-1444aa9a9f63",
+    "player_id": "2567c57d-0514-4032-9900-bd03d54d8e77"
+  },
+  {
+    "id": "97494145-ab2a-4712-a0c7-23b18894ca8b",
+    "created_at": "2025-04-20T02:02:54.927391+00:00",
+    "team_id": "49b6740f-543b-4ab0-ad1b-aa27518372b6",
+    "player_id": "2dd4100c-b492-499b-a1f2-1a3531079fd1"
+  },
+  {
+    "id": "9a79ecd4-0faf-44da-9026-1ba73650d1a1",
+    "created_at": "2025-04-07T01:40:02.294057+00:00",
+    "team_id": "8b681dfe-a870-4975-ba99-31f88c16c36b",
+    "player_id": "32380160-91f1-4712-a4f2-2cfcb388dcd6"
+  },
+  {
+    "id": "9bae9338-1062-4645-80bf-fe61c7cc235a",
+    "created_at": "2025-04-27T02:02:38.173452+00:00",
+    "team_id": "4bb687c7-6508-4d7a-84cc-450cf5335c42",
+    "player_id": "8c3fe131-5c05-4c56-86b5-a6e70aee372a"
+  },
+  {
+    "id": "9c722e57-e38d-41a8-8677-65b69cb15b0c",
+    "created_at": "2025-05-14T02:18:41.636982+00:00",
+    "team_id": "4627d883-ad63-4d8f-8bf7-54df52b47684",
+    "player_id": "6f56dddc-07ef-4781-b1b5-7964dfe05ad8"
+  },
+  {
+    "id": "9ca9f74b-623f-4070-b21b-6043a51a0977",
+    "created_at": "2025-04-20T02:26:16.426757+00:00",
+    "team_id": "1a3ae581-47ee-4aaa-8fd9-fa5f3bcc252f",
+    "player_id": "2f676840-7002-4f1d-b713-55bcf911d792"
+  },
+  {
+    "id": "a13d2f2b-4b62-40d7-affe-3055ef750bc1",
+    "created_at": "2025-04-19T18:03:32.498203+00:00",
+    "team_id": "8e8ea2a7-9527-49da-a37b-453595d9851a",
+    "player_id": "c702447f-f6df-4e70-8041-37a02fe819ad"
+  },
+  {
+    "id": "a83bd20e-e7ed-4650-aa2d-70d81384da37",
+    "created_at": "2025-04-07T01:35:53.402856+00:00",
+    "team_id": "fa0ccbe7-c54e-4dee-94ed-dbabf33f1c34",
+    "player_id": "a4033d8d-c387-4dc4-9da8-0f06b91b977a"
+  },
+  {
+    "id": "a89922f2-cab6-483c-90f2-909bf06d76a8",
+    "created_at": "2025-04-07T01:32:19.52909+00:00",
+    "team_id": "a4e784d6-cd88-4724-8f8e-2f5f8b07fbbf",
+    "player_id": "e096c651-541f-445a-8ad4-03a6050baf99"
+  },
+  {
+    "id": "a9bdeecb-305f-4960-805e-37fa7beba8db",
+    "created_at": "2025-04-24T03:18:45.522458+00:00",
+    "team_id": "c150da1b-91a2-486c-bbba-5622d6bee48a",
+    "player_id": "fe8fa2f2-48de-4a01-bae3-d09b9f4796b4"
+  },
+  {
+    "id": "b12ae59e-4441-4a26-bbfc-a91def6aba53",
+    "created_at": "2025-04-07T01:49:49.603813+00:00",
+    "team_id": "9f7da011-6875-4f87-912a-fb532acb2e27",
+    "player_id": "48cd13f5-7820-4116-90f5-ca9ad8c5881e"
+  },
+  {
+    "id": "b1389b06-448c-403f-bcc5-5b41a5c6eb91",
+    "created_at": "2025-04-22T02:45:14.91025+00:00",
+    "team_id": "d1e7b4bb-f8dc-41a4-bb53-d778e709ae50",
+    "player_id": "4ce4c51b-683a-489c-b69c-7acb1dcc0b35"
+  },
+  {
+    "id": "b17e9cd0-cab4-43df-93c9-b674593cbe13",
+    "created_at": "2025-04-19T18:15:49.010627+00:00",
+    "team_id": "17111a17-621e-4fb9-ad9b-514191e64e21",
+    "player_id": "43df225e-1133-4c8d-ba21-501b295c70ff"
+  },
+  {
+    "id": "b522ee43-205c-4468-bf40-8e250975904f",
+    "created_at": "2025-04-19T17:59:35.457304+00:00",
+    "team_id": "3a6040e4-4d46-4dbc-a7b3-bae1212bc9b8",
+    "player_id": "56a1558c-d4ae-4d1b-9b20-e775553e3a25"
+  },
+  {
+    "id": "b5ed5a67-053d-4626-b736-a25a09ca32ae",
+    "created_at": "2025-04-07T01:49:49.603813+00:00",
+    "team_id": "9f7da011-6875-4f87-912a-fb532acb2e27",
+    "player_id": "a1c59b64-6d81-4335-bc0d-4f3fbea6389a"
+  },
+  {
+    "id": "b671a8dc-c1db-465d-927b-01e52e3dd77d",
+    "created_at": "2025-04-07T19:07:49.045935+00:00",
+    "team_id": "cc3c3603-2f69-4fae-bcb5-10bf4a115fe8",
+    "player_id": "2a9a780d-2531-4995-958c-463ba43f0e6c"
+  },
+  {
+    "id": "b68018f4-17f1-492d-bfcd-f29835109f07",
+    "created_at": "2025-04-07T01:28:23.33462+00:00",
+    "team_id": "8d318cd5-534f-4540-a9a0-98f2a59036e5",
+    "player_id": "110d2795-8395-4665-ac7e-3409ee56af96"
+  },
+  {
+    "id": "b78d80f1-8052-4c2e-aacc-d64d1380c8d7",
+    "created_at": "2025-04-20T02:31:48.056517+00:00",
+    "team_id": "610bdfc8-450a-4645-a439-33ed2707bd83",
+    "player_id": "64848988-9372-43ff-9080-b65a774dddc9"
+  },
+  {
+    "id": "b95e6d9b-6e65-40e6-8f3a-2e6413dca538",
+    "created_at": "2025-04-07T00:39:07.255364+00:00",
+    "team_id": "91827a70-dfc1-4052-92fc-bc495fa5229a",
+    "player_id": "3513d72a-633c-4b35-b142-e7ee3e08e882"
+  },
+  {
+    "id": "ba432d1d-cd0c-454b-aee3-9a41db142505",
+    "created_at": "2025-04-27T02:47:29.858495+00:00",
+    "team_id": "d9ab4acb-3162-4db3-9b19-cc75406cff4f",
+    "player_id": "5797019c-8498-4ae2-aaf6-d72827c57fa4"
+  },
+  {
+    "id": "be39319b-7879-4e1d-bcb2-cdbd72fb3ecf",
+    "created_at": "2025-04-19T18:11:12.072279+00:00",
+    "team_id": "8aa12415-d77d-4b1b-9eb5-6878cc139837",
+    "player_id": "9393e469-14e5-473e-8bd3-3f3e74d1a0b7"
+  },
+  {
+    "id": "beb5b52c-286a-4db0-b710-f1f5f11d8da6",
+    "created_at": "2025-04-07T00:47:43.675137+00:00",
+    "team_id": "6e59b579-8eec-4122-88c5-eee51724223a",
+    "player_id": "150d5d5f-fc4a-4f9a-8ca1-9e3fc434bc82"
+  },
+  {
+    "id": "bfc1957e-8a28-4cb7-ab94-8c5600fdff5e",
+    "created_at": "2025-04-24T02:15:13.550935+00:00",
+    "team_id": "eaebbcb1-0658-4cd0-ac4b-e3cb71d4ec11",
+    "player_id": "b242e7b4-b294-4223-bdd3-e0569c1d440e"
+  },
+  {
+    "id": "bff91d85-effa-47cc-9776-87047eff3b32",
+    "created_at": "2025-05-11T04:34:49.130958+00:00",
+    "team_id": "7231f7c8-4a10-4c69-8128-be5707f80ff0",
+    "player_id": "111c006b-10af-4b12-b826-d4b2db8884cc"
+  },
+  {
+    "id": "c21f5a4f-f49c-4d00-ac73-8b753e8306ee",
+    "created_at": "2025-04-20T02:33:55.356577+00:00",
+    "team_id": "41e638f0-dbbb-456d-a6f3-6b3bdb328ab4",
+    "player_id": "4a7b3db8-39a6-43a4-90b7-0af4bf1d142f"
+  },
+  {
+    "id": "c60b931f-8ef9-45a9-a242-f9782c9680f2",
+    "created_at": "2025-04-19T17:52:33.709312+00:00",
+    "team_id": "0d68315a-8509-43ac-a1b7-1c974b114235",
+    "player_id": "eb6c1c05-ace9-45f0-960f-f6740fe851e8"
+  },
+  {
+    "id": "cd20d154-f9c6-4162-a020-3213689edcd2",
+    "created_at": "2025-04-07T19:17:50.440753+00:00",
+    "team_id": "987f9bd7-ecf4-4c06-a605-0269bd7cd869",
+    "player_id": "53902777-21aa-48d9-9495-3d9a1f566c27"
+  },
+  {
+    "id": "cd93061b-3d2a-4926-85cc-3c6cd13720a5",
+    "created_at": "2025-04-20T02:36:09.50627+00:00",
+    "team_id": "6db93022-33ab-4b1a-8e9b-6efe81b09c20",
+    "player_id": "f0649d84-33ca-4f49-afc5-40456c0adf18"
+  },
+  {
+    "id": "d2a07b70-0865-453c-a9c8-5be9b7f07952",
+    "created_at": "2025-04-23T02:19:28.829163+00:00",
+    "team_id": "5355f5f9-989b-4cce-88cd-e6c05dcb3d47",
+    "player_id": "0b0f013f-3430-4259-b354-3ca8001702f7"
+  },
+  {
+    "id": "d45186a2-1d01-4547-b572-e97e88409b6e",
+    "created_at": "2025-04-07T19:31:58.705252+00:00",
+    "team_id": "9edc12a3-40aa-484c-8f38-519a1a2c962b",
+    "player_id": "77c61f9b-1460-4b09-8277-c3380365c1c4"
+  },
+  {
+    "id": "d533fdbc-4c7d-49ce-9543-d28034dafa52",
+    "created_at": "2025-04-20T02:29:08.783543+00:00",
+    "team_id": "f3112eff-fb9b-482d-a817-6d16d183eb7d",
+    "player_id": "eec99a77-980d-4b32-85ce-78cc39b32334"
+  },
+  {
+    "id": "d6706365-b7f4-4488-8b89-d5843b803cd3",
+    "created_at": "2025-04-24T03:18:45.522458+00:00",
+    "team_id": "c150da1b-91a2-486c-bbba-5622d6bee48a",
+    "player_id": "be2dac53-876a-4681-a6d0-23b677e42e3b"
+  },
+  {
+    "id": "da08ed20-5aa3-4b0a-b0d2-44cff71ddde7",
+    "created_at": "2025-04-07T19:21:18.55751+00:00",
+    "team_id": "20845b1a-e6a7-44f4-8bc7-9ab1cb528b74",
+    "player_id": "24f7314b-e3e5-4357-8481-299bc07daf07"
+  },
+  {
+    "id": "dd382935-923b-4c20-bc32-f560622b8d2c",
+    "created_at": "2025-04-22T01:46:01.316621+00:00",
+    "team_id": "88dbea76-af7c-478d-8cf8-a809bca601f7",
+    "player_id": "f91d1353-c01e-4185-bba6-8dbf3a83f72d"
+  },
+  {
+    "id": "e0d62de6-774e-4a49-8542-bd093ccfc440",
+    "created_at": "2025-05-05T01:58:33.646827+00:00",
+    "team_id": "904b366b-754d-40e9-8e3f-b08f9b21a530",
+    "player_id": "6ce3cd74-788f-4ef4-8aca-8dcd4ff598d9"
+  },
+  {
+    "id": "e11e853f-6215-4a37-b47d-9f0c5e3a381a",
+    "created_at": "2025-04-22T01:07:32.517749+00:00",
+    "team_id": "ceb58fe0-429b-44ea-a1df-8f55ae39dfd2",
+    "player_id": "42968d65-6a62-4ff1-a216-9e3b8b89b64e"
+  },
+  {
+    "id": "e43d93db-36ca-4cf9-bd61-6aeda10ca378",
+    "created_at": "2025-04-07T01:14:06.675039+00:00",
+    "team_id": "b5b319e8-ec8b-4d8e-9d80-383621a516d4",
+    "player_id": "a9001173-1e04-403e-948b-6bde5584dfb3"
+  },
+  {
+    "id": "e461f8c2-7532-4873-8b4a-9960a9e20c14",
+    "created_at": "2025-05-05T02:48:49.911117+00:00",
+    "team_id": "3e4bc6df-3c32-4a70-8219-7ae2410bc549",
+    "player_id": "fe173bc4-5cb8-4921-be9c-09c61a1f1cc6"
+  },
+  {
+    "id": "e6303438-34a4-4682-b956-7232fb9920bd",
+    "created_at": "2025-04-07T01:32:19.52909+00:00",
+    "team_id": "a4e784d6-cd88-4724-8f8e-2f5f8b07fbbf",
+    "player_id": "c04088a3-c76a-4337-84c4-2ab49329206d"
+  },
+  {
+    "id": "e778d230-9f8b-43a4-9c0d-139902c8bfa2",
+    "created_at": "2025-03-31T21:09:39.447289+00:00",
+    "team_id": "fc825174-dc14-46b6-a30d-078096e071f1",
+    "player_id": "ef108437-3daf-420c-bf65-70639163d5b6"
+  },
+  {
+    "id": "e85edb9f-6b61-4073-9781-8a67b3886b79",
+    "created_at": "2025-04-07T00:51:33.34989+00:00",
+    "team_id": "a58c0976-97ef-4536-a601-f9355ddd584a",
+    "player_id": "5cdc69f0-1a4a-401d-933d-e296904fefce"
+  },
+  {
+    "id": "ec749773-8944-4c73-b38e-65d4711b70c1",
+    "created_at": "2025-04-07T19:17:50.440753+00:00",
+    "team_id": "987f9bd7-ecf4-4c06-a605-0269bd7cd869",
+    "player_id": "c622fc87-5507-461c-8e62-88e517a47082"
+  },
+  {
+    "id": "eea2056c-9ebd-4dc1-9d93-44098f8ad00f",
+    "created_at": "2025-04-27T02:02:38.173452+00:00",
+    "team_id": "4bb687c7-6508-4d7a-84cc-450cf5335c42",
+    "player_id": "edd87af8-3d5a-42cf-a428-6d501f2b2a38"
+  },
+  {
+    "id": "eeace9a7-72cd-449e-9526-70dc6ace7877",
+    "created_at": "2025-04-20T02:20:02.87799+00:00",
+    "team_id": "5d698cf2-4307-4ab7-b150-beaa72b27059",
+    "player_id": "d2119476-10a4-4776-bbaa-ce6c935068f9"
+  },
+  {
+    "id": "f1bb36b1-cb36-42fc-8a41-19052bb59ee5",
+    "created_at": "2025-04-22T02:14:52.319015+00:00",
+    "team_id": "46e65ee4-f2d9-49f4-b1c5-3d22cedbca04",
+    "player_id": "26d7663f-0361-483c-97d2-55ff5ea6492a"
+  },
+  {
+    "id": "f36369e8-7880-49cf-8271-2a9b4895df7e",
+    "created_at": "2025-04-20T02:29:08.783543+00:00",
+    "team_id": "f3112eff-fb9b-482d-a817-6d16d183eb7d",
+    "player_id": "42aa3cf4-1771-42bd-bfa2-b45e44b0c223"
+  },
+  {
+    "id": "f65b8eef-84e9-433f-86ff-5d71d4c5ccd7",
+    "created_at": "2025-04-20T02:37:52.519613+00:00",
+    "team_id": "e1201460-283f-4015-961f-dc63d7ce6b6d",
+    "player_id": "a96e8086-4765-44d9-afd4-9d010473aa12"
+  },
+  {
+    "id": "fc2834f7-f348-4bef-9c08-c26ec5ed4f97",
+    "created_at": "2025-04-18T21:15:25.40669+00:00",
+    "team_id": "5d2eb72e-cd92-4dfb-a873-fe8155d4b20d",
+    "player_id": "5701b3d1-c6e0-4321-b3a6-f228dae933c0"
+  },
+  {
+    "id": "fe5253d3-b076-4fa6-bc4d-0ddae482578a",
+    "created_at": "2025-04-07T01:40:02.294057+00:00",
+    "team_id": "8b681dfe-a870-4975-ba99-31f88c16c36b",
+    "player_id": "25bd3c97-85e4-4535-8a96-f183653837c2"
+  }
+]

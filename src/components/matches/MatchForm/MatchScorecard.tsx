@@ -38,10 +38,10 @@ export default function MatchScorecard({ courseId, scorecardData, onHoleResultCh
   // Memoize the data transformation function
   const transformCourseData = useCallback((fetchedCourse: Course): CourseData => ({
     name: fetchedCourse.name,
-    holes: fetchedCourse.holes?.map((hole: { hole_number: number; par: number; distance: number; }) => ({
+    holes: fetchedCourse.holes?.map((hole: { hole_number: number; par: number | null; distance: number | null; }) => ({
       hole_number: hole.hole_number,
-      par: hole.par,
-      distance: hole.distance
+      par: hole.par ?? 0,
+      distance: hole.distance ?? 0
     })) || []
   }), []);
 

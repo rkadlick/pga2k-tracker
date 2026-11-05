@@ -61,7 +61,7 @@ export default function CoursesPageAlternative() { // Renamed to avoid conflicts
             <span className="breadcrumb-text">Back to Course List</span>
           </div>
           )}
-          <h1 className="text-3xl course-title text-[--foreground]">Course Management</h1>
+          <h1 className="text-3xl course-title text-[--foreground]">Courses</h1>
           {!isAddingCourse && (
             <div className="mt-4 flex items-center gap-2">
               <span className="text-sm text-[--muted]">Sort by:</span>
