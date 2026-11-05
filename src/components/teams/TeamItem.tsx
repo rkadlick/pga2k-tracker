@@ -29,7 +29,7 @@ export default function TeamItem({ team, isAuthenticated, index }: TeamItemProps
           </Link>
           {team.is_your_team && (
             <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-800/20 dark:text-emerald-400">
-              Your Team
+              Our Team
             </span>
           )}
         </div>

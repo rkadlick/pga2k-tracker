@@ -13,12 +13,29 @@ export interface TeamUpdateData {
   name?: string;
 }
 
+function getPlayersOnTeam(teamId: string) {
+  const playerIds = teamMembers
+    .filter(member => member.team_id === teamId)
+    .map(member => member.player_id);
+
+  return players
+    .filter(player => playerIds.includes(player.id))
+    .map(({ id, name, recent_rating }) => ({ id, name, recent_rating }));
+}
+
+function withPlayers(team: (typeof teams)[number]): Team {
+  return { ...team, players: getPlayersOnTeam(team.id) } as Team;
+}
+
 export async function getTeams(): Promise<Team[]> {
-  return ([...teams] as Team[]).sort((a, b) => a.name.localeCompare(b.name));
+  return teams
+    .map(withPlayers)
+    .sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export async function getTeam(id: string): Promise<Team | null> {
-  return (teams as Team[]).find(team => team.id === id) ?? null;
+  const team = teams.find(team => team.id === id);
+  return team ? withPlayers(team) : null;
 }
 
 /**
@@ -41,13 +58,7 @@ export function generateTeamName(): string {
 }
 
 export async function getTeamPlayers(teamId: string) {
-  const playerIds = teamMembers
-    .filter(member => member.team_id === teamId)
-    .map(member => member.player_id);
-
-  return players
-    .filter(player => playerIds.includes(player.id))
-    .map(({ id, name, recent_rating }) => ({ id, name, recent_rating }));
+  return getPlayersOnTeam(teamId);
 }
 
 /**
